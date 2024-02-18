@@ -1,0 +1,42 @@
+<%- include('../layout/layout.ejs') -%>
+
+<div class="containerForMissingKidsDisplay mt-5" style="display: flex; align-items: center; justify-content: center;">
+    <div class="containerforallitems" style="display: flex; align-items: start; flex-direction: column; width: 700px;">
+        <div class="containerName">
+            <h1><%- missingelderlyfulldetails.name %></h1>
+        </div>
+        <div class="containerDateMissing">
+            <p><%- missingelderlyfulldetails.missingdate.toLocaleDateString() %></p>
+        </div>
+        <div class="containerPlaceAgeandReward" style="display: flex; gap: 10px; justify-content: space-between; width: 100%;">
+            <div class="containerPlaceAge" style="display: flex; gap: 10px;">
+                <div class="containerLocationMissed">
+                    <p><%- missingelderlyfulldetails.placewentmissing %></p>
+                </div>
+                <div class="containerAge">
+                    <p>/ <%- missingelderlyfulldetails.age %></p>
+                </div>
+            </div>
+            <div class="containerReward">
+                <h4>Reward : Rs.<%- missingelderlyfulldetails.reward %></h4>
+            </div>
+        </div>
+        <div class="containerImage">
+            <img src="/images/missingelderly/<%= missingelderlyfulldetails.id %>.jpg" alt="" style="height: auto; width: 700px; border-radius: 20px; position: absolute; z-index: 1;">
+            <img src="/images/missingelderly/<%= missingelderlyfulldetails.id %>.jpg" alt="" style="height: auto; width: 700px; border-radius: 20px; filter: blur(60px) brightness(50%); ">
+        </div>
+
+        <div class="containerDescription">
+            <h4>Description</h4>
+            <p><%- missingelderlyfulldetails.description %></p>
+        </div>
+        <div class="containerDress">
+            <h4>Dress wearing</h4>
+            <p><%- missingelderlyfulldetails.dress %></p>
+        </div>
+        <div class="containerLocationLiving">
+            <h4>Place of Living</h4>
+            <p><%- missingelderlyfulldetails.placeofliving %></p>
+        </div>
+    </div>
+</div>

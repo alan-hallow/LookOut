@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://kit.fontawesome.com/89589cc083.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    
+    <div class="containderMissingPersonDetails">
+
+        <div class="containerForMissingPersonTitleImageNameAge">
+            <h2 class="missingPersonDetailTitle">Missing Person Details</h2>
+            <div class="containerImage">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZd8IFhFAzVB_AdUsDwZMmRzafOAhzsQ_JlQ&usqp=CAU" alt="" class="missingPersonImage">
+            </div>
+            <div class="containerNameAge">
+                <h3>Tony Stark</h3>
+                <p>, 25</p>
+            </div>
+        </div>
+        <div class="containerLocation">
+            <div class="containerLocataionPlace">
+                <div class="squareForicons">
+                    <i class="fa-solid fa-location-dot"></i>
+                </div>
+                <div class="containerLocationH3P">
+                    <h3 class="locationH3">Location</h3>
+                    <p class="locationP">Last seen in Kattappana</p>
+                </div>
+            </div>
+            <div class="containerLocationResidence">
+                <div class="squareForicons">
+                    <i class="fa-solid fa-house-chimney"></i>
+                </div>
+                
+                <div class="containerResidenceH3P">
+                    <h3 class="residenceH3">Residence</h3>
+                    <p class="residenceP">Living in Erattayar</p>
+                </div>
+            </div>
+            </div>
+        <div class="containerPhysicalDescriptionBox">
+            <div class="squareForicons">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+            <div class="containerPhysicalDescription">
+                <h3 class="physicalDescriptionh3">Physical Description</h3>
+                <p class="physicalDescriptionp">5'4", Brown hair, Hazel eyes, Scar on left hand</p>
+            </div>
+        </div>
+        <div class="containerDateTimeBox">         
+            <div class="squareForicons">
+                <i class="fa-regular fa-clock"></i>
+            </div>
+            <div class="containerDateTime">
+                <h3 class="dateTimeh3">Date & Time</h3>
+                <p class="dateTimep">Last seen at 08:30pm on 15/8/2024</p>
+            </div>
+        </div>
+
+        <div class="containerComments">
+            <h2>Comments</h2>
+            <form action="" class="commentsForm">
+                <textarea name="comment" id="" class="commentBox" placeholder="Add a comment..." required>
+                </textarea>
+
+                <button type="submit" class="submitButtonForm"><i class="fa-solid fa-paper-plane"></i>
+                </button>
+
+            </form>
+
+            <div class="containerAllComments">
+                <div class="containerAddedComments">
+                    <div class="containerCommentTitleDate">
+                        <h2 class="commentTitle">Samantha</h2>
+                        <p class="commentDate">08/08/2024</p>
+                    </div>
+                    <p class="commentSubject">I saw a woman who looked like her at the train station last week</p>
+                </div>
+                <div class="containerAddedComments">
+                    <div class="containerCommentTitleDate">
+                        <h2 class="commentTitle">Samantha</h2>
+                        <p class="commentDate">08/08/2024</p>
+                    </div>
+                    <p class="commentSubject">I saw a woman who looked like her at the train station last weekI saw a woman who looked like her at the train station last weekI saw a woman who looked like her at the train station last weekI saw a woman who looked like her at the train station last week</p>
+                </div>
+                <div class="containerAddedComments">
+                    <div class="containerCommentTitleDate">
+                        <h2 class="commentTitle">Samantha</h2>
+                        <p class="commentDate">08/08/2024</p>
+                    </div>
+                    <p class="commentSubject">I saw a woman who looked like her at the train station last weekI saw a woman who looked like her at the train station last week</p>
+                </div>
+            </div>
+        </div>
+
+
+
+
+    </div>
+
+
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap');
+body{    
+    font-family: "Titillium Web", sans-serif;
+    font-style: normal;
+}
+
+.containderMissingPersonDetails{
+    margin-left: 100px;
+}
+.containerForMissingPersonTitleImageNameAge{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 650px;
+    margin-top: 30px;
+    flex-direction: column;
+}
+.missingPersonDetailTitle{
+    font-size: 40px;
+    font-weight: 700;
+}
+.containerImage{
+    height: 200px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.containerNameAge{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+}
+.containerNameAge h3{
+    font-size: 30px;
+}
+.containerNameAge p{
+    font-size: 30px;
+}
+
+.missingPersonImage{
+    height: 200px;
+}
+.containerPhysicalDescriptionBox, .containerDateTimeBox, .containerLocationResidence, .containerLocataionPlace{
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    gap: 10px;
+    margin: 10px 0;
+}
+.locationH3, .locationP, .residenceH3, .residenceP{
+    margin: 0;
+}
+
+
+.squareForicons{
+    height: 50px;
+    aspect-ratio: 1;
+    border-radius: 5px;
+    background-color: rgb(208, 206, 206);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.physicalDescriptionh3, .physicalDescriptionp, .dateTimeh3, .dateTimep{
+    margin: 5px 0;
+}
+.commentBox{
+    height: 100px;
+    width: 570px;
+    background-color: #e8eef2;
+    color: #283d4e;
+    border-radius: 20px;
+    border: none;
+    resize: none;
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    font-family: "Titillium Web", sans-serif;
+    font-style: normal;
+    padding: 10px 60px 10px 20px;
+}
+
+.commentBox:focus{
+    outline: none;
+}
+.commentsForm{
+    display: flex;
+    align-items: end;
+    justify-content: end;
+    flex-direction: column;
+    gap: 10px;
+    width: 650px;
+}
+.submitButtonForm{
+    border: none;
+    background-color: transparent;
+    font-size: 20px;
+    position: absolute;
+    cursor: pointer;
+    width: 70px;
+    aspect-ratio: 1;
+    transition: .5s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    rotate: 25deg;
+    color: #283d4e;
+    
+}
+.submitButtonForm:hover{
+    color: #000000;
+    rotate: 10deg;
+}
+.containerAllComments{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-top: 20px;
+}
+.containerAddedComments{
+    background-color: #f1f1f1;
+    border-radius: 20px;
+    width: 610px;
+    padding: 10px 20px 20px 20px;
+}
+
+
+.containerCommentTitleDate{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+.commentTitle, .commentDate, .commentSubject{
+    margin: 0;
+}
+
+    </style>
+</body>
+</html>
