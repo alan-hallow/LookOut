@@ -10,7 +10,7 @@ const usersSchema = new mongoose.Schema({
         required: true
     },
     phone: {
-        type: number,
+        type: Number,
         required: true
     },
     location: {

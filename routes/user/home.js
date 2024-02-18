@@ -1,5 +1,9 @@
 const express = require('express')
 const router = express.Router()
+const userDataModels = require('./../../models/models-signup');
+const userDataHelper = require('./../../helpers/user/helper-signup');
+const fs = require('fs');
+const path = require('path');
 
 
 router.get('/', (req, res) => {
@@ -22,11 +26,9 @@ router.get('/signin', async (req,res)=>{
 
 
 
-router.get('/userSignUp', async (req,res)=>{
-
-
+router.post('/userSignup', async (req,res)=>{
     try{
-        const usersData = await users.userData(req.data)
+        const usersData = await userDataHelper.userData(req.data)
         res.render('user/home')
     }
     catch (error){
