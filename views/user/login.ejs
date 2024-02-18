@@ -1,0 +1,168 @@
+<%- include('layout/layout.ejs') -%>
+
+
+
+<div class="containerLoginWhole">
+        
+    <h2 class="loginPageTitle">Welcome back to Look Out</h2>
+    <p class="loginPageSubTitle">Log in to your account with your email and password</p>
+
+    <form action="">
+        <div class="containerLoginForm">
+            <div class="containerEmail">
+                <label for="email" class="labelForm">Email</label>
+                <input class="loginEmail" type="email" id="email" name="email" placeholder="Email" required>
+            </div>
+            <div class="containerPassword">
+                <label for="password" class="labelForm">Password</label>
+                <input class="loginPassword" type="password" id="password" name="password" placeholder="Password" required>
+                
+                <div class="passwordShowHideButtonShow" id="passwordShowButton"><i class="fa-solid fa-eye"></i></div>
+            </div>
+            <button type="submit" class="loginFormSubmit">Log in</button>
+        </div>
+    </form>
+
+    <p class="noAccountText">Don't have an account?</p>
+    <a href="/signup" class="noAccountButtonRedirect">Sign up for Look Out</a>
+</div>
+
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap');
+body{
+font-family: "Titillium Web", sans-serif;
+font-style: normal;
+}
+.containerLoginWhole{
+display: flex;
+align-items: center;
+justify-content: center;
+flex-direction: column;
+margin-top: 100px;
+}
+.containerEmail, .containerPassword{
+display: flex;
+align-items: start;
+justify-content: center;
+flex-direction: column;
+width: 500px;
+}
+.containerPassword{
+width: 500px;
+}
+
+.passwordShowHideButtonShow{
+height: 50px;
+position: absolute;
+aspect-ratio: 1;
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+align-self: flex-end;
+margin-top: 60px;
+background-color: transparent;
+cursor: pointer;
+}
+.loginPageTitle{
+font-size: 30px;
+margin: 0;
+}
+.loginPageSubTitle{
+font-size: 20px;
+margin-top: 10px;
+margin-bottom: 10px;
+opacity: .5;
+}
+.containerLoginForm{
+display: flex;
+align-items: start;
+justify-content: center;
+flex-direction: column;
+margin: 10px 0;
+}
+.labelForm{
+margin-bottom: 10px;
+margin-top: 20px;
+font-size: 20px;
+margin-left: 5px;
+font-weight: 600;
+}
+.loginEmail{
+height: 50px;
+width: 500px;
+border: 2px solid #cccccc;
+border-radius: 15px;
+font-size: 18px;
+padding: 0 20px;
+}
+.loginEmail:focus{
+outline: none;
+border: 3px solid #4cd964;
+}
+.loginPassword{
+height: 50px;
+width: 500px;
+border: 2px solid #cccccc;
+border-radius: 15px;
+font-size: 18px;
+padding: 0 60px 0 20px;
+}
+.loginPassword:focus{
+outline: none;
+border: 3px solid #4cd964;
+}
+.loginFormSubmit{
+height: 50px;
+width: 500px;
+border-radius: 15px;
+background-color: #007aff;
+border: none;
+color: white;
+font-size: 18px;
+margin-top: 20px;
+}
+.loginFormSubmit:hover{
+background-color: #006adb;
+}
+.noAccountText{
+margin: 50px 0 0 0;
+}
+.noAccountButtonRedirect{
+height: 50px;
+width: 500px;
+border-radius: 15px;
+background-color: #d1e6fe;
+border: none;
+color: #000000;
+font-size: 18px;
+margin-top: 20px;
+display: flex;
+align-items: center;
+justify-content: center;
+text-decoration: none;
+}
+.noAccountButtonRedirect:hover{
+background-color: #c7e2ff;
+text-decoration: none;
+}
+
+</style>
+
+<script>
+
+let password = document.getElementById('password')
+let showButton = document.getElementById('passwordShowButton')
+
+showButton.onclick = function(){
+if(password.type == 'password'){
+    password.type = 'text'
+    showButton.innerHTML = '<i class="fa-solid fa-eye-slash"></i>'
+}
+else{
+    password.type = 'password'
+    showButton.innerHTML = '<i class="fa-solid fa-eye"></i>'
+}
+}
+</script>

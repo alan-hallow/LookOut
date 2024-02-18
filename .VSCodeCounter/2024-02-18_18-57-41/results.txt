@@ -1,0 +1,79 @@
+Date : 2024-02-18 18:57:41
+Directory : c:\Users\ALAN\Desktop\LookOut
+Total : 34 files,  3580 codes, 28 comments, 315 blanks, all 3923 lines
+
+Languages
++------------+------------+------------+------------+------------+------------+
+| language   | files      | code       | comment    | blank      | total      |
++------------+------------+------------+------------+------------+------------+
+| HTML       |         19 |      1,679 |          2 |        199 |      1,880 |
+| JSON       |          2 |      1,498 |          0 |          2 |      1,500 |
+| JavaScript |         11 |        391 |         26 |        110 |        527 |
+| Ini        |          1 |          6 |          0 |          1 |          7 |
+| CSS        |          1 |          6 |          0 |          3 |          9 |
++------------+------------+------------+------------+------------+------------+
+
+Directories
++----------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                       | files      | code       | comment    | blank      | total      |
++----------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                          |         34 |      3,580 |         28 |        315 |      3,923 |
+| . (Files)                                                                  |          4 |      1,532 |          5 |         35 |      1,572 |
+| helpers                                                                    |          3 |         79 |         15 |         33 |        127 |
+| helpers\user                                                               |          3 |         79 |         15 |         33 |        127 |
+| models                                                                     |          3 |        129 |          0 |         11 |        140 |
+| public                                                                     |          1 |          6 |          0 |          3 |          9 |
+| public\css                                                                 |          1 |          6 |          0 |          3 |          9 |
+| routes                                                                     |          4 |        155 |          6 |         34 |        195 |
+| routes\user                                                                |          4 |        155 |          6 |         34 |        195 |
+| testfiles                                                                  |          4 |        775 |          0 |         76 |        851 |
+| views                                                                      |         15 |        904 |          2 |        123 |      1,029 |
+| views\user                                                                 |         15 |        904 |          2 |        123 |      1,029 |
+| views\user (Files)                                                         |          3 |        342 |          0 |         38 |        380 |
+| views\user\elderly                                                         |          3 |         99 |          0 |         15 |        114 |
+| views\user\kids                                                            |          3 |        295 |          0 |         34 |        329 |
+| views\user\layout                                                          |          1 |         23 |          2 |          9 |         34 |
+| views\user\partials                                                        |          2 |         46 |          0 |          4 |         50 |
+| views\user\pets                                                            |          3 |         99 |          0 |         23 |        122 |
++----------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++----------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| filename                                                                   | language   | code       | comment    | blank      | total      |
++----------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| c:\Users\ALAN\Desktop\LookOut\desktop.ini                                  | Ini        |          6 |          0 |          1 |          7 |
+| c:\Users\ALAN\Desktop\LookOut\helpers\user\helper-missing-elderly.js       | JavaScript |         25 |          5 |         11 |         41 |
+| c:\Users\ALAN\Desktop\LookOut\helpers\user\helper-missing-kid.js           | JavaScript |         29 |          5 |         11 |         45 |
+| c:\Users\ALAN\Desktop\LookOut\helpers\user\helper-missing-pets.js          | JavaScript |         25 |          5 |         11 |         41 |
+| c:\Users\ALAN\Desktop\LookOut\models\missing-elderly-post.js               | JavaScript |         41 |          0 |          4 |         45 |
+| c:\Users\ALAN\Desktop\LookOut\models\missing-kids-post.js                  | JavaScript |         48 |          0 |          3 |         51 |
+| c:\Users\ALAN\Desktop\LookOut\models\missing-pets-post.js                  | JavaScript |         40 |          0 |          4 |         44 |
+| c:\Users\ALAN\Desktop\LookOut\package-lock.json                            | JSON       |      1,475 |          0 |          1 |      1,476 |
+| c:\Users\ALAN\Desktop\LookOut\package.json                                 | JSON       |         23 |          0 |          1 |         24 |
+| c:\Users\ALAN\Desktop\LookOut\public\css\LookOut.css                       | CSS        |          6 |          0 |          3 |          9 |
+| c:\Users\ALAN\Desktop\LookOut\routes\user\home.js                          | JavaScript |         14 |          0 |         10 |         24 |
+| c:\Users\ALAN\Desktop\LookOut\routes\user\router-elderly.js                | JavaScript |         47 |          2 |          8 |         57 |
+| c:\Users\ALAN\Desktop\LookOut\routes\user\router-pets.js                   | JavaScript |         47 |          2 |          8 |         57 |
+| c:\Users\ALAN\Desktop\LookOut\routes\user\user-kids.js                     | JavaScript |         47 |          2 |          8 |         57 |
+| c:\Users\ALAN\Desktop\LookOut\server.js                                    | JavaScript |         28 |          5 |         32 |         65 |
+| c:\Users\ALAN\Desktop\LookOut\testfiles\login.html                         | HTML       |        163 |          0 |         11 |        174 |
+| c:\Users\ALAN\Desktop\LookOut\testfiles\missingpagedetails.html            | HTML       |        226 |          0 |         22 |        248 |
+| c:\Users\ALAN\Desktop\LookOut\testfiles\missingpersonadd.html              | HTML       |        223 |          0 |         25 |        248 |
+| c:\Users\ALAN\Desktop\LookOut\testfiles\signup.html                        | HTML       |        163 |          0 |         18 |        181 |
+| c:\Users\ALAN\Desktop\LookOut\views\user\elderly\missingelderly.ejs        | HTML       |         30 |          0 |          5 |         35 |
+| c:\Users\ALAN\Desktop\LookOut\views\user\elderly\missingelderlydisplay.ejs | HTML       |         40 |          0 |          2 |         42 |
+| c:\Users\ALAN\Desktop\LookOut\views\user\elderly\newmissingelderlypost.ejs | HTML       |         29 |          0 |          8 |         37 |
+| c:\Users\ALAN\Desktop\LookOut\views\user\home.ejs                          | HTML       |          8 |          0 |          3 |         11 |
+| c:\Users\ALAN\Desktop\LookOut\views\user\kids\missingkiddisplay.ejs        | HTML       |         40 |          0 |          2 |         42 |
+| c:\Users\ALAN\Desktop\LookOut\views\user\kids\missingkids.ejs              | HTML       |         30 |          0 |          5 |         35 |
+| c:\Users\ALAN\Desktop\LookOut\views\user\kids\newmissingkidpost.ejs        | HTML       |        225 |          0 |         27 |        252 |
+| c:\Users\ALAN\Desktop\LookOut\views\user\layout\layout.ejs                 | HTML       |         23 |          2 |          9 |         34 |
+| c:\Users\ALAN\Desktop\LookOut\views\user\login.ejs                         | HTML       |        154 |          0 |         14 |        168 |
+| c:\Users\ALAN\Desktop\LookOut\views\user\partials\footer.ejs               | HTML       |          0 |          0 |          1 |          1 |
+| c:\Users\ALAN\Desktop\LookOut\views\user\partials\header.ejs               | HTML       |         46 |          0 |          3 |         49 |
+| c:\Users\ALAN\Desktop\LookOut\views\user\pets\missingpets.ejs              | HTML       |         30 |          0 |          5 |         35 |
+| c:\Users\ALAN\Desktop\LookOut\views\user\pets\missingpetsdisplay.ejs       | HTML       |         40 |          0 |          2 |         42 |
+| c:\Users\ALAN\Desktop\LookOut\views\user\pets\newmissingpetspost.ejs       | HTML       |         29 |          0 |         16 |         45 |
+| c:\Users\ALAN\Desktop\LookOut\views\user\signup.ejs                        | HTML       |        180 |          0 |         21 |        201 |
+| Total                                                                      |            |      3,580 |         28 |        315 |      3,923 |
++----------------------------------------------------------------------------+------------+------------+------------+------------+------------+

@@ -1,0 +1,195 @@
+<%- include('layout/layout.ejs') -%>
+
+
+
+<div class="containerSignup">
+    <h2 class="signUpTitle">
+        Create an account
+    </h2>
+
+    <div class="containerSignUpForm">
+        <form action="user/userSignUp" method="post">
+            <div class="containerSignUpFormContents">
+                <label for="name">Your name</label>
+                <input type="text" id="name" name="name" placeholder="Enter name" class="inputText inputName" required>
+
+                <label for="email">Email address</label>
+                <input type="email" id="email" name="email" placeholder="you@example.com" class="inputText inputEmail" required >
+
+                <label for="phone">Phone number</label>
+                <input type="number" id="phone" name="phone" placeholder="555-555-5555" class="inputText inputPhone" required>
+
+                <label for="place">Location</label>
+                <input type="text" id="place" name="place" placeholder="City, District" class="inputText inputPlace" required>
+
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Password@123" class="inputText inputPassword" >
+                <div class="passwordShowHideButtonShow1" id="passwordShowButton1"><i class="fa-solid fa-eye"></i></div>
+
+                <label for="password2">Confirm password</label>
+                <input type="password" id="password2" name="password2" placeholder="Password@123" class="inputText inputPassword2">
+                <div class="passwordShowHideButtonShow2" id="passwordShowButton2"><i class="fa-solid fa-eye"></i></div>
+
+                <div class="containerResetSubmitButton">
+                    <button type="reset" class="resetButton">Clear</button>
+                    <button type="submit" class="submitButton" onclick=passwordChecker >Create account</button>
+                </div>
+            </div>
+        </form>
+        
+    <p class="noAccountText">Already have an account?</p>
+    <a href="/signin" class="noAccountButtonRedirect">Sign in for Look Out</a>
+    </div>
+</div>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap');
+body{
+font-family: "Titillium Web", sans-serif;
+font-style: normal;
+}
+label{
+font-size: 19px;
+margin-left: 5px;
+margin-top: 10px;
+font-weight: 600;
+}
+.signUpTitle{
+font-size: 40px;
+margin-bottom: 40px;
+}
+.containerSignup{
+display: flex;
+align-items: center;
+justify-content: center;
+flex-direction: column;
+margin-top: 50px;
+}
+.containerSignUpFormContents{
+display: flex;
+align-items: start;
+justify-content: center;
+flex-direction: column;
+}
+.inputText{
+height: 50px;
+width: 500px;
+border-radius: 10px;
+border: 2px solid rgb(194, 194, 194);
+padding: 0 10px;
+font-size: 18px;
+}
+.inputText:focus{
+outline: none;
+border: 3px solid #4cd964;
+}
+.containerResetSubmitButton{
+align-self: flex-end;
+margin-top: 20px;
+}
+.resetButton{
+height: 50px;
+width: 100px;
+border-radius: 15px;
+border: none;
+background-color: #dbdbdb;
+font-size: 18px;
+cursor: pointer;
+}
+.submitButton{
+height: 50px;
+width: 400px;
+border-radius: 15px;
+border: none;
+background-color: #007aff;
+color: white;
+font-size: 18px;
+cursor: pointer;
+}
+.passwordShowHideButtonShow2{
+position: absolute;
+align-self: flex-end;
+border-radius: 50%;
+height: 50px;
+aspect-ratio: 1;
+display: flex;
+align-items: center;
+justify-content: center;
+cursor: pointer;
+margin-top: 265px;
+}
+.passwordShowHideButtonShow1{
+position: absolute;
+align-self: flex-end;
+border-radius: 50%;
+height: 50px;
+aspect-ratio: 1;
+display: flex;
+align-items: center;
+justify-content: center;
+cursor: pointer;
+margin-top: 460px;
+}
+.noAccountText{
+    margin: 50px 0 0 0;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+.noAccountButtonRedirect{
+height: 50px;
+width: 500px;
+border-radius: 15px;
+background-color: #d1e6fe;
+border: none;
+color: #000000;
+font-size: 18px;
+margin-top: 20px;
+display: flex;
+align-items: center;
+justify-content: center;
+margin-bottom: 100px;
+text-decoration: none;
+}
+.noAccountButtonRedirect:hover{
+background-color: #c7e2ff;
+text-decoration: none;
+}
+
+
+</style>
+
+<script>
+
+let password = document.getElementById('password')
+let password2 = document.getElementById('password2')
+let showButton2 = document.getElementById('passwordShowButton1')
+let showButton1 = document.getElementById('passwordShowButton2')
+
+let passwordValue = document.getElementById('password').value
+
+showButton1.onclick = function(){
+    if(password.type == 'password'){
+        password.type = 'text'
+        showButton1.innerHTML = '<i class="fa-solid fa-eye-slash"></i>'
+    }
+    else{
+        password.type = 'password'
+        showButton1.innerHTML = '<i class="fa-solid fa-eye"></i>'
+    }
+}
+showButton2.onclick = function(){
+    if(password2.type == 'password'){
+        password2.type = 'text'
+        showButton2.innerHTML = '<i class="fa-solid fa-eye-slash"></i>'
+    }
+    else{
+        password2.type = 'password'
+        showButton2.innerHTML = '<i class="fa-solid fa-eye"></i>'
+    }
+}
+
+
+
+
+    </script>
