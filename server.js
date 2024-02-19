@@ -46,7 +46,6 @@ const childRouter = require('./routes/user/user-kids')
 const elderlyRouter = require('./routes/user/router-elderly')
 const petsRouter = require('./routes/user/router-pets')
 
-//routes
 app.use('/', userHomeRouter)
 app.use('/missingkids', childRouter)
 app.use('/missingelderly', elderlyRouter)

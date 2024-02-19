@@ -13,7 +13,7 @@ const usersSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
-    location: {
+    place: {
         type: String,
         required: true
     },
@@ -23,7 +23,6 @@ const usersSchema = new mongoose.Schema({
     },
     createddate: {
         type: Date,
-        required: true,
         default: Date.now
     }
 })

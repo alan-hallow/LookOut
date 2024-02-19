@@ -1,35 +1,30 @@
-const missingPets = require('./../../models/model-signup');
-
-
+const missingPets = require('./../../models/models-signup');
+const bcrypt = require('bcrypt');
+const saltRounds = 10; // This determines the complexity of the hash, usually between 10-12 is recommended
 
 module.exports = {
-
-
-
-    // Async function to handle saving missing kids data
-    users: async (userData) => {
+    userData: async (userData) => {
         try {
-            // Destructure data from helperMissingKids object
-            const { name, email, phone, location, password} = helperMissingPets;
+            const { name, email, phone, place, password } = userData;
 
-            // Create a new missing kid object
-            const newMissingPets = new missingPets({
+            // Hash the provided password
+            const hashedPassword = await bcrypt.hash(password, saltRounds);
+
+            const newUser = new missingPets({
                 name: name,
                 email: email,
                 phone: phone,
-                location: location,
-                password: password,
-                createddate: new Date(), // Assuming you want to set the creation date automatically
+                place: place, // Assuming 'place' corresponds to 'location' in the model
+                password: hashedPassword, // Store the hashed password
             });
 
-            // Save the missing kid to the database
-            const usersDataSuccess = await users.save();
+            const usersDataSuccess = await newUser.save();
 
-            return usersDataSuccess
+            return usersDataSuccess;
 
         } catch (error) {
-            // Handle any errors that occur during the process
             console.error(error);
+            throw error; // Rethrow the error to handle it in the calling function.
         }
     }
 };
