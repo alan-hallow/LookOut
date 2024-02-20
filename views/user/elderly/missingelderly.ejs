@@ -1,34 +1,93 @@
 <%- include('../layout/layout.ejs') -%>
 
-<img src="https://img.freepik.com/premium-photo/old-man-closseup-face-image_181020-3630.jpg" alt="" style="width: 100vw; height: 700px; position: absolute; z-index: -1; filter: brightness(50%);">
+<img
+  src="https://img.freepik.com/premium-photo/old-man-closseup-face-image_181020-3630.jpg"
+  alt=""
+  style="
+    width: 100vw;
+    height: 700px;
+    position: absolute;
+    z-index: -1;
+    filter: brightness(50%);
+  "
+/>
 
-    <h1 class="d-flex align-items-center justify-content-center" style="color: white; font-size: 80px;" >Missing Elderly</h1>
-<div class="createNewPostButton" style="display: flex; align-items: center; justify-content: end; margin-right: 100px; margin-top: 200px;">
-    <a href="/missingelderly/createMissingElderlyPost" style="width: 250px; height: 50px; display: flex; align-items: center; justify-content: center; font-size: 20px; background-color: #007acc; color: #fff; text-decoration: none; border-radius: 10px;">Create a Post</a>
+<h1
+  class="d-flex align-items-center justify-content-center"
+  style="color: white; font-size: 80px"
+>
+  Missing Elderly
+</h1>
+<div
+  class="createNewPostButton"
+  style="
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    margin-right: 100px;
+    margin-top: 200px;
+  "
+>
+  <a
+    href="/missingelderly/createMissingElderlyPost"
+    style="
+      width: 250px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      background-color: #007acc;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 10px;
+    "
+    >Create a Post</a
+  >
 </div>
 
-<section style="padding-top: 200px;">
-    <div class="container" style="width: 550px; " >
-        <% elderlyMissing.forEach(elderly => { %>
-            <a href="missingelderly/missingelderlynewpost/<%= elderly.id %>" style="text-decoration: none;">
-                <div class="containereachcard" style="background-color: rgb(199, 229, 221); border-radius: 35px; margin: 10px; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 10px; margin: 20px 0; padding: 25px 20px;">
-
-                    <div class="containerNameAge" style="display: flex; align-self: start;">
-                        <div class="title text-uppercase">
-                            <h4><%= elderly.name %>&nbsp;</h4>
-                        </div>
-                        <div class="age text-secondary">
-                            <h4>| <%= elderly.age %></h4>
-                        </div>
-                    </div>
-                    <div class="createdAt text-secondary align-self-start">
-                        <%= elderly.missingdate.toLocaleDateString() %>
-                    </div>
-                    <div class="image">
-                        <img src="images/missingelderly/<%= elderly.id %>.jpg" alt="" style="width: 500px; height: auto; border-radius: 20px;">
-                    </div>
-                </div>
-            </a>
-        <% }) %>
-    </div>
+<section style="padding-top: 200px">
+  <div class="container" style="width: 550px">
+    <% elderlyMissing.forEach(elderly => { %>
+    <a
+      href="missingelderly/missingelderlynewpost/<%= elderly.id %>"
+      style="text-decoration: none"
+    >
+      <div
+        class="containereachcard"
+        style="
+          background-color: rgb(199, 229, 221);
+          border-radius: 35px;
+          margin: 10px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-direction: column;
+          gap: 10px;
+          margin: 20px 0;
+          padding: 25px 20px;
+        "
+      >
+        <div class="containerNameAge" style="display: flex; align-self: start">
+          <div class="title text-uppercase">
+            <h4><%= elderly.name %>&nbsp;</h4>
+          </div>
+          <div class="age text-secondary">
+            <h4>| <%= elderly.age %></h4>
+          </div>
+        </div>
+        <div class="createdAt text-secondary align-self-start">
+          <%= elderly.missingdate.toLocaleDateString() %>
+        </div>
+        <div class="image">
+          <img
+            src="images/missingelderly/<%= elderly.id %>.jpg"
+            alt=""
+            style="width: 500px; height: auto; border-radius: 20px"
+          />
+        </div>
+      </div>
+    </a>
+    <% }) %>
+  </div>
 </section>
