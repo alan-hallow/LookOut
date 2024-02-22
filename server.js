@@ -43,11 +43,15 @@ const userHomeRouter = require("./routes/user/home");
 const childRouter = require("./routes/user/user-kids");
 const elderlyRouter = require("./routes/user/router-elderly");
 const petsRouter = require("./routes/user/router-pets");
+const vehicleRouter = require("./routes/user/router-vehicle");
+const valuableRouter = require("./routes/user/router-valuable");
 
 app.use("/", userHomeRouter);
 app.use("/missingkids", childRouter);
 app.use("/missingelderly", elderlyRouter);
 app.use("/missingpets", petsRouter);
+app.use("/missingvehicle", vehicleRouter);
+app.use("/missingvaluable", valuableRouter);
 
 app.listen(3000, () => {
   console.log("Server is running on port 3000");

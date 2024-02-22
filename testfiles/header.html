@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      src="https://kit.fontawesome.com/89589cc083.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="containerWholeHeaderComplete">
+      <header>
+        <div class="containerWholeHeader">
+          <p class="websiteMainTitle">Look Out</p>
+          <div class="containerHeaderContentsWhole">
+            <p class="headerContentsCenter containerMissingKidsHeader">Kids</p>
+            <p class="headerContentsCenter containerMissingElderlyHeader">
+              Elderly
+            </p>
+            <p class="headerContentsCenter containerMissingPetsHeader">Pets</p>
+            <p class="headerContentsCenter containerMissingVehicleHeader">
+              Vehicle
+            </p>
+            <p class="headerContentsCenter containerMissingValuablesHeader">
+              Valuables
+            </p>
+          </div>
+
+          <div class="containerHeaderProfileExpand">
+            <p class="containerHeaderProfileName" id="headerProfileName">
+              Alan Johnson
+              <i class="fa fa-angle-down" id="headerProfileNameArrow"></i>
+            </p>
+          </div>
+        </div>
+      </header>
+
+      <div class="containerProfileItemsHidden" id="containerProfileItemsHidden">
+        <p class="containerProfileItemsHiddenp headerProfileItemHiddenSignIn">
+          Sign In
+        </p>
+        <p class="containerProfileItemsHiddenp headerProfileItemHiddenSignUp">
+          Sign Up
+        </p>
+      </div>
+    </div>
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap");
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: "Titillium Web", sans-serif;
+        font-style: normal;
+      }
+      .websiteMainTitle {
+        font-size: 20px;
+        font-weight: 600;
+      }
+      .containerWholeHeaderComplete {
+        position: fixed;
+        width: 100vw;
+        backdrop-filter: blur(20px);
+      }
+      .containerWholeHeader {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 50px;
+        background-color: #c5c5c59c;
+        padding: 0 50px;
+      }
+      .containerHeaderContentsWhole {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+      }
+      .containerHeaderProfileName {
+        border: 3px solid #415a77;
+        border-radius: 50px;
+        color: #415a77;
+        padding: 5px 15px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        user-select: none;
+        font-weight: 600;
+      }
+      .containerProfileItemsHidden {
+        width: 150px;
+        background-color: #023047;
+        color: white;
+        border-radius: 0 0 20px 20px;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        position: absolute;
+        right: 50px;
+        top: 50px;
+      }
+      .headerContentsCenter:hover {
+        font-weight: 600;
+        cursor: pointer;
+      }
+      .containerProfileItemsHiddenp {
+        margin: 0;
+        width: 100%;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-size: 18px;
+      }
+      .containerProfileItemsHiddenp:hover {
+        background-color: #ffb703;
+        border-radius: 0 0 20px 20px;
+        color: black;
+      }
+    </style>
+
+    <script>
+      const name = document.getElementById("headerProfileName");
+      const arrow = document.getElementById("headerProfileNameArrow");
+      const hiddenPartSignUp = document.getElementById(
+        "containerProfileItemsHidden"
+      );
+
+      name.addEventListener("click", nameProfileSignupShow);
+
+      function nameProfileSignupShow() {
+        if (hiddenPartSignUp.style.display === "none") {
+          hiddenPartSignUp.style.display = "flex";
+          arrow.style.transform = "rotate(180deg)";
+        } else {
+          hiddenPartSignUp.style.display = "none";
+          arrow.style.transform = "rotate(0deg)";
+        }
+      }
+    </script>
+  </body>
+</html>

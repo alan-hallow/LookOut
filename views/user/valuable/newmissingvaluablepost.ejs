@@ -1,0 +1,116 @@
+<%- include('../layout/layout.ejs') -%>
+
+<div
+  class="container mt-5"
+  style="
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  "
+>
+  <form
+    action="/missingvaluable/missingvaluablepostrequest"
+    method="POST"
+    enctype="multipart/form-data"
+    class="form-group"
+  >
+    <div
+      class="container form-group"
+      style="
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        justify-content: center;
+      "
+    >
+      <label for="name">Name</label>
+      <input
+        type="text"
+        name="name"
+        placeholder="Jake"
+        class="input form-control"
+        required
+      />
+
+      <label for="age">Age</label>
+      <input
+        type="number"
+        name="age"
+        placeholder="3"
+        class="input form-control"
+        required
+      />
+
+      <label for="type">Type</label>
+      <input
+        type="text"
+        name="type"
+        placeholder="Dog"
+        class="input form-control"
+        required
+      />
+
+      <label for="breed">Breed</label>
+      <input
+        type="text"
+        name="breed"
+        placeholder="Golden Retriever"
+        class="input form-control"
+      />
+
+      <label for="placewentmissing">Place went missing</label>
+      <input
+        type="textarea"
+        name="placewentmissing"
+        placeholder="Kattappana"
+        class="input form-control"
+        required
+      />
+
+      <label for="description">description</label>
+      <input
+        type="textarea"
+        name="description"
+        placeholder="Something"
+        class="input form-control"
+        required
+      />
+
+      <label for="missingdate">Date went missing</label>
+      <input
+        type="date"
+        name="missingdate"
+        class="input form-control"
+        required
+      />
+
+      <label for="reward">Reward</label>
+      <input
+        type="number"
+        name="reward"
+        placeholder="10000"
+        class="input form-control"
+        required
+      />
+
+      <label for="image">Image</label>
+      <input type="file" name="image" class="input form-control" required />
+    </div>
+    <div
+      class="submitandcancelbuttons"
+      style="
+        display: flex;
+        align-items: center;
+        justify-content: end;
+        gap: 10px;
+        margin-bottom: 100px;
+      "
+    >
+      <a href="/missingvaluable" class="btn btn-secondary">Cancel</a>
+      <button type="submit" name="submit" class="btn btn-primary">
+        Submit
+      </button>
+    </div>
+  </form>
+</div>

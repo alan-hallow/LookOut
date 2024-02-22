@@ -1,50 +1,159 @@
-<header>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">LookOut</a>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-toggle="collapse"
-      data-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
+<div class="containerWholeHeaderComplete">
+  <header>
+    <div class="containerWholeHeader">
+      <p class="websiteMainTitle">Look Out</p>
+      <div class="containerHeaderContentsWhole">
+        <p class="headerContentsCenter containerHomeHeader">
+          <a href="/">Home</a>
+        </p>
+        <p class="headerContentsCenter containerMissingKidsHeader">
+          <a href="/missingkids">Kids</a>
+        </p>
+        <p class="headerContentsCenter containerMissingElderlyHeader">
+          <a href="/missingelderly">Elderly</a>
+        </p>
+        <p class="headerContentsCenter containerMissingPetsHeader">
+          <a href="/missingpets">Pets</a>
+        </p>
+        <p class="headerContentsCenter containerMissingVehicleHeader">
+          <a href="/missingvehicle">Vehicles</a>
+        </p>
+        <p class="headerContentsCenter containerMissingValuablesHeader">
+          <a href="/missingvaluable">Valuables</a>
+        </p>
+      </div>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="/"
-            >Home <span class="sr-only">(current)</span></a
-          >
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/missingkids">Kids</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/missingelderly">Elderly</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/missingpets">Pets</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Vehicle</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Bags</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Users</a>
-        </li>
-      </ul>
-
-      <div class="containerAccount">
-        <a href="/signup">Sign up</a>
-        <a href="/signin">Sign in</a>
-        <a href="/logout">Log Out</a>
+      <div class="containerHeaderProfileExpand">
+        <p class="containerHeaderProfileName" id="headerProfileName">
+          <%= session.username %>
+          <i class="fa fa-angle-down" id="headerProfileNameArrow"></i>
+        </p>
       </div>
     </div>
-  </nav>
-</header>
+  </header>
+
+  <div class="containerProfileItemsHidden" id="containerProfileItemsHidden">
+    <% if (session && session.username) { %>
+    <p class="containerProfileItemsHiddenp headerProfileItemHiddenSignOu">
+      <a href="/logout" class="containerProfileItemsHiddena">Sign Out</a>
+    </p>
+    <% } else { %>
+    <p class="containerProfileItemsHiddenp headerProfileItemHiddenSignIn">
+      <a href="/signin" class="containerProfileItemsHiddena">Sign In</a>
+    </p>
+    <p class="containerProfileItemsHiddenp headerProfileItemHiddenSignUp">
+      <a href="/signup" class="containerProfileItemsHiddena">Sign Up</a>
+    </p>
+    <% } %>
+  </div>
+</div>
+
+<style>
+  .containerWholeHeaderComplete {
+    position: fixed;
+    width: 100vw;
+    backdrop-filter: blur(20px);
+    z-index: 1000;
+  }
+  .websiteMainTitle {
+    font-size: 20px;
+    font-weight: 600;
+  }
+
+  .containerWholeHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 50px;
+    background-color: #c5c5c59c;
+    padding: 15px 50px 0 50px;
+  }
+  .containerHeaderContentsWhole {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  .containerHeaderProfileName {
+    border: 3px solid #415a77;
+    border-radius: 50px;
+    color: #415a77;
+    padding: 5px 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    user-select: none;
+    font-weight: 600;
+  }
+  .containerProfileItemsHidden {
+    width: 150px;
+    background-color: #023047;
+    color: white;
+    border-radius: 0 0 20px 20px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: absolute;
+    right: 50px;
+    top: 50px;
+  }
+  .headerContentsCenter a {
+    text-decoration: none;
+    color: black;
+  }
+  .headerContentsCenter:hover {
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .containerProfileItemsHiddenp {
+    margin: 0;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 18px;
+  }
+  .containerProfileItemsHiddena {
+    text-decoration: none;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+  }
+  .containerProfileItemsHiddena:hover {
+    color: black;
+    text-decoration: none;
+    background-color: #ffb703;
+    border-radius: 0 0 20px 20px;
+  }
+</style>
+
+<script>
+  const name = document.getElementById("headerProfileName");
+  const arrow = document.getElementById("headerProfileNameArrow");
+  const hiddenPartSignUp = document.getElementById(
+    "containerProfileItemsHidden"
+  );
+
+  // Ensure the initial state is hidden
+  hiddenPartSignUp.style.display = "none";
+
+  // Attach click event listener
+  name.addEventListener("click", () => {
+    // Toggle display property between 'flex' and 'none'
+    hiddenPartSignUp.style.display =
+      hiddenPartSignUp.style.display === "none" ? "flex" : "none";
+    // Rotate arrow icon accordingly
+    arrow.style.transform =
+      hiddenPartSignUp.style.display === "none"
+        ? "rotate(0deg)"
+        : "rotate(180deg)";
+  });
+</script>

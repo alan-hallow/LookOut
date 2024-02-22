@@ -11,7 +11,10 @@ router.get("/", async (req, res) => {
     const missingkidsinfo = await missingKids
       .find()
       .sort({ createddate: "desc" });
-    res.render("user/kids/missingkids", { childMissing: missingkidsinfo });
+    res.render("user/kids/missingkids", {
+      childMissing: missingkidsinfo,
+      session: req.session,
+    });
   } catch (error) {
     console.error("Error:", error);
     res.status(500).send("An error occurred while fetching missing kids data.");
@@ -19,7 +22,9 @@ router.get("/", async (req, res) => {
 });
 
 router.get("/createMissingKidPost", (req, res) => {
-  res.render("user/kids/newmissingkidpost");
+  res.render("user/kids/newmissingkidpost", {
+    session: req.session,
+  });
 });
 
 router.get("/missingkidnewpost/:id", async (req, res) => {
@@ -30,6 +35,7 @@ router.get("/missingkidnewpost/:id", async (req, res) => {
     } else {
       res.render("user/kids/missingkiddisplay", {
         missingkidsfulldetails: missingKidDetails,
+        session: req.session,
       });
     }
   } catch (error) {
