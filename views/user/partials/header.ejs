@@ -25,7 +25,8 @@
 
       <div class="containerHeaderProfileExpand">
         <p class="containerHeaderProfileName" id="headerProfileName">
-          <%= session.username %>
+          <% if (session && session.username) { %> <%= session.username %> <% }
+          else { %> No user Found <% } %>
           <i class="fa fa-angle-down" id="headerProfileNameArrow"></i>
         </p>
       </div>
