@@ -1,7 +1,9 @@
 const express = require("express");
 const missingKids = require("../../models/missing-kids-post");
+const missingKidsComment = require("../../models/model-kids-comment");
 const router = express.Router();
 const missingKidsHelper = require("../../helpers/user/helper-missing-kid");
+const missingKidCommentHelper = require("../../helpers/user/helper-kid-comment");
 const fs = require("fs");
 const path = require("path");
 
@@ -29,12 +31,18 @@ router.get("/createMissingKidPost", (req, res) => {
 
 router.get("/missingkidnewpost/:id", async (req, res) => {
   try {
-    const missingKidDetails = await missingKids.findById(req.params.id);
+    const postId = req.params.id;
+
+    // Find all comments associated with the given postId
+    const missingKidComments = await missingKidsComment.find({ postId });
+
+    const missingKidDetails = await missingKids.findById(postId);
     if (!missingKidDetails) {
       res.redirect("/");
     } else {
       res.render("user/kids/missingkiddisplay", {
         missingkidsfulldetails: missingKidDetails,
+        missingkidcomments: missingKidComments, // Pass the comments to the view
         session: req.session,
       });
     }
@@ -73,6 +81,23 @@ router.post("/missingkidspostrequest", async (req, res) => {
   } catch (error) {
     console.error("Error:", error);
     res.status(500).send("An error occurred while saving missing kid data.");
+  }
+});
+
+router.post("/commentForMissingKids", async (req, res) => {
+  try {
+    // Assuming req.body contains the necessary data for the new comment
+    const newCommentSaved = await missingKidCommentHelper.newComment(req.body);
+
+    // Get the postId from the request body
+    const postId = req.body.postId;
+
+    // Redirect back to the original page
+    res.redirect(`/missingkids/missingkidnewpost/${postId}`);
+  } catch (error) {
+    console.error("Error:", error);
+    // Respond with an error message
+    res.status(500).send("An error occurred while saving the comment.");
   }
 });
 
