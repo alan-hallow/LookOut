@@ -9,7 +9,7 @@
     <div class="containerWholeHomeBody">
       <div class="containerTopSection">
         <img
-          src="https://images.pexels.com/photos/417074/pexels-photo-417074.jpeg?cs=srgb&dl=pexels-james-wheeler-417074.jpg&fm=jpg"
+          src="../public/images/LookOut/Look Out background.png"
           alt=""
           class="containerFirstImageImg"
         />
@@ -124,6 +124,9 @@
       }
       .containerFirstImageImg {
         width: 100vw;
+        position: absolute;
+        z-index: -10;
+        top: 0;
       }
       .containerFirstImageImg::after {
         content: "";
@@ -215,7 +218,7 @@
         justify-content: center;
         gap: 20px;
         overflow-x: scroll;
-        margin: 50px 0;
+        margin: 1000px 0 50px 0;
       }
       .containerPanoramaCard {
         height: 300px;
