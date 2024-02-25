@@ -2,6 +2,8 @@ const express = require("express");
 const missingVehicle = require("../../models/missing-vehicle-post");
 const router = express.Router();
 const missingVehicleHelper = require("../../helpers/user/helper-missing-vehicle");
+const missingVehicleComment = require("../../models/model-vehicle-comment");
+const missingVehicleCommentHelper = require("../../helpers/user/helper-vehicle-comment");
 const fs = require("fs");
 const path = require("path");
 
@@ -30,12 +32,16 @@ router.get("/createMissingVehiclePost", (req, res) => {
 
 router.get("/missingvehiclenewpost/:id", async (req, res) => {
   try {
+    const postId = req.params.id;
+    // Find all comments associated with the given postId
+    const missingVehicleComments = await missingVehicleComment.find({ postId });
     const missingVehicleDetails = await missingVehicle.findById(req.params.id);
-    if (!missingPetsDetails) {
+    if (!missingVehicleDetails) {
       res.redirect("/");
     } else {
       res.render("user/vehicle/missingvehicledisplay", {
         missingvehiclefulldetails: missingVehicleDetails,
+        missingvehiclecomments: missingVehicleComments, // Pass the comments to the view
         session: req.session,
       });
     }
@@ -78,6 +84,25 @@ router.post("/missingvehiclepostrequest", async (req, res) => {
     res
       .status(500)
       .send("An error occurred while saving missing vehicle data.");
+  }
+});
+
+router.post("/commentForMissingVehicle", async (req, res) => {
+  try {
+    // Assuming req.body contains the necessary data for the new comment
+    const newCommentSaved = await missingVehicleCommentHelper.newComment(
+      req.body
+    );
+
+    // Get the postId from the request body
+    const postId = req.body.postId;
+
+    // Redirect back to the original page
+    res.redirect(`/missingvehicle/missingvehiclenewpost/${postId}`);
+  } catch (error) {
+    console.error("Error:", error);
+    // Respond with an error message
+    res.status(500).send("An error occurred while saving the comment.");
   }
 });
 

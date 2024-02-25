@@ -1,34 +1,37 @@
 const { renderFile } = require("ejs");
-const missingPets = require("./../../models/missing-vehicle-post");
+const missingVehicle = require("./../../models/missing-vehicle-post");
 const path = require("path"); // Import path module if not already imported
 
 module.exports = {
   // Async function to handle saving missing kids data
-  helperMissingValuable: async (helperMissingVehicle) => {
+  helperMissingVehicle: async (helperMissingVehicle) => {
     try {
       // Destructure data from helperMissingKids object
       const {
         name,
-        type,
-        breed,
-        placewentmissing,
+        gender,
         age,
+        date,
+        time,
+        place,
+        residence,
         dress,
-        description,
-        missingdate,
         reward,
+        additional,
       } = helperMissingVehicle;
 
       // Create a new missing kid object
       const newMissingVehicle = new missingVehicle({
         name: name,
-        type: type,
-        breed: breed,
-        placewentmissing: placewentmissing,
+        gender: gender,
         age: age,
-        description: description,
-        missingdate: missingdate,
+        date: date,
+        time: time,
+        place: place,
+        residence: residence,
+        dress: dress,
         reward: reward,
+        additional: additional,
         createddate: new Date(), // Assuming you want to set the creation date automatically
       });
 

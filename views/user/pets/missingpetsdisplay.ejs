@@ -1,42 +1,568 @@
 <%- include('../layout/layout.ejs') -%>
 
-<div class="containerForMissingKidsDisplay mt-5" style="display: flex; align-items: center; justify-content: center;">
-    <div class="containerforallitems" style="display: flex; align-items: start; flex-direction: column; width: 700px;">
-        <div class="containerName">
-            <h1><%- missingpetsfulldetails.name %></h1>
-        </div>
-        <div class="containerDateMissing">
-            <p><%- missingpetsfulldetails.missingdate.toLocaleDateString() %></p>
-        </div>
-        <div class="containerTypeBreed" style="display: flex; align-items: center; justify-content: space-evenly; width: 700px;">
-            <div class="containerLocationMissed">
-                <h4><%- missingpetsfulldetails.type %></h4>
-            </div>
-            <div class="containerAge">
-                <h4><%- missingpetsfulldetails.breed %></h4>
-            </div>
-        </div>
-        <div class="containerPlaceAgeandReward" style="display: flex; gap: 10px; justify-content: space-between; width: 100%;">
-            <div class="containerPlaceAge" style="display: flex; gap: 10px;">
-                <div class="containerLocationMissed">
-                    <p><%- missingpetsfulldetails.placewentmissing %></p>
-                </div>
-                <div class="containerAge">
-                    <p>/ <%- missingpetsfulldetails.age %></p>
-                </div>
-            </div>
-            <div class="containerReward">
-                <h4>Reward : Rs.<%- missingpetsfulldetails.reward %></h4>
-            </div>
-        </div>
+<div class="containerWholeMissingPersonFullLeftRight">
+  <div class="containerMissingKidsDisplayLeftSide">
+    <div class="containderMissingPersonDetails">
+      <div class="containerForMissingPersonTitleImageNameAge">
+        <h2 class="missingPersonDetailTitle">Missing Person Details</h2>
         <div class="containerImage">
-            <img src="/images/missingpets/<%= missingpetsfulldetails.id %>.jpg" alt="" style="height: auto; width: 700px; border-radius: 20px; position: absolute; z-index: 1;">
-            <img src="/images/missingpets/<%= missingpetsfulldetails.id %>.jpg" alt="" style="height: auto; width: 700px; border-radius: 20px; filter: blur(60px) brightness(50%); ">
+          <img
+            src="/images/missingpets/<%= missingpetsfulldetails.id %>.jpg"
+            alt=""
+            class="missingPersonImage"
+          />
+        </div>
+        <div class="containerNameAge">
+          <h3 style="text-transform: capitalize">
+            <%- missingpetsfulldetails.name %>
+          </h3>
+          <p>, <%- missingpetsfulldetails.age %></p>
+        </div>
+      </div>
+      <div class="containerInfoIconCardsFull">
+        <div class="containerLocataionPlace">
+          <div class="squareForicons">
+            <i class="fa-solid fa-location-dot"></i>
+          </div>
+          <div class="containerInfoShort containerLocationH3P">
+            <h3 class="locationH3">Location</h3>
+            <p class="locationP">
+              Last seen in <%- missingpetsfulldetails.place %>
+            </p>
+          </div>
+        </div>
+        <div class="containerLocationResidence">
+          <div class="squareForicons">
+            <i class="fa-solid fa-house-chimney"></i>
+          </div>
+
+          <div class="containerInfoShort containerResidenceH3P">
+            <h3 class="residenceH3">Residence</h3>
+            <p class="residenceP">
+              Living in <%- missingpetsfulldetails.residence %>
+            </p>
+          </div>
+        </div>
+        <div class="containerPhysicalDescriptionBox">
+          <div class="squareForicons">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </div>
+          <div class="containerInfoShort containerPhysicalDescription">
+            <h3 class="physicalDescriptionh3">Physical Description</h3>
+            <p class="physicalDescriptionp">
+              5'4", Brown hair, Hazel eyes, Scar on left hand
+            </p>
+          </div>
+        </div>
+        <div class="containerDateTimeBox">
+          <div class="squareForicons">
+            <i class="fa-regular fa-clock"></i>
+          </div>
+          <div class="containerInfoShort containerDateTime">
+            <h3 class="dateTimeh3">Date & Time</h3>
+            <p class="dateTimep">
+              Last seen at <%- missingpetsfulldetails.time %> on <%-
+              missingpetsfulldetails.date.toLocaleDateString() %>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="containerSeeAllButton">
+        <button class="seeAllButtonDetails" id="seeAllButtonDetailsButton">
+          View full details
+        </button>
+      </div>
+
+      <div class="containerComments">
+        <h2>Comments</h2>
+        <form
+          action="/missingpets/commentForMissingPets"
+          method="post"
+          class="commentsForm"
+        >
+          <input
+            type="text"
+            value="<%- missingpetsfulldetails.id %>"
+            name="postId"
+            required
+            style="display: none"
+          />
+          <input
+            type="text"
+            value="<%= session.username %>"
+            name="name"
+            required
+            style="display: none"
+          />
+          <textarea
+            name="comment"
+            class="commentBox"
+            placeholder="Add a comment..."
+            required
+          ></textarea>
+
+          <button type="submit" class="submitButtonForm">
+            <i class="fa-solid fa-paper-plane"></i>
+          </button>
+        </form>
+
+        <div class="containerAllComments">
+          <% missingpetscomments.forEach(comment=> { %>
+          <div class="containerAddedComments">
+            <div class="containerCommentTitleDate">
+              <h2 class="commentTitle"><%- comment.name %></h2>
+              <p class="commentDate">
+                <%- comment.createddate.toLocaleDateString() %>
+              </p>
+            </div>
+            <p class="commentSubject"><%- comment.comment %></p>
+          </div>
+          <% }); %>
+        </div>
+      </div>
+    </div>
+
+    <div class="containerForAllHiddenDetailsPane">
+      <div
+        class="containerAllDetailsHiddenSection"
+        id="containerAllDetailsHiddenSection"
+      >
+        <div class="containerImageName">
+          <div class="containerOverlayImage">
+            <img
+              src="/images/missingpets/<%= missingpetsfulldetails.id %>.jpg"
+              alt=""
+              class="containerOverlayImageImage"
+            />
+          </div>
         </div>
 
-        <div class="containerDescription">
-            <h4>Description</h4>
-            <p><%- missingpetsfulldetails.description %></p>
+        <div class="containerRestOfTheDetails">
+          <div class="contanerOverlayAllItemsAll containerOverlayName">
+            <h2><%- missingpetsfulldetails.name %></h2>
+          </div>
+          <div class="contanerOverlayAllItemsAll containerOverlayAge">
+            <h3 class="contanerOverlayAllItemsAllh3">Age</h3>
+            <h3 class="contanerOverlayAllItemsAllh3Amount">
+              <%- missingpetsfulldetails.age %>
+            </h3>
+          </div>
+          <div class="contanerOverlayAllItemsAll containerOverlayGender">
+            <h3 class="contanerOverlayAllItemsAllh3">Gender</h3>
+            <h3 class="contanerOverlayAllItemsAllh3Amount">
+              <%- missingpetsfulldetails.gender %>
+            </h3>
+          </div>
+          <div class="contanerOverlayAllItemsAll containerOverlayDate">
+            <h3 class="contanerOverlayAllItemsAllh3">Date</h3>
+            <h3 class="contanerOverlayAllItemsAllh3Amount">
+              <%- missingpetsfulldetails.date.toLocaleDateString() %>
+            </h3>
+          </div>
+          <div class="contanerOverlayAllItemsAll containerOverlayPlace">
+            <h3 class="contanerOverlayAllItemsAllh3">Place</h3>
+            <h3 class="contanerOverlayAllItemsAllh3Amount">
+              <%- missingpetsfulldetails.place %>
+            </h3>
+          </div>
+          <div class="contanerOverlayAllItemsAll containerOverlayResidence">
+            <h3 class="contanerOverlayAllItemsAllh3">Residence</h3>
+            <h3 class="contanerOverlayAllItemsAllh3Amount">
+              <%- missingpetsfulldetails.residence %>
+            </h3>
+          </div>
+          <div class="contanerOverlayAllItemsAll containerOverlayHeight">
+            <h3 class="contanerOverlayAllItemsAllh3">Height</h3>
+            <h3 class="contanerOverlayAllItemsAllh3Amount">2"3'</h3>
+          </div>
+          <div class="contanerOverlayAllItemsAll containerOverlayColor">
+            <h3 class="contanerOverlayAllItemsAllh3">Color</h3>
+            <h3 class="contanerOverlayAllItemsAllh3Amount">Brown</h3>
+          </div>
+          <div class="contanerOverlayAllItemsAll containerOverlayOutfit">
+            <h3 class="contanerOverlayAllItemsAllh3">Dress</h3>
+            <h3 class="contanerOverlayAllItemsAllh3Amount">
+              <%- missingpetsfulldetails.dress %>
+            </h3>
+          </div>
+          <div class="contanerOverlayAllItemsAll containerOverlayBodyMarks">
+            <h3 class="contanerOverlayAllItemsAllh3">Body Marks</h3>
+            <h3 class="contanerOverlayAllItemsAllh3Amount">Scar on cheeks</h3>
+          </div>
         </div>
+
+        <div class="containerOverlayCloseButtonDescription">
+          <div
+            class="containerCloseButtonOverlay"
+            id="containerCloseButtonOverlay"
+          >
+            <i class="containerCloseButtonOverlayButton fa-solid fa-xmark"></i>
+          </div>
+
+          <div class="containerOverlayDescription">
+            <h3>Description</h3>
+            <p><%- missingpetsfulldetails.additional %></p>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
+
+  <div class="containerMissingKidsDisplayRightSide">
+    <div class="containerForRightSideTitle">
+      <h2 class="missingKidsRightSideTitle">Update from our team</h2>
+    </div>
+
+    <div class="containerUpdatesFromTeam">
+      <p class="updateFromTeamDate">08/08/2024</p>
+      <h4 class="updateFromTeamContent">case opened</h4>
+    </div>
+    <div class="containerUpdatesFromTeam">
+      <p class="updateFromTeamDate">08/08/2024</p>
+      <h4 class="updateFromTeamContent">case opened</h4>
+    </div>
+    <div class="containerUpdatesFromTeam">
+      <p class="updateFromTeamDate">08/08/2024</p>
+      <h4 class="updateFromTeamContent">case opened</h4>
+    </div>
+  </div>
 </div>
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap");
+  body {
+    font-family: "Titillium Web", sans-serif;
+    font-style: normal;
+  }
+  .containerWholeMissingPersonFullLeftRight {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    margin-bottom: 100px;
+  }
+  .containerMissingKidsDisplayLeftSide {
+    grid-area: 1 / 1 / 2 / 2;
+  }
+  .containerMissingKidsDisplayRightSide {
+    grid-area: 1 / 2 / 2 / 3;
+    margin-top: 100px;
+  }
+  .containerForRightSideTitle {
+    margin-bottom: 50px;
+    text-align: center;
+    width: 600px;
+  }
+  .containerUpdatesFromTeam {
+    width: 600px;
+    padding: 10px 20px;
+    background-color: #ddd0e5;
+    border-radius: 5px;
+    margin-top: 10px;
+  }
+  .updateFromTeamContent {
+    font-size: 18px;
+    text-transform: capitalize;
+  }
+  .containerOverlayCloseButtonDescription {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 500px;
+  }
+  .containerOverlayAge {
+    margin-top: 30px;
+  }
+  .containerRestOfTheDetails {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 400px;
+  }
+  .contanerOverlayAllItemsAll {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .containerOverlayName h2 {
+    font-weight: 600;
+    font-size: 40px;
+  }
+  .containerOverlayDescription {
+    margin: 50px 50px;
+    font-size: 18px;
+  }
+  .containerForAllHiddenDetailsPane {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-self: center;
+    width: 100%;
+    position: absolute;
+  }
+  .contanerOverlayAllItemsAllh3 {
+    font-size: 18px;
+  }
+  .contanerOverlayAllItemsAllh3Amount {
+    font-size: 18px;
+  }
+  .containerRestOfTheDetails {
+    margin: 40px 0;
+  }
+  .containerOverlayImageImage {
+    border-radius: 30px;
+    margin: 40px 40px;
+    height: 500px;
+  }
+
+  .containerCloseButtonOverlay {
+    display: flex;
+    align-self: flex-start;
+    justify-self: end;
+    margin-right: 30px;
+    margin-top: 30px;
+    margin-left: auto;
+  }
+  .containerCloseButtonOverlayButton {
+    border: 3px solid black;
+    border-radius: 50%;
+    font-size: 25px;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  .containerAllDetailsHiddenSection {
+    width: 90vw;
+    height: 80vh;
+    background-color: #9c9c9c5c;
+    backdrop-filter: blur(20px);
+    border-radius: 60px;
+    display: none;
+    align-items: start;
+    justify-content: start;
+    align-self: center;
+    justify-self: center;
+    position: fixed;
+    top: 100px;
+  }
+
+  .containderMissingPersonDetails {
+    margin-left: 100px;
+  }
+  .containerForMissingPersonTitleImageNameAge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 650px;
+    flex-direction: column;
+  }
+  .seeAllButtonDetails {
+    height: 50px;
+    width: 620px;
+    border-radius: 50px;
+    background-color: #e8eef2;
+    border: none;
+    margin-bottom: 50px;
+    cursor: pointer;
+    outline: none;
+  }
+  .seeAllButtonDetails:hover {
+    background-color: #dbe2e6;
+  }
+  .seeAllButtonDetails:focus {
+    outline: none;
+  }
+  .containerInfoShort {
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    flex-direction: column;
+  }
+  .containerInfoShort p,
+  .containerInfoShort h3 {
+    margin: 0;
+    padding: 0;
+  }
+  .containerInfoIconCardsFull {
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 30px;
+  }
+  .missingPersonDetailTitle {
+    font-size: 40px;
+    font-weight: 700;
+    margin-top: 100px;
+  }
+  .containerImage {
+    height: 200px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .containerNameAge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .containerNameAge h3 {
+    font-size: 30px;
+    padding: 0;
+    margin: 0;
+    font-weight: 600;
+    text-transform: capitalize;
+  }
+  .containerNameAge p {
+    font-size: 30px;
+    padding: 0;
+    margin: 0;
+  }
+
+  .missingPersonImage {
+    height: 200px;
+  }
+  .containerPhysicalDescriptionBox,
+  .containerDateTimeBox,
+  .containerLocationResidence,
+  .containerLocataionPlace {
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    gap: 10px;
+    margin: 10px 0;
+  }
+  .locationH3,
+  .locationP,
+  .residenceH3,
+  .residenceP {
+    margin: 0;
+  }
+
+  .squareForicons {
+    height: 50px;
+    aspect-ratio: 1;
+    border-radius: 5px;
+    background-color: rgb(208, 206, 206);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .physicalDescriptionh3,
+  .physicalDescriptionp,
+  .dateTimeh3,
+  .dateTimep {
+    margin: 5px 0;
+  }
+  .commentBox {
+    height: 100px;
+    width: 610px;
+    background-color: #e8eef2;
+    color: #283d4e;
+    border-radius: 20px;
+    border: none;
+    resize: none;
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    font-family: "Titillium Web", sans-serif;
+    font-style: normal;
+    padding: 10px 60px 10px 20px;
+  }
+
+  .commentBox:focus {
+    outline: none;
+  }
+  .commentsForm {
+    display: flex;
+    align-items: start;
+    justify-content: end;
+    flex-direction: column;
+    gap: 10px;
+    width: 650px;
+  }
+  .submitButtonForm {
+    border: none;
+    background-color: transparent;
+    font-size: 20px;
+    position: absolute;
+    cursor: pointer;
+    width: 70px;
+    aspect-ratio: 1;
+    transition: 0.5s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: flex-end;
+    rotate: 25deg;
+    color: #283d4e;
+    margin-right: 40px;
+  }
+  .submitButtonForm:hover {
+    color: #000000;
+    rotate: 10deg;
+  }
+  .submitButtonForm:focus {
+    outline: none;
+  }
+  .containerAllComments {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-top: 20px;
+  }
+  .containerAddedComments {
+    background-color: #f1f1f1;
+    border-radius: 20px;
+    width: 610px;
+    padding: 10px 20px 20px 20px;
+  }
+
+  .containerCommentTitleDate {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  .commentTitle,
+  .commentDate,
+  .commentSubject {
+    margin: 0;
+  }
+  .commentTitle {
+    font-size: 18px;
+  }
+</style>
+
+<script>
+  const hiddenSection = document.getElementById(
+    "containerAllDetailsHiddenSection"
+  );
+  const seeAllButtonDetailsButton = document.getElementById(
+    "seeAllButtonDetailsButton"
+  );
+  const containerCloseButtonOverlay = document.getElementById(
+    "containerCloseButtonOverlay"
+  );
+
+  hiddenSection.style.display = "none";
+
+  seeAllButtonDetailsButton.addEventListener("click", () => {
+    hiddenSection.style.display = "flex";
+  });
+
+  containerCloseButtonOverlay.addEventListener("click", () => {
+    hiddenSection.style.display = "none";
+  });
+</script>
+
+<%- include('../partials/footer.ejs') -%>

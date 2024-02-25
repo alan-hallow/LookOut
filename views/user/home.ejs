@@ -1,35 +1,355 @@
 <%- include('layout/layout.ejs') -%>
-<div
-  class="containerDBTitle d-flex align-items-center justify-content-center h1"
->
-  <%= body %> <%= username%>
-</div>
-<div
-  class="containerImage"
-  style="display: flex; align-items: center; justify-content: center"
->
+<div class="containerWholeHomePage">
   <img
-    src="https://miro.medium.com/v2/resize:fit:999/0*Bs2bTJnHD1dAApeD.jpg"
+    src="/images/LookOut/LookOut HeaderImage.png"
     alt=""
-    style="width: 70vw"
+    class="homePageFirstSectionImage"
   />
+  <div class="containerFirstSectionTitle">
+    <h1 class="firstSecitonTitleH1">Look Out</h1>
+    <p class="firstSectionParagraphP">
+      Look Out connects users with affordable private detectives skilled in
+      finding missing people, pets, vehicles, and valuables. With advanced
+      technology and a network of experienced investigators, Look Out offers
+      discreet solutions for locating assets or loved ones quickly and
+      efficiently.
+    </p>
+  </div>
+
+  <div class="containerSecondSectionKids">
+    <img
+      src="/images/LookOut/missing kid.png"
+      alt=""
+      class="homepageSecongSectionImage"
+    />
+
+    <div class="containerSecondSectionTitle">
+      <h1 class="secondSectionTitle">Missing Kids</h1>
+      <p class="secondSectionParagraph">
+        Missing kids are a heartbreaking reality, leaving families distraught
+        and communities on edge. Swift action is crucial, utilizing all
+        available resources to locate and reunite them with loved ones. Every
+        moment counts in the effort to bring missing children home safely.
+      </p>
+      <a href="/missingkids" class="secondSectionGotoButton"
+        >Go to missing kids</a
+      >
+    </div>
+  </div>
+
+  <div class="containerThirdSectionElderly">
+    <img
+      src="/images/LookOut/missing old man.png"
+      alt=""
+      class="homepageThirdSectionImage"
+    />
+    <div class="containerThirdSectionTitle">
+      <h1 class="thirdSectionTitle">Missing Elderly</h1>
+      <p class="thirdSectionParagraph">
+        The disappearance of elderly individuals is a distressing concern, often
+        complicated by health issues and cognitive decline. Quick response and
+        community support are vital to locating them promptly, ensuring their
+        safety and well-being.
+      </p>
+      <a href="/missingelderly" class="thirdSectionGotoButton">Go to Elderly</a>
+    </div>
+  </div>
+
+  <div class="containerThirdSectionHomePage">
+    <div class="containerHomePageMissingPets">
+      <img
+        src="/images/LookOut/missing dog.webp"
+        alt=""
+        class="containerHomePageMissingPetsImage"
+      />
+
+      <div class="containerHomePageMissingPetsItems">
+        <h2 class="containerHomePageMissingPetsItemsTitle">Missing Pets</h2>
+        <p class="containerHomePageMissingPetsItemsParagraph">
+          Find your missing pets as fast as possible
+        </p>
+        <a href="/missingpets" class="containerHomePageMissingPetsItemsButton"
+          >Go to missing pets</a
+        >
+      </div>
+    </div>
+    <div class="containerHomePageMissingVehicle">
+      <img
+        src="/images/LookOut/missing vehicle.jpg"
+        alt=""
+        class="containerHomePageMissingVehicleImage"
+      />
+      <div class="containerHomePageMissingPetsItems">
+        <h2 class="containerHomePageMissingPetsItemsTitle">Missing Vehicles</h2>
+        <p class="containerHomePageMissingPetsItemsParagraph">
+          Find your missing/stolen Vehicles as fast as possible
+        </p>
+        <a
+          href="/missingvehicle"
+          class="containerHomePageMissingVehicleItemsButton"
+          >Go to missing vehicles</a
+        >
+      </div>
+    </div>
+    <div class="containerHomePageMissingValuable">
+      <img
+        src="/images/LookOut/missing valuable.jpg"
+        alt=""
+        class="containerHomePageMissingValuableImage"
+      />
+      <div class="containerHomePageMissingPetsItems">
+        <h2 class="containerHomePageMissingPetsItemsTitle">
+          Missing Valuables
+        </h2>
+        <p class="containerHomePageMissingPetsItemsParagraph">
+          Find your lost valuables as fast as possible
+        </p>
+        <a
+          href="/missingvaluable"
+          class="containerHomePageMissingValuablesItemsButton"
+          >Go to lost valuables</a
+        >
+      </div>
+    </div>
+  </div>
+
+  <div class="containerFourthSectionHomePage"></div>
 </div>
 
-<div
-  style="
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap");
+  body {
+    background-color: #1d1d1d;
+    margin: 0;
+    font-family: "Titillium Web", sans-serif;
+    font-style: normal;
+  }
+  .secondSectionGotoButton:hover {
+    color: white;
+    text-decoration: none;
+  }
+  .thirdSectionGotoButton {
+    color: white;
+    text-decoration: none;
+  }
+  .containerHomePageMissingPetsItemsButton {
+    color: white;
+    text-decoration: none;
+  }
+  .containerHomePageMissingVehicleItemsButton {
+    color: white;
+    text-decoration: none;
+  }
+  .containerHomePageMissingValuablesItemsButton:hover {
+    color: white;
+    text-decoration: none;
+  }
+  .containerWholeHomePage {
+  }
+  .homePageFirstSectionImage {
+    width: 100vw;
+  }
+  .containerFirstSectionTitle {
+    position: absolute;
+    top: 300px;
+    left: 100px;
+    color: white;
+    width: 500px;
+  }
+  .firstSecitonTitleH1 {
+    font-size: 50px;
+    text-align: center;
+  }
+  .firstSectionParagraphP {
+    text-align: center;
+  }
+
+  /* second section */
+
+  .containerSecondSectionKids {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    margin-top: 100px;
+  }
+  .homepageSecongSectionImage {
+    width: 80vw;
+    border-radius: 50px;
+    height: 650px;
+  }
+  .containerSecondSectionTitle {
+    position: absolute;
+    width: 500px;
+    color: white;
+    left: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     flex-direction: column;
-  "
->
-  <h1>Welcome to the Look Out</h1>
-  <p style="width: 50vw">
-    Look Out is a vital service dedicated to locating missing individuals,
-    including children, seniors, and pets. Additionally, it assists in
-    recovering lost or stolen vehicles and possessions. With its comprehensive
-    approach, Look Out offers peace of mind to those in distress, ensuring swift
-    reunions and recoveries.
-  </p>
-</div>
+    text-align: center;
+  }
+  .secondSectionGotoButton {
+    height: 50px;
+    background-color: #ff3c38;
+    text-decoration: none;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    width: 300px;
+    font-size: 20px;
+    margin-top: 100px;
+  }
+
+  /* Third section */
+
+  .containerThirdSectionElderly {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 100px;
+  }
+  .homepageThirdSectionImage {
+    width: 80vw;
+    border-radius: 50px;
+    height: 650px;
+  }
+  .containerThirdSectionTitle {
+    position: absolute;
+    width: 500px;
+    color: white;
+    right: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+  }
+  .thirdSectionGotoButton {
+    height: 50px;
+    background-color: #007aff;
+    text-decoration: none;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    width: 300px;
+    font-size: 20px;
+    margin-top: 100px;
+  }
+
+  /* Third section */
+  .containerThirdSectionHomePage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 100px;
+  }
+  .containerHomePageMissingPets {
+    height: 500px;
+    width: 350px;
+    background-color: #5b5b5b;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .containerHomePageMissingPetsItems {
+    height: 500px;
+    width: 350px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-direction: column;
+    position: absolute;
+    background-image: linear-gradient(to top, black, #ffffff00);
+    color: white;
+  }
+  .containerHomePageMissingPetsImage {
+    height: 500px;
+  }
+  .containerHomePageMissingPetsItemsTitle,
+  .containerHomePageMissingPetsItemsParagraph {
+    margin: 0;
+    text-align: center;
+  }
+  .containerHomePageMissingPetsItemsButton {
+    height: 50px;
+    width: 300px;
+    background-color: #1a535c;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    margin-bottom: 20px;
+    margin-top: 30px;
+  }
+
+  .containerHomePageMissingVehicleItemsButton {
+    height: 50px;
+    width: 300px;
+    background-color: #d62828;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    margin-bottom: 20px;
+    margin-top: 30px;
+  }
+
+  .containerHomePageMissingValuablesItemsButton {
+    height: 50px;
+    width: 300px;
+    background-color: #f77f00;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    margin-bottom: 20px;
+    margin-top: 30px;
+  }
+
+  .containerHomePageMissingVehicle {
+    height: 500px;
+    width: 350px;
+    background-color: #fcbf49;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .containerHomePageMissingVehicleImage {
+    height: 500px;
+  }
+
+  .containerHomePageMissingValuable {
+    height: 500px;
+    width: 350px;
+    background-color: #5b5b5b;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .containerHomePageMissingValuableImage {
+    height: 500px;
+  }
+</style>
+
+<%- include('partials/footer.ejs') -%>

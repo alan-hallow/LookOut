@@ -1,5 +1,7 @@
 const express = require("express");
 const missingElderly = require("../../models/missing-elderly-post");
+const missingElderlyComment = require("../../models/model-elderly-comment");
+const missingElderlyCommentHelper = require("../../helpers/user/helper-elderly-comment");
 const router = express.Router();
 const missingElderlyHelper = require("../../helpers/user/helper-missing-elderly");
 const fs = require("fs");
@@ -29,17 +31,24 @@ router.get("/", async (req, res) => {
 });
 
 router.get("/createMissingElderlyPost", (req, res) => {
-  res.render("user/elderly/newmissingelderlypost");
+  res.render("user/elderly/newmissingelderlypost", {
+    session: req.session,
+  });
 });
 
 router.get("/missingelderlynewpost/:id", async (req, res) => {
   try {
-    const missingElderlyDetails = await missingElderly.findById(req.params.id);
+    const postId = req.params.id;
+    // Find all comments associated with the given postId
+    const missingElderlyComments = await missingElderlyComment.find({ postId });
+    const missingElderlyDetails = await missingElderly.findById(postId);
     if (!missingElderlyDetails) {
       res.redirect("/");
     } else {
       res.render("user/elderly/missingelderlydisplay", {
         missingelderlyfulldetails: missingElderlyDetails,
+        missingelderlycomments: missingElderlyComments, // Pass the comments to the view
+        session: req.session,
       });
     }
   } catch (error) {
@@ -81,6 +90,25 @@ router.post("/missingelderlypostrequest", async (req, res) => {
     res
       .status(500)
       .send("An error occurred while saving missing elderly data.");
+  }
+});
+
+router.post("/commentForMissingElderly", async (req, res) => {
+  try {
+    // Assuming req.body contains the necessary data for the new comment
+    const newCommentSaved = await missingElderlyCommentHelper.newComment(
+      req.body
+    );
+
+    // Get the postId from the request body
+    const postId = req.body.postId;
+
+    // Redirect back to the original page
+    res.redirect(`/missingelderly/missingelderlynewpost/${postId}`);
+  } catch (error) {
+    console.error("Error:", error);
+    // Respond with an error message
+    res.status(500).send("An error occurred while saving the comment.");
   }
 });
 

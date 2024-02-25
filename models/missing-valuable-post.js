@@ -5,14 +5,7 @@ const missingValuableSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  type: {
-    type: String,
-    required: true,
-  },
-  breed: {
-    type: String,
-  },
-  placewentmissing: {
+  gender: {
     type: String,
     required: true,
   },
@@ -20,7 +13,23 @@ const missingValuableSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
-  description: {
+  date: {
+    type: Date, // Corrected
+    required: true,
+  },
+  time: {
+    type: String, // Corrected
+    required: true,
+  },
+  place: {
+    type: String,
+    required: true,
+  },
+  residence: {
+    type: String,
+    required: true,
+  },
+  dress: {
     type: String,
     required: true,
   },
@@ -28,14 +37,9 @@ const missingValuableSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
-  missingdate: {
-    type: Date,
+  additional: {
+    type: String,
     required: true,
-  },
-  createddate: {
-    type: Date,
-    required: true,
-    default: Date.now,
   },
 });
 

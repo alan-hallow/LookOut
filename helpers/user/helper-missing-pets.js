@@ -9,26 +9,29 @@ module.exports = {
       // Destructure data from helperMissingKids object
       const {
         name,
-        type,
-        breed,
-        placewentmissing,
+        gender,
         age,
+        date,
+        time,
+        place,
+        residence,
         dress,
-        description,
-        missingdate,
         reward,
+        additional,
       } = helperMissingPets;
 
       // Create a new missing kid object
       const newMissingPets = new missingPets({
         name: name,
-        type: type,
-        breed: breed,
-        placewentmissing: placewentmissing,
+        gender: gender,
         age: age,
-        description: description,
-        missingdate: missingdate,
+        date: date,
+        time: time,
+        place: place,
+        residence: residence,
+        dress: dress,
         reward: reward,
+        additional: additional,
         createddate: new Date(), // Assuming you want to set the creation date automatically
       });
 

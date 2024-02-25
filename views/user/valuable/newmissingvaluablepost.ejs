@@ -1,116 +1,305 @@
 <%- include('../layout/layout.ejs') -%>
 
-<div
-  class="container mt-5"
-  style="
+<div class="containerForAllContentsFromTheFormPage">
+  <div class="containerForMissingPersonFormHeading">
+    <h2 class="missingPersonHeading">Report a Missing Person</h2>
+    <h5 class="missingPersonHeadingTwo">Before you start</h5>
+    <p class="missingPersonParagraph">
+      This form is for reporting missing kids. Please use it for the intended
+      purpose only
+    </p>
+  </div>
+
+  <section>
+    <div class="formContainer">
+      <form
+        action="/missingvaluable/missingvaluablepostrequest"
+        method="POST"
+        enctype="multipart/form-data"
+      >
+        <div
+          class="containerForFormData"
+          style="display: flex; flex-direction: column"
+        >
+          <div class="containerForImageandLabel">
+            <img
+              class="displayImageContainer"
+              id="output"
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqpH5CFWOqOAXzCxS8VH-hQWbypepc6afzP0D_pwAOEw&s"
+            />
+            <label for="image" class="labelOfImage">Add an image</label>
+            <input
+              type="file"
+              id="image"
+              name="image"
+              class="inputFile"
+              onchange="loadFile(event)"
+            />
+          </div>
+
+          <label for="name">Full name</label>
+          <input
+            class="inputText"
+            type="text"
+            name="name"
+            placeholder="Enter full name"
+          />
+
+          <label for="gender">Gender</label>
+          <select class="selector" name="gender">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="transgender">Transgender</option>
+            <option value="others">Others</option>
+          </select>
+
+          <label for="age">Age</label>
+          <input
+            class="inputNumber"
+            min="0"
+            max="18"
+            type="number"
+            name="age"
+            placeholder="Enter age"
+            required
+          />
+
+          <label for="date">Date last seen</label>
+          <input class="inputDate" name="date" type="date" />
+
+          <label for="time">Time last seen</label>
+          <input class="inputTime" name="time" type="time" />
+
+          <label for="place">Place last seen</label>
+          <input
+            class="inputText"
+            name="place"
+            type="text"
+            placeholder="Enter place"
+          />
+
+          <label for="residence">Residence</label>
+          <input
+            class="inputText"
+            name="residence"
+            type="text"
+            placeholder="Enter residence"
+          />
+
+          <label for="dress">Last outfit</label>
+          <input
+            class="inputText"
+            name="dress"
+            type="text"
+            placeholder="Enter outfit with color"
+          />
+
+          <label for="reward">Reward</label>
+          <input
+            class="inputNumber"
+            name="reward"
+            type="number"
+            placeholder="Enter reward amout"
+            min="5000"
+          />
+
+          <label for="additional">Additional information</label>
+          <textarea
+            class="textArea"
+            name="additional"
+            id="additional"
+            cols="30"
+            rows="10"
+            placeholder="Enter additional information"
+          ></textarea>
+
+          <a class="cancelButton" href="#">Cancel</a>
+          <button type="submit" name="submit" class="submitButton">
+            Submit
+          </button>
+        </div>
+      </form>
+    </div>
+  </section>
+</div>
+
+<style>
+  .containerForAllContentsFromTheFormPage {
+    width: 100vw;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-  "
->
-  <form
-    action="/missingvaluable/missingvaluablepostrequest"
-    method="POST"
-    enctype="multipart/form-data"
-    class="form-group"
-  >
-    <div
-      class="container form-group"
-      style="
-        display: flex;
-        flex-direction: column;
-        align-items: start;
-        justify-content: center;
-      "
-    >
-      <label for="name">Name</label>
-      <input
-        type="text"
-        name="name"
-        placeholder="Jake"
-        class="input form-control"
-        required
-      />
+    flex-direction: column;
+  }
+  .containerForMissingPersonFormHeading {
+    margin-top: 100px;
+    width: 440px;
+  }
+  .missingPersonHeading {
+    display: flex;
+    align-self: flex-start;
+  }
+  .missingPersonHeadingTwo {
+    display: flex;
+    align-self: flex-start;
+    font-size: 15px;
+    margin: 0;
+    padding: 0;
+    color: #343434;
+  }
+  .missingPersonParagraph {
+    font-size: 14px;
+    font-weight: 600;
+    color: #5e5e5e;
+    padding: 0;
+    margin: 5px 0;
+  }
+  .formContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .containerForImageandLabel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .displayImageContainer {
+    width: 200px;
+    border-radius: 50%;
+    aspect-ratio: 1;
+    border: solid 2px rgb(164, 164, 164);
+    margin-top: 50px;
+  }
+  label {
+    margin-top: 30px;
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+  .inputFile {
+    display: none;
+  }
+  .labelOfImage {
+    cursor: pointer;
+    color: #007aff;
+  }
+  .labelOfImage:hover {
+    color: #005bbb;
+    text-decoration: underline;
+  }
 
-      <label for="age">Age</label>
-      <input
-        type="number"
-        name="age"
-        placeholder="3"
-        class="input form-control"
-        required
-      />
+  input[type="text"]:focus,
+  input[type="number"]:focus,
+  textarea:focus,
+  input[type="date"]:focus,
+  input[type="time"]:focus {
+    border: 3px solid #4cd964;
+    outline: none;
+  }
+  .inputText {
+    height: 50px;
+    width: 400px;
+    border-radius: 8px;
+    border: solid 2px rgb(150, 150, 150);
+    padding: 0 10px;
+    font-size: 15px;
+    font-family: ".SFNSDisplay-Regular", sans-serif;
+    font-weight: 600;
+  }
+  .inputDate {
+    height: 50px;
+    width: 400px;
+    border-radius: 8px;
+    border: solid 2px rgb(150, 150, 150);
+    padding: 0 10px;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: ".SFNSDisplay-Regular", sans-serif;
+  }
+  .inputTime {
+    height: 50px;
+    width: 400px;
+    border-radius: 8px;
+    border: solid 2px rgb(150, 150, 150);
+    font-size: 15px;
+    padding: 0 10px;
+    font-weight: 600;
+    font-family: ".SFNSDisplay-Regular", sans-serif;
+  }
+  .selector {
+    height: 55px;
+    width: 400px;
+    border-radius: 8px;
+    border: solid 2px rgb(150, 150, 150);
+    padding: 0 10px;
+    font-weight: 600;
+    background-color: #ffffff;
+    font-size: 15px;
+    font-family: ".SFNSDisplay-Regular", sans-serif;
+    color: rgb(0, 0, 0);
+  }
+  .selector:focus {
+    border: 3px solid #4cd964;
+  }
+  .inputNumber {
+    height: 50px;
+    width: 400px;
+    border-radius: 8px;
+    border: solid 2px rgb(150, 150, 150);
+    padding: 0 10px;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: ".SFNSDisplay-Regular", sans-serif;
+  }
+  .textArea {
+    height: 150px;
+    width: 400px;
+    font-size: 15px;
+    border-radius: 8px;
+    border: solid 2px rgb(150, 150, 150);
+    padding: 10px 10px;
+    font-weight: 600;
+    font-family: ".SFNSDisplay-Regular", sans-serif;
+    resize: vertical;
+  }
+  .cancelButton {
+    height: 40px;
+    width: 425px;
+    border-radius: 10px;
+    border: none;
+    font-size: 20px;
+    color: white;
+    background-color: #9f9f9f;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    margin-bottom: 0;
+  }
+  .submitButton {
+    height: 40px;
+    width: 425px;
+    border-radius: 10px;
+    border: none;
+    font-size: 20px;
+    color: white;
+    background-color: #007aff;
+    margin-top: 20px;
+    margin-bottom: 50px;
+  }
+  .submitButton:hover {
+    background-color: #005fc5;
+  }
+</style>
 
-      <label for="type">Type</label>
-      <input
-        type="text"
-        name="type"
-        placeholder="Dog"
-        class="input form-control"
-        required
-      />
+<script>
+  var loadFile = function (event) {
+    var image = document.getElementById("output");
+    image.src = URL.createObjectURL(event.target.files[0]);
+  };
+</script>
 
-      <label for="breed">Breed</label>
-      <input
-        type="text"
-        name="breed"
-        placeholder="Golden Retriever"
-        class="input form-control"
-      />
-
-      <label for="placewentmissing">Place went missing</label>
-      <input
-        type="textarea"
-        name="placewentmissing"
-        placeholder="Kattappana"
-        class="input form-control"
-        required
-      />
-
-      <label for="description">description</label>
-      <input
-        type="textarea"
-        name="description"
-        placeholder="Something"
-        class="input form-control"
-        required
-      />
-
-      <label for="missingdate">Date went missing</label>
-      <input
-        type="date"
-        name="missingdate"
-        class="input form-control"
-        required
-      />
-
-      <label for="reward">Reward</label>
-      <input
-        type="number"
-        name="reward"
-        placeholder="10000"
-        class="input form-control"
-        required
-      />
-
-      <label for="image">Image</label>
-      <input type="file" name="image" class="input form-control" required />
-    </div>
-    <div
-      class="submitandcancelbuttons"
-      style="
-        display: flex;
-        align-items: center;
-        justify-content: end;
-        gap: 10px;
-        margin-bottom: 100px;
-      "
-    >
-      <a href="/missingvaluable" class="btn btn-secondary">Cancel</a>
-      <button type="submit" name="submit" class="btn btn-primary">
-        Submit
-      </button>
-    </div>
-  </form>
-</div>
+<%- include('../partials/footer.ejs') -%>

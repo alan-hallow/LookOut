@@ -1,33 +1,38 @@
 <%- include('../layout/layout.ejs') -%>
 
 <img
-  src="https://img.freepik.com/premium-photo/old-man-closseup-face-image_181020-3630.jpg"
+  src="/images/LookOut/missing old man.png"
   alt=""
-  style="
-    width: 100vw;
-    height: 700px;
-    position: absolute;
-    z-index: -1;
-    filter: brightness(50%);
-  "
+  class="missingKidsMainImage"
+  style="width: 100vw"
 />
 
-<h1
-  class="d-flex align-items-center justify-content-center"
-  style="color: white; font-size: 80px"
->
-  Missing Elderly
-</h1>
 <div
-  class="createNewPostButton"
+  class="containerFirstSectionTitleParagraphMissingKids"
   style="
+    position: absolute;
+    top: 250px;
+    right: 100px;
+    color: white;
+    width: 500px;
+    text-align: center;
     display: flex;
     align-items: center;
-    justify-content: end;
-    margin-right: 100px;
-    margin-top: 200px;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
   "
 >
+  <h1 style="font-size: 50px">Missing Elderly</h1>
+
+  <p style="font-size: 18px">
+    Are you worried about a missing elderly loved one? Our private detective
+    agency specializes in locating and reuniting missing individuals with their
+    families. With our dedicated team and advanced resources, we work tirelessly
+    to bring peace of mind to families during these challenging times. Trust us
+    to bring your loved one home safely.
+  </p>
+
   <a
     href="/missingelderly/createMissingElderlyPost"
     style="
@@ -42,52 +47,88 @@
       text-decoration: none;
       border-radius: 10px;
     "
-    >Create a Post</a
+    >Create a new post</a
   >
 </div>
 
-<section style="padding-top: 200px">
-  <div class="container" style="width: 550px">
+<section>
+  <div
+    class="container"
+    style="
+      display: flex;
+      flex-direction: row;
+      gap: 50px;
+      flex-wrap: wrap;
+      margin-top: 100px;
+    "
+  >
     <% elderlyMissing.forEach(elderly => { %>
-    <a
-      href="missingelderly/missingelderlynewpost/<%= elderly.id %>"
-      style="text-decoration: none"
-    >
+
+    <a href="missingelderly/missingelderlynewpost/<%= elderly.id %>">
       <div
-        class="containereachcard"
+        class="containerMissingKidsCards"
         style="
-          background-color: rgb(199, 229, 221);
-          border-radius: 35px;
-          margin: 10px;
+          height: 600px;
+          width: 500px;
+          background-color: wheat;
+          border-radius: 20px;
+          overflow: hidden;
           display: flex;
           align-items: center;
           justify-content: center;
-          flex-direction: column;
-          gap: 10px;
-          margin: 20px 0;
-          padding: 25px 20px;
         "
       >
-        <div class="containerNameAge" style="display: flex; align-self: start">
-          <div class="title text-uppercase">
-            <h4><%= elderly.name %>&nbsp;</h4>
-          </div>
-          <div class="age text-secondary">
-            <h4>| <%= elderly.age %></h4>
-          </div>
-        </div>
-        <div class="createdAt text-secondary align-self-start">
-          <%= elderly.missingdate.toLocaleDateString() %>
-        </div>
-        <div class="image">
-          <img
-            src="images/missingelderly/<%= elderly.id %>.jpg"
-            alt=""
-            style="width: 500px; height: auto; border-radius: 20px"
-          />
+        <img
+          src="images/missingelderly/<%= elderly.id %>.jpg"
+          alt=""
+          style="
+            height: auto;
+            border-radius: 20px;
+            min-height: 600px;
+            min-width: 500px;
+            max-height: 600px;
+            max-width: 500px;
+          "
+        />
+        <div
+          class="containerCardOverlayTitle"
+          style="
+            position: absolute;
+            height: 600px;
+            width: 500px;
+            border-radius: 20px;
+            background-image: linear-gradient(
+              to top,
+              black,
+              #0000004c,
+              #ffffff00,
+              #ffffff00
+            );
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            color: white;
+            font-size: 40px;
+            padding-bottom: 30px;
+          "
+        >
+          <h4 style="font-size: 40px"><%= elderly.name %>&nbsp;</h4>
+          <h4 style="font-size: 40px">| <%= elderly.age %></h4>
         </div>
       </div>
     </a>
+
     <% }) %>
   </div>
 </section>
+
+<style>
+  body {
+    background-color: #1d1d1d;
+  }
+  .containerMissingKidsDisplayEachCard:hover {
+    text-decoration: none;
+    color: #007acc;
+  }
+</style>
+<%- include('../partials/footer.ejs') -%>
