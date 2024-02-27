@@ -1,5 +1,15 @@
 const express = require("express");
+const missingKids = require("../../models/missing-kids-post");
+const missingElderly = require("../../models/missing-elderly-post");
+const missingPets = require("../../models/missing-pets-post");
+const missingValuable = require("../../models/missing-valuable-post");
+const missingVehicle = require("../../models/missing-vehicle-post");
+
 const userDataHelper = require("./../../helpers/user/helper-signup");
+const missingKidsComment = require("../../models/model-kids-comment");
+const missingKidCommentHelper = require("../../helpers/user/helper-kid-comment");
+const missingKidsUpdate = require("../../models/admin-model-kids-update");
+const missingKidUpdateHelper = require("../../helpers/admin/admin-kids");
 const users = require("../../models/models-signup");
 const router = express.Router();
 const bcrypt = require("bcrypt");
@@ -43,7 +53,7 @@ router.post("/userSignup", async (req, res) => {
 router.post("/userSignIn", async (req, res) => {
   try {
     if (req.body.email == "admin" && req.body.password == "admin123") {
-      res.render("admin/home");
+      res.redirect("/admin");
     } else {
       const userEmail = await users.findOne({ email: req.body.email });
 
@@ -93,6 +103,84 @@ router.get("/logout", (req, res) => {
       res.redirect("/signin");
     }
   });
+});
+
+//admin code to bottom
+
+router.get("/admin", async (req, res) => {
+  const countUsers = await users.countDocuments();
+  const countKids = await missingKids.countDocuments();
+  const countElderly = await missingElderly.countDocuments();
+  const countPets = await missingPets.countDocuments();
+  const countVehicles = await missingVehicle.countDocuments();
+  const countValuables = await missingValuable.countDocuments();
+  res.render("admin/admin-home", {
+    countUsers,
+    countKids,
+    countElderly,
+    countPets,
+    countVehicles,
+    countValuables,
+  });
+});
+
+router.get("/admin-kids", async (req, res) => {
+  try {
+    const username = req.session.username;
+    const missingkidsinfo = await missingKids
+      .find()
+      .sort({ createddate: "desc" });
+    res.render("admin/kids/kids-home", {
+      childMissing: missingkidsinfo,
+      session: req.session,
+    });
+  } catch (error) {
+    console.error("Error:", error);
+    res.status(500).send("An error occurred while fetching missing kids data.");
+  }
+});
+
+router.get("/kids-display/:id", async (req, res) => {
+  try {
+    const postId = req.params.id;
+
+    const missingKidUpdates = await missingKidsUpdate.find({ postId });
+    const missingKidComments = await missingKidsComment.find({ postId });
+
+    const missingKidDetails = await missingKids.findById(postId);
+    if (!missingKidDetails) {
+      res.redirect("/");
+    } else {
+      res.render("admin/kids/kids-display", {
+        missingkidsfulldetails: missingKidDetails,
+        missingKidUpdates: missingKidUpdates, // Pass the comments to the view
+        missingkidcomments: missingKidComments, // Pass the comments to the view
+      });
+    }
+  } catch (error) {
+    console.error("Error:", error);
+    res
+      .status(500)
+      .send("An error occurred while fetching missing kid details.");
+  }
+});
+
+router.post("/admin/newUpdate", async (req, res) => {
+  try {
+    // Assuming req.body contains the necessary data for the new comment
+    const newUpdateSaved = await missingKidUpdateHelper.newUpdate(req.body);
+
+    // Get the postId from the request body
+    const postId = req.body.postId;
+
+    // Redirect back to the original page
+    res.redirect(`/kids-display/${postId}`);
+  } catch (error) {
+    console.error("Error:", error);
+    res
+      .status(500)
+      .send("An error occurred while fetching missing kid details.");
+  }
 });
 
 module.exports = router;

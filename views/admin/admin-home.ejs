@@ -1,0 +1,119 @@
+<%- include('layout/admin-layout.ejs') -%>
+
+<div class="containerWholeBodyAdmin">
+  <div class="containerWholeBodyAdminInnerContainer">
+    <a href="/admin-kids" class="aAdminHomePageCards">
+      <div class="containerAdminHomePageCards containerAdminUserCard">
+        <h1 class="adminHomeCardTitle cardTitleUsers">Users</h1>
+        <h1 class="adminHomeCardValue cardValueUser"><%- countUsers %></h1>
+        <p class="adminHomeCardParagraph">Joined</p>
+      </div></a
+    >
+    <a href="" class="aAdminHomePageCards">
+      <div class="containerAdminHomePageCards containerAdminKidsCard">
+        <h1 class="adminHomeCardTitle cardTitleKids">Kids</h1>
+        <h1 class="adminHomeCardValue cardValueKids"><%- countKids %></h1>
+        <p class="adminHomeCardParagraph">went missing</p>
+      </div></a
+    >
+    <a href="" class="aAdminHomePageCards">
+      <div class="containerAdminHomePageCards containerAdminElderlyCard">
+        <h1 class="adminHomeCardTitle cardTitleElderly">Elderly</h1>
+        <h1 class="adminHomeCardValue cardValueElderly"><%- countElderly %></h1>
+        <p class="adminHomeCardParagraph">went missing</p>
+      </div></a
+    >
+    <a href="" class="aAdminHomePageCards">
+      <div class="containerAdminHomePageCards containerAdminPetsCard">
+        <h1 class="adminHomeCardTitle cardTitlePets">Pets</h1>
+        <h1 class="adminHomeCardValue cardValuePets"><%- countPets %></h1>
+        <p class="adminHomeCardParagraph">went missing</p>
+      </div></a
+    >
+    <a href="" class="aAdminHomePageCards">
+      <div class="containerAdminHomePageCards containerAdminVehicleCard">
+        <h1 class="adminHomeCardTitle cardTitleVehicle">Vehicles</h1>
+        <h1 class="adminHomeCardValue cardValueVehicle">
+          <%- countVehicles %>
+        </h1>
+        <p class="adminHomeCardParagraph">got stolen</p>
+      </div></a
+    >
+    <a href="" class="aAdminHomePageCards">
+      <div class="containerAdminHomePageCards containerAdminValuableCard">
+        <h1 class="adminHomeCardTitle cardTitleValuable">Valuable</h1>
+        <h1 class="adminHomeCardValue cardValueValuable">
+          <%- countValuables %>
+        </h1>
+        <p class="adminHomeCardParagraph">got lost/stolen</p>
+      </div></a
+    >
+    <a href="" class="aAdminHomePageCards">
+      <div class="containerAdminHomePageCards containerAdminDeadBodyCard">
+        <h1 class="adminHomeCardTitle cardTitleDeadbody">Dead Body</h1>
+        <h1 class="adminHomeCardValue cardValueDeadbody">31</h1>
+        <p class="adminHomeCardParagraph">found</p>
+      </div></a
+    >
+  </div>
+</div>
+
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=VT323&display=swap");
+  body {
+    background-color: black;
+    margin: 0;
+    padding: 0;
+    color: white;
+    font-family: "VT323", monospace;
+    font-weight: 400;
+    font-style: normal;
+  }
+  .containerWholeBodyAdminInnerContainer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    place-items: center;
+    gap: 20px;
+    margin: 150px 300px;
+  }
+  .containerAdminHomePageCards {
+    height: 400px;
+    width: 300px;
+    background-color: #232323;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 50px;
+    padding: 50px 0;
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+  }
+  .containerAdminHomePageCards:hover {
+    background-color: #333333;
+    outline: 2px solid #ffffff;
+    text-decoration: none;
+  }
+  .adminHomeCardTitle {
+    font-size: 50px;
+    margin: 0;
+  }
+  .adminHomeCardValue {
+    font-size: 150px;
+    margin: 0;
+  }
+  .adminHomeCardParagraph {
+    font-size: 40px;
+    margin: 0;
+  }
+  .aAdminHomePageCards {
+    color: white;
+    text-decoration: none;
+    user-select: none;
+  }
+  .aAdminHomePageCards:hover {
+    text-decoration: none;
+  }
+</style>

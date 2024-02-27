@@ -1,0 +1,101 @@
+<div class="containerWholeHeaderComplete">
+  <header>
+    <div class="containerWholeHeader">
+      <p class="websiteMainTitle">Look Out</p>
+      <div class="containerHeaderContentsWhole">
+        <p class="headerContentsCenter containerHomeHeader">
+          <a href="/admin" class="headerContentCenterItem">Home</a>
+        </p>
+        <p class="headerContentsCenter containerMissingKidsHeader">
+          <a href="/admin-kids" class="headerContentCenterItem">Kids</a>
+        </p>
+        <p class="headerContentsCenter containerMissingElderlyHeader">
+          <a href="/admin-elderly" class="headerContentCenterItem">Elderly</a>
+        </p>
+        <p class="headerContentsCenter containerMissingPetsHeader">
+          <a href="/admin-pets" class="headerContentCenterItem">Pets</a>
+        </p>
+        <p class="headerContentsCenter containerMissingVehicleHeader">
+          <a href="/admin-vehicle" class="headerContentCenterItem">Vehicles</a>
+        </p>
+        <p class="headerContentsCenter containerMissingValuablesHeader">
+          <a href="/admin-valuable" class="headerContentCenterItem"
+            >Valuables</a
+          >
+        </p>
+        <p class="headerContentsCenter containerMissingUsersHeader">
+          <a href="/admin-users" class="headerContentCenterItem">Users</a>
+        </p>
+      </div>
+
+      <div class="containerHeaderProfileExpand">
+        <a href="/logout" class="containerProfileItemsHiddena">Sign Out</a>
+      </div>
+    </div>
+  </header>
+</div>
+
+<style>
+  .containerProfileItemsHiddena {
+    font-size: 25px;
+    color: white;
+    text-decoration: none;
+  }
+  .containerProfileItemsHiddena:hover {
+    text-decoration: none;
+    color: #ffffff;
+    cursor: pointer;
+  }
+  .containerWholeHeader p {
+    margin: 0;
+    padding: 0;
+  }
+  /*  */
+  .containerWholeHeaderComplete {
+    position: fixed;
+    width: 100vw;
+    backdrop-filter: blur(20px);
+    z-index: 1000;
+    top: 0;
+  }
+  .headerContentCenterItem {
+    font-size: 25px;
+  }
+  /*  */
+  .websiteMainTitle {
+    font-size: 30px;
+    font-weight: 600;
+  }
+
+  /*  */
+  .containerWholeHeader {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    place-content: center;
+    height: 50px;
+    background-color: #c5c5c59c;
+    padding: 0 50px;
+  }
+  /*  */
+  .containerHeaderContentsWhole {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  .containerHeaderProfileExpand {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+  }
+  /*  */
+  .headerContentsCenter a {
+    text-decoration: none;
+    color: black;
+  }
+  .headerContentsCenter a:hover {
+    color: #ffffff;
+    cursor: pointer;
+  }
+</style>

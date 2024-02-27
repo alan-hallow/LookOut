@@ -1,0 +1,96 @@
+<%- include('../layout/admin-layout.ejs') -%>
+
+<div class="containerAdminWholeBodyTable">
+  <div class="containerAdminKidsCardsTitle">
+    <p class="containerAdminKidsCardNameTitle">Name</p>
+    <p class="containerAdminKidsCardAgeTitle">Age</p>
+    <p class="containerAdminKidsCardDateTitle">Date</p>
+    <p class="containerAdminKidsCardPlaceTitle">Place</p>
+    <div class="contanierAdminKidsCardImageTitle">Image</div>
+  </div>
+
+  <% childMissing.forEach(child => { %>
+  <a href="/kids-display/<%= child.id %>" class="linkAdminKidsCards">
+    <div class="containerAdminKidsCards">
+      <p class="containerAdminKidsCardName"><%= child.name %></p>
+      <p class="containerAdminKidsCardAge"><%= child.age %></p>
+      <p class="containerAdminKidsCardDate">
+        <%= child.date.toLocaleDateString() %>
+      </p>
+      <p class="containerAdminKidsCardPlace"><%= child.place %></p>
+      <div class="contanierAdminKidsCardImageDiv">
+        <img
+          src="images/missingkids/<%= child.id %>.jpg"
+          class="adminKidsCardImage"
+          alt=""
+        />
+      </div></div
+  ></a>
+
+  <% }) %>
+</div>
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=VT323&display=swap");
+  body {
+    background-color: black;
+    color: white;
+    font-family: "VT323", monospace;
+    font-weight: 400;
+    font-style: normal;
+  }
+  .containerAdminWholeBodyTable {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5px;
+    margin: 100px 0;
+  }
+  .containerAdminKidsCards {
+    background-color: #1b1b1b;
+    height: 100px;
+    width: 1200px;
+    border-radius: 20px;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 2fr 1fr;
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    place-items: center;
+    place-content: center;
+    font-size: 40px;
+    text-transform: capitalize;
+    cursor: pointer;
+  }
+  .contanierAdminKidsCardImageDiv {
+    height: 90px;
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .adminKidsCardImage {
+    height: 90px;
+  }
+  .containerAdminKidsCardsTitle {
+    background-color: #303030;
+    height: 100px;
+    width: 1200px;
+    border-radius: 20px;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 2fr 1fr;
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    place-items: center;
+    place-content: center;
+    font-size: 40px;
+    text-transform: capitalize;
+    margin-bottom: 20px;
+  }
+  .linkAdminKidsCards {
+    color: white;
+    text-decoration: none;
+    user-select: none;
+  }
+</style>

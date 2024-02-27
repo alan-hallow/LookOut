@@ -1,0 +1,484 @@
+<%- include('../layout/admin-layout.ejs') -%>
+
+<div class="containerWholeMissingPersonFullLeftRight">
+  <div class="containerMissingKidsDisplayLeftSide">
+    <div class="containderMissingPersonDetails">
+      <div class="containerForMissingPersonTitleImageNameAge">
+        <h2 class="missingPersonDetailTitle">Missing Person Details</h2>
+        <div class="containerImage">
+          <img
+            src="/images/missingkids/<%= missingkidsfulldetails.id %>.jpg"
+            alt=""
+            class="missingPersonImage"
+          />
+        </div>
+      </div>
+      <div class="containerInfoIconCardsFull" style="margin-top: 30px">
+        <div class="itemsDetailed containerName">
+          <div class="name">Name</div>
+          <div class="nameTwo"><%- missingkidsfulldetails.name %></div>
+        </div>
+        <div class="itemsDetailed containerAge">
+          <div class="age">Age</div>
+          <div class="ageTwo"><%- missingkidsfulldetails.age %></div>
+        </div>
+        <div class="itemsDetailed containerGender">
+          <div class="gender">Gender</div>
+          <div class="genderTwo"><%- missingkidsfulldetails.gender %></div>
+        </div>
+        <div class="itemsDetailed containerDate">
+          <div class="date">Date</div>
+          <div class="dateTwo">
+            <%- missingkidsfulldetails.date.toLocaleDateString() %>
+          </div>
+        </div>
+        <div class="itemsDetailed containerTime">
+          <div class="time">Time</div>
+          <div class="timeTwo"><%- missingkidsfulldetails.time %></div>
+        </div>
+        <div class="itemsDetailed containerPlace">
+          <div class="place">Place</div>
+          <div class="placeTwo"><%- missingkidsfulldetails.place %></div>
+        </div>
+        <div class="itemsDetailed containerResidence">
+          <div class="residence">Residence</div>
+          <div class="residenceTwo">
+            <%- missingkidsfulldetails.residence %>
+          </div>
+        </div>
+        <div class="itemsDetailed containerDress">
+          <div class="dress">Dress</div>
+          <div class="dressTwo"><%- missingkidsfulldetails.dress %></div>
+        </div>
+        <div class="itemsDetailed containerReward">
+          <div class="reward">reward</div>
+          <div class="rewardTwo"><%- missingkidsfulldetails.reward %></div>
+        </div>
+        <div class="itemsDetailed containerDescription">
+          <div class="description">Description</div>
+          <div class="descriptionTwo">
+            <%- missingkidsfulldetails.additional %>
+          </div>
+        </div>
+      </div>
+
+      <div class="containerComments">
+        <h2>Comments</h2>
+
+        <div class="containerAllComments">
+          <% missingkidcomments.forEach(comment=> { %>
+          <div class="containerAddedComments">
+            <div class="containerCommentTitleDate">
+              <h2 class="commentTitle"><%- comment.name %></h2>
+              <p class="commentDate">
+                <%- comment.createddate.toLocaleDateString() %>
+              </p>
+            </div>
+            <p class="commentSubject"><%- comment.comment %></p>
+          </div>
+          <% }); %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="containerMissingKidsDisplayRightSide">
+    <div class="containerForRightSideTitle">
+      <h2 class="missingKidsRightSideTitle">Update from our team</h2>
+    </div>
+    <form action="/admin/newUpdate" method="post">
+      <div class="containerUpdateFromTeamForm">
+        <input
+          type="text"
+          name="postId"
+          required
+          style="display: none"
+          value="<%- missingkidsfulldetails.id %>"
+        />
+        <textarea
+          type="text"
+          name="update"
+          required
+          placeholder="input text..."
+          class="updateFromTeamFormInput"
+        ></textarea>
+        <button type="submit" class="updateFromTeamFormInputButton">
+          Update
+        </button>
+      </div>
+    </form>
+
+    <% missingKidUpdates.forEach(update=> { %>
+    <div class="containerUpdatesFromTeam">
+      <p class="updateFromTeamDate">
+        <%- update.createddate.toLocaleDateString() %>
+      </p>
+      <h4 class="updateFromTeamContent"><%- update.update %></h4>
+    </div>
+
+    <% }); %>
+  </div>
+</div>
+<style>
+  body {
+    background-color: black;
+    color: white;
+  }
+  .containerUpdateFromTeamForm {
+    display: flex;
+    align-items: end;
+    justify-content: center;
+    flex-direction: column;
+    width: 600px;
+  }
+  .updateFromTeamFormInputButton {
+    height: 50px;
+    width: 100px;
+    background-color: #007aff;
+    color: white;
+    margin: 20px 0;
+    border-radius: 10px;
+    cursor: pointer;
+    outline: none;
+    font-size: 20px;
+    border: none;
+  }
+  .itemsDetailed {
+    display: grid;
+    grid-template-columns: 2fr 5fr;
+    width: 650px;
+    font-size: 25px;
+  }
+  /*  */
+  .updateFromTeamFormInput {
+    height: 100px;
+    width: 600px;
+    border-radius: 10px;
+    border: none;
+    background-color: #242424;
+    color: white;
+    font-size: 20px;
+    padding: 10px;
+  }
+  .updateFromTeamFormInput:focus {
+    outline: 2px solid #4cd964;
+  }
+  /*  */
+  .containerWholeMissingPersonFullLeftRight {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    margin-bottom: 100px;
+  }
+  /*  */
+  .containerMissingKidsDisplayLeftSide {
+    grid-area: 1 / 1 / 2 / 2;
+  } /*  */
+  .containderMissingPersonDetails {
+    margin-left: 100px;
+  }
+  /*  */
+  .containerForMissingPersonTitleImageNameAge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 650px;
+    flex-direction: column;
+  }
+  /*  */
+  .missingPersonDetailTitle {
+    font-size: 40px;
+    font-weight: 700;
+    margin-top: 100px;
+  }
+  /*  */
+  .containerImage {
+    height: 200px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  /*  */
+  .missingPersonImage {
+    height: 200px;
+  }
+  .containerMissingKidsDisplayRightSide {
+    grid-area: 1 / 2 / 2 / 3;
+    margin-top: 100px;
+  }
+  .containerForRightSideTitle {
+    margin-bottom: 50px;
+    text-align: center;
+    width: 600px;
+  }
+  /*  */
+  .containerUpdatesFromTeam {
+    width: 600px;
+    padding: 10px 20px;
+    background-color: #2e2a30;
+    border-radius: 5px;
+    margin-top: 10px;
+    font-size: 20px;
+  }
+  .updateFromTeamContent {
+    font-size: 25px;
+    text-transform: capitalize;
+  }
+  .containerOverlayCloseButtonDescription {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 500px;
+  }
+  .containerOverlayAge {
+    margin-top: 30px;
+  }
+  .containerRestOfTheDetails {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 400px;
+  }
+  .contanerOverlayAllItemsAll {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .containerOverlayName h2 {
+    font-weight: 600;
+    font-size: 40px;
+  }
+  .containerOverlayDescription {
+    margin: 50px 50px;
+    font-size: 18px;
+  }
+  .containerForAllHiddenDetailsPane {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-self: center;
+    width: 100%;
+    position: absolute;
+  }
+  .contanerOverlayAllItemsAllh3 {
+    font-size: 18px;
+  }
+  .contanerOverlayAllItemsAllh3Amount {
+    font-size: 18px;
+  }
+  .containerRestOfTheDetails {
+    margin: 40px 0;
+  }
+  .containerOverlayImageImage {
+    border-radius: 30px;
+    margin: 40px 40px;
+    height: 500px;
+  }
+
+  .containerCloseButtonOverlay {
+    display: flex;
+    align-self: flex-start;
+    justify-self: end;
+    margin-right: 30px;
+    margin-top: 30px;
+    margin-left: auto;
+  }
+  .containerCloseButtonOverlayButton {
+    border: 3px solid black;
+    border-radius: 50%;
+    font-size: 25px;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  .containerAllDetailsHiddenSection {
+    width: 90vw;
+    height: 80vh;
+    background-color: #9c9c9c5c;
+    backdrop-filter: blur(20px);
+    border-radius: 60px;
+    display: none;
+    align-items: start;
+    justify-content: start;
+    align-self: center;
+    justify-self: center;
+    position: fixed;
+    top: 100px;
+  }
+
+  .seeAllButtonDetails {
+    height: 50px;
+    width: 620px;
+    border-radius: 50px;
+    background-color: #e8eef2;
+    border: none;
+    margin-bottom: 50px;
+    cursor: pointer;
+    outline: none;
+  }
+  .seeAllButtonDetails:hover {
+    background-color: #dbe2e6;
+  }
+  .seeAllButtonDetails:focus {
+    outline: none;
+  }
+  .containerInfoShort {
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    flex-direction: column;
+  }
+  .containerInfoShort p,
+  .containerInfoShort h3 {
+    margin: 0;
+    padding: 0;
+  }
+  .containerInfoIconCardsFull {
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 30px;
+  }
+  .containerNameAge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .containerNameAge h3 {
+    font-size: 30px;
+    padding: 0;
+    margin: 0;
+    font-weight: 600;
+    text-transform: capitalize;
+  }
+  .containerNameAge p {
+    font-size: 30px;
+    padding: 0;
+    margin: 0;
+  }
+
+  .containerPhysicalDescriptionBox,
+  .containerDateTimeBox,
+  .containerLocationResidence,
+  .containerLocataionPlace {
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    gap: 10px;
+    margin: 10px 0;
+  }
+  .locationH3,
+  .locationP,
+  .residenceH3,
+  .residenceP {
+    margin: 0;
+  }
+
+  .squareForicons {
+    height: 50px;
+    aspect-ratio: 1;
+    border-radius: 5px;
+    background-color: rgb(208, 206, 206);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .physicalDescriptionh3,
+  .physicalDescriptionp,
+  .dateTimeh3,
+  .dateTimep {
+    margin: 5px 0;
+  }
+  .commentBox {
+    height: 100px;
+    width: 610px;
+    background-color: #e8eef2;
+    color: #283d4e;
+    border-radius: 20px;
+    border: none;
+    resize: none;
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    font-family: "Titillium Web", sans-serif;
+    font-style: normal;
+    padding: 10px 60px 10px 20px;
+  }
+
+  .commentBox:focus {
+    outline: none;
+  }
+  .commentsForm {
+    display: flex;
+    align-items: start;
+    justify-content: end;
+    flex-direction: column;
+    gap: 10px;
+    width: 650px;
+  }
+  .submitButtonForm {
+    border: none;
+    background-color: transparent;
+    font-size: 20px;
+    position: absolute;
+    cursor: pointer;
+    width: 70px;
+    aspect-ratio: 1;
+    transition: 0.5s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: flex-end;
+    rotate: 25deg;
+    color: #283d4e;
+    margin-right: 40px;
+  }
+  .submitButtonForm:hover {
+    color: #000000;
+    rotate: 10deg;
+  }
+  .submitButtonForm:focus {
+    outline: none;
+  }
+  .containerAllComments {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-top: 20px;
+  }
+  .containerAddedComments {
+    background-color: #242424;
+    border-radius: 20px;
+    width: 610px;
+    padding: 10px 20px 20px 20px;
+  }
+
+  .containerCommentTitleDate {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  .commentTitle,
+  .commentDate,
+  .commentSubject {
+    margin: 0;
+  }
+  .commentTitle {
+    font-size: 18px;
+  }
+  .commentSubject {
+    font-size: 25px;
+  }
+</style>

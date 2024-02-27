@@ -14,13 +14,14 @@
         <p class="containerAdminKidsCardPlaceTitle">Place</p>
         <div class="contanierAdminKidsCardImageTitle">Image</div>
       </div>
-      <div class="containerAdminKidsCards">
-        <p class="containerAdminKidsCardName">steve jobs</p>
-        <p class="containerAdminKidsCardAge">8</p>
-        <p class="containerAdminKidsCardDate">09/08/2024</p>
-        <p class="containerAdminKidsCardPlace">Kattappana</p>
-        <div class="contanierAdminKidsCardImageDiv"></div>
-      </div>
+      <a href="" class="linkAdminKidsCards">
+        <div class="containerAdminKidsCards">
+          <p class="containerAdminKidsCardName">steve jobs</p>
+          <p class="containerAdminKidsCardAge">8</p>
+          <p class="containerAdminKidsCardDate">09/08/2024</p>
+          <p class="containerAdminKidsCardPlace">Kattappana</p>
+          <div class="contanierAdminKidsCardImageDiv"></div></div
+      ></a>
       <div class="containerAdminKidsCards">
         <p class="containerAdminKidsCardName">steve jobs</p>
         <p class="containerAdminKidsCardAge">8</p>
@@ -65,7 +66,7 @@
         width: 1200px;
         border-radius: 20px;
         display: grid;
-        grid-template-columns: repeat(5, 1fr);
+        grid-template-columns: 2fr 1fr 1fr 2fr 1fr;
         grid-template-rows: 1fr;
         grid-column-gap: 0px;
         grid-row-gap: 0px;
@@ -86,7 +87,7 @@
         width: 1200px;
         border-radius: 20px;
         display: grid;
-        grid-template-columns: repeat(5, 1fr);
+        grid-template-columns: 2fr 1fr 1fr 2fr 1fr;
         grid-template-rows: 1fr;
         grid-column-gap: 0px;
         grid-row-gap: 0px;
@@ -95,6 +96,11 @@
         font-size: 40px;
         text-transform: capitalize;
         margin-bottom: 20px;
+      }
+      .linkAdminKidsCards {
+        color: white;
+        text-decoration: none;
+        user-select: none;
       }
     </style>
   </body>

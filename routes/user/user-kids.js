@@ -1,9 +1,11 @@
 const express = require("express");
-const missingKids = require("../../models/missing-kids-post");
-const missingKidsComment = require("../../models/model-kids-comment");
 const router = express.Router();
+const missingKids = require("../../models/missing-kids-post");
 const missingKidsHelper = require("../../helpers/user/helper-missing-kid");
+const missingKidsComment = require("../../models/model-kids-comment");
 const missingKidCommentHelper = require("../../helpers/user/helper-kid-comment");
+const missingKidsUpdate = require("../../models/admin-model-kids-update");
+const missingKidUpdateHelper = require("../../helpers/admin/admin-kids");
 const fs = require("fs");
 const path = require("path");
 
@@ -33,6 +35,7 @@ router.get("/missingkidnewpost/:id", async (req, res) => {
   try {
     const postId = req.params.id;
 
+    const missingKidUpdates = await missingKidsUpdate.find({ postId });
     // Find all comments associated with the given postId
     const missingKidComments = await missingKidsComment.find({ postId });
 
@@ -42,6 +45,7 @@ router.get("/missingkidnewpost/:id", async (req, res) => {
     } else {
       res.render("user/kids/missingkiddisplay", {
         missingkidsfulldetails: missingKidDetails,
+        missingKidUpdates: missingKidUpdates, // Pass the comments to the view
         missingkidcomments: missingKidComments, // Pass the comments to the view
         session: req.session,
       });

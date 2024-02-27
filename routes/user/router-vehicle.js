@@ -1,6 +1,6 @@
 const express = require("express");
-const missingVehicle = require("../../models/missing-vehicle-post");
 const router = express.Router();
+const missingVehicle = require("../../models/missing-vehicle-post");
 const missingVehicleHelper = require("../../helpers/user/helper-missing-vehicle");
 const missingVehicleComment = require("../../models/model-vehicle-comment");
 const missingVehicleCommentHelper = require("../../helpers/user/helper-vehicle-comment");
