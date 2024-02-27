@@ -9,18 +9,18 @@
     <div class="contanierAdminKidsCardImageTitle">Image</div>
   </div>
 
-  <% childMissing.forEach(child => { %>
-  <a href="/kids-display/<%= child.id %>" class="linkAdminKidsCards">
+  <% elderlyMissing.forEach(elderly => { %>
+  <a href="/elderly-display/<%= elderly.id %>" class="linkAdminKidsCards">
     <div class="containerAdminKidsCards">
-      <p class="containerAdminKidsCardName"><%= child.name %></p>
-      <p class="containerAdminKidsCardAge"><%= child.age %></p>
+      <p class="containerAdminKidsCardName"><%= elderly.name %></p>
+      <p class="containerAdminKidsCardAge"><%= elderly.age %></p>
       <p class="containerAdminKidsCardDate">
-        <%= child.date.toLocaleDateString() %>
+        <%= elderly.date.toLocaleDateString() %>
       </p>
-      <p class="containerAdminKidsCardPlace"><%= child.place %></p>
+      <p class="containerAdminKidsCardPlace"><%= elderly.place %></p>
       <div class="contanierAdminKidsCardImageDiv">
         <img
-          src="images/missingkids/<%= child.id %>.jpg"
+          src="images/missingelderly/<%= elderly.id %>.jpg"
           class="adminKidsCardImage"
           alt=""
         />
@@ -89,6 +89,11 @@
     margin-bottom: 20px;
   }
   .linkAdminKidsCards {
+    color: white;
+    text-decoration: none;
+    user-select: none;
+  }
+  .linkAdminKidsCards:hover {
     color: white;
     text-decoration: none;
     user-select: none;

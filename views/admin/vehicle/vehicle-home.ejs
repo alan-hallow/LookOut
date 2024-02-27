@@ -9,18 +9,18 @@
     <div class="contanierAdminKidsCardImageTitle">Image</div>
   </div>
 
-  <% childMissing.forEach(child => { %>
-  <a href="/kids-display/<%= child.id %>" class="linkAdminKidsCards">
+  <% vehicleMissing.forEach(vehicle => { %>
+  <a href="/vehicle-display/<%= vehicle.id %>" class="linkAdminKidsCards">
     <div class="containerAdminKidsCards">
-      <p class="containerAdminKidsCardName"><%= child.name %></p>
-      <p class="containerAdminKidsCardAge"><%= child.age %></p>
+      <p class="containerAdminKidsCardName"><%= vehicle.name %></p>
+      <p class="containerAdminKidsCardAge"><%= vehicle.age %></p>
       <p class="containerAdminKidsCardDate">
-        <%= child.date.toLocaleDateString() %>
+        <%= vehicle.date.toLocaleDateString() %>
       </p>
-      <p class="containerAdminKidsCardPlace"><%= child.place %></p>
+      <p class="containerAdminKidsCardPlace"><%= vehicle.place %></p>
       <div class="contanierAdminKidsCardImageDiv">
         <img
-          src="images/missingkids/<%= child.id %>.jpg"
+          src="images/missingvehicle/<%= vehicle.id %>.jpg"
           class="adminKidsCardImage"
           alt=""
         />

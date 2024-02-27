@@ -7,7 +7,7 @@
         <h2 class="missingPersonDetailTitle">Missing Person Details</h2>
         <div class="containerImage">
           <img
-            src="/images/missingkids/<%= missingkidsfulldetails.id %>.jpg"
+            src="/images/missingpets/<%= missingPetsfulldetails.id %>.jpg"
             alt=""
             class="missingPersonImage"
           />
@@ -16,48 +16,48 @@
       <div class="containerInfoIconCardsFull" style="margin-top: 30px">
         <div class="itemsDetailed containerName">
           <div class="name">Name</div>
-          <div class="nameTwo"><%- missingkidsfulldetails.name %></div>
+          <div class="nameTwo"><%- missingPetsfulldetails.name %></div>
         </div>
         <div class="itemsDetailed containerAge">
           <div class="age">Age</div>
-          <div class="ageTwo"><%- missingkidsfulldetails.age %></div>
+          <div class="ageTwo"><%- missingPetsfulldetails.age %></div>
         </div>
         <div class="itemsDetailed containerGender">
           <div class="gender">Gender</div>
-          <div class="genderTwo"><%- missingkidsfulldetails.gender %></div>
+          <div class="genderTwo"><%- missingPetsfulldetails.gender %></div>
         </div>
         <div class="itemsDetailed containerDate">
           <div class="date">Date</div>
           <div class="dateTwo">
-            <%- missingkidsfulldetails.date.toLocaleDateString() %>
+            <%- missingPetsfulldetails.date.toLocaleDateString() %>
           </div>
         </div>
         <div class="itemsDetailed containerTime">
           <div class="time">Time</div>
-          <div class="timeTwo"><%- missingkidsfulldetails.time %></div>
+          <div class="timeTwo"><%- missingPetsfulldetails.time %></div>
         </div>
         <div class="itemsDetailed containerPlace">
           <div class="place">Place</div>
-          <div class="placeTwo"><%- missingkidsfulldetails.place %></div>
+          <div class="placeTwo"><%- missingPetsfulldetails.place %></div>
         </div>
         <div class="itemsDetailed containerResidence">
           <div class="residence">Residence</div>
           <div class="residenceTwo">
-            <%- missingkidsfulldetails.residence %>
+            <%- missingPetsfulldetails.residence %>
           </div>
         </div>
         <div class="itemsDetailed containerDress">
           <div class="dress">Dress</div>
-          <div class="dressTwo"><%- missingkidsfulldetails.dress %></div>
+          <div class="dressTwo"><%- missingPetsfulldetails.dress %></div>
         </div>
         <div class="itemsDetailed containerReward">
           <div class="reward">reward</div>
-          <div class="rewardTwo"><%- missingkidsfulldetails.reward %></div>
+          <div class="rewardTwo"><%- missingPetsfulldetails.reward %></div>
         </div>
         <div class="itemsDetailed containerDescription">
           <div class="description">Description</div>
           <div class="descriptionTwo">
-            <%- missingkidsfulldetails.additional %>
+            <%- missingPetsfulldetails.additional %>
           </div>
         </div>
       </div>
@@ -66,7 +66,7 @@
         <h2>Comments</h2>
 
         <div class="containerAllComments">
-          <% missingkidcomments.forEach(comment=> { %>
+          <% missingPetsComments.forEach(comment=> { %>
           <div class="containerAddedComments">
             <div class="containerCommentTitleDate">
               <h2 class="commentTitle"><%- comment.name %></h2>
@@ -86,14 +86,14 @@
     <div class="containerForRightSideTitle">
       <h2 class="missingKidsRightSideTitle">Update from our team</h2>
     </div>
-    <form action="/admin/newUpdate" method="post">
+    <form action="/admin/pets/newUpdate" method="post">
       <div class="containerUpdateFromTeamForm">
         <input
           type="text"
           name="postId"
           required
           style="display: none"
-          value="<%- missingkidsfulldetails.id %>"
+          value="<%- missingPetsfulldetails.id %>"
         />
         <textarea
           type="text"
@@ -108,7 +108,7 @@
       </div>
     </form>
 
-    <% missingKidUpdates.forEach(update=> { %>
+    <% missingPetsUpdates.forEach(update=> { %>
     <div class="containerUpdatesFromTeam">
       <p class="updateFromTeamDate">
         <%- update.createddate.toLocaleDateString() %>
