@@ -7,16 +7,16 @@
         <h2 class="missingPersonDetailTitle">Missing Person Details</h2>
         <div class="containerImage">
           <img
-            src="/images/missingkids/<%= missingkidsfulldetails.id %>.jpg"
+            src="/images/corpses/<%= corpsesfulldetails.id %>.jpg"
             alt=""
             class="missingPersonImage"
           />
         </div>
         <div class="containerNameAge">
           <h3 style="text-transform: capitalize">
-            <%- missingkidsfulldetails.name %>
+            <%- corpsesfulldetails.name %>
           </h3>
-          <p>, <%- missingkidsfulldetails.age %></p>
+          <p>, <%- corpsesfulldetails.age %></p>
         </div>
       </div>
       <div class="containerInfoIconCardsFull">
@@ -27,7 +27,7 @@
           <div class="containerInfoShort containerLocationH3P">
             <h3 class="locationH3">Location</h3>
             <p class="locationP">
-              Last seen in <%- missingkidsfulldetails.place %>
+              Last seen in <%- corpsesfulldetails.place %>
             </p>
           </div>
         </div>
@@ -39,7 +39,7 @@
           <div class="containerInfoShort containerResidenceH3P">
             <h3 class="residenceH3">Residence</h3>
             <p class="residenceP">
-              Living in <%- missingkidsfulldetails.residence %>
+              Living in <%- corpsesfulldetails.residence %>
             </p>
           </div>
         </div>
@@ -50,9 +50,7 @@
           <div class="containerInfoShort containerPhysicalDescription">
             <h3 class="physicalDescriptionh3">Physical Description</h3>
             <p class="physicalDescriptionp">
-              <%- missingkidsfulldetails.height %>, <%-
-              missingkidsfulldetails.color %>, <%- missingkidsfulldetails.marks
-              %>
+              5'4", Brown hair, Hazel eyes, Scar on left hand
             </p>
           </div>
         </div>
@@ -63,8 +61,8 @@
           <div class="containerInfoShort containerDateTime">
             <h3 class="dateTimeh3">Date & Time</h3>
             <p class="dateTimep">
-              Last seen at <%- missingkidsfulldetails.time %> on <%-
-              missingkidsfulldetails.date.toLocaleDateString() %>
+              Last seen at <%- corpsesfulldetails.time %> on <%-
+              corpsesfulldetails.date.toLocaleDateString() %>
             </p>
           </div>
         </div>
@@ -79,13 +77,13 @@
       <div class="containerComments">
         <h2>Comments</h2>
         <form
-          action="/missingkids/commentForMissingKids"
+          action="/corpses/commentForCorpses"
           method="post"
           class="commentsForm"
         >
           <input
             type="text"
-            value="<%- missingkidsfulldetails.id %>"
+            value="<%- corpsesfulldetails.id %>"
             name="postId"
             required
             style="display: none"
@@ -110,7 +108,7 @@
         </form>
 
         <div class="containerAllComments">
-          <% missingkidcomments.forEach(comment=> { %>
+          <% corpsescomments.forEach(comment=> { %>
           <div class="containerAddedComments">
             <div class="containerCommentTitleDate">
               <h2 class="commentTitle"><%- comment.name %></h2>
@@ -133,7 +131,7 @@
         <div class="containerImageName">
           <div class="containerOverlayImage">
             <img
-              src="/images/missingkids/<%= missingkidsfulldetails.id %>.jpg"
+              src="/images/corpses/<%= corpsesfulldetails.id %>.jpg"
               alt=""
               class="containerOverlayImageImage"
             />
@@ -142,61 +140,55 @@
 
         <div class="containerRestOfTheDetails">
           <div class="contanerOverlayAllItemsAll containerOverlayName">
-            <h2><%- missingkidsfulldetails.name %></h2>
+            <h2><%- corpsesfulldetails.name %></h2>
           </div>
           <div class="contanerOverlayAllItemsAll containerOverlayAge">
             <h3 class="contanerOverlayAllItemsAllh3">Age</h3>
             <h3 class="contanerOverlayAllItemsAllh3Amount">
-              <%- missingkidsfulldetails.age %>
+              <%- corpsesfulldetails.age %>
             </h3>
           </div>
           <div class="contanerOverlayAllItemsAll containerOverlayGender">
             <h3 class="contanerOverlayAllItemsAllh3">Gender</h3>
             <h3 class="contanerOverlayAllItemsAllh3Amount">
-              <%- missingkidsfulldetails.gender %>
+              <%- corpsesfulldetails.gender %>
             </h3>
           </div>
           <div class="contanerOverlayAllItemsAll containerOverlayDate">
             <h3 class="contanerOverlayAllItemsAllh3">Date</h3>
             <h3 class="contanerOverlayAllItemsAllh3Amount">
-              <%- missingkidsfulldetails.date.toLocaleDateString() %>
+              <%- corpsesfulldetails.date.toLocaleDateString() %>
             </h3>
           </div>
           <div class="contanerOverlayAllItemsAll containerOverlayPlace">
             <h3 class="contanerOverlayAllItemsAllh3">Place</h3>
             <h3 class="contanerOverlayAllItemsAllh3Amount">
-              <%- missingkidsfulldetails.place %>
+              <%- corpsesfulldetails.place %>
             </h3>
           </div>
           <div class="contanerOverlayAllItemsAll containerOverlayResidence">
             <h3 class="contanerOverlayAllItemsAllh3">Residence</h3>
             <h3 class="contanerOverlayAllItemsAllh3Amount">
-              <%- missingkidsfulldetails.residence %>
+              <%- corpsesfulldetails.residence %>
             </h3>
           </div>
           <div class="contanerOverlayAllItemsAll containerOverlayHeight">
             <h3 class="contanerOverlayAllItemsAllh3">Height</h3>
-            <h3 class="contanerOverlayAllItemsAllh3Amount">
-              <%- missingkidsfulldetails.height %>
-            </h3>
+            <h3 class="contanerOverlayAllItemsAllh3Amount">2"3'</h3>
           </div>
           <div class="contanerOverlayAllItemsAll containerOverlayColor">
             <h3 class="contanerOverlayAllItemsAllh3">Color</h3>
-            <h3 class="contanerOverlayAllItemsAllh3Amount">
-              <%- missingkidsfulldetails.color %>
-            </h3>
+            <h3 class="contanerOverlayAllItemsAllh3Amount">Brown</h3>
           </div>
           <div class="contanerOverlayAllItemsAll containerOverlayOutfit">
             <h3 class="contanerOverlayAllItemsAllh3">Dress</h3>
             <h3 class="contanerOverlayAllItemsAllh3Amount">
-              <%- missingkidsfulldetails.dress %>
+              <%- corpsesfulldetails.dress %>
             </h3>
           </div>
           <div class="contanerOverlayAllItemsAll containerOverlayBodyMarks">
             <h3 class="contanerOverlayAllItemsAllh3">Body Marks</h3>
-            <h3 class="contanerOverlayAllItemsAllh3Amount">
-              <%- missingkidsfulldetails.marks %>
-            </h3>
+            <h3 class="contanerOverlayAllItemsAllh3Amount">Scar on cheeks</h3>
           </div>
         </div>
 
@@ -210,7 +202,7 @@
 
           <div class="containerOverlayDescription">
             <h3>Description</h3>
-            <p><%- missingkidsfulldetails.additional %></p>
+            <p><%- corpsesfulldetails.additional %></p>
           </div>
         </div>
       </div>
@@ -222,15 +214,18 @@
       <h2 class="missingKidsRightSideTitle">Update from our team</h2>
     </div>
 
-    <% missingKidUpdates.forEach(update=> { %>
     <div class="containerUpdatesFromTeam">
-      <p class="updateFromTeamDate">
-        <%- update.createddate.toLocaleDateString() %>
-      </p>
-      <h4 class="updateFromTeamContent"><%- update.update %></h4>
+      <p class="updateFromTeamDate">08/08/2024</p>
+      <h4 class="updateFromTeamContent">case opened</h4>
     </div>
-
-    <% }); %>
+    <div class="containerUpdatesFromTeam">
+      <p class="updateFromTeamDate">08/08/2024</p>
+      <h4 class="updateFromTeamContent">case opened</h4>
+    </div>
+    <div class="containerUpdatesFromTeam">
+      <p class="updateFromTeamDate">08/08/2024</p>
+      <h4 class="updateFromTeamContent">case opened</h4>
+    </div>
   </div>
 </div>
 <style>

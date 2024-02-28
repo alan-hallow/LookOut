@@ -10,7 +10,10 @@
   </div>
 
   <% valuableMissing.forEach(valuable => { %>
-  <a href="/valuable-display/<%= valuable.id %>" class="linkAdminKidsCards">
+  <a
+    href="/admin/valuable-display/<%= valuable.id %>"
+    class="linkAdminKidsCards"
+  >
     <div class="containerAdminKidsCards">
       <p class="containerAdminKidsCardName"><%= valuable.name %></p>
       <p class="containerAdminKidsCardAge"><%= valuable.age %></p>

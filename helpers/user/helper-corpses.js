@@ -1,11 +1,11 @@
 const { renderFile } = require("ejs");
-const missingKids = require("./../../models/missing-kids-post");
+const corpses = require("./../../models/corpses-post");
 const path = require("path"); // Import path module if not already imported
 const { time } = require("console");
 
 module.exports = {
   // Async function to handle saving missing kids data
-  helperMissingKids: async (helperMissingKids) => {
+  helperCorpses: async (helperCorpses) => {
     try {
       // Destructure data from helperMissingKids object
       const {
@@ -15,26 +15,20 @@ module.exports = {
         date,
         time,
         place,
-        height,
-        color,
-        marks,
         residence,
         dress,
         reward,
         additional,
-      } = helperMissingKids;
+      } = helperCorpses;
 
       // Create a new missing kid object
-      const newMissingKid = new missingKids({
+      const newCorpse = new corpses({
         name: name,
         gender: gender,
         age: age,
         date: date,
         time: time,
         place: place,
-        height: height,
-        color: color,
-        marks: marks,
         residence: residence,
         dress: dress,
         reward: reward,
@@ -43,9 +37,9 @@ module.exports = {
       });
 
       // Save the missing kid to the database
-      const savedMissingKid = await newMissingKid.save();
+      const savedCorpse = await newCorpse.save();
 
-      return savedMissingKid;
+      return savedCorpse;
     } catch (error) {
       // Handle any errors that occur during the process
       console.error(error);

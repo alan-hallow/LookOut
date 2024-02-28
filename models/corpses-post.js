@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const missingKidsSchema = new mongoose.Schema({
+const corpsesSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
@@ -25,18 +25,6 @@ const missingKidsSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  height: {
-    type: String,
-    required: true,
-  },
-  color: {
-    type: String,
-    required: true,
-  },
-  marks: {
-    type: String,
-    required: true,
-  },
   residence: {
     type: String,
     required: true,
@@ -55,4 +43,4 @@ const missingKidsSchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model("missingKids", missingKidsSchema);
+module.exports = mongoose.model("corpses", corpsesSchema);
