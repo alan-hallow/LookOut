@@ -7,30 +7,17 @@ module.exports = {
   helperMissingValuable: async (helperMissingValuable) => {
     try {
       // Destructure data from helperMissingKids object
-      const {
-        name,
-        gender,
-        age,
-        date,
-        time,
-        place,
-        residence,
-        dress,
-        reward,
-        additional,
-      } = helperMissingValuable;
+      const { name, date, time, place, reward, description, additional } =
+        helperMissingValuable;
 
       // Create a new missing kid object
       const newMissingValuable = new missingValuable({
         name: name,
-        gender: gender,
-        age: age,
         date: date,
         time: time,
         place: place,
-        residence: residence,
-        dress: dress,
         reward: reward,
+        description: description,
         additional: additional,
         createddate: new Date(), // Assuming you want to set the creation date automatically
       });

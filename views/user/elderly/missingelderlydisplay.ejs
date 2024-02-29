@@ -94,7 +94,6 @@
             type="text"
             value="<%= session.username %>"
             name="name"
-            required
             style="display: none"
           />
           <textarea
@@ -227,19 +226,15 @@
     <div class="containerForRightSideTitle">
       <h2 class="missingKidsRightSideTitle">Update from our team</h2>
     </div>
+    <% missingElderlyUpdates.forEach(update=> { %>
+    <div class="containerUpdatesFromTeam">
+      <p class="updateFromTeamDate">
+        <%- update.createddate.toLocaleDateString() %>
+      </p>
+      <h4 class="updateFromTeamContent"><%- update.update %></h4>
+    </div>
 
-    <div class="containerUpdatesFromTeam">
-      <p class="updateFromTeamDate">08/08/2024</p>
-      <h4 class="updateFromTeamContent">case opened</h4>
-    </div>
-    <div class="containerUpdatesFromTeam">
-      <p class="updateFromTeamDate">08/08/2024</p>
-      <h4 class="updateFromTeamContent">case opened</h4>
-    </div>
-    <div class="containerUpdatesFromTeam">
-      <p class="updateFromTeamDate">08/08/2024</p>
-      <h4 class="updateFromTeamContent">case opened</h4>
-    </div>
+    <% }); %>
   </div>
 </div>
 <style>

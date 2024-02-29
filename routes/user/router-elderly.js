@@ -3,25 +3,30 @@ const missingElderly = require("../../models/missing-elderly-post");
 const missingElderlyHelper = require("../../helpers/user/helper-missing-elderly");
 const missingElderlyComment = require("../../models/model-elderly-comment");
 const missingElderlyCommentHelper = require("../../helpers/user/helper-elderly-comment");
+const missingElderlyUpdate = require("../../models/admin-model-elderly-update");
 const router = express.Router();
 const fs = require("fs");
 const path = require("path");
 
 router.get("/", async (req, res) => {
   try {
-    console.log(
-      req.session.username,
-      req.session.useremail,
-      req.session.userphone,
-      req.session.userplace
-    );
-    const missingelderlyinfo = await missingElderly
-      .find()
-      .sort({ createddate: "desc" });
-    res.render("user/elderly/missingelderly", {
-      elderlyMissing: missingelderlyinfo,
-      session: req.session,
-    });
+    if (!req.session.username) {
+      res.redirect("/signin");
+    } else {
+      console.log(
+        req.session.username,
+        req.session.useremail,
+        req.session.userphone,
+        req.session.userplace
+      );
+      const missingelderlyinfo = await missingElderly
+        .find()
+        .sort({ createddate: "desc" });
+      res.render("user/elderly/missingelderly", {
+        elderlyMissing: missingelderlyinfo,
+        session: req.session,
+      });
+    }
   } catch (error) {
     console.error("Error:", error);
     res
@@ -40,6 +45,7 @@ router.get("/missingelderlynewpost/:id", async (req, res) => {
   try {
     const postId = req.params.id;
     // Find all comments associated with the given postId
+    const missingElderlyUpdates = await missingElderlyUpdate.find({ postId });
     const missingElderlyComments = await missingElderlyComment.find({ postId });
     const missingElderlyDetails = await missingElderly.findById(postId);
     if (!missingElderlyDetails) {
@@ -47,6 +53,7 @@ router.get("/missingelderlynewpost/:id", async (req, res) => {
     } else {
       res.render("user/elderly/missingelderlydisplay", {
         missingelderlyfulldetails: missingElderlyDetails,
+        missingElderlyUpdates: missingElderlyUpdates, // Pass the comments to the view
         missingelderlycomments: missingElderlyComments, // Pass the comments to the view
         session: req.session,
       });
@@ -95,16 +102,20 @@ router.post("/missingelderlypostrequest", async (req, res) => {
 
 router.post("/commentForMissingElderly", async (req, res) => {
   try {
-    // Assuming req.body contains the necessary data for the new comment
-    const newCommentSaved = await missingElderlyCommentHelper.newComment(
-      req.body
-    );
+    if (!req.session.username) {
+      res.redirect("/signin");
+    } else {
+      // Assuming req.body contains the necessary data for the new comment
+      const newCommentSaved = await missingElderlyCommentHelper.newComment(
+        req.body
+      );
 
-    // Get the postId from the request body
-    const postId = req.body.postId;
+      // Get the postId from the request body
+      const postId = req.body.postId;
 
-    // Redirect back to the original page
-    res.redirect(`/missingelderly/missingelderlynewpost/${postId}`);
+      // Redirect back to the original page
+      res.redirect(`/missingelderly/missingelderlynewpost/${postId}`);
+    }
   } catch (error) {
     console.error("Error:", error);
     // Respond with an error message

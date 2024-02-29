@@ -9,13 +9,17 @@ const path = require("path");
 
 router.get("/", async (req, res) => {
   try {
-    const missingvaluableinfo = await missingValuable
-      .find()
-      .sort({ createddate: "desc" });
-    res.render("user/valuable/missingvaluable", {
-      valuableMissing: missingvaluableinfo,
-      session: req.session,
-    });
+    if (!req.session.username) {
+      res.redirect("/signin");
+    } else {
+      const missingvaluableinfo = await missingValuable
+        .find()
+        .sort({ createddate: "desc" });
+      res.render("user/valuable/missingvaluable", {
+        valuableMissing: missingvaluableinfo,
+        session: req.session,
+      });
+    }
   } catch (error) {
     console.error("Error:", error);
     res
@@ -92,16 +96,20 @@ router.post("/missingvaluablepostrequest", async (req, res) => {
 
 router.post("/commentForMissingValuable", async (req, res) => {
   try {
-    // Assuming req.body contains the necessary data for the new comment
-    const newCommentSaved = await missingValuableCommentHelper.newComment(
-      req.body
-    );
+    if (!req.session.username) {
+      res.redirect("/signin");
+    } else {
+      // Assuming req.body contains the necessary data for the new comment
+      const newCommentSaved = await missingValuableCommentHelper.newComment(
+        req.body
+      );
 
-    // Get the postId from the request body
-    const postId = req.body.postId;
+      // Get the postId from the request body
+      const postId = req.body.postId;
 
-    // Redirect back to the original page
-    res.redirect(`/missingvaluable/missingvaluablenewpost/${postId}`);
+      // Redirect back to the original page
+      res.redirect(`/missingvaluable/missingvaluablenewpost/${postId}`);
+    }
   } catch (error) {
     console.error("Error:", error);
     // Respond with an error message

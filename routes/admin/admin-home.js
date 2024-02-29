@@ -6,6 +6,7 @@ const missingElderly = require("../../models/missing-elderly-post");
 const missingPets = require("../../models/missing-pets-post");
 const missingValuable = require("../../models/missing-valuable-post");
 const missingVehicle = require("../../models/missing-vehicle-post");
+const corpses = require("../../models/corpses-post");
 
 const missingKidsComment = require("../../models/model-kids-comment");
 const missingKidCommentHelper = require("../../helpers/user/helper-kid-comment");
@@ -32,6 +33,9 @@ const missingValuableCommentHelper = require("../../helpers/user/helper-valuable
 const missingValuableUpdate = require("../../models/admin-model-valuable-update");
 const missingValuableUpdateHelper = require("../../helpers/admin/admin-valuables");
 
+const corpsesComment = require("../../models/model-corpses-comment");
+const corpsesCommentHelper = require("../../helpers/user/helper-corpses-comment");
+
 const userDataHelper = require("./../../helpers/user/helper-signup");
 
 const users = require("../../models/models-signup");
@@ -45,6 +49,7 @@ router.get("/", async (req, res) => {
   const countPets = await missingPets.countDocuments();
   const countVehicles = await missingVehicle.countDocuments();
   const countValuables = await missingValuable.countDocuments();
+  const countCorpses = await corpses.countDocuments();
   res.render("admin/admin-home", {
     countUsers,
     countKids,
@@ -52,7 +57,26 @@ router.get("/", async (req, res) => {
     countPets,
     countVehicles,
     countValuables,
+    countCorpses,
   });
+});
+
+// admin-users
+//
+//
+//
+//
+//
+router.get("/users", async (req, res) => {
+  try {
+    const usersinfo = await users.find().sort({ createddate: "desc" });
+    res.render("admin/users/users-home", {
+      usersinfo: usersinfo,
+    });
+  } catch (error) {
+    console.error("Error:", error);
+    res.status(500).send("An error occurred.");
+  }
 });
 
 // admin-elderly

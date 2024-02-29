@@ -9,13 +9,17 @@ const path = require("path");
 
 router.get("/", async (req, res) => {
   try {
-    const missingvehicleinfo = await missingVehicle
-      .find()
-      .sort({ createddate: "desc" });
-    res.render("user/vehicle/missingvehicle", {
-      vehicleMissing: missingvehicleinfo,
-      session: req.session,
-    });
+    if (!req.session.username) {
+      res.redirect("/signin");
+    } else {
+      const missingvehicleinfo = await missingVehicle
+        .find()
+        .sort({ createddate: "desc" });
+      res.render("user/vehicle/missingvehicle", {
+        vehicleMissing: missingvehicleinfo,
+        session: req.session,
+      });
+    }
   } catch (error) {
     console.error("Error:", error);
     res
@@ -89,16 +93,20 @@ router.post("/missingvehiclepostrequest", async (req, res) => {
 
 router.post("/commentForMissingVehicle", async (req, res) => {
   try {
-    // Assuming req.body contains the necessary data for the new comment
-    const newCommentSaved = await missingVehicleCommentHelper.newComment(
-      req.body
-    );
+    if (!req.session.username) {
+      res.redirect("/signin");
+    } else {
+      // Assuming req.body contains the necessary data for the new comment
+      const newCommentSaved = await missingVehicleCommentHelper.newComment(
+        req.body
+      );
 
-    // Get the postId from the request body
-    const postId = req.body.postId;
+      // Get the postId from the request body
+      const postId = req.body.postId;
 
-    // Redirect back to the original page
-    res.redirect(`/missingvehicle/missingvehiclenewpost/${postId}`);
+      // Redirect back to the original page
+      res.redirect(`/missingvehicle/missingvehiclenewpost/${postId}`);
+    }
   } catch (error) {
     console.error("Error:", error);
     // Respond with an error message

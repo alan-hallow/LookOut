@@ -2,11 +2,11 @@
 
 <div class="containerForAllContentsFromTheFormPage">
   <div class="containerForMissingPersonFormHeading">
-    <h2 class="missingPersonHeading">Report a Missing Person</h2>
+    <h2 class="missingPersonHeading">Report a Missing Elderly</h2>
     <h5 class="missingPersonHeadingTwo">Before you start</h5>
     <p class="missingPersonParagraph">
-      This form is for reporting missing kids. Please use it for the intended
-      purpose only
+      This form is for reporting missing elderlies. Please use it for the
+      intended purpose only
     </p>
   </div>
 
@@ -19,132 +19,148 @@
       >
         <div
           class="containerForFormData"
-          style="display: flex; flex-direction: column"
+          style="
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            place-content: start;
+            place-items: end;
+            gap: 50px;
+          "
         >
-          <div class="containerForImageandLabel">
-            <img
-              class="displayImageContainer"
-              id="output"
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqpH5CFWOqOAXzCxS8VH-hQWbypepc6afzP0D_pwAOEw&s"
-            />
-            <label for="image" class="labelOfImage">Add an image</label>
+          <div
+            class="containerMissingElderlyPostFirstSection"
+            style="display: flex; flex-direction: column"
+          >
+            <div class="containerForImageandLabel">
+              <img
+                class="displayImageContainer"
+                id="output"
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqpH5CFWOqOAXzCxS8VH-hQWbypepc6afzP0D_pwAOEw&s"
+              />
+              <label for="image" class="labelOfImage">Add an image</label>
+              <input
+                type="file"
+                id="image"
+                name="image"
+                class="inputFile"
+                onchange="loadFile(event)"
+              />
+            </div>
+
+            <label for="name">Full name</label>
             <input
-              type="file"
-              id="image"
-              name="image"
-              class="inputFile"
-              onchange="loadFile(event)"
+              class="inputText"
+              type="text"
+              name="name"
+              placeholder="Enter full name"
             />
+
+            <label for="gender">Gender</label>
+            <select class="selector" name="gender">
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="transgender">Transgender</option>
+              <option value="others">Others</option>
+            </select>
+
+            <label for="age">Age</label>
+            <input
+              class="inputNumber"
+              min="60"
+              max="130"
+              type="number"
+              name="age"
+              placeholder="Enter age"
+              required
+            />
+            <label for="date">Date last seen</label>
+            <input class="inputDate" name="date" type="date" />
           </div>
 
-          <label for="name">Full name</label>
-          <input
-            class="inputText"
-            type="text"
-            name="name"
-            placeholder="Enter full name"
-          />
+          <div
+            class="containerMissingElderlyPostSecondSection"
+            style="display: flex; flex-direction: column"
+          >
+            <label for="time">Time last seen</label>
+            <input class="inputTime" name="time" type="time" />
+            <label for="place">Place last seen</label>
+            <input
+              class="inputText"
+              name="place"
+              type="text"
+              placeholder="Enter place"
+            />
+            <label for="height">Height</label>
+            <input
+              class="inputText"
+              name="height"
+              type="text"
+              placeholder="Enter height"
+            />
+            <label for="color">Color</label>
+            <input
+              class="inputText"
+              name="color"
+              type="text"
+              placeholder="Enter color"
+            />
+            <label for="marks">Body marks</label>
+            <input
+              class="inputText"
+              name="marks"
+              type="text"
+              placeholder="Enter body marks"
+            />
+            <label for="religion">Religion</label>
+            <input
+              class="inputText"
+              name="religion"
+              type="text"
+              placeholder="Enter religion"
+            />
+          </div>
+          <div
+            class="containerMissingElderlyPostThirdSection"
+            style="display: flex; flex-direction: column"
+          >
+            <label for="residence">Residence</label>
+            <input
+              class="inputText"
+              name="residence"
+              type="text"
+              placeholder="Enter residence"
+            />
+            <label for="dress">Last outfit</label>
+            <input
+              class="inputText"
+              name="dress"
+              type="text"
+              placeholder="Enter outfit with color"
+            />
+            <label for="reward">Reward</label>
+            <input
+              class="inputNumber"
+              name="reward"
+              type="number"
+              placeholder="Enter reward amout"
+              min="5000"
+            />
 
-          <label for="gender">Gender</label>
-          <select class="selector" name="gender">
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-            <option value="transgender">Transgender</option>
-            <option value="others">Others</option>
-          </select>
+            <label for="additional">Additional information</label>
+            <textarea
+              class="textArea"
+              name="additional"
+              id="additional"
+              cols="30"
+              rows="10"
+              placeholder="Enter additional information"
+            ></textarea>
 
-          <label for="age">Age</label>
-          <input
-            class="inputNumber"
-            min="60"
-            max="130"
-            type="number"
-            name="age"
-            placeholder="Enter age"
-            required
-          />
-
-          <label for="date">Date last seen</label>
-          <input class="inputDate" name="date" type="date" />
-
-          <label for="time">Time last seen</label>
-          <input class="inputTime" name="time" type="time" />
-
-          <label for="place">Place last seen</label>
-          <input
-            class="inputText"
-            name="place"
-            type="text"
-            placeholder="Enter place"
-          />
-          <label for="height">Height</label>
-          <input
-            class="inputText"
-            name="height"
-            type="text"
-            placeholder="Enter height"
-          />
-          <label for="color">Color</label>
-          <input
-            class="inputText"
-            name="color"
-            type="text"
-            placeholder="Enter color"
-          />
-          <label for="marks">Body marks</label>
-          <input
-            class="inputText"
-            name="marks"
-            type="text"
-            placeholder="Enter body marks"
-          />
-          <label for="religion">Religion</label>
-          <input
-            class="inputText"
-            name="religion"
-            type="text"
-            placeholder="Enter religion"
-          />
-
-          <label for="residence">Residence</label>
-          <input
-            class="inputText"
-            name="residence"
-            type="text"
-            placeholder="Enter residence"
-          />
-
-          <label for="dress">Last outfit</label>
-          <input
-            class="inputText"
-            name="dress"
-            type="text"
-            placeholder="Enter outfit with color"
-          />
-
-          <label for="reward">Reward</label>
-          <input
-            class="inputNumber"
-            name="reward"
-            type="number"
-            placeholder="Enter reward amout"
-            min="5000"
-          />
-
-          <label for="additional">Additional information</label>
-          <textarea
-            class="textArea"
-            name="additional"
-            id="additional"
-            cols="30"
-            rows="10"
-            placeholder="Enter additional information"
-          ></textarea>
-
-          <a class="cancelButton" href="#">Cancel</a>
-          <button type="submit" name="submit" class="submitButton">
-            Submit
-          </button>
+            <a class="cancelButton" href="#">Cancel</a>
+            <button type="submit" name="submit" class="submitButton">
+              Submit
+            </button>
+          </div>
         </div>
       </form>
     </div>
@@ -293,7 +309,7 @@
   }
   .cancelButton {
     height: 40px;
-    width: 425px;
+    width: 400px;
     border-radius: 10px;
     border: none;
     font-size: 20px;
@@ -309,14 +325,13 @@
   }
   .submitButton {
     height: 40px;
-    width: 425px;
+    width: 400px;
     border-radius: 10px;
     border: none;
     font-size: 20px;
     color: white;
     background-color: #007aff;
     margin-top: 20px;
-    margin-bottom: 50px;
   }
   .submitButton:hover {
     background-color: #005fc5;

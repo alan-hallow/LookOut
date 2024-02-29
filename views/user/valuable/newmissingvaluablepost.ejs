@@ -2,10 +2,10 @@
 
 <div class="containerForAllContentsFromTheFormPage">
   <div class="containerForMissingPersonFormHeading">
-    <h2 class="missingPersonHeading">Report a Missing Person</h2>
+    <h2 class="missingPersonHeading">Report a Missing Item</h2>
     <h5 class="missingPersonHeadingTwo">Before you start</h5>
     <p class="missingPersonParagraph">
-      This form is for reporting missing kids. Please use it for the intended
+      This form is for reporting missing items. Please use it for the intended
       purpose only
     </p>
   </div>
@@ -37,31 +37,12 @@
             />
           </div>
 
-          <label for="name">Full name</label>
+          <label for="name">Item name</label>
           <input
             class="inputText"
             type="text"
             name="name"
-            placeholder="Enter full name"
-          />
-
-          <label for="gender">Gender</label>
-          <select class="selector" name="gender">
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-            <option value="transgender">Transgender</option>
-            <option value="others">Others</option>
-          </select>
-
-          <label for="age">Age</label>
-          <input
-            class="inputNumber"
-            min="0"
-            max="18"
-            type="number"
-            name="age"
-            placeholder="Enter age"
-            required
+            placeholder="Enter item name"
           />
 
           <label for="date">Date last seen</label>
@@ -70,28 +51,12 @@
           <label for="time">Time last seen</label>
           <input class="inputTime" name="time" type="time" />
 
-          <label for="place">Place last seen</label>
+          <label for="place">Place last used</label>
           <input
             class="inputText"
             name="place"
             type="text"
             placeholder="Enter place"
-          />
-
-          <label for="residence">Residence</label>
-          <input
-            class="inputText"
-            name="residence"
-            type="text"
-            placeholder="Enter residence"
-          />
-
-          <label for="dress">Last outfit</label>
-          <input
-            class="inputText"
-            name="dress"
-            type="text"
-            placeholder="Enter outfit with color"
           />
 
           <label for="reward">Reward</label>
@@ -103,7 +68,16 @@
             min="5000"
           />
 
-          <label for="additional">Additional information</label>
+          <label for="description">Description</label>
+          <textarea
+            class="textArea"
+            name="description"
+            id="additional"
+            cols="30"
+            rows="10"
+            placeholder="Enter description of the item"
+          ></textarea>
+          <label for="extras">Additional information</label>
           <textarea
             class="textArea"
             name="additional"

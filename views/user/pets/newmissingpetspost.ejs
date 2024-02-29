@@ -19,115 +19,135 @@
       >
         <div
           class="containerForFormData"
-          style="display: flex; flex-direction: column"
+          style="
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            place-content: start;
+            place-items: end;
+            gap: 50px;
+          "
         >
-          <div class="containerForImageandLabel">
-            <img
-              class="displayImageContainer"
-              id="output"
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqpH5CFWOqOAXzCxS8VH-hQWbypepc6afzP0D_pwAOEw&s"
-            />
-            <label for="image" class="labelOfImage">Add an image</label>
+          <div
+            class="containerMissingPetsPostFirstSection"
+            style="display: flex; flex-direction: column"
+          >
+            <div class="containerForImageandLabel">
+              <img
+                class="displayImageContainer"
+                id="output"
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqpH5CFWOqOAXzCxS8VH-hQWbypepc6afzP0D_pwAOEw&s"
+              />
+              <label for="image" class="labelOfImage">Add an image</label>
+              <input
+                type="file"
+                id="image"
+                name="image"
+                class="inputFile"
+                onchange="loadFile(event)"
+              />
+            </div>
+
+            <label for="name">Name</label>
             <input
-              type="file"
-              id="image"
-              name="image"
-              class="inputFile"
-              onchange="loadFile(event)"
+              class="inputText"
+              type="text"
+              name="name"
+              placeholder="Enter name"
+            />
+
+            <label for="gender">Gender</label>
+            <select class="selector" name="gender">
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>
+
+            <label for="age">Age</label>
+            <input
+              class="inputNumber"
+              min="0"
+              max="30"
+              type="number"
+              name="age"
+              placeholder="Enter age"
+              required
+            />
+            <label for="breed">Breed</label>
+            <input
+              class="inputText"
+              name="breed"
+              type="text"
+              placeholder="Enter breed"
             />
           </div>
+          <div
+            class="containerMissingPetsPostSecondSection"
+            style="display: flex; flex-direction: column"
+          >
+            <label for="color">Color</label>
+            <input
+              class="inputText"
+              name="color"
+              type="text"
+              placeholder="Enter color"
+            />
 
-          <label for="name">Name</label>
-          <input
-            class="inputText"
-            type="text"
-            name="name"
-            placeholder="Enter name"
-          />
+            <label for="date">Date last seen</label>
+            <input class="inputDate" name="date" type="date" />
 
-          <label for="gender">Gender</label>
-          <select class="selector" name="gender">
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-          </select>
+            <label for="time">Time last seen</label>
+            <input class="inputTime" name="time" type="time" />
 
-          <label for="age">Age</label>
-          <input
-            class="inputNumber"
-            min="0"
-            max="30"
-            type="number"
-            name="age"
-            placeholder="Enter age"
-            required
-          />
-          <label for="breed">Breed</label>
-          <input
-            class="inputText"
-            name="breed"
-            type="text"
-            placeholder="Enter breed"
-          />
-          <label for="color">Color</label>
-          <input
-            class="inputText"
-            name="color"
-            type="text"
-            placeholder="Enter color"
-          />
+            <label for="place">Place last seen</label>
+            <input
+              class="inputText"
+              name="place"
+              type="text"
+              placeholder="Enter place"
+            />
 
-          <label for="date">Date last seen</label>
-          <input class="inputDate" name="date" type="date" />
+            <label for="residence">Residence</label>
+            <input
+              class="inputText"
+              name="residence"
+              type="text"
+              placeholder="Enter residence"
+            />
+          </div>
+          <div
+            class="containerMissingPetsPostThirdSection"
+            style="display: flex; flex-direction: column"
+          >
+            <label for="height">Height</label>
+            <input
+              class="inputText"
+              name="height"
+              type="text"
+              placeholder="Enter height"
+            />
+            <label for="reward">Reward</label>
+            <input
+              class="inputNumber"
+              name="reward"
+              type="number"
+              placeholder="Enter reward amout"
+              min="5000"
+            />
 
-          <label for="time">Time last seen</label>
-          <input class="inputTime" name="time" type="time" />
+            <label for="additional">Additional information</label>
+            <textarea
+              class="textArea"
+              name="additional"
+              id="additional"
+              cols="30"
+              rows="10"
+              placeholder="Enter additional information"
+            ></textarea>
 
-          <label for="place">Place last seen</label>
-          <input
-            class="inputText"
-            name="place"
-            type="text"
-            placeholder="Enter place"
-          />
-
-          <label for="residence">Residence</label>
-          <input
-            class="inputText"
-            name="residence"
-            type="text"
-            placeholder="Enter residence"
-          />
-          <label for="height">Height</label>
-          <input
-            class="inputText"
-            name="height"
-            type="text"
-            placeholder="Enter height"
-          />
-
-          <label for="reward">Reward</label>
-          <input
-            class="inputNumber"
-            name="reward"
-            type="number"
-            placeholder="Enter reward amout"
-            min="5000"
-          />
-
-          <label for="additional">Additional information</label>
-          <textarea
-            class="textArea"
-            name="additional"
-            id="additional"
-            cols="30"
-            rows="10"
-            placeholder="Enter additional information"
-          ></textarea>
-
-          <a class="cancelButton" href="/missingelderly">Cancel</a>
-          <button type="submit" name="submit" class="submitButton">
-            Submit
-          </button>
+            <a class="cancelButton" href="/missingelderly">Cancel</a>
+            <button type="submit" name="submit" class="submitButton">
+              Submit
+            </button>
+          </div>
         </div>
       </form>
     </div>
@@ -181,7 +201,6 @@
     border-radius: 50%;
     aspect-ratio: 1;
     border: solid 2px rgb(164, 164, 164);
-    margin-top: 50px;
   }
   label {
     margin-top: 30px;
@@ -276,7 +295,7 @@
   }
   .cancelButton {
     height: 40px;
-    width: 425px;
+    width: 400px;
     border-radius: 10px;
     border: none;
     font-size: 20px;
@@ -292,14 +311,13 @@
   }
   .submitButton {
     height: 40px;
-    width: 425px;
+    width: 400px;
     border-radius: 10px;
     border: none;
     font-size: 20px;
     color: white;
     background-color: #007aff;
     margin-top: 20px;
-    margin-bottom: 50px;
   }
   .submitButton:hover {
     background-color: #005fc5;

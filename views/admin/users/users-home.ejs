@@ -1,0 +1,95 @@
+<%- include('../layout/admin-layout.ejs') -%>
+
+<div class="containerAdminWholeBodyTable">
+  <div class="containerAdminKidsCardsTitle">
+    <p class="containerAdminKidsCardNameTitle">Name</p>
+    <p class="containerAdminKidsCardAgeTitle">Place</p>
+    <p class="containerAdminKidsCardDateTitle">Phone</p>
+    <p class="containerAdminKidsCardPlaceTitle">email</p>
+  </div>
+
+  <% usersinfo.forEach(users => { %>
+  <a href="/admin/users-display/<%= users.id %>" class="linkAdminKidsCards">
+    <div class="containerAdminKidsCards">
+      <p class="containerAdminKidsCardName"><%= users.name %></p>
+      <p class="containerAdminKidsCardLocation"><%= users.place %></p>
+      <p class="containerAdminKidsCardPhone"><%= users.phone %></p>
+      <p class="containerAdminKidsCardEmail"><%= users.email %></p>
+    </div>
+  </a>
+
+  <% }) %>
+</div>
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=VT323&display=swap");
+  body {
+    background-color: black;
+    color: white;
+    font-family: "VT323", monospace;
+    font-weight: 400;
+    font-style: normal;
+  }
+  .containerAdminWholeBodyTable {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5px;
+    margin: 100px 0;
+  }
+  .containerAdminKidsCards {
+    background-color: #1b1b1b;
+    height: 100px;
+    width: 1200px;
+    border-radius: 20px;
+    display: grid;
+    grid-template-columns: 2fr 3fr 1fr 2fr;
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    place-items: center;
+    place-content: center;
+    font-size: 40px;
+    text-transform: capitalize;
+    cursor: pointer;
+  }
+  .contanierAdminKidsCardImageDiv {
+    height: 90px;
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .adminKidsCardImage {
+    height: 90px;
+  }
+  .containerAdminKidsCardsTitle {
+    background-color: #303030;
+    height: 100px;
+    width: 1200px;
+    border-radius: 20px;
+    display: grid;
+    grid-template-columns: 2fr 3fr 1fr 2fr;
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    place-items: center;
+    place-content: center;
+    font-size: 40px;
+    text-transform: capitalize;
+    margin-bottom: 20px;
+  }
+  .linkAdminKidsCards {
+    color: white;
+    text-decoration: none;
+    user-select: none;
+  }
+  .linkAdminKidsCards:hover {
+    color: white;
+    text-decoration: none;
+    user-select: none;
+  }
+  .containerAdminKidsCardEmail {
+    text-transform: none;
+  }
+</style>
