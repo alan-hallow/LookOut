@@ -48,9 +48,10 @@
             <i class="fa-solid fa-magnifying-glass"></i>
           </div>
           <div class="containerInfoShort containerPhysicalDescription">
-            <h3 class="physicalDescriptionh3">Physical Description</h3>
+            <h3 class="physicalDescriptionh3">Breed and color</h3>
             <p class="physicalDescriptionp">
-              5'4", Brown hair, Hazel eyes, Scar on left hand
+              <%- missingpetsfulldetails.breed %>, <%-
+              missingpetsfulldetails.color %>
             </p>
           </div>
         </div>
@@ -148,6 +149,18 @@
               <%- missingpetsfulldetails.age %>
             </h3>
           </div>
+          <div class="contanerOverlayAllItemsAll containerOverlayBreed">
+            <h3 class="contanerOverlayAllItemsAllh3">Breed</h3>
+            <h3 class="contanerOverlayAllItemsAllh3Amount">
+              <%- missingpetsfulldetails.breed %>
+            </h3>
+          </div>
+          <div class="contanerOverlayAllItemsAll containerOverlayColor">
+            <h3 class="contanerOverlayAllItemsAllh3">Color</h3>
+            <h3 class="contanerOverlayAllItemsAllh3Amount">
+              <%- missingpetsfulldetails.color %>
+            </h3>
+          </div>
           <div class="contanerOverlayAllItemsAll containerOverlayGender">
             <h3 class="contanerOverlayAllItemsAllh3">Gender</h3>
             <h3 class="contanerOverlayAllItemsAllh3Amount">
@@ -174,21 +187,9 @@
           </div>
           <div class="contanerOverlayAllItemsAll containerOverlayHeight">
             <h3 class="contanerOverlayAllItemsAllh3">Height</h3>
-            <h3 class="contanerOverlayAllItemsAllh3Amount">2"3'</h3>
-          </div>
-          <div class="contanerOverlayAllItemsAll containerOverlayColor">
-            <h3 class="contanerOverlayAllItemsAllh3">Color</h3>
-            <h3 class="contanerOverlayAllItemsAllh3Amount">Brown</h3>
-          </div>
-          <div class="contanerOverlayAllItemsAll containerOverlayOutfit">
-            <h3 class="contanerOverlayAllItemsAllh3">Dress</h3>
             <h3 class="contanerOverlayAllItemsAllh3Amount">
-              <%- missingpetsfulldetails.dress %>
+              <%- missingpetsfulldetails.height %>
             </h3>
-          </div>
-          <div class="contanerOverlayAllItemsAll containerOverlayBodyMarks">
-            <h3 class="contanerOverlayAllItemsAllh3">Body Marks</h3>
-            <h3 class="contanerOverlayAllItemsAllh3Amount">Scar on cheeks</h3>
           </div>
         </div>
 

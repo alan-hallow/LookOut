@@ -37,31 +37,43 @@
             />
           </div>
 
-          <label for="name">Full name</label>
+          <label for="name">Name</label>
           <input
             class="inputText"
             type="text"
             name="name"
-            placeholder="Enter full name"
+            placeholder="Enter name"
           />
 
           <label for="gender">Gender</label>
           <select class="selector" name="gender">
             <option value="male">Male</option>
             <option value="female">Female</option>
-            <option value="transgender">Transgender</option>
-            <option value="others">Others</option>
           </select>
 
           <label for="age">Age</label>
           <input
             class="inputNumber"
             min="0"
-            max="18"
+            max="30"
             type="number"
             name="age"
             placeholder="Enter age"
             required
+          />
+          <label for="breed">Breed</label>
+          <input
+            class="inputText"
+            name="breed"
+            type="text"
+            placeholder="Enter breed"
+          />
+          <label for="color">Color</label>
+          <input
+            class="inputText"
+            name="color"
+            type="text"
+            placeholder="Enter color"
           />
 
           <label for="date">Date last seen</label>
@@ -85,13 +97,12 @@
             type="text"
             placeholder="Enter residence"
           />
-
-          <label for="dress">Last outfit</label>
+          <label for="height">Height</label>
           <input
             class="inputText"
-            name="dress"
+            name="height"
             type="text"
-            placeholder="Enter outfit with color"
+            placeholder="Enter height"
           />
 
           <label for="reward">Reward</label>
@@ -113,7 +124,7 @@
             placeholder="Enter additional information"
           ></textarea>
 
-          <a class="cancelButton" href="#">Cancel</a>
+          <a class="cancelButton" href="/missingelderly">Cancel</a>
           <button type="submit" name="submit" class="submitButton">
             Submit
           </button>

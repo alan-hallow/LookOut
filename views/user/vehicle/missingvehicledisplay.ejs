@@ -48,9 +48,10 @@
             <i class="fa-solid fa-magnifying-glass"></i>
           </div>
           <div class="containerInfoShort containerPhysicalDescription">
-            <h3 class="physicalDescriptionh3">Physical Description</h3>
+            <h3 class="physicalDescriptionh3">Brand and model</h3>
             <p class="physicalDescriptionp">
-              5'4", Brown hair, Hazel eyes, Scar on left hand
+              <%- missingvehiclefulldetails.brand %>,<%-
+              missingvehiclefulldetails.model %>
             </p>
           </div>
         </div>
@@ -140,7 +141,10 @@
 
         <div class="containerRestOfTheDetails">
           <div class="contanerOverlayAllItemsAll containerOverlayName">
-            <h2><%- missingvehiclefulldetails.name %></h2>
+            <h2>
+              <%- missingvehiclefulldetails.brand %><%-
+              missingvehiclefulldetails.model %>
+            </h2>
           </div>
           <div class="contanerOverlayAllItemsAll containerOverlayAge">
             <h3 class="contanerOverlayAllItemsAllh3">Age</h3>

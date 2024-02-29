@@ -1,24 +1,32 @@
 const mongoose = require("mongoose");
 
 const missingVehicleSchema = new mongoose.Schema({
-  name: {
+  brand: {
     type: String,
     required: true,
   },
-  gender: {
+  model: {
     type: String,
     required: true,
   },
-  age: {
-    type: Number,
+  year: {
+    type: String,
+    required: true,
+  },
+  fuel: {
+    type: String,
+    required: true,
+  },
+  number: {
+    type: String,
     required: true,
   },
   date: {
-    type: Date, // Corrected
+    type: Date,
     required: true,
   },
   time: {
-    type: String, // Corrected
+    type: String,
     required: true,
   },
   place: {
@@ -26,10 +34,6 @@ const missingVehicleSchema = new mongoose.Schema({
     required: true,
   },
   residence: {
-    type: String,
-    required: true,
-  },
-  dress: {
     type: String,
     required: true,
   },

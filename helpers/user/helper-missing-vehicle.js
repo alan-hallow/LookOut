@@ -8,28 +8,30 @@ module.exports = {
     try {
       // Destructure data from helperMissingKids object
       const {
-        name,
-        gender,
-        age,
+        brand,
+        model,
+        year,
+        fuel,
+        number,
         date,
         time,
         place,
-        residence,
-        dress,
+        residency,
         reward,
         additional,
       } = helperMissingVehicle;
 
       // Create a new missing kid object
       const newMissingVehicle = new missingVehicle({
-        name: name,
-        gender: gender,
-        age: age,
+        brand: brand,
+        model: model,
+        year: year,
+        fuel: fuel,
+        number: number,
         date: date,
         time: time,
         place: place,
-        residence: residence,
-        dress: dress,
+        residency: residency,
         reward: reward,
         additional: additional,
         createddate: new Date(), // Assuming you want to set the creation date automatically

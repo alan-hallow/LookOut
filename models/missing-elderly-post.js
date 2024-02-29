@@ -25,6 +25,22 @@ const missingElderlySchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  height: {
+    type: String,
+    required: true,
+  },
+  color: {
+    type: String,
+    required: true,
+  },
+  marks: {
+    type: String,
+    required: true,
+  },
+  religion: {
+    type: String,
+    required: true,
+  },
   residence: {
     type: String,
     required: true,

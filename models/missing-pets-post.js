@@ -13,6 +13,14 @@ const missingPetsSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
+  breed: {
+    type: String,
+    required: true,
+  },
+  color: {
+    type: String,
+    required: true,
+  },
   date: {
     type: Date, // Corrected
     required: true,
@@ -29,7 +37,7 @@ const missingPetsSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  dress: {
+  height: {
     type: String,
     required: true,
   },
