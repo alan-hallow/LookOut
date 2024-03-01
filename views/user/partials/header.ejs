@@ -26,7 +26,30 @@
         </p>
       </div>
 
-      <div class="containerHeaderProfileExpand">
+      <div
+        class="containerHeaderProfileExpand"
+        style="display: flex; align-items: center; justify-content: center"
+      >
+        <i
+          class="fa-regular fa-bell"
+          id="notificationButton"
+          style="
+            margin-right: 20px;
+            position: absolute;
+            top: 5px;
+            cursor: pointer;
+            font-size: 20px;
+            height: 40px;
+            right: 200px;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            background-color: #012c4142;
+            color: black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          "
+        ></i>
         <p class="containerHeaderProfileName" id="headerProfileName">
           <% if (session && session.username) { %> <%= session.username %> <% }
           else { %> No user Found <% } %>
@@ -50,9 +73,27 @@
     </p>
     <% } %>
   </div>
+  <div class="containerNotificationHeader" id="containerNotificationHeader">
+    <% notification.forEach(notification=>{ %> <% }) %>
+  </div>
 </div>
 
 <style>
+  .containerNotificationHeader {
+    display: none;
+    align-items: start;
+    justify-content: start;
+    position: absolute;
+    right: 100px;
+    top: 50px;
+    background-color: #2f2f2f;
+    border-radius: 0 0 20px 20px;
+    height: 500px;
+    color: #ffffff;
+    padding: 20px;
+    width: 400px;
+    font-size: 20px;
+  }
   .containerWholeHeaderComplete {
     position: fixed;
     width: 100vw;
@@ -109,8 +150,9 @@
     text-decoration: none;
     color: black;
   }
-  .headerContentsCenter:hover {
+  .headerContentsCenter a:hover {
     font-weight: 600;
+    color: #393939;
     cursor: pointer;
   }
   .containerProfileItemsHiddenp {
@@ -160,5 +202,22 @@
       hiddenPartSignUp.style.display === "none"
         ? "rotate(0deg)"
         : "rotate(180deg)";
+  });
+
+  const notificationButton = document.getElementById("notificationButton");
+  const notificationContent = document.getElementById(
+    "containerNotificationHeader"
+  );
+
+  notificationContent.style.display = "none";
+
+  notificationButton.addEventListener("click", () => {
+    // Changed 'onclick' to 'addEventListener'
+
+    if (notificationContent.style.display === "none") {
+      notificationContent.style.display = "flex";
+    } else {
+      notificationContent.style.display = "none";
+    }
   });
 </script>

@@ -108,4 +108,7 @@ router.get("/aboutme", (req, res) => {
   });
 });
 
+router.get("/notification", (req, res) => {
+  res.render("user/notification");
+});
 module.exports = router;
