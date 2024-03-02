@@ -4,19 +4,37 @@ const corpses = require("../../models/corpses-post");
 const corpsesHelper = require("../../helpers/user/helper-corpses");
 const corpsesComment = require("../../models/model-corpses-comment");
 const corpsesCommentHelper = require("../../helpers/user/helper-corpses-comment");
+const usersNotification = require("../../models/admin-model-users-notification");
+const usersNotificationHelper = require("../../helpers/admin/admin-users");
 const fs = require("fs");
 const path = require("path");
 
 router.get("/", async (req, res) => {
-  const corpsinfo = await corpses.find().sort({ createddate: "desc" });
-  res.render("user/corpses/corpses-display", {
-    corpses: corpsinfo,
-    session: req.session,
-  });
+  if (!req.session.username) {
+    res.redirect("/signin");
+  } else {
+    const corpsinfo = await corpses.find().sort({ createddate: "desc" });
+    const userId = req.session.userId;
+
+    const usersNotificationDetails = await usersNotification.find({
+      postId: userId,
+    });
+    res.render("user/corpses/corpses-display", {
+      corpses: corpsinfo,
+      usersNotificationDetails: usersNotificationDetails,
+      session: req.session,
+    });
+  }
 });
 
-router.get("/createCorpsePost", (req, res) => {
+router.get("/createCorpsePost", async (req, res) => {
+  const userId = req.session.userId;
+
+  const usersNotificationDetails = await usersNotification.find({
+    postId: userId,
+  });
   res.render("user/corpses/corpses-add", {
+    usersNotificationDetails: usersNotificationDetails,
     session: req.session,
   });
 });
@@ -24,6 +42,11 @@ router.get("/createCorpsePost", (req, res) => {
 router.get("/corpsesnewpost/:id", async (req, res) => {
   try {
     const postId = req.params.id;
+    const userId = req.session.userId;
+
+    const usersNotificationDetails = await usersNotification.find({
+      postId: userId,
+    });
     // Find all comments associated with the given postId
     const corpsesComments = await corpsesComment.find({ postId });
     const corpsesDetails = await corpses.findById(postId);
@@ -32,6 +55,7 @@ router.get("/corpsesnewpost/:id", async (req, res) => {
     } else {
       res.render("user/corpses/corpses-details", {
         corpsesfulldetails: corpsesDetails,
+        usersNotificationDetails: usersNotificationDetails,
         corpsescomments: corpsesComments, // Pass the comments to the view
         session: req.session,
       });

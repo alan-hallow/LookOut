@@ -33,6 +33,9 @@ const missingValuableCommentHelper = require("../../helpers/user/helper-valuable
 const missingValuableUpdate = require("../../models/admin-model-valuable-update");
 const missingValuableUpdateHelper = require("../../helpers/admin/admin-valuables");
 
+const usersnotifications = require("../../models/admin-model-users-notification");
+const usersNotificationHelper = require("../../helpers/admin/admin-users");
+
 const corpsesComment = require("../../models/model-corpses-comment");
 const corpsesCommentHelper = require("../../helpers/user/helper-corpses-comment");
 
@@ -79,6 +82,43 @@ router.get("/users", async (req, res) => {
   }
 });
 
+router.get("/users-display/:id", async (req, res) => {
+  try {
+    const postId = req.params.id;
+
+    const usersDetails = await users.findById(postId);
+    const usersNotificationDetails = await usersnotifications.find({ postId });
+    if (!usersDetails) {
+      res.redirect("/admin-users");
+    } else {
+      res.render("admin/users/users-display", {
+        usersDetails: usersDetails,
+        usersNotificationDetails: usersNotificationDetails,
+      });
+    }
+  } catch (error) {
+    console.error("Error:", error);
+    res.status(500).send("An error occurred.");
+  }
+});
+
+router.post("/users/notification", async (req, res) => {
+  try {
+    // Assuming req.body contains the necessary data for the new comment
+    const newNotificationSaved = await usersNotificationHelper.newNotification(
+      req.body
+    );
+
+    // Get the postId from the request body
+    const postId = req.body.postId;
+
+    // Redirect back to the original page
+    res.redirect(`/admin/users-display/${postId}`);
+  } catch (error) {
+    console.error("Error:", error);
+    res.status(500).send("An error occurred.");
+  }
+});
 // admin-elderly
 //
 //

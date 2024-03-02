@@ -1,7 +1,7 @@
 <%- include('../layout/layout.ejs') -%>
 
 <img
-  src="/images/LookOut/missing valuable.jpg"
+  src="/images/LookOut/laptop.jpg"
   alt=""
   class="missingKidsMainImage"
   style="width: 100vw"
@@ -11,8 +11,8 @@
   class="containerFirstSectionTitleParagraphMissingKids"
   style="
     position: absolute;
-    top: 250px;
-    left: 100px;
+    top: 150px;
+    right: 100px;
     color: white;
     width: 500px;
     text-align: center;
@@ -23,14 +23,15 @@
     gap: 20px;
   "
 >
-  <h1 style="font-size: 50px">Missing Kids</h1>
+  <h1 style="font-size: 50px">Lost/Stolen valuables</h1>
 
   <p style="font-size: 18px">
-    The disappearance of children is a heart-wrenching reality, leaving families
-    in anguish and communities on high alert. Urgent action is essential,
-    utilizing every available resource to swiftly locate and reunite them with
-    their loved ones. Every moment counts in the effort to bring missing
-    children home safely.
+    The loss or theft of valuables is a distressing ordeal, leaving individuals
+    and families in a state of turmoil and causing communities to remain
+    vigilant. It is crucial to take immediate action, deploying all possible
+    resources to quickly locate and recover the missing valuables. Every passing
+    moment is critical in the endeavor to reunite the owners with their
+    cherished possessions safely.
   </p>
 
   <a
@@ -62,7 +63,8 @@
       margin-top: 100px;
     "
   >
-    <% valuableMissing.forEach(valuable => { %>
+    <% valuableMissing.sort((a, b) => new Date(b.date) - new Date(a.date));
+    valuableMissing.forEach(valuable => { %>
 
     <a href="missingvaluable/missingvaluablenewpost/<%= valuable.id %>">
       <div

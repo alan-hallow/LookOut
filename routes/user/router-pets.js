@@ -4,6 +4,8 @@ const missingPets = require("../../models/missing-pets-post");
 const missingPetsHelper = require("../../helpers/user/helper-missing-pets");
 const missingPetsComment = require("../../models/model-pets-comment");
 const missingPetsCommentHelper = require("../../helpers/user/helper-pets-comment");
+const usersNotification = require("../../models/admin-model-users-notification");
+const usersNotificationHelper = require("../../helpers/admin/admin-users");
 const fs = require("fs");
 const path = require("path");
 
@@ -12,11 +14,17 @@ router.get("/", async (req, res) => {
     if (!req.session.username) {
       res.redirect("/signin");
     } else {
+      const userId = req.session.userId;
+
+      const usersNotificationDetails = await usersNotification.find({
+        postId: userId,
+      });
       const missingpetsinfo = await missingPets
         .find()
         .sort({ createddate: "desc" });
       res.render("user/pets/missingpets", {
         petsMissing: missingpetsinfo,
+        usersNotificationDetails: usersNotificationDetails,
         session: req.session,
       });
     }
@@ -26,15 +34,26 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.get("/createMissingPetsPost", (req, res) => {
+router.get("/createMissingPetsPost", async (req, res) => {
+  const userId = req.session.userId;
+
+  const usersNotificationDetails = await usersNotification.find({
+    postId: userId,
+  });
   res.render("user/pets/newmissingpetspost", {
     session: req.session,
+    usersNotificationDetails: usersNotificationDetails,
   });
 });
 
 router.get("/missingpetsnewpost/:id", async (req, res) => {
   try {
     const postId = req.params.id;
+    const userId = req.session.userId;
+
+    const usersNotificationDetails = await usersNotification.find({
+      postId: userId,
+    });
     // Find all comments associated with the given postId
     const missingPetsComments = await missingPetsComment.find({ postId });
     const missingPetsDetails = await missingPets.findById(postId);
@@ -44,6 +63,7 @@ router.get("/missingpetsnewpost/:id", async (req, res) => {
       res.render("user/pets/missingpetsdisplay", {
         missingpetsfulldetails: missingPetsDetails,
         missingpetscomments: missingPetsComments, // Pass the comments to the view
+        usersNotificationDetails: usersNotificationDetails,
         session: req.session,
       });
     }

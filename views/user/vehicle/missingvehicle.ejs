@@ -1,7 +1,7 @@
 <%- include('../layout/layout.ejs') -%>
 
 <img
-  src="/images/LookOut/missing vehicle.jpg"
+  src="/images/LookOut/vehicle.jpeg"
   alt=""
   class="missingKidsMainImage"
   style="width: 100vw"
@@ -11,8 +11,8 @@
   class="containerFirstSectionTitleParagraphMissingKids"
   style="
     position: absolute;
-    top: 250px;
-    left: 100px;
+    top: 70px;
+    right: 20px;
     color: white;
     width: 500px;
     text-align: center;
@@ -21,16 +21,20 @@
     justify-content: center;
     flex-direction: column;
     gap: 20px;
+    backdrop-filter: blur(30px);
+    border-radius: 20px;
+    background-color: #1d1d1d3c;
+    padding: 20px;
   "
 >
   <h1 style="font-size: 50px">Lost Vehicle</h1>
 
   <p style="font-size: 18px">
-    The disappearance of children is a heart-wrenching reality, leaving families
-    in anguish and communities on high alert. Urgent action is essential,
-    utilizing every available resource to swiftly locate and reunite them with
-    their loved ones. Every moment counts in the effort to bring missing
-    children home safely.
+    The loss or theft of a vehicle is a troubling occurrence, causing
+    significant distress for its owner and raising alarms within the community.
+    It is imperative to respond swiftly, leveraging all available means to
+    locate and recover the vehicle. Every moment is critical in ensuring the
+    safe return of the lost or stolen vehicle to its rightful owner.
   </p>
 
   <a
@@ -62,7 +66,8 @@
       margin-top: 100px;
     "
   >
-    <% vehicleMissing.forEach(vehicle => { %>
+    <% vehicleMissing.sort((a, b) => new Date(b.date) - new Date(a.date));
+    vehicleMissing.forEach(vehicle => { %>
 
     <a href="missingvehicle/missingvehiclenewpost/<%= vehicle.id %>">
       <div

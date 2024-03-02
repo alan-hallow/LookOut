@@ -1,7 +1,7 @@
 <%- include('../layout/layout.ejs') -%>
 
 <img
-  src="/images/LookOut/missing dog.webp"
+  src="/images/LookOut/pets.jpg"
   alt=""
   class="missingKidsMainImage"
   style="width: 100vw"
@@ -23,14 +23,14 @@
     gap: 20px;
   "
 >
-  <h1 style="font-size: 50px">Missing Kids</h1>
+  <h1 style="font-size: 50px">Missing pets</h1>
 
   <p style="font-size: 18px">
-    The disappearance of children is a heart-wrenching reality, leaving families
-    in anguish and communities on high alert. Urgent action is essential,
-    utilizing every available resource to swiftly locate and reunite them with
-    their loved ones. Every moment counts in the effort to bring missing
-    children home safely.
+    The disappearance of pets is a distressing situation, causing great concern
+    for their owners and communities alike. It is crucial to act promptly,
+    mobilizing all possible resources to locate and reunite them with their
+    families. Time is of the essence in ensuring the safe return of missing
+    pets.
   </p>
 
   <a
@@ -62,7 +62,8 @@
       margin-top: 100px;
     "
   >
-    <% petsMissing.forEach(pets => { %>
+    <% petsMissing.sort((a, b) => new Date(b.date) - new Date(a.date));
+    petsMissing.forEach(pets => { %>
 
     <a href="missingpets/missingpetsnewpost/<%= pets.id %>">
       <div

@@ -4,6 +4,8 @@ const missingVehicle = require("../../models/missing-vehicle-post");
 const missingVehicleHelper = require("../../helpers/user/helper-missing-vehicle");
 const missingVehicleComment = require("../../models/model-vehicle-comment");
 const missingVehicleCommentHelper = require("../../helpers/user/helper-vehicle-comment");
+const usersNotification = require("../../models/admin-model-users-notification");
+const usersNotificationHelper = require("../../helpers/admin/admin-users");
 const fs = require("fs");
 const path = require("path");
 
@@ -12,11 +14,17 @@ router.get("/", async (req, res) => {
     if (!req.session.username) {
       res.redirect("/signin");
     } else {
+      const userId = req.session.userId;
+
+      const usersNotificationDetails = await usersNotification.find({
+        postId: userId,
+      });
       const missingvehicleinfo = await missingVehicle
         .find()
         .sort({ createddate: "desc" });
       res.render("user/vehicle/missingvehicle", {
         vehicleMissing: missingvehicleinfo,
+        usersNotificationDetails: usersNotificationDetails,
         session: req.session,
       });
     }
@@ -28,15 +36,26 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.get("/createMissingVehiclePost", (req, res) => {
+router.get("/createMissingVehiclePost", async (req, res) => {
+  const userId = req.session.userId;
+
+  const usersNotificationDetails = await usersNotification.find({
+    postId: userId,
+  });
   res.render("user/vehicle/newmissingvehiclepost", {
     session: req.session,
+    usersNotificationDetails: usersNotificationDetails,
   });
 });
 
 router.get("/missingvehiclenewpost/:id", async (req, res) => {
   try {
     const postId = req.params.id;
+    const userId = req.session.userId;
+
+    const usersNotificationDetails = await usersNotification.find({
+      postId: userId,
+    });
     // Find all comments associated with the given postId
     const missingVehicleComments = await missingVehicleComment.find({ postId });
     const missingVehicleDetails = await missingVehicle.findById(req.params.id);
@@ -46,6 +65,7 @@ router.get("/missingvehiclenewpost/:id", async (req, res) => {
       res.render("user/vehicle/missingvehicledisplay", {
         missingvehiclefulldetails: missingVehicleDetails,
         missingvehiclecomments: missingVehicleComments, // Pass the comments to the view
+        usersNotificationDetails: usersNotificationDetails,
         session: req.session,
       });
     }

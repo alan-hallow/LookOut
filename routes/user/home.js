@@ -7,32 +7,60 @@ const missingVehicle = require("../../models/missing-vehicle-post");
 
 const userDataHelper = require("./../../helpers/user/helper-signup");
 
+const usersNotification = require("../../models/admin-model-users-notification");
+const usersNotificationHelper = require("../../helpers/admin/admin-users");
+
 const users = require("../../models/models-signup");
 const router = express.Router();
 const bcrypt = require("bcrypt");
 const session = require("express-session");
 
-router.get("/", (req, res) => {
+//
+//
+router.get("/", async (req, res) => {
   const username = req.session.username;
-  res.render("user/home", {
-    body: "hello",
-    username: username,
-    session: req.session,
-  }); // Render the home template with the username retrieved from the session
+  const userId = req.session.userId;
+
+  const usersNotificationDetails = await usersNotification.find({
+    postId: userId,
+  });
+  try {
+    res.render("user/home", {
+      username: username,
+      usersNotificationDetails: usersNotificationDetails,
+      session: req.session,
+    }); // Render the home template with the username retrieved from the session
+  } catch (error) {
+    console.error("Error fetching users' notification details:", error);
+    // Handle the error appropriately, e.g., sending an error response or rendering an error page
+    res.status(500).send("Internal Server Error");
+  }
 });
 
-router.get("/signup", (req, res) => {
+router.get("/signup", async (req, res) => {
+  const userId = req.session.userId;
+
+  const usersNotificationDetails = await usersNotification.find({
+    postId: userId,
+  });
   res.render("user/signup", {
     session: req.session,
+    usersNotificationDetails: usersNotificationDetails,
   });
 });
 
-router.get("/signin", (req, res) => {
+router.get("/signin", async (req, res) => {
+  const userId = req.session.userId;
+
+  const usersNotificationDetails = await usersNotification.find({
+    postId: userId,
+  });
   const passwordError = req.query.data === "passwordError"; // Check if the query parameter 'data' is 'passwordError'
   const emailError = req.query.data === "emailNotFound"; // Check if the query parameter 'data' is 'emailNotFound'
   res.render("user/signin", {
     errorMessage: { passwordError, emailError },
     session: req.session,
+    usersNotificationDetails: usersNotificationDetails,
   }); // Render the signin template initially
 });
 
@@ -67,6 +95,7 @@ router.post("/userSignIn", async (req, res) => {
           if (result) {
             // Passwords match, proceed with login
             // Assign session variables with values from the retrieved user object
+            req.session.userId = userEmail._id;
             req.session.useremail = userEmail.email;
             req.session.username = userEmail.name;
             req.session.userphone = userEmail.phone;
@@ -102,13 +131,28 @@ router.get("/logout", (req, res) => {
   });
 });
 
-router.get("/aboutme", (req, res) => {
+router.get("/aboutme", async (req, res) => {
+  const userId = req.session.userId;
+
+  const usersNotificationDetails = await usersNotification.find({
+    postId: userId,
+  });
   res.render("user/about", {
     session: req.session,
+    usersNotificationDetails: usersNotificationDetails,
   });
 });
 
-router.get("/notification", (req, res) => {
-  res.render("user/notification");
+router.get("/FAQ", async (req, res) => {
+  const userId = req.session.userId;
+
+  const usersNotificationDetails = await usersNotification.find({
+    postId: userId,
+  });
+  res.render("user/FAQ", {
+    session: req.session,
+    usersNotificationDetails: usersNotificationDetails,
+  });
 });
+
 module.exports = router;

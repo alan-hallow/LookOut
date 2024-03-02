@@ -62,7 +62,8 @@
       margin-top: 100px;
     "
   >
-    <% elderlyMissing.forEach(elderly => { %>
+    <% elderlyMissing.sort((a, b) => new Date(b.date) - new Date(a.date));
+    elderlyMissing.forEach(elderly => { %>
 
     <a href="missingelderly/missingelderlynewpost/<%= elderly.id %>">
       <div

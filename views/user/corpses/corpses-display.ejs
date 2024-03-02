@@ -28,7 +28,8 @@
     "
     >Create a new post</a
   >
-  <% corpses.forEach(corpse => { %>
+  <% corpses.sort((a, b) => new Date(b.date) - new Date(a.date));
+  corpses.forEach(corpse => { %>
 
   <a href="corpses/corpsesnewpost/<%= corpse.id %>">
     <div

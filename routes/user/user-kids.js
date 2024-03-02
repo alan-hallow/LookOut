@@ -6,6 +6,8 @@ const missingKidsComment = require("../../models/model-kids-comment");
 const missingKidCommentHelper = require("../../helpers/user/helper-kid-comment");
 const missingKidsUpdate = require("../../models/admin-model-kids-update");
 const missingKidUpdateHelper = require("../../helpers/admin/admin-kids");
+const usersNotification = require("../../models/admin-model-users-notification");
+const usersNotificationHelper = require("../../helpers/admin/admin-users");
 const fs = require("fs");
 const path = require("path");
 
@@ -14,12 +16,18 @@ router.get("/", async (req, res) => {
     if (!req.session.username) {
       res.redirect("/signin");
     } else {
+      const userId = req.session.userId;
+
+      const usersNotificationDetails = await usersNotification.find({
+        postId: userId,
+      });
       const username = req.session.username;
       const missingkidsinfo = await missingKids
         .find()
         .sort({ createddate: "desc" });
       res.render("user/kids/missingkids", {
         childMissing: missingkidsinfo,
+        usersNotificationDetails: usersNotificationDetails,
         session: req.session,
       });
     }
@@ -29,15 +37,26 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.get("/createMissingKidPost", (req, res) => {
+router.get("/createMissingKidPost", async (req, res) => {
+  const userId = req.session.userId;
+
+  const usersNotificationDetails = await usersNotification.find({
+    postId: userId,
+  });
   res.render("user/kids/newmissingkidpost", {
     session: req.session,
+    usersNotificationDetails: usersNotificationDetails,
   });
 });
 
 router.get("/missingkidnewpost/:id", async (req, res) => {
   try {
     const postId = req.params.id;
+    const userId = req.session.userId;
+
+    const usersNotificationDetails = await usersNotification.find({
+      postId: userId,
+    });
 
     const missingKidUpdates = await missingKidsUpdate.find({ postId });
     // Find all comments associated with the given postId
@@ -51,6 +70,7 @@ router.get("/missingkidnewpost/:id", async (req, res) => {
         missingkidsfulldetails: missingKidDetails,
         missingKidUpdates: missingKidUpdates, // Pass the comments to the view
         missingkidcomments: missingKidComments, // Pass the comments to the view
+        usersNotificationDetails: usersNotificationDetails,
         session: req.session,
       });
     }

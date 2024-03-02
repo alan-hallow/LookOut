@@ -4,6 +4,8 @@ const missingElderlyHelper = require("../../helpers/user/helper-missing-elderly"
 const missingElderlyComment = require("../../models/model-elderly-comment");
 const missingElderlyCommentHelper = require("../../helpers/user/helper-elderly-comment");
 const missingElderlyUpdate = require("../../models/admin-model-elderly-update");
+const usersNotification = require("../../models/admin-model-users-notification");
+const usersNotificationHelper = require("../../helpers/admin/admin-users");
 const router = express.Router();
 const fs = require("fs");
 const path = require("path");
@@ -13,17 +15,17 @@ router.get("/", async (req, res) => {
     if (!req.session.username) {
       res.redirect("/signin");
     } else {
-      console.log(
-        req.session.username,
-        req.session.useremail,
-        req.session.userphone,
-        req.session.userplace
-      );
+      const userId = req.session.userId;
+
+      const usersNotificationDetails = await usersNotification.find({
+        postId: userId,
+      });
       const missingelderlyinfo = await missingElderly
         .find()
         .sort({ createddate: "desc" });
       res.render("user/elderly/missingelderly", {
         elderlyMissing: missingelderlyinfo,
+        usersNotificationDetails: usersNotificationDetails,
         session: req.session,
       });
     }
@@ -35,15 +37,26 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.get("/createMissingElderlyPost", (req, res) => {
+router.get("/createMissingElderlyPost", async (req, res) => {
+  const userId = req.session.userId;
+
+  const usersNotificationDetails = await usersNotification.find({
+    postId: userId,
+  });
   res.render("user/elderly/newmissingelderlypost", {
     session: req.session,
+    usersNotificationDetails: usersNotificationDetails,
   });
 });
 
 router.get("/missingelderlynewpost/:id", async (req, res) => {
   try {
     const postId = req.params.id;
+    const userId = req.session.userId;
+
+    const usersNotificationDetails = await usersNotification.find({
+      postId: userId,
+    });
     // Find all comments associated with the given postId
     const missingElderlyUpdates = await missingElderlyUpdate.find({ postId });
     const missingElderlyComments = await missingElderlyComment.find({ postId });
@@ -55,6 +68,7 @@ router.get("/missingelderlynewpost/:id", async (req, res) => {
         missingelderlyfulldetails: missingElderlyDetails,
         missingElderlyUpdates: missingElderlyUpdates, // Pass the comments to the view
         missingelderlycomments: missingElderlyComments, // Pass the comments to the view
+        usersNotificationDetails: usersNotificationDetails,
         session: req.session,
       });
     }

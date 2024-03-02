@@ -1,7 +1,7 @@
 <div class="containerWholeHeaderComplete">
   <header>
     <div class="containerWholeHeader">
-      <p class="websiteMainTitle">Look Out</p>
+      <a href="/" class="websiteMainTitle">Look Out</a>
       <div class="containerHeaderContentsWhole">
         <p class="headerContentsCenter containerHomeHeader">
           <a href="/">Home</a>
@@ -43,11 +43,11 @@
             right: 200px;
             aspect-ratio: 1;
             border-radius: 50%;
-            background-color: #012c4142;
             color: black;
             display: flex;
             align-items: center;
             justify-content: center;
+            transition: 0.3s;
           "
         ></i>
         <p class="containerHeaderProfileName" id="headerProfileName">
@@ -73,12 +73,98 @@
     </p>
     <% } %>
   </div>
-  <div class="containerNotificationHeader" id="containerNotificationHeader">
-    <% notification.forEach(notification=>{ %> <% }) %>
+  <div
+    class="containerNotificationHeader"
+    id="containerNotificationHeader"
+    style="
+      display: flex;
+      align-items: start;
+      justify-content: start;
+      flex-direction: column;
+      overflow-x: hidden;
+      overflow-y: scroll;
+      padding: 0;
+      margin: 0;
+    "
+  >
+    <% if (usersNotificationDetails && usersNotificationDetails.length > 0) { %>
+    <% // Sort the notifications based on the createddate in descending order
+    usersNotificationDetails.sort((a, b) => new Date(b.createddate) - new
+    Date(a.createddate)); // Loop through the sorted notifications
+    usersNotificationDetails.forEach(notification => { %>
+    <div
+      class="containerEachNotification"
+      style="
+        width: 500px;
+        padding: 10px 20px;
+        display: flex;
+        align-items: start;
+        justify-content: center;
+        flex-direction: column;
+        margin-top: 10px;
+        font-size: 20px;
+      "
+    >
+      <p class="notificationContent" style="margin: 0; padding: 0">
+        <%- notification.notification %>
+      </p>
+      <p
+        class="notificationDate"
+        style="margin: 0; padding: 0; font-size: 15px"
+      >
+        <%- notification.createddate.toLocaleDateString() %>
+      </p>
+    </div>
+    <% }) %> <% } else { %>
+    <!-- Handle case where usersNotificationDetails is null or empty -->
+    <div
+      class="containerNoNotification"
+      style="
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 30px;
+        height: 500px;
+        width: 500px;
+        font-size: 30px;
+      "
+    >
+      <p>No notifications available.</p>
+      <% if (session && session.username) { %>
+      <p></p>
+      <% } else { %>
+
+      <a
+        href="/signin"
+        class="notificationSignInButton"
+        style="
+          height: 50px;
+          width: 300px;
+          background-color: #007aff;
+          border-radius: 10px;
+          color: #fff;
+          font-size: 20px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          text-decoration: none;
+        "
+        >Sign In</a
+      >
+      <% } %>
+    </div>
+    <% } %>
   </div>
 </div>
 
 <style>
+  #notificationButton:hover {
+    background-color: #012c4142;
+  }
+  .containerEachNotification:hover {
+    background-color: #393939;
+  }
   .containerNotificationHeader {
     display: none;
     align-items: start;
@@ -91,7 +177,7 @@
     height: 500px;
     color: #ffffff;
     padding: 20px;
-    width: 400px;
+    width: 500px;
     font-size: 20px;
   }
   .containerWholeHeaderComplete {
@@ -101,9 +187,20 @@
     z-index: 1000;
     top: 0;
   }
+  .containerHeaderProfileExpand p {
+    margin: 0;
+  }
   .websiteMainTitle {
     font-size: 20px;
     font-weight: 600;
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    transition: 0.3s;
+    margin: 0;
+    padding: 0;
+  }
+  .websiteMainTitle:hover {
+    color: black;
   }
 
   .containerWholeHeader {
@@ -112,7 +209,7 @@
     justify-content: space-between;
     height: 50px;
     background-color: #c5c5c59c;
-    padding: 15px 50px 0 50px;
+    padding: 0 50px 0 50px;
   }
   .containerHeaderContentsWhole {
     display: flex;
@@ -146,13 +243,19 @@
     right: 50px;
     top: 50px;
   }
+  .headerContentsCenter {
+    margin: 0;
+  }
   .headerContentsCenter a {
+    text-decoration: none;
+    transition: 0.3s ease-in-out;
     text-decoration: none;
     color: black;
   }
   .headerContentsCenter a:hover {
     font-weight: 600;
-    color: #393939;
+    color: #181818;
+    font-size: 20px;
     cursor: pointer;
   }
   .containerProfileItemsHiddenp {
@@ -204,6 +307,17 @@
         : "rotate(180deg)";
   });
 
+  // Add click event listener to the document
+  document.addEventListener("click", (event) => {
+    // Check if the click event target is outside of the notification button and its content
+    if (
+      !name.contains(event.target) &&
+      !hiddenPartSignUp.contains(event.target)
+    ) {
+      hiddenPartSignUp.style.display = "none";
+    }
+  });
+
   const notificationButton = document.getElementById("notificationButton");
   const notificationContent = document.getElementById(
     "containerNotificationHeader"
@@ -217,6 +331,16 @@
     if (notificationContent.style.display === "none") {
       notificationContent.style.display = "flex";
     } else {
+      notificationContent.style.display = "none";
+    }
+  });
+  // Add click event listener to the document
+  document.addEventListener("click", (event) => {
+    // Check if the click event target is outside of the notification button and its content
+    if (
+      !notificationButton.contains(event.target) &&
+      !notificationContent.contains(event.target)
+    ) {
       notificationContent.style.display = "none";
     }
   });

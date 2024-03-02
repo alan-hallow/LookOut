@@ -4,6 +4,8 @@ const missingValuable = require("../../models/missing-valuable-post");
 const missingValuableHelper = require("../../helpers/user/helper-missing-valuable");
 const missingValuableComment = require("../../models/model-valuable-comment");
 const missingValuableCommentHelper = require("../../helpers/user/helper-valuable-comment");
+const usersNotification = require("../../models/admin-model-users-notification");
+const usersNotificationHelper = require("../../helpers/admin/admin-users");
 const fs = require("fs");
 const path = require("path");
 
@@ -12,11 +14,17 @@ router.get("/", async (req, res) => {
     if (!req.session.username) {
       res.redirect("/signin");
     } else {
+      const userId = req.session.userId;
+
+      const usersNotificationDetails = await usersNotification.find({
+        postId: userId,
+      });
       const missingvaluableinfo = await missingValuable
         .find()
         .sort({ createddate: "desc" });
       res.render("user/valuable/missingvaluable", {
         valuableMissing: missingvaluableinfo,
+        usersNotificationDetails: usersNotificationDetails,
         session: req.session,
       });
     }
@@ -28,15 +36,26 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.get("/createMissingValuablePost", (req, res) => {
+router.get("/createMissingValuablePost", async (req, res) => {
+  const userId = req.session.userId;
+
+  const usersNotificationDetails = await usersNotification.find({
+    postId: userId,
+  });
   res.render("user/valuable/newmissingvaluablepost", {
     session: req.session,
+    usersNotificationDetails: usersNotificationDetails,
   });
 });
 
 router.get("/missingvaluablenewpost/:id", async (req, res) => {
   try {
     const postId = req.params.id;
+    const userId = req.session.userId;
+
+    const usersNotificationDetails = await usersNotification.find({
+      postId: userId,
+    });
     // Find all comments associated with the given postId
     const missingValuableComments = await missingValuableComment.find({
       postId,
@@ -50,6 +69,7 @@ router.get("/missingvaluablenewpost/:id", async (req, res) => {
       res.render("user/valuable/missingvaluabledisplay", {
         missingvaluablefulldetails: missingValuableDetails,
         missingvaluablecomments: missingValuableComments, // Pass the comments to the view
+        usersNotificationDetails: usersNotificationDetails,
         session: req.session,
       });
     }
