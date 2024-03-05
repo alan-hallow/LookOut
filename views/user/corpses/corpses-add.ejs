@@ -2,11 +2,11 @@
 
 <div class="containerForAllContentsFromTheFormPage">
   <div class="containerForMissingPersonFormHeading">
-    <h2 class="missingPersonHeading">Report a Missing Person</h2>
+    <h2 class="missingPersonHeading">Report a corpse</h2>
     <h5 class="missingPersonHeadingTwo">Before you start</h5>
     <p class="missingPersonParagraph">
-      This form is for reporting missing kids. Please use it for the intended
-      purpose only
+      This form is for reporting unclaimed corpses. Please use it for the
+      intended purpose only
     </p>
   </div>
 
@@ -37,70 +37,71 @@
             />
           </div>
 
-          <label for="name">Full name</label>
-          <input
-            class="inputText"
-            type="text"
-            name="name"
-            placeholder="Enter full name"
-          />
-
           <label for="gender">Gender</label>
           <select class="selector" name="gender">
             <option value="male">Male</option>
             <option value="female">Female</option>
-            <option value="transgender">Transgender</option>
-            <option value="others">Others</option>
           </select>
 
-          <label for="age">Age</label>
+          <label for="age">Approximate age</label>
           <input
             class="inputNumber"
             min="0"
-            max="18"
+            max="130"
             type="number"
             name="age"
             placeholder="Enter age"
             required
           />
 
-          <label for="date">Date last seen</label>
+          <label for="date">Date the body is found</label>
           <input class="inputDate" name="date" type="date" />
 
-          <label for="time">Time last seen</label>
+          <label for="time">Time the body is found</label>
           <input class="inputTime" name="time" type="time" />
 
-          <label for="place">Place last seen</label>
+          <label for="place">Place the body is found</label>
           <input
             class="inputText"
             name="place"
             type="text"
             placeholder="Enter place"
           />
-
-          <label for="residence">Residence</label>
+          <label for="color">Color</label>
           <input
             class="inputText"
-            name="residence"
+            name="color"
             type="text"
-            placeholder="Enter residence"
+            placeholder="Enter color"
+          />
+          <label for="dress">height</label>
+          <input
+            class="inputText"
+            name="height"
+            type="text"
+            placeholder="Enter height"
+          />
+          <label for="dress">Eye color</label>
+          <input
+            class="inputText"
+            name="eye"
+            type="text"
+            placeholder="Enter eye color"
+          />
+          <label for="dress">Body marks</label>
+          <input
+            class="inputText"
+            name="marks"
+            type="text"
+            placeholder="Enter body marks"
           />
 
-          <label for="dress">Last outfit</label>
+          <label for="dress">Dress wearing</label>
           <input
             class="inputText"
             name="dress"
             type="text"
             placeholder="Enter outfit with color"
-          />
-
-          <label for="reward">Reward</label>
-          <input
-            class="inputNumber"
-            name="reward"
-            type="number"
-            placeholder="Enter reward amout"
-            min="5000"
           />
 
           <label for="additional">Additional information</label>
@@ -199,7 +200,7 @@
   }
   .inputText {
     height: 50px;
-    width: 400px;
+    width: 500px;
     border-radius: 8px;
     border: solid 2px rgb(150, 150, 150);
     padding: 0 10px;
@@ -209,7 +210,7 @@
   }
   .inputDate {
     height: 50px;
-    width: 400px;
+    width: 500px;
     border-radius: 8px;
     border: solid 2px rgb(150, 150, 150);
     padding: 0 10px;
@@ -219,7 +220,7 @@
   }
   .inputTime {
     height: 50px;
-    width: 400px;
+    width: 500px;
     border-radius: 8px;
     border: solid 2px rgb(150, 150, 150);
     font-size: 15px;
@@ -229,7 +230,7 @@
   }
   .selector {
     height: 55px;
-    width: 400px;
+    width: 500px;
     border-radius: 8px;
     border: solid 2px rgb(150, 150, 150);
     padding: 0 10px;
@@ -244,7 +245,7 @@
   }
   .inputNumber {
     height: 50px;
-    width: 400px;
+    width: 500px;
     border-radius: 8px;
     border: solid 2px rgb(150, 150, 150);
     padding: 0 10px;
@@ -254,7 +255,7 @@
   }
   .textArea {
     height: 150px;
-    width: 400px;
+    width: 500px;
     font-size: 15px;
     border-radius: 8px;
     border: solid 2px rgb(150, 150, 150);
@@ -265,7 +266,7 @@
   }
   .cancelButton {
     height: 40px;
-    width: 425px;
+    width: 500px;
     border-radius: 10px;
     border: none;
     font-size: 20px;
@@ -281,7 +282,7 @@
   }
   .submitButton {
     height: 40px;
-    width: 425px;
+    width: 500px;
     border-radius: 10px;
     border: none;
     font-size: 20px;

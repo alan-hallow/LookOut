@@ -1,10 +1,6 @@
 const mongoose = require("mongoose");
 
 const corpsesSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: true,
-  },
   gender: {
     type: String,
     required: true,
@@ -25,16 +21,24 @@ const corpsesSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  residence: {
+  color: {
+    type: String,
+    required: true,
+  },
+  height: {
+    type: String,
+    required: true,
+  },
+  eye: {
+    type: String,
+    required: true,
+  },
+  marks: {
     type: String,
     required: true,
   },
   dress: {
     type: String,
-    required: true,
-  },
-  reward: {
-    type: Number,
     required: true,
   },
   additional: {

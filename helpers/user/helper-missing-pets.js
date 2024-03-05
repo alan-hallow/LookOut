@@ -33,7 +33,6 @@ module.exports = {
         time: time,
         place: place,
         residence: residence,
-        dress: dress,
         height: height,
         reward: reward,
         additional: additional,

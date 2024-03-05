@@ -9,29 +9,31 @@ module.exports = {
     try {
       // Destructure data from helperMissingKids object
       const {
-        name,
         gender,
         age,
         date,
         time,
         place,
-        residence,
+        color,
+        height,
+        eye,
+        marks,
         dress,
-        reward,
         additional,
       } = helperCorpses;
 
       // Create a new missing kid object
       const newCorpse = new corpses({
-        name: name,
         gender: gender,
         age: age,
         date: date,
         time: time,
         place: place,
-        residence: residence,
+        color: color,
+        height: height,
+        eye: eye,
+        marks: marks,
         dress: dress,
-        reward: reward,
         additional: additional,
         createddate: new Date(), // Assuming you want to set the creation date automatically
       });
