@@ -2,8 +2,8 @@
 
 <div class="containerAdminWholeBodyTable">
   <div class="containerAdminKidsCardsTitle">
-    <p class="containerAdminKidsCardNameTitle">Name</p>
-    <p class="containerAdminKidsCardAgeTitle">Age</p>
+    <p class="containerAdminKidsCardNameTitle">Brand</p>
+    <p class="containerAdminKidsCardAgeTitle">Model</p>
     <p class="containerAdminKidsCardDateTitle">Date</p>
     <p class="containerAdminKidsCardPlaceTitle">Place</p>
     <div class="contanierAdminKidsCardImageTitle">Image</div>
@@ -12,15 +12,15 @@
   <% vehicleMissing.forEach(vehicle => { %>
   <a href="/admin/vehicle-display/<%= vehicle.id %>" class="linkAdminKidsCards">
     <div class="containerAdminKidsCards">
-      <p class="containerAdminKidsCardName"><%= vehicle.name %></p>
-      <p class="containerAdminKidsCardAge"><%= vehicle.age %></p>
+      <p class="containerAdminKidsCardName"><%= vehicle.brand %></p>
+      <p class="containerAdminKidsCardAge"><%= vehicle.model %></p>
       <p class="containerAdminKidsCardDate">
         <%= vehicle.date.toLocaleDateString() %>
       </p>
       <p class="containerAdminKidsCardPlace"><%= vehicle.place %></p>
       <div class="contanierAdminKidsCardImageDiv">
         <img
-          src="images/missingvehicle/<%= vehicle.id %>.jpg"
+          src="/images/missingvehicle/<%= vehicle.id %>.jpg"
           class="adminKidsCardImage"
           alt=""
         />
@@ -52,7 +52,7 @@
     width: 1200px;
     border-radius: 20px;
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr 2fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr;
     grid-column-gap: 0px;
     grid-row-gap: 0px;
@@ -78,7 +78,7 @@
     width: 1200px;
     border-radius: 20px;
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr 2fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr;
     grid-column-gap: 0px;
     grid-row-gap: 0px;
@@ -89,6 +89,11 @@
     margin-bottom: 20px;
   }
   .linkAdminKidsCards {
+    color: white;
+    text-decoration: none;
+    user-select: none;
+  }
+  .linkAdminKidsCards:hover {
     color: white;
     text-decoration: none;
     user-select: none;

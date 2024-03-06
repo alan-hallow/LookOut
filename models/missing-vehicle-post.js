@@ -33,7 +33,7 @@ const missingVehicleSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  residence: {
+  residency: {
     type: String,
     required: true,
   },

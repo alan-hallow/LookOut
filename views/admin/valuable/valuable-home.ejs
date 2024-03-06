@@ -3,7 +3,6 @@
 <div class="containerAdminWholeBodyTable">
   <div class="containerAdminKidsCardsTitle">
     <p class="containerAdminKidsCardNameTitle">Name</p>
-    <p class="containerAdminKidsCardAgeTitle">Age</p>
     <p class="containerAdminKidsCardDateTitle">Date</p>
     <p class="containerAdminKidsCardPlaceTitle">Place</p>
     <div class="contanierAdminKidsCardImageTitle">Image</div>
@@ -16,14 +15,13 @@
   >
     <div class="containerAdminKidsCards">
       <p class="containerAdminKidsCardName"><%= valuable.name %></p>
-      <p class="containerAdminKidsCardAge"><%= valuable.age %></p>
       <p class="containerAdminKidsCardDate">
         <%= valuable.date.toLocaleDateString() %>
       </p>
       <p class="containerAdminKidsCardPlace"><%= valuable.place %></p>
       <div class="contanierAdminKidsCardImageDiv">
         <img
-          src="images/missingvaluable/<%= valuable.id %>.jpg"
+          src="/images/missingvaluable/<%= valuable.id %>.jpg"
           class="adminKidsCardImage"
           alt=""
         />
@@ -55,7 +53,7 @@
     width: 1200px;
     border-radius: 20px;
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr 2fr 1fr;
+    grid-template-columns: 2fr 1fr 2fr 1fr;
     grid-template-rows: 1fr;
     grid-column-gap: 0px;
     grid-row-gap: 0px;
@@ -81,7 +79,7 @@
     width: 1200px;
     border-radius: 20px;
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr 2fr 1fr;
+    grid-template-columns: 2fr 1fr 2fr 1fr;
     grid-template-rows: 1fr;
     grid-column-gap: 0px;
     grid-row-gap: 0px;
@@ -92,6 +90,11 @@
     margin-bottom: 20px;
   }
   .linkAdminKidsCards {
+    color: white;
+    text-decoration: none;
+    user-select: none;
+  }
+  .linkAdminKidsCards:hover {
     color: white;
     text-decoration: none;
     user-select: none;
