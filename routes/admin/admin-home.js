@@ -6,7 +6,7 @@ const missingElderly = require("../../models/missing-elderly-post");
 const missingPets = require("../../models/missing-pets-post");
 const missingValuable = require("../../models/missing-valuable-post");
 const missingVehicle = require("../../models/missing-vehicle-post");
-const corpses = require("../../models/corpses-post");
+const corpse = require("../../models/corpses-post");
 
 const missingKidsComment = require("../../models/model-kids-comment");
 const missingKidCommentHelper = require("../../helpers/user/helper-kid-comment");
@@ -415,6 +415,24 @@ router.post("/valuable/newUpdate", async (req, res) => {
   } catch (error) {
     console.error("Error:", error);
     res.status(500).send("An error occurred.");
+  }
+});
+
+// admin-corpse
+//
+//
+//
+//
+//
+router.get("/admin-corpse", async (req, res) => {
+  try {
+    const corpseinfo = await corpse.find().sort({ createddate: "desc" });
+    res.render("admin/corpses/corpses-home", {
+      corpses: corpseinfo,
+    });
+  } catch (error) {
+    console.error("Error:", error);
+    res.status(500).send("An error occurred");
   }
 });
 module.exports = router;

@@ -74,19 +74,19 @@
     <% } %>
   </div>
   <div
-    class="containerNotificationHeader"
-    id="containerNotificationHeader"
+    class="containerWholeNotificationCard"
+    id="containerWholeNotificationCard"
     style="
-      display: flex;
-      align-items: start;
-      justify-content: start;
-      flex-direction: column;
-      overflow-x: hidden;
-      overflow-y: scroll;
-      padding: 0;
-      margin: 0;
+      position: absolute;
+      height: 100vh;
+      width: 100vw;
+      z-index: 100;
+      backdrop-filter: blur(20px) brightness(50%);
+      display: none;
+      transition: 0.2s;
     "
-  >
+  ></div>
+  <div class="containerNotificationHeader" id="containerNotificationHeader">
     <% if (usersNotificationDetails && usersNotificationDetails.length > 0) { %>
     <% // Sort the notifications based on the createddate in descending order
     usersNotificationDetails.sort((a, b) => new Date(b.createddate) - new
@@ -163,23 +163,27 @@
     background-color: #012c4142;
   }
   .containerEachNotification:hover {
-    background-color: #393939;
+    background-color: #d8d8d8;
   }
   .containerNotificationHeader {
     display: none;
-    align-items: start;
+    align-items: center;
     justify-content: start;
+    flex-direction: column;
     position: absolute;
-    right: 100px;
-    top: 50px;
-    background-color: #2f2f2f;
-    border-radius: 0 0 20px 20px;
+    top: 150px;
+    left: 518px;
+    background-color: #ffffffc6;
+    color: #000000;
+    border-radius: 20px;
     height: 500px;
-    color: #ffffff;
-    padding: 20px;
     width: 500px;
     font-size: 20px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    z-index: 1000;
   }
+
   .containerWholeHeaderComplete {
     position: fixed;
     width: 100vw;
@@ -326,16 +330,24 @@
   const notificationContent = document.getElementById(
     "containerNotificationHeader"
   );
+  const notificationBackground = document.getElementById(
+    "containerWholeNotificationCard"
+  );
 
   notificationContent.style.display = "none";
+  notificationBackground.style.display = "none";
 
   notificationButton.addEventListener("click", () => {
     // Changed 'onclick' to 'addEventListener'
 
     if (notificationContent.style.display === "none") {
       notificationContent.style.display = "flex";
+      notificationBackground.style.display = "flex";
+      document.body.style.overflow = "hidden";
     } else {
       notificationContent.style.display = "none";
+      notificationBackground.style.display = "none";
+      document.body.style.overflow = "scroll";
     }
   });
   // Add click event listener to the document
@@ -346,6 +358,8 @@
       !notificationContent.contains(event.target)
     ) {
       notificationContent.style.display = "none";
+      notificationBackground.style.display = "none";
+      document.body.style.overflow = "scroll";
     }
   });
 </script>

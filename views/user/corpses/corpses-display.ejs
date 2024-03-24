@@ -28,64 +28,83 @@
     "
     >Create a new post</a
   >
-  <% corpses.sort((a, b) => new Date(b.date) - new Date(a.date));
-  corpses.forEach(corpse => { %>
+  <div
+    class="containerAllCorpsesCards"
+    style="
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 100px;
+    "
+  >
+    <% corpses.sort((a, b) => new Date(b.date) - new Date(a.date));
+    corpses.forEach(corpse => { %>
 
-  <a href="corpses/corpsesnewpost/<%= corpse.id %>">
-    <div
-      class="containerMissingKidsCards"
-      style="
-        height: 600px;
-        width: 500px;
-        background-color: wheat;
-        border-radius: 20px;
-        overflow: hidden;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      "
-    >
-      <img
-        src="images/corpses/<%= corpse.id %>.jpg"
-        alt=""
-        style="
-          height: auto;
-          border-radius: 20px;
-          min-height: 600px;
-          min-width: 500px;
-          max-height: 600px;
-          max-width: 500px;
-        "
-      />
+    <a href="corpses/corpsesnewpost/<%= corpse.id %>">
       <div
-        class="containerCardOverlayTitle"
+        class="containerMissingKidsCards"
         style="
-          position: absolute;
           height: 600px;
           width: 500px;
+          background-color: wheat;
           border-radius: 20px;
-          background-image: linear-gradient(
-            to top,
-            black,
-            #0000004c,
-            #ffffff00,
-            #ffffff00
-          );
+          overflow: hidden;
           display: flex;
-          align-items: flex-end;
+          align-items: center;
           justify-content: center;
-          color: white;
-          font-size: 40px;
-          padding-bottom: 30px;
         "
       >
-        <h4 style="font-size: 40px"><%= corpse.place %>&nbsp;</h4>
-        <h4 style="font-size: 40px">| <%= corpse.age %></h4>
+        <img
+          src="images/corpses/<%= corpse.id %>.jpg"
+          alt=""
+          style="
+            height: auto;
+            border-radius: 20px;
+            min-height: 600px;
+            min-width: 500px;
+            max-height: 600px;
+            max-width: 500px;
+          "
+        />
+        <div
+          class="containerCardOverlayTitle"
+          style="
+            position: absolute;
+            height: 600px;
+            width: 500px;
+            border-radius: 20px;
+            background-image: linear-gradient(
+              to top,
+              black,
+              #0000004c,
+              #ffffff00,
+              #ffffff00
+            );
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            color: white;
+            font-size: 40px;
+            padding-bottom: 30px;
+          "
+        >
+          <h4 style="font-size: 40px"><%= corpse.place %>&nbsp;</h4>
+          <h4 style="font-size: 40px">| <%= corpse.age %></h4>
+        </div>
       </div>
-    </div>
-  </a>
+    </a>
 
-  <% }) %>
+    <% }) %>
+  </div>
 </div>
+
+<style>
+  body {
+    background-color: #1d1d1d;
+    color: white;
+  }
+</style>
 
 <%- include('../partials/footer.ejs')-%>
