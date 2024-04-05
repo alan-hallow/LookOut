@@ -11,10 +11,11 @@
   "
 >
   <div class="containerUsersName">
-    <h1 class="UsersNameTitle">Name</h1>
+    <h1 class="UsersNameTitle" style="opacity: 0.5">Name</h1>
     <h1
       class="UsersName"
       style="
+        background-color: #00000040;
         height: 70px;
         width: 500px;
         border: 2px solid #2c2c2c;
@@ -28,10 +29,11 @@
     </h1>
   </div>
   <div class="containerUsersEmail">
-    <h1 class="UsersEmailTitle">Email</h1>
+    <h1 class="UsersEmailTitle" style="opacity: 0.5">Email</h1>
     <h1
       class="UsersEmail"
       style="
+        background-color: #00000040;
         height: 70px;
         width: 500px;
         border: 2px solid #2c2c2c;
@@ -45,10 +47,11 @@
     </h1>
   </div>
   <div class="containerUsersPhone">
-    <h1 class="UsersPhoneTitle">Phone</h1>
+    <h1 class="UsersPhoneTitle" style="opacity: 0.5">Phone</h1>
     <h1
       class="UsersPhone"
       style="
+        background-color: #00000040;
         height: 70px;
         width: 500px;
         border: 2px solid #2c2c2c;
@@ -62,10 +65,11 @@
     </h1>
   </div>
   <div class="containerUsersPlace">
-    <h1 class="UsersPlaceTitle">Place</h1>
+    <h1 class="UsersPlaceTitle" style="opacity: 0.5">Place</h1>
     <h1
       class="UsersPlace"
       style="
+        background-color: #00000040;
         height: 70px;
         width: 500px;
         border: 2px solid #2c2c2c;
@@ -91,7 +95,7 @@
       margin-bottom: 50px;
     "
   >
-    <h1 class="notificationForUser">
+    <h1 class="notificationForUser" style="opacity: 0.3">
       Messages/Notification for <%- usersDetails.name %>
     </h1>
     <form action="/admin/users/notification" method="post">
@@ -122,7 +126,7 @@
             resize: vertical;
             border-radius: 10px;
             outline: none;
-            background-color: black;
+            background-color: rgba(0, 0, 0, 0.268);
             color: white;
             font-size: 30px;
             padding: 10px;
@@ -182,7 +186,12 @@
 
   <style>
     body {
-      background-color: black;
+      background: rgb(2, 0, 36);
+      background: radial-gradient(
+        circle,
+        rgba(2, 0, 36, 1) 0%,
+        rgba(0, 0, 0, 1) 100%
+      );
       color: white;
     }
   </style>

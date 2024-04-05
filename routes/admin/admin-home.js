@@ -52,7 +52,7 @@ router.get("/", async (req, res) => {
   const countPets = await missingPets.countDocuments();
   const countVehicles = await missingVehicle.countDocuments();
   const countValuables = await missingValuable.countDocuments();
-  const countCorpses = await corpses.countDocuments();
+  const countCorpses = await corpse.countDocuments();
   res.render("admin/admin-home", {
     countUsers,
     countKids,

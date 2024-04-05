@@ -1,7 +1,7 @@
 <%- include('layout/layout.ejs') -%>
 <div class="containerWholeHomePage">
   <img
-    src="/images/LookOut/LookOut HeaderImage.png"
+    src="/images/LookOut/LookOut HeaderImage NoBG.png"
     alt=""
     class="homePageFirstSectionImage"
   />
@@ -118,6 +118,7 @@
 
 <style>
   @import url("https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap");
+  @import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
   body {
     background-color: #1d1d1d;
     margin: 0;
@@ -149,32 +150,44 @@
   }
   .homePageFirstSectionImage {
     width: 100vw;
+    height: 100vh;
+    background-image: linear-gradient(to top, black, transparent, transparent);
+    user-select: none;
   }
   .containerFirstSectionTitle {
     position: absolute;
     top: 300px;
     left: 50px;
     color: white;
-    width: 800px;
+    width: 900px;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    gap: 50px;
   }
 
   @import url("https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&display=swap");
   .firstSecitonTitleH1 {
-    font-size: 150px;
+    font-size: 100px;
     text-align: center;
-    font-family: "Kode Mono", monospace;
-    font-optical-sizing: auto;
-    color: transparent;
-    font-weight: 700;
+
+    font-family: "Press Start 2P", system-ui;
+    font-weight: 400;
     font-style: normal;
-    -webkit-text-stroke: 3px white;
+    color: white;
+    text-shadow: 5px 5px 20px #aeff00;
+    transition: 0.5s;
+    z-index: -1;
+    user-select: none;
   }
+
   .firstSectionParagraphP {
     text-align: center;
+    opacity: 0.5;
+    text-shadow: 5px 5px 20px #3300ff;
+    z-index: 100;
+    user-select: none;
   }
 
   /* second section */
@@ -365,4 +378,15 @@
   }
 </style>
 
+<script>
+  function preventBack() {
+    window.history.forward();
+  }
+
+  setTimeout("preventBack()", 0);
+
+  window.onunload = function () {
+    null;
+  };
+</script>
 <%- include('partials/footer.ejs') -%>

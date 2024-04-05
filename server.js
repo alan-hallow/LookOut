@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const fileUpload = require("express-fileupload");
 const session = require("express-session");
+// const nocache = require("nocache");
 
 const app = express();
 
@@ -14,6 +15,28 @@ app.use(
   })
 );
 
+// //  noCache Begins
+
+// app.set("etag", false);
+
+// app.use((req, res, next) => {
+//   res.set("Cache-Control", "no-store");
+//   next();
+// });
+
+// app.disable("view cache");
+
+// app.use(function (req, res, next) {
+//   if (!req.user) {
+//     res.header("Cache-Control", "private, no-cache, no-store, must-revalidate");
+//     res.header("Expires", "-1");
+//     res.header("Pragma", "no-cache");
+//   }
+//   next();
+// });
+
+// // noCache ends
+
 app.use(fileUpload());
 
 //static files
@@ -24,6 +47,12 @@ app.use(
     extended: true,
   })
 );
+
+// Middleware function to set Cache-Control header
+function setNoCache(req, res, next) {
+  res.setHeader("Cache-Control", "no-store");
+  next();
+}
 
 // Set view engine as EJS
 app.set("view engine", "ejs");

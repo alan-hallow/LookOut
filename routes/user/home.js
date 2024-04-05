@@ -78,7 +78,13 @@ router.post("/userSignup", async (req, res) => {
 router.post("/userSignIn", async (req, res) => {
   try {
     if (req.body.email == "admin" && req.body.password == "admin123") {
-      res.redirect("/admin");
+      // res.redirect("/signin");
+      res.send(`
+      <script>
+        window.open('http://localhost:3000/admin', '_blank');
+        window.location.replace('/signin');
+      </script>
+      `);
     } else {
       const userEmail = await users.findOne({ email: req.body.email });
 

@@ -17,6 +17,7 @@
     "express-session": "^1.18.0",
     "fs": "^0.0.1-security",
     "mongoose": "^8.1.1",
+    "nocache": "^4.0.0",
     "path": "^0.12.7"
   },
   "devDependencies": {
