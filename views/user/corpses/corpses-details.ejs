@@ -31,18 +31,7 @@
             </p>
           </div>
         </div>
-        <div class="containerLocationResidence">
-          <div class="squareForicons">
-            <i class="fa-solid fa-house-chimney"></i>
-          </div>
 
-          <div class="containerInfoShort containerResidenceH3P">
-            <h3 class="residenceH3">Residence</h3>
-            <p class="residenceP">
-              Living in <%- corpsesfulldetails.residence %>
-            </p>
-          </div>
-        </div>
         <div class="containerPhysicalDescriptionBox">
           <div class="squareForicons">
             <i class="fa-solid fa-magnifying-glass"></i>
@@ -63,7 +52,7 @@
           <div class="containerInfoShort containerDateTime">
             <h3 class="dateTimeh3">Date & Time</h3>
             <p class="dateTimep">
-              Last seen at <%- corpsesfulldetails.time %> on <%-
+              <%- corpsesfulldetails.time %> , <%-
               corpsesfulldetails.date.toLocaleDateString() %>
             </p>
           </div>
@@ -74,54 +63,6 @@
         <button class="seeAllButtonDetails" id="seeAllButtonDetailsButton">
           View full details
         </button>
-      </div>
-
-      <div class="containerComments">
-        <h2>Comments</h2>
-        <form
-          action="/corpses/commentForCorpses"
-          method="post"
-          class="commentsForm"
-        >
-          <input
-            type="text"
-            value="<%- corpsesfulldetails.id %>"
-            name="postId"
-            required
-            style="display: none"
-          />
-          <input
-            type="text"
-            value="<%= session.username %>"
-            name="name"
-            required
-            style="display: none"
-          />
-          <textarea
-            name="comment"
-            class="commentBox"
-            placeholder="Add a comment..."
-            required
-          ></textarea>
-
-          <button type="submit" class="submitButtonForm">
-            <i class="fa-solid fa-paper-plane"></i>
-          </button>
-        </form>
-
-        <div class="containerAllComments">
-          <% corpsescomments.forEach(comment=> { %>
-          <div class="containerAddedComments">
-            <div class="containerCommentTitleDate">
-              <h2 class="commentTitle"><%- comment.name %></h2>
-              <p class="commentDate">
-                <%- comment.createddate.toLocaleDateString() %>
-              </p>
-            </div>
-            <p class="commentSubject"><%- comment.comment %></p>
-          </div>
-          <% }); %>
-        </div>
       </div>
     </div>
 
@@ -218,13 +159,52 @@
   </div>
 
   <div class="containerMissingKidsDisplayRightSide">
-    <div class="containerForRightSideTitle">
-      <h2 class="missingKidsRightSideTitle">Update from our team</h2>
-    </div>
+    <div class="containerComments">
+      <h2>Comments</h2>
+      <form
+        action="/corpses/commentForCorpses"
+        method="post"
+        class="commentsForm"
+      >
+        <input
+          type="text"
+          value="<%- corpsesfulldetails.id %>"
+          name="postId"
+          required
+          style="display: none"
+        />
+        <input
+          type="text"
+          value="<%= session.username %>"
+          name="name"
+          required
+          style="display: none"
+        />
+        <textarea
+          name="comment"
+          class="commentBox"
+          placeholder="Add a comment..."
+          required
+        ></textarea>
 
-    <div class="containerUpdatesFromTeam">
-      <p class="updateFromTeamDate">08/08/2024</p>
-      <h4 class="updateFromTeamContent">case opened</h4>
+        <button type="submit" class="submitButtonForm">
+          <i class="fa-solid fa-paper-plane"></i>
+        </button>
+      </form>
+
+      <div class="containerAllComments">
+        <% corpsescomments.forEach(comment=> { %>
+        <div class="containerAddedComments">
+          <div class="containerCommentTitleDate">
+            <h2 class="commentTitle"><%- comment.name %></h2>
+            <p class="commentDate">
+              <%- comment.createddate.toLocaleDateString() %>
+            </p>
+          </div>
+          <p class="commentSubject"><%- comment.comment %></p>
+        </div>
+        <% }); %>
+      </div>
     </div>
   </div>
 </div>

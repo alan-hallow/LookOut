@@ -14,9 +14,9 @@
         </div>
         <div class="containerNameAge">
           <h3 style="text-transform: capitalize">
-            <%- missingvehiclefulldetails.name %>
+            <%- missingvehiclefulldetails.brand %>
           </h3>
-          <p>, <%- missingvehiclefulldetails.age %></p>
+          <p>, <%- missingvehiclefulldetails.model %></p>
         </div>
       </div>
       <div class="containerInfoIconCardsFull">
@@ -135,78 +135,80 @@
               src="/images/missingvehicle/<%= missingvehiclefulldetails.id %>.jpg"
               alt=""
               class="containerOverlayImageImage"
+              style="max-width: 500px"
             />
           </div>
         </div>
 
         <div class="containerRestOfTheDetails">
-          <div class="contanerOverlayAllItemsAll containerOverlayName">
-            <h2>
-              <%- missingvehiclefulldetails.brand %><%-
-              missingvehiclefulldetails.model %>
-            </h2>
-          </div>
-          <div class="contanerOverlayAllItemsAll containerOverlayAge">
-            <h3 class="contanerOverlayAllItemsAllh3">Age</h3>
-            <h3 class="contanerOverlayAllItemsAllh3Amount">
-              <%- missingvehiclefulldetails.age %>
-            </h3>
-          </div>
-          <div class="contanerOverlayAllItemsAll containerOverlayGender">
-            <h3 class="contanerOverlayAllItemsAllh3">Gender</h3>
-            <h3 class="contanerOverlayAllItemsAllh3Amount">
-              <%- missingvehiclefulldetails.gender %>
-            </h3>
-          </div>
-          <div class="contanerOverlayAllItemsAll containerOverlayDate">
-            <h3 class="contanerOverlayAllItemsAllh3">Date</h3>
-            <h3 class="contanerOverlayAllItemsAllh3Amount">
-              <%- missingvehiclefulldetails.date.toLocaleDateString() %>
-            </h3>
-          </div>
-          <div class="contanerOverlayAllItemsAll containerOverlayPlace">
-            <h3 class="contanerOverlayAllItemsAllh3">Place</h3>
-            <h3 class="contanerOverlayAllItemsAllh3Amount">
-              <%- missingvehiclefulldetails.place %>
-            </h3>
-          </div>
-          <div class="contanerOverlayAllItemsAll containerOverlayResidence">
-            <h3 class="contanerOverlayAllItemsAllh3">Residence</h3>
-            <h3 class="contanerOverlayAllItemsAllh3Amount">
-              <%- missingvehiclefulldetails.residence %>
-            </h3>
-          </div>
-          <div class="contanerOverlayAllItemsAll containerOverlayHeight">
-            <h3 class="contanerOverlayAllItemsAllh3">Height</h3>
-            <h3 class="contanerOverlayAllItemsAllh3Amount">2"3'</h3>
-          </div>
-          <div class="contanerOverlayAllItemsAll containerOverlayColor">
-            <h3 class="contanerOverlayAllItemsAllh3">Color</h3>
-            <h3 class="contanerOverlayAllItemsAllh3Amount">Brown</h3>
-          </div>
-          <div class="contanerOverlayAllItemsAll containerOverlayOutfit">
-            <h3 class="contanerOverlayAllItemsAllh3">Dress</h3>
-            <h3 class="contanerOverlayAllItemsAllh3Amount">
-              <%- missingvehiclefulldetails.dress %>
-            </h3>
-          </div>
-          <div class="contanerOverlayAllItemsAll containerOverlayBodyMarks">
-            <h3 class="contanerOverlayAllItemsAllh3">Body Marks</h3>
-            <h3 class="contanerOverlayAllItemsAllh3Amount">Scar on cheeks</h3>
-          </div>
-        </div>
-
-        <div class="containerOverlayCloseButtonDescription">
           <div
-            class="containerCloseButtonOverlay"
-            id="containerCloseButtonOverlay"
+            class="containerRestOfTheDetailsLeftSection"
+            style="height: 500px; width: 350px"
           >
-            <i class="containerCloseButtonOverlayButton fa-solid fa-xmark"></i>
+            <div class="contanerOverlayAllItemsAll containerOverlayName">
+              <h2>
+                <%- missingvehiclefulldetails.brand %><%-
+                missingvehiclefulldetails.model %>
+              </h2>
+            </div>
+            <div class="contanerOverlayAllItemsAll containerOverlayAge">
+              <h3 class="contanerOverlayAllItemsAllh3">Year</h3>
+              <h3 class="contanerOverlayAllItemsAllh3Amount">
+                <%- missingvehiclefulldetails.year %>
+              </h3>
+            </div>
+            <div class="contanerOverlayAllItemsAll containerOverlayGender">
+              <h3 class="contanerOverlayAllItemsAllh3">Fuel type</h3>
+              <h3 class="contanerOverlayAllItemsAllh3Amount">
+                <%- missingvehiclefulldetails.fuel %>
+              </h3>
+            </div>
+            <div class="contanerOverlayAllItemsAll containerOverlayGender">
+              <h3 class="contanerOverlayAllItemsAllh3">Number</h3>
+              <h3 class="contanerOverlayAllItemsAllh3Amount">
+                <%- missingvehiclefulldetails.number %>
+              </h3>
+            </div>
+            <div class="contanerOverlayAllItemsAll containerOverlayDate">
+              <h3 class="contanerOverlayAllItemsAllh3">Date</h3>
+              <h3 class="contanerOverlayAllItemsAllh3Amount">
+                <%- missingvehiclefulldetails.date.toLocaleDateString() %>
+              </h3>
+            </div>
+            <div class="contanerOverlayAllItemsAll containerOverlayPlace">
+              <h3 class="contanerOverlayAllItemsAllh3">Place</h3>
+              <h3 class="contanerOverlayAllItemsAllh3Amount">
+                <%- missingvehiclefulldetails.place %>
+              </h3>
+            </div>
+            <div class="contanerOverlayAllItemsAll containerOverlayResidence">
+              <h3 class="contanerOverlayAllItemsAllh3">Residence</h3>
+              <h3 class="contanerOverlayAllItemsAllh3Amount">
+                <%- missingvehiclefulldetails.residence %>
+              </h3>
+              <div class="contanerOverlayAllItemsAll containerOverlayReward">
+                <h3 class="contanerOverlayAllItemsAllh3">Reward</h3>
+                <h3 class="contanerOverlayAllItemsAllh3Amount">
+                  Rs.<%- missingvehiclefulldetails.reward %>
+                </h3>
+              </div>
+            </div>
           </div>
 
-          <div class="containerOverlayDescription">
-            <h3>Description</h3>
-            <p><%- missingvehiclefulldetails.additional %></p>
+          <div class="containerOverlayCloseButtonDescription">
+            <div
+              class="containerCloseButtonOverlay"
+              id="containerCloseButtonOverlay"
+            >
+              <i
+                class="containerCloseButtonOverlayButton fa-solid fa-xmark"
+              ></i>
+            </div>
+
+            <div class="containerOverlayDescription">
+              <h3>Description</h3>
+              <p><%- missingvehiclefulldetails.additional %></p>
+            </div>
           </div>
         </div>
       </div>
@@ -268,19 +270,18 @@
   }
   .containerOverlayCloseButtonDescription {
     display: flex;
-    align-items: center;
+    align-items: start;
     justify-content: center;
     flex-direction: column;
-    width: 500px;
+    width: 400px;
   }
   .containerOverlayAge {
     margin-top: 30px;
   }
   .containerRestOfTheDetails {
     display: flex;
-    flex-direction: column;
+    align-items: start;
     gap: 10px;
-    width: 400px;
   }
   .contanerOverlayAllItemsAll {
     display: flex;
@@ -404,6 +405,7 @@
   }
   .containerImage {
     height: 200px;
+    max-width: 200px;
     aspect-ratio: 1;
     border-radius: 50%;
     overflow: hidden;
