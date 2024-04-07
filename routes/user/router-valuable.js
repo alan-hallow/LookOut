@@ -4,6 +4,7 @@ const missingValuable = require("../../models/missing-valuable-post");
 const missingValuableHelper = require("../../helpers/user/helper-missing-valuable");
 const missingValuableComment = require("../../models/model-valuable-comment");
 const missingValuableCommentHelper = require("../../helpers/user/helper-valuable-comment");
+const missingValuableUpdate = require("../../models/admin-model-valuable-update");
 const usersNotification = require("../../models/admin-model-users-notification");
 const usersNotificationHelper = require("../../helpers/admin/admin-users");
 const fs = require("fs");
@@ -56,6 +57,7 @@ router.get("/missingvaluablenewpost/:id", async (req, res) => {
     const usersNotificationDetails = await usersNotification.find({
       postId: userId,
     });
+    const missingValuableUpdates = await missingValuableUpdate.find({ postId });
     // Find all comments associated with the given postId
     const missingValuableComments = await missingValuableComment.find({
       postId,
@@ -68,6 +70,7 @@ router.get("/missingvaluablenewpost/:id", async (req, res) => {
     } else {
       res.render("user/valuable/missingvaluabledisplay", {
         missingvaluablefulldetails: missingValuableDetails,
+        missingValuableUpdates: missingValuableUpdates, // Pass the comments to the view
         missingvaluablecomments: missingValuableComments, // Pass the comments to the view
         usersNotificationDetails: usersNotificationDetails,
         session: req.session,

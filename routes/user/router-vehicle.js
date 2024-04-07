@@ -4,6 +4,7 @@ const missingVehicle = require("../../models/missing-vehicle-post");
 const missingVehicleHelper = require("../../helpers/user/helper-missing-vehicle");
 const missingVehicleComment = require("../../models/model-vehicle-comment");
 const missingVehicleCommentHelper = require("../../helpers/user/helper-vehicle-comment");
+const missingVehicleUpdate = require("../../models/admin-model-vehicle-update");
 const usersNotification = require("../../models/admin-model-users-notification");
 const usersNotificationHelper = require("../../helpers/admin/admin-users");
 const fs = require("fs");
@@ -58,6 +59,7 @@ router.get("/missingvehiclenewpost/:id", async (req, res) => {
     });
     // Find all comments associated with the given postId
     const missingVehicleComments = await missingVehicleComment.find({ postId });
+    const missingVehicleUpdates = await missingVehicleUpdate.find({ postId });
     const missingVehicleDetails = await missingVehicle.findById(req.params.id);
     if (!missingVehicleDetails) {
       res.redirect("/");
@@ -65,6 +67,7 @@ router.get("/missingvehiclenewpost/:id", async (req, res) => {
       res.render("user/vehicle/missingvehicledisplay", {
         missingvehiclefulldetails: missingVehicleDetails,
         missingvehiclecomments: missingVehicleComments, // Pass the comments to the view
+        missingVehicleUpdates: missingVehicleUpdates, // Pass the comments to the view
         usersNotificationDetails: usersNotificationDetails,
         session: req.session,
       });

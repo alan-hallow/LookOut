@@ -3,6 +3,7 @@ const router = express.Router();
 const missingPets = require("../../models/missing-pets-post");
 const missingPetsHelper = require("../../helpers/user/helper-missing-pets");
 const missingPetsComment = require("../../models/model-pets-comment");
+const missingPetsUpdate = require("../../models/admin-model-pets-update");
 const missingPetsCommentHelper = require("../../helpers/user/helper-pets-comment");
 const usersNotification = require("../../models/admin-model-users-notification");
 const usersNotificationHelper = require("../../helpers/admin/admin-users");
@@ -56,12 +57,14 @@ router.get("/missingpetsnewpost/:id", async (req, res) => {
     });
     // Find all comments associated with the given postId
     const missingPetsComments = await missingPetsComment.find({ postId });
+    const missingPetsUpdates = await missingPetsUpdate.find({ postId });
     const missingPetsDetails = await missingPets.findById(postId);
     if (!missingPetsDetails) {
       res.redirect("/");
     } else {
       res.render("user/pets/missingpetsdisplay", {
         missingpetsfulldetails: missingPetsDetails,
+        missingPetsUpdates: missingPetsUpdates, // Pass the comments to the view
         missingpetscomments: missingPetsComments, // Pass the comments to the view
         usersNotificationDetails: usersNotificationDetails,
         session: req.session,

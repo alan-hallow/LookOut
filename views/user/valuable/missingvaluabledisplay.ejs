@@ -168,10 +168,15 @@
       <h2 class="missingKidsRightSideTitle">Update from our team</h2>
     </div>
 
+    <% missingValuableUpdates.forEach(update=> { %>
     <div class="containerUpdatesFromTeam">
-      <p class="updateFromTeamDate">08/03/2024</p>
-      <h4 class="updateFromTeamContent">case opened</h4>
+      <p class="updateFromTeamDate">
+        <%- update.createddate.toLocaleDateString() %>
+      </p>
+      <h4 class="updateFromTeamContent"><%- update.update %></h4>
     </div>
+
+    <% }); %>
   </div>
 </div>
 <style>

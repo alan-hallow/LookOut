@@ -31,12 +31,16 @@
   <div
     class="containerAllCorpsesCards"
     style="
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 10px;
+      display: grid;
+      grid-template-columns: repeat(3, 300px);
+      grid-template-rows: auto;
+      gap: 20px;
+      width: 100vw;
+      margin-left: auto;
+      margin-right: auto;
       margin-top: 100px;
+      place-content: center;
+      align-items: center;
     "
   >
     <% corpses.sort((a, b) => new Date(b.date) - new Date(a.date));
@@ -46,10 +50,10 @@
       <div
         class="containerMissingKidsCards"
         style="
-          height: 600px;
-          width: 500px;
+          height: 400px;
+          width: 300px;
           background-color: wheat;
-          border-radius: 20px;
+          border-radius: 10px;
           overflow: hidden;
           display: flex;
           align-items: center;
@@ -59,39 +63,33 @@
         <img
           src="images/corpses/<%= corpse.id %>.jpg"
           alt=""
-          style="
-            height: auto;
-            border-radius: 20px;
-            min-height: 600px;
-            min-width: 500px;
-            max-height: 600px;
-            max-width: 500px;
-          "
+          style="height: 400px"
         />
         <div
           class="containerCardOverlayTitle"
           style="
             position: absolute;
-            height: 600px;
-            width: 500px;
-            border-radius: 20px;
+            height: 400px;
+            width: 300px;
+            border-radius: 9px;
             background-image: linear-gradient(
               to top,
-              black,
-              #0000004c,
-              #ffffff00,
-              #ffffff00
+              #000000d0,
+              transparent,
+              transparent
             );
             display: flex;
             align-items: flex-end;
             justify-content: center;
             color: white;
             font-size: 40px;
-            padding-bottom: 30px;
+            padding-bottom: 10px;
           "
         >
-          <h4 style="font-size: 40px"><%= corpse.place %>&nbsp;</h4>
-          <h4 style="font-size: 40px">| <%= corpse.age %></h4>
+          <h4 style="font-size: 20px; text-transform: uppercase">
+            <%= corpse.place %>&nbsp;
+          </h4>
+          <h4 style="font-size: 20px">| <%= corpse.age %></h4>
         </div>
       </div>
     </a>
