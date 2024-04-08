@@ -6,16 +6,279 @@
     <title>Document</title>
   </head>
   <body>
+    <div
+      class="containerWholeMissingPersonAddPageDarkMode"
+      style="
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 30px;
+      "
+    >
+      <div
+        class="addMissingPersonDarkTitle"
+        style="
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-direction: column;
+          margin-top: 100px;
+        "
+      >
+        <h1 class="DarkModeTitle" style="font-size: 50px">
+          Add a missing person
+        </h1>
+        <p style="padding: 0; margin: 0; width: 500px; text-align: center">
+          BEFORE YOU START: This form is for reporting missing kids, so please
+          use it for the intended purpose only.
+        </p>
+      </div>
+      <div class="containerMissingPersonDarkFormComplete">
+        <section>
+          <div class="formContainer">
+            <form
+              action="/missingkids/missingkidspostrequest"
+              method="POST"
+              enctype="multipart/form-data"
+              style="
+                display: flexl;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+              "
+            >
+              <div class="containerForFormData">
+                <div class="containerNewMissingKidFirstSection">
+                  <div
+                    class="containerMissingPersonDarkImageFull"
+                    style="
+                      height: 300px;
+                      width: 700px;
+                      background-color: #001219;
+                      border-radius: 10px;
+                      border: 2px dashed white;
+                      margin-top: 20px;
+                      margin-bottom: 50px;
+                    "
+                  >
+                    <img
+                      class="displayImageContainer"
+                      id="output"
+                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqpH5CFWOqOAXzCxS8VH-hQWbypepc6afzP0D_pwAOEw&s"
+                    />
+                    <label for="image" class="labelOfImage DarkLabel"
+                      >Add an image</label
+                    >
+                    <input
+                      type="file"
+                      id="image"
+                      name="image"
+                      class="inputFile"
+                      onchange="loadFile(event)"
+                    />
+                  </div>
 
-    <div class="containerWholeMissingPersonAddPageDarkMode">
-        
+                  <div
+                    class="containerFormDarkInputAndLabel"
+                    style="
+                      display: flex;
+                      align-items: start;
+                      justify-content: space-between;
+                      flex-direction: column;
+                    "
+                  >
+                    <label for="name" class="DarkLabel">Full name</label>
+                    <input
+                      class="inputText inputDark"
+                      type="text"
+                      name="name"
+                      placeholder="Enter full name"
+                    />
+
+                    <label for="gender" class="DarkLabel">Gender</label>
+                    <select class="selector inputDark" name="gender">
+                      <option value="male">Male</option>
+                      <option value="female">Female</option>
+                      <option value="transgender">Transgender</option>
+                      <option value="others">Others</option>
+                    </select>
+
+                    <label for="age" class="DarkLabel">Age</label>
+                    <input
+                      class="inputNumber inputDark"
+                      min="0"
+                      max="18"
+                      type="number"
+                      name="age"
+                      placeholder="Enter age"
+                      required
+                    />
+                    <div
+                      class="containerNewMissingKidSecondSection"
+                      style="
+                        display: flex;
+                        flex-wrap: wrap;
+                        width: 1000px;
+                        align-items: center;
+                        justify-content: center;
+                      "
+                    >
+                      <label for="date" class="DarkLabel">Date last seen</label>
+                      <input
+                        class="inputDate inputDark"
+                        name="date"
+                        type="date"
+                      />
+
+                      <label for="time" class="DarkLabel">Time last seen</label>
+                      <input
+                        class="inputTime inputDark"
+                        name="time"
+                        type="time"
+                      />
+
+                      <label for="place" class="DarkLabel"
+                        >Place last seen</label
+                      >
+                      <input
+                        class="inputText inputDark"
+                        name="place"
+                        type="text"
+                        placeholder="Enter place"
+                      />
+
+                      <label for="height" class="DarkLabel">Height</label>
+                      <input
+                        class="inputText inputDark"
+                        name="height"
+                        type="text"
+                        placeholder="Enter height"
+                      />
+
+                      <label for="color" class="DarkLabel">Color</label>
+                      <input
+                        class="inputText inputDark"
+                        name="color"
+                        type="text"
+                        placeholder="Enter color"
+                      />
+                      <label for="marks" class="DarkLabel">Birth marks</label>
+                      <input
+                        class="inputText inputDark"
+                        name="marks"
+                        type="text"
+                        placeholder="Enter birth marks"
+                      />
+                    </div>
+                    <div
+                      class="containerNewMissingKidThirdSection"
+                      style="display: flex; flex-direction: column"
+                    >
+                      <label for="residence" class="DarkLabel">Residence</label>
+                      <input
+                        class="inputText inputDark"
+                        name="residence"
+                        type="text"
+                        placeholder="Enter residence"
+                      />
+
+                      <label for="dress" class="DarkLabel">Last outfit</label>
+                      <input
+                        class="inputText inputDark"
+                        name="dress"
+                        type="text"
+                        placeholder="Enter outfit with color"
+                      />
+
+                      <label for="reward" class="DarkLabel">Reward</label>
+                      <input
+                        class="inputNumber inputDark"
+                        name="reward"
+                        type="number"
+                        placeholder="Enter reward amout"
+                        min="5000"
+                      />
+
+                      <label for="additional" class="DarkLabel"
+                        >Additional information</label
+                      >
+                      <textarea
+                        class="textArea inputDark"
+                        name="additional"
+                        id="additional"
+                        cols="30"
+                        rows="10"
+                        placeholder="Enter additional information"
+                      ></textarea>
+                    </div>
+                  </div>
+                  <button type="reset" class="clearButton buttonDarkSecondary">
+                    Clear
+                  </button>
+                  <button
+                    type="submit"
+                    name="submit"
+                    class="submitButton buttonDarkPrimary"
+                  >
+                    Submit
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </section>
+      </div>
     </div>
-
   </body>
   <style>
+    @import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap");
+    @import url("https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap");
     body {
-      height: 100vh;
       background-image: linear-gradient(250deg, #22223b, #001219);
+      color: white;
+      font-family: "Mulish", sans-serif;
+      font-optical-sizing: auto;
+      font-weight: 500;
+      font-style: normal;
+    }
+
+    .DarkModeTitle {
+      font-family: "Abril Fatface", serif;
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    .inputDark {
+      height: 50px;
+      width: 500px;
+      border-radius: 2px;
+      background-color: black;
+      outline: none;
+      border: none;
+      color: white;
+      padding: 0 10px;
+    }
+
+    .buttonDarkPrimary {
+      height: 50px;
+      width: 300px;
+      border-radius: 5px;
+      background-color: #007aff;
+      color: white;
+      border: none;
+      outline: none;
+      font-size: 20px;
+    }
+    .buttonDarkSecondary {
+      height: 50px;
+      width: 200px;
+      border-radius: 5px;
+      background-color: transparent;
+      color: white;
+      border: 1px solid white;
+      outline: none;
+      font-size: 20px;
     }
   </style>
 </html>
