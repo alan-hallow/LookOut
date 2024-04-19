@@ -30,12 +30,12 @@
         class="containerHeaderProfileExpand"
         style="display: flex; align-items: center; justify-content: center"
       >
-        <i
-          class="fa-regular fa-bell"
-          id="notificationButton"
+        <!-- <i
+          class="fa-solid fa-user"
+          id="profileButton"
           style="
             margin-right: 20px;
-            position: absolute;
+            margin-left: 20px;
             top: 5px;
             cursor: pointer;
             font-size: 20px;
@@ -49,7 +49,51 @@
             justify-content: center;
             transition: 0.3s;
           "
-        ></i>
+        ></i> -->
+        <!-- <form action="">
+          <select
+            name=""
+            id=""
+            style="
+              height: 30px;
+              width: 150px;
+              background-color: transparent;
+              border-radius: 20px;
+              outline: 1px solid white;
+              border: none;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              text-align: center;
+              appearance: textarea;
+              color: white;
+              padding: 0 10px;
+            "
+          >
+            <option value="light" class="selectOption">Light</option>
+            <option value="dark" class="selectOption">Dark</option>
+          </select>
+        </form>
+        <i
+          class="fa-regular fa-bell"
+          id="notificationButton"
+          style="
+            margin-right: 20px;
+            margin-left: 20px;
+            top: 5px;
+            cursor: pointer;
+            font-size: 20px;
+            height: 40px;
+            right: 200px;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            color: black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.3s;
+          "
+        <!-- ></i> -->
         <p class="containerHeaderProfileName" id="headerProfileName">
           <% if (session && session.username) { %> <%= session.username %> <% }
           else { %> No user Found <% } %>
@@ -59,6 +103,332 @@
     </div>
   </header>
 
+  <div
+    class="containerProfileItemsAll"
+    id="containerProfileItemsAll"
+    style="
+      position: absolute;
+      right: 50px;
+      top: 70px;
+      background-color: #282a2c;
+      color: #e3e3e3;
+      border-radius: 30px;
+      display: none;
+      max-height: 90vh;
+      width: 400px;
+      align-items: center;
+      justify-content: start;
+      padding: 25px;
+      flex-direction: column;
+      font-size: 16px;
+      overflow-y: scroll;
+      overflow-x: hidden;
+      scrollbar-width: none;
+    "
+  >
+    <div class="containerProfileHiddenAccount">
+      <div
+        class="containerProfileHiddenAccountDetails"
+        style="
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-direction: column;
+          gap: 5px;
+        "
+      >
+        <div
+          class="profileHiddenCloseButton"
+          id="profileHiddenCloseButton"
+          style="
+            height: 35px;
+            aspect-ratio: 1;
+            background-color: #1b1b1b;
+            border-radius: 50%;
+            align-self: flex-end;
+            margin-right: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 0;
+          "
+        >
+          <h4
+            style="
+              padding: 0;
+              margin: 0;
+              font-size: 20px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            "
+          >
+            <i class="fa-solid fa-xmark"></i>
+          </h4>
+        </div>
+        <% if (session && session.username) { %>
+        <div
+          class="containerProfileHiddenAccountName containerProfileHiddenAccountDetailsItem"
+          style="
+            background-color: transparent;
+            margin: 0 0 25px 0;
+            font-size: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          "
+        >
+          <p>Hi, <%= session.username %></p>
+        </div>
+        <div
+          class="containerProfileHiddenAccountEmail containerProfileHiddenAccountDetailsItem"
+          style="border-radius: 30px 30px 5px 5px"
+        >
+          <i class="fa-solid fa-envelope"></i>
+          <p><%= session.useremail %></p>
+        </div>
+        <div
+          class="containerProfileHiddenAccountPhone containerProfileHiddenAccountDetailsItem"
+        >
+          <i class="fa-solid fa-phone"></i>
+          <p><%= session.userphone %></p>
+        </div>
+        <div
+          class="containerProfileHiddenAccountPlace containerProfileHiddenAccountDetailsItem"
+        >
+          <i class="fa-solid fa-location-dot"></i>
+          <p><%= session.userplace %></p>
+        </div>
+        <% } %>
+      </div>
+
+      <div
+        class="containerProfileHiddenAccountAction"
+        style="display: flex; align-items: center; justify-content: center"
+      >
+        <% if (session && session.username) { %>
+        <div
+          class="containerProfileHiddenAccountSignOut containerProfileHiddenButtonsBackground"
+          style="
+            height: 60px;
+            width: 350px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 5px 5px 30px 30px;
+            margin-top: 5px;
+          "
+        >
+          <a
+            href="/logout"
+            class="containerProfileItemsHiddena"
+            style="
+              display: flex;
+              align-items: center;
+              justify-content: start;
+              gap: 30px;
+              padding: 0 20px;
+            "
+            ><i class="fa-solid fa-right-from-bracket"></i>Sign Out</a
+          >
+        </div>
+        <% } else { %>
+        <div
+          class="containerProfileHiddenAccountActions"
+          style="
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+          "
+        >
+          <div
+            class="containerProfileHiddenAccountSignIn containerProfileHiddenButtonsBackground"
+            style="
+              height: 70px;
+              width: 175px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border-radius: 30px 5px 5px 30px;
+              margin-top: 5px;
+            "
+          >
+            <a
+              href="/signin"
+              class="containerProfileItemsHiddena"
+              style="
+                display: flex;
+                align-items: center;
+                justify-content: start;
+                gap: 30px;
+                padding: 0 20px;
+              "
+              ><i class="fa-solid fa-right-to-bracket"></i>Sign In</a
+            >
+          </div>
+          <div
+            class="containerProfileHiddenAccountSignUp containerProfileHiddenButtonsBackground"
+            style="
+              height: 70px;
+              width: 175px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border-radius: 5px 30px 30px 5px;
+              margin-top: 5px;
+            "
+          >
+            <a
+              href="/signup"
+              class="containerProfileItemsHiddena"
+              style="
+                display: flex;
+                align-items: center;
+                justify-content: start;
+                gap: 30px;
+                padding: 0 20px;
+              "
+              ><i class="fa-solid fa-user-plus"></i>Sign Up</a
+            >
+          </div>
+        </div>
+        <% } %>
+      </div>
+
+      <h6 style="margin: 10px 40px 10px 40px; opacity: 0.5">Themes</h6>
+
+      <div
+        class="containerHiddenTheme"
+        style="
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-direction: column;
+          gap: 5px;
+          margin: 0 20px;
+        "
+      >
+        <div
+          class="containerHiddenTheme1 containerProfileHiddenButtonsBackground"
+          id="themeSwitcher"
+          style="
+            height: 60px;
+            width: 350px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-radius: 30px;
+            gap: 30px;
+            padding: 0 20px;
+          "
+        >
+        <div class="containerHiddenThemeSelector" style="display: flex; align-items: center; justify-content: start;gap: 20px;">
+          <i class="fa-solid fa-sun"></i>
+
+          <% if (session.theme) { %>
+          <!-- Use <%= %> to output the session theme value -->
+          <% if (session.theme === "light") { %>
+          <p>Dark Theme</i></p>
+          <% } else { %>
+          <p>Light Theme</p>
+          <% } %> <% } else { %>
+          <!-- Default message if session theme is not set -->
+          <p>Light Theme</p>
+          <% } %>
+</div>
+          <i class="fa-solid fa-caret-right" style="justify-self: end;"></i>
+        </div>
+
+        <!-- <div
+          class="containerHiddenTheme2 containerProfileHiddenButtonsBackground"
+          style="
+            height: 60px;
+            width: 350px;
+            display: flex;
+            align-items: center;
+            justify-content: start;
+            border-radius: 5px 5px 30px 30px;
+            gap: 30px;
+            padding: 0 20px;
+          "
+        >
+          <i class="fa-solid fa-moon"></i>
+          <p>Dark Theme</p>
+        </div>
+      </div> -->
+
+        <h6 style="margin: 10px 40px 10px 40px; opacity: 0.5">Notifications</h6>
+
+        <div
+          class="containerProfileHiddenNotificationWhole"
+          style="
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 5px;
+          "
+        >
+          <% if (usersNotificationDetails && usersNotificationDetails.length >
+          0) {usersNotificationDetails.sort((a, b) => new Date(b.createddate) -
+          new Date(a.createddate));
+          usersNotificationDetails.forEach(notification => { %>
+          <div
+            class="notificationItem"
+            style="
+              width: 350px;
+              display: flex;
+              align-items: start;
+              justify-content: space-between;
+              flex-direction: column;
+              background-color: #1b1b1b;
+              padding: 20px 20px;
+            "
+          >
+            <p class="notificationContent"><%- notification.notification %></p>
+            <p class="notificationDate" style="opacity: 0.3; font-size: 12px">
+              <%- new Date(notification.createddate).toLocaleDateString() %>
+            </p>
+          </div>
+          <% });} else { %>
+          <div
+            class="noNotificationsMessage"
+            style="
+              height: 60px;
+              width: 350px;
+              display: flex;
+              align-items: start;
+              justify-content: space-between;
+              flex-direction: column;
+              border-radius: 30px;
+              background-color: #1b1b1b;
+              padding: 20px 20px;
+            "
+          >
+            <p>No notifications available.</p>
+          </div>
+          <% } %>
+        </div>
+
+        <!-- <div class="containerProfileHiddenAccountActions">
+        <% if (session && session.username) { %>
+        <p class="containerProfileItemsHiddenp headerProfileItemHiddenSignOu">
+          <a href="/logout" class="containerProfileItemsHiddena">Sign Out</a>
+        </p>
+        <% } else { %>
+        <p class="containerProfileItemsHiddenp headerProfileItemHiddenSignIn">
+          <a href="/signin" class="containerProfileItemsHiddena">Sign In</a>
+        </p>
+        <p class="containerProfileItemsHiddenp headerProfileItemHiddenSignUp">
+          <a href="/signup" class="containerProfileItemsHiddena">Sign Up</a>
+        </p>
+        <% } %>
+      </div> -->
+      </div>
+    </div>
+    <!-- 
   <div class="containerProfileItemsHidden" id="containerProfileItemsHidden">
     <% if (session && session.username) { %>
     <p class="containerProfileItemsHiddenp headerProfileItemHiddenSignOu">
@@ -117,7 +487,7 @@
     </div>
     <% }) %> <% } else { %>
     <!-- Handle case where usersNotificationDetails is null or empty -->
-    <div
+    <!-- <div
       class="containerNoNotification"
       style="
         display: flex;
@@ -156,211 +526,333 @@
     </div>
     <% } %>
   </div>
+</div> -->
+
+    <style>
+      /* #notificationButton:hover {
+      background-color: #012c4142;
+    } */
+      @import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap");
+      #profileButton:hover {
+        background-color: #c3c3c342;
+      }
+      .containerEachNotification:hover {
+        background-color: #d8d8d8;
+      }
+
+      .containerProfileItemsAll {
+        font-family: "DM Sans", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 400;
+        font-style: normal;
+      }
+      .notificationItem:first-of-type {
+        border-radius: 30px 30px 5px 5px;
+      }
+      .notificationItem {
+        border-radius: 5px;
+      }
+      .notificationItem:last-of-type {
+        border-radius: 5px 5px 30px 30px;
+      }
+
+      .containerProfileHiddenButtonsBackground {
+        background-color: #1b1b1b;
+      }
+      .containerProfileHiddenButtonsBackground:hover {
+        background-color: #37393b;
+        cursor: pointer;
+      }
+      .containerNotificationHeader {
+        display: none;
+        align-items: center;
+        justify-content: start;
+        flex-direction: column;
+        position: absolute;
+        top: 150px;
+        left: 518px;
+        background-color: #ffffffc6;
+        color: #000000;
+        border-radius: 20px;
+        height: 500px;
+        width: 500px;
+        font-size: 20px;
+        overflow-x: hidden;
+        overflow-y: scroll;
+        z-index: 1000;
+      }
+
+      .containerWholeHeaderComplete {
+        position: fixed;
+        width: 100vw;
+        backdrop-filter: blur(20px);
+        z-index: 1000;
+        top: 0;
+      }
+      .containerHeaderProfileExpand p {
+        margin: 0;
+      }
+      .websiteMainTitle {
+        font-size: 20px;
+        font-weight: 600;
+        color: rgb(0, 0, 0);
+        text-decoration: none;
+        transition: 0.3s;
+        margin: 0;
+        padding: 0;
+      }
+      .websiteMainTitle:hover {
+        color: black;
+      }
+
+      .containerProfileHiddenAccountDetailsItem {
+        height: 60px;
+        width: 350px;
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        gap: 30px;
+        padding: 0 20px;
+        border-radius: 5px;
+        background-color: #1b1b1b;
+        font-size: 18px;
+      }
+      p {
+        margin: 0;
+        padding: 0;
+      }
+
+      .selectOption {
+        background-color: rgb(255, 255, 255);
+        border-radius: 10px;
+        color: white;
+        height: 50px;
+      }
+      .containerWholeHeader {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        /* 
+    dosn't work from quick testing
+    display: grid;
+    align-content: center;
+    place-content: center;
+    grid-template-columns: repeat(3, 1fr); */
+        height: 50px;
+        background-color: #c5c5c59c;
+        padding: 0 50px 0 50px;
+      }
+      .containerHeaderContentsWhole {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .containerHeaderProfileName {
+        background-color: #282a2c;
+        border-radius: 30px;
+        color: #fff;
+        padding: 5px 15px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        user-select: none;
+        font-weight: 600;
+      }
+      .containerProfileItemsHidden {
+        width: 150px;
+        background-color: #84a98c;
+        color: #ffffff;
+        border-radius: 0 0 5px 5px;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        position: absolute;
+        right: 50px;
+        top: 50px;
+      }
+      .headerContentsCenter {
+        margin: 0;
+        height: 45px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .headerContentsCenter a {
+        text-decoration: none;
+        transition: 0.2s ease-in-out;
+        text-decoration: none;
+        padding: 10px;
+        color: black;
+      }
+      .headerContentsCenter a:hover {
+        font-weight: 600;
+        color: #ffffff;
+        font-size: 20px;
+        cursor: pointer;
+      }
+      .containerProfileItemsHiddenp {
+        margin: 0;
+        width: 100%;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-size: 18px;
+      }
+      .containerProfileItemsHiddena {
+        text-decoration: none;
+        color: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+      }
+      /* .containerProfileItemsHiddena:hover {
+      color: rgb(255, 255, 255);
+      text-decoration: none;
+      background-color: #354f52;
+      border-radius: 0 0 5px 5px;
+      transition: 0.3s;
+    } */
+    </style>
+
+    <script>
+      const profileContent = document.getElementById(
+        "containerProfileItemsAll"
+      );
+      const closebutton = document.getElementById("profileHiddenCloseButton");
+
+      const profileName = document.getElementById("headerProfileName");
+      const profileArrow = document.getElementById("headerProfileNameArrow");
+
+      profileName.addEventListener("click", () => {
+        profileContent.style.display =
+          profileContent.style.display === "none" ? "flex" : "none";
+
+        profileArrow.style.transform =
+          profileContent.style.display === "none"
+            ? "rotate(0deg)"
+            : "rotate(180deg)";
+      });
+
+      closebutton.addEventListener("click", () => {
+        profileContent.style.display = "none";
+        profileArrow.style.transform = "rotate(0deg)";
+      });
+
+      document.addEventListener("click", (event) => {
+        if (
+          !profileName.contains(event.target) &&
+          !profileContent.contains(event.target) &&
+          !closebutton.contains(event.target)
+        ) {
+          profileContent.style.display = "none";
+          profileArrow.style.transform = "rotate(0deg)";
+        }
+      });
+
+      //code for theme switcher
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const themeSwitcher = document.getElementById("themeSwitcher");
+
+        let currentTheme = true;
+        themeSwitcher.addEventListener("click", () => {
+          currentTheme = !currentTheme;
+
+          fetch("/set-theme", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ currentTheme }),
+          })
+            .then((response) => {
+              if (response.ok) {
+                console.log("Theme updated successfully");
+                // Optionally, perform additional actions after successful theme switch
+                window.location.reload(); // Reload the page to apply the new theme
+              } else {
+                console.error("Failed to update theme");
+              }
+            })
+            .catch((error) => {
+              console.error("Error updating theme:", error);
+            });
+        });
+      });
+      // const name = document.getElementById("headerProfileName");
+      // const arrow = document.getElementById("headerProfileNameArrow");
+      // const hiddenPartSignUp = document.getElementById(
+      //   "containerProfileItemsHidden"
+      // );
+
+      // // Ensure the initial state is hidden
+      // hiddenPartSignUp.style.display = "none";
+
+      // // Attach click event listener
+      // name.addEventListener("click", () => {
+      //   // Toggle display property between 'flex' and 'none'
+      //   hiddenPartSignUp.style.display =
+      //     hiddenPartSignUp.style.display === "none" ? "flex" : "none";
+      //   // Rotate arrow icon accordingly
+      //   arrow.style.transform =
+      //     hiddenPartSignUp.style.display === "none"
+      //       ? "rotate(0deg)"
+      //       : "rotate(180deg)";
+      // });
+
+      // // Add click event listener to the document
+      // document.addEventListener("click", (event) => {
+      //   // Check if the click event target is outside of the notification button and its content
+      //   if (
+      //     !name.contains(event.target) &&
+      //     !hiddenPartSignUp.contains(event.target)
+      //   ) {
+      //     hiddenPartSignUp.style.display = "none";
+      //   }
+      // });
+
+      // const notificationButton = document.getElementById("notificationButton");
+      // const notificationContent = document.getElementById(
+      //   "containerNotificationHeader"
+      // );
+      // const notificationBackground = document.getElementById(
+      //   "containerWholeNotificationCard"
+      // );
+
+      // notificationContent.style.display = "none";
+      // notificationBackground.style.display = "none";
+
+      // notificationButton.addEventListener("click", () => {
+      //   // Changed 'onclick' to 'addEventListener'
+
+      //   if (notificationContent.style.display === "none") {
+      //     notificationContent.style.display = "flex";
+      //     notificationBackground.style.display = "flex";
+      //     document.body.style.overflow = "hidden";
+      //   } else {
+      //     notificationContent.style.display = "none";
+      //     notificationBackground.style.display = "none";
+      //     document.body.style.overflow = "scroll";
+      //   }
+      // });
+      // // Add click event listener to the document
+      // document.addEventListener("click", (event) => {
+      //   // Check if the click event target is outside of the notification button and its content
+      //   if (
+      //     !notificationButton.contains(event.target) &&
+      //     !notificationContent.contains(event.target)
+      //   ) {
+      //     notificationContent.style.display = "none";
+      //     notificationBackground.style.display = "none";
+      //     document.body.style.overflow = "scroll";
+      //   }
+      // });
+    </script>
+  </div>
 </div>
-
-<style>
-  #notificationButton:hover {
-    background-color: #012c4142;
-  }
-  .containerEachNotification:hover {
-    background-color: #d8d8d8;
-  }
-  .containerNotificationHeader {
-    display: none;
-    align-items: center;
-    justify-content: start;
-    flex-direction: column;
-    position: absolute;
-    top: 150px;
-    left: 518px;
-    background-color: #ffffffc6;
-    color: #000000;
-    border-radius: 20px;
-    height: 500px;
-    width: 500px;
-    font-size: 20px;
-    overflow-x: hidden;
-    overflow-y: scroll;
-    z-index: 1000;
-  }
-
-  .containerWholeHeaderComplete {
-    position: fixed;
-    width: 100vw;
-    backdrop-filter: blur(20px);
-    z-index: 1000;
-    top: 0;
-  }
-  .containerHeaderProfileExpand p {
-    margin: 0;
-  }
-  .websiteMainTitle {
-    font-size: 20px;
-    font-weight: 600;
-    color: rgb(0, 0, 0);
-    text-decoration: none;
-    transition: 0.3s;
-    margin: 0;
-    padding: 0;
-  }
-  .websiteMainTitle:hover {
-    color: black;
-  }
-
-  .containerWholeHeader {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 50px;
-    background-color: #c5c5c59c;
-    padding: 0 50px 0 50px;
-  }
-  .containerHeaderContentsWhole {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .containerHeaderProfileName {
-    border: 3px solid #415a77;
-    border-radius: 50px;
-    color: #415a77;
-    padding: 5px 15px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    user-select: none;
-    font-weight: 600;
-  }
-  .containerProfileItemsHidden {
-    width: 150px;
-    background-color: #84a98c;
-    color: #ffffff;
-    border-radius: 0 0 5px 5px;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    position: absolute;
-    right: 50px;
-    top: 50px;
-  }
-  .headerContentsCenter {
-    margin: 0;
-    height: 45px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .headerContentsCenter a {
-    text-decoration: none;
-    transition: 0.2s ease-in-out;
-    text-decoration: none;
-    padding: 10px;
-    color: black;
-  }
-  .headerContentsCenter a:hover {
-    font-weight: 600;
-    color: #ffffff;
-    font-size: 20px;
-    cursor: pointer;
-  }
-  .containerProfileItemsHiddenp {
-    margin: 0;
-    width: 100%;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    font-size: 18px;
-  }
-  .containerProfileItemsHiddena {
-    text-decoration: none;
-    color: #ffffff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-  }
-  .containerProfileItemsHiddena:hover {
-    color: rgb(255, 255, 255);
-    text-decoration: none;
-    background-color: #354f52;
-    border-radius: 0 0 5px 5px;
-    transition: 0.3s;
-  }
-</style>
-
-<script>
-  const name = document.getElementById("headerProfileName");
-  const arrow = document.getElementById("headerProfileNameArrow");
-  const hiddenPartSignUp = document.getElementById(
-    "containerProfileItemsHidden"
-  );
-
-  // Ensure the initial state is hidden
-  hiddenPartSignUp.style.display = "none";
-
-  // Attach click event listener
-  name.addEventListener("click", () => {
-    // Toggle display property between 'flex' and 'none'
-    hiddenPartSignUp.style.display =
-      hiddenPartSignUp.style.display === "none" ? "flex" : "none";
-    // Rotate arrow icon accordingly
-    arrow.style.transform =
-      hiddenPartSignUp.style.display === "none"
-        ? "rotate(0deg)"
-        : "rotate(180deg)";
-  });
-
-  // Add click event listener to the document
-  document.addEventListener("click", (event) => {
-    // Check if the click event target is outside of the notification button and its content
-    if (
-      !name.contains(event.target) &&
-      !hiddenPartSignUp.contains(event.target)
-    ) {
-      hiddenPartSignUp.style.display = "none";
-    }
-  });
-
-  const notificationButton = document.getElementById("notificationButton");
-  const notificationContent = document.getElementById(
-    "containerNotificationHeader"
-  );
-  const notificationBackground = document.getElementById(
-    "containerWholeNotificationCard"
-  );
-
-  notificationContent.style.display = "none";
-  notificationBackground.style.display = "none";
-
-  notificationButton.addEventListener("click", () => {
-    // Changed 'onclick' to 'addEventListener'
-
-    if (notificationContent.style.display === "none") {
-      notificationContent.style.display = "flex";
-      notificationBackground.style.display = "flex";
-      document.body.style.overflow = "hidden";
-    } else {
-      notificationContent.style.display = "none";
-      notificationBackground.style.display = "none";
-      document.body.style.overflow = "scroll";
-    }
-  });
-  // Add click event listener to the document
-  document.addEventListener("click", (event) => {
-    // Check if the click event target is outside of the notification button and its content
-    if (
-      !notificationButton.contains(event.target) &&
-      !notificationContent.contains(event.target)
-    ) {
-      notificationContent.style.display = "none";
-      notificationBackground.style.display = "none";
-      document.body.style.overflow = "scroll";
-    }
-  });
-</script>

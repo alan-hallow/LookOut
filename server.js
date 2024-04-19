@@ -15,6 +15,7 @@ app.use(
   })
 );
 
+app.use(express.json()); // Middleware to parse JSON requests
 // //  noCache Begins
 
 // app.set("etag", false);

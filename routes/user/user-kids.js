@@ -43,10 +43,18 @@ router.get("/createMissingKidPost", async (req, res) => {
   const usersNotificationDetails = await usersNotification.find({
     postId: userId,
   });
-  res.render("user/kids/newmissingkidpost", {
-    session: req.session,
-    usersNotificationDetails: usersNotificationDetails,
-  });
+
+  if (req.session.theme === "light") {
+    res.render("user/kids/newmissingkidpost", {
+      session: req.session,
+      usersNotificationDetails: usersNotificationDetails,
+    });
+  } else {
+    res.render("user/kids/kids_post_dark", {
+      session: req.session,
+      usersNotificationDetails: usersNotificationDetails,
+    });
+  }
 });
 
 router.get("/missingkidnewpost/:id", async (req, res) => {
@@ -66,13 +74,23 @@ router.get("/missingkidnewpost/:id", async (req, res) => {
     if (!missingKidDetails) {
       res.redirect("/");
     } else {
-      res.render("user/kids/missingkiddisplay", {
-        missingkidsfulldetails: missingKidDetails,
-        missingKidUpdates: missingKidUpdates, // Pass the comments to the view
-        missingkidcomments: missingKidComments, // Pass the comments to the view
-        usersNotificationDetails: usersNotificationDetails,
-        session: req.session,
-      });
+      if (req.session.theme === "light") {
+        res.render("user/kids/missingkiddisplay", {
+          missingkidsfulldetails: missingKidDetails,
+          missingKidUpdates: missingKidUpdates, // Pass the comments to the view
+          missingkidcomments: missingKidComments, // Pass the comments to the view
+          usersNotificationDetails: usersNotificationDetails,
+          session: req.session,
+        });
+      } else {
+        res.render("user/kids/kids_display_dark", {
+          missingkidsfulldetails: missingKidDetails,
+          missingKidUpdates: missingKidUpdates, // Pass the comments to the view
+          missingkidcomments: missingKidComments, // Pass the comments to the view
+          usersNotificationDetails: usersNotificationDetails,
+          session: req.session,
+        });
+      }
     }
   } catch (error) {
     console.error("Error:", error);

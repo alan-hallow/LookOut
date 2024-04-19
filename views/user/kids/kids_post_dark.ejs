@@ -1,0 +1,390 @@
+<%- include('../layout/layout.ejs') -%>
+
+<div
+  class="containerWholeMissingPersonAddPageDarkMode"
+  style="
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 30px;
+  "
+>
+  <div
+    class="addMissingPersonDarkTitle"
+    style="
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      margin-top: 100px;
+      background-color: #28281c;
+      width: 700px;
+      padding: 50px 0;
+      border-radius: 30px;
+    "
+  >
+    <h1 class="DarkModeTitle" style="font-size: 60px">Missing kid</h1>
+    <p
+      style="
+        padding: 0;
+        margin: 0;
+        width: 500px;
+        text-align: center;
+        opacity: 0.3;
+      "
+    >
+      BEFORE YOU START: This form is for reporting missing kids, so please use
+      it for the intended purpose only.
+    </p>
+  </div>
+  <div class="containerMissingPersonDarkFormComplete">
+    <section>
+      <div class="formContainer">
+        <form
+          action="/missingkids/missingkidspostrequest"
+          method="POST"
+          enctype="multipart/form-data"
+          style="
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+          "
+        >
+          <div class="containerForFormData">
+            <div
+              class="containerNewMissingKidFirstSection"
+              style="margin-bottom: 100px"
+            >
+              <div
+                class="containerMissingPersonDarkImageFull"
+                style="
+                  height: 400px;
+                  width: 700px;
+                  background-color: #28281c;
+                  border-radius: 30px;
+                  border: 2px dashed #575732;
+                  margin-top: 0px;
+                  margin-bottom: 50px;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  flex-direction: column;
+                  gap: 30px;
+                "
+              >
+                <img
+                  class="displayImageContainer"
+                  id="output"
+                  src="https://static-00.iconduck.com/assets.00/no-image-icon-512x512-lfoanl0w.png"
+                  style="height: 250px"
+                />
+                <label
+                  for="image"
+                  class="labelOfImage DarkLabel buttonDarkPrimary"
+                  style="
+                    height: 50px;
+                    width: 300px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    border-radius: 30px;
+                    font-size: 20px;
+                  "
+                  >Add image</label
+                >
+                <input
+                  type="file"
+                  id="image"
+                  name="image"
+                  class="inputFile"
+                  onchange="loadFile(event)"
+                  style="display: none"
+                  required
+                />
+              </div>
+
+              <div
+                class="containerFormDarkInputAndLabel"
+                style="
+                  display: flex;
+                  flex-wrap: wrap;
+                  width: 700px;
+                  row-gap: 10px;
+                  align-items: center;
+                  justify-content: space-between;
+                  margin-bottom: 50px;
+                "
+              >
+                <div class="containerDarkInput">
+                  <label for="name" class="DarkLabel">Full name</label>
+                  <input
+                    class="inputText inputDark"
+                    type="text"
+                    name="name"
+                    placeholder="Enter full name"
+                    required
+                    style="width: 522px; border-radius: 30px 5px 5px 5px"
+                  />
+                </div>
+                <div class="containerDarkInput">
+                  <label for="gender" class="DarkLabel">Gender</label>
+                  <select
+                    class="selector inputDark"
+                    name="gender"
+                    required
+                    style="width: 168px; border-radius: 5px 30px 5px 5px"
+                  >
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="transgender">Transgender</option>
+                    <option value="others">Others</option>
+                  </select>
+                </div>
+                <div class="containerDarkInput">
+                  <label for="age" class="DarkLabel">Age</label>
+                  <input
+                    class="inputNumber inputDark"
+                    min="0"
+                    max="18"
+                    type="number"
+                    name="age"
+                    placeholder="Enter age"
+                    style="width: 168px; appearance: textfield"
+                    required
+                  />
+                </div>
+                <div class="containerDarkInput">
+                  <label for="date" class="DarkLabel">Date last seen</label>
+                  <input
+                    class="inputDate inputDark"
+                    name="date"
+                    type="date"
+                    style="width: 168px"
+                    required
+                  />
+                </div>
+                <div class="containerDarkInput">
+                  <label for="time" class="DarkLabel">Time last seen</label>
+                  <input
+                    class="inputTime inputDark"
+                    name="time"
+                    type="time"
+                    style="width: 168px"
+                    required
+                  />
+                </div>
+                <div class="containerDarkInput">
+                  <label for="height" class="DarkLabel">Height</label>
+                  <input
+                    class="inputText inputDark"
+                    name="height"
+                    type="text"
+                    placeholder="Enter height"
+                    style="width: 168px"
+                    required
+                  />
+                </div>
+                <div class="containerDarkInput">
+                  <label for="place" class="DarkLabel">Place last seen</label>
+                  <input
+                    class="inputText inputDark"
+                    name="place"
+                    type="text"
+                    placeholder="Enter place"
+                    style="width: 346px"
+                    required
+                  />
+                </div>
+                <div class="containerDarkInput">
+                  <label for="color" class="DarkLabel">Color</label>
+                  <input
+                    class="inputText inputDark"
+                    name="color"
+                    type="text"
+                    placeholder="Enter color"
+                    style="width: 346px"
+                    required
+                  />
+                </div>
+                <div class="containerDarkInput">
+                  <label for="marks" class="DarkLabel">Birth marks</label>
+                  <input
+                    class="inputText inputDark"
+                    name="marks"
+                    type="text"
+                    placeholder="Enter birth marks"
+                    style="width: 700px"
+                    required
+                  />
+                </div>
+                <div class="containerDarkInput">
+                  <label for="dress" class="DarkLabel">Last outfit</label>
+                  <input
+                    class="inputText inputDark"
+                    name="dress"
+                    type="text"
+                    placeholder="Enter outfit with color"
+                    style="width: 700px"
+                    required
+                  />
+                </div>
+                <div class="containerDarkInput">
+                  <label for="residence" class="DarkLabel">Residence</label>
+                  <input
+                    class="inputText inputDark"
+                    name="residence"
+                    type="text"
+                    placeholder="Enter residence"
+                    style="width: 522px"
+                    required
+                  />
+                </div>
+                <div class="containerDarkInput">
+                  <label for="reward" class="DarkLabel">Reward</label>
+                  <input
+                    class="inputNumber inputDark"
+                    name="reward"
+                    type="number"
+                    placeholder="Enter reward amout"
+                    min="5000"
+                    style="width: 168px; appearance: textfield"
+                    required
+                  />
+                </div>
+                <div class="containerDarkInput">
+                  <label for="additional" class="DarkLabel"
+                    >Additional information</label
+                  >
+                  <textarea
+                    class="textArea inputDark"
+                    name="additional"
+                    id="additional"
+                    cols="30"
+                    rows="10"
+                    placeholder="Enter additional information"
+                    required
+                    style="
+                      width: 700px;
+                      height: 100px;
+                      font-family: inherit;
+                      font-size: inherit;
+                      padding: 10px;
+                      resize: none;
+                      border-radius: 5px 5px 30px 30px;
+                    "
+                  ></textarea>
+                </div>
+              </div>
+              <div
+                class="containerFormDarkButton"
+                style="
+                  display: flex;
+                  align-items: end;
+                  justify-content: end;
+                  gap: 20px;
+                "
+              >
+                <button type="reset" class="clearButton buttonDarkSecondary">
+                  Clear
+                </button>
+                <button
+                  type="submit"
+                  name="submit"
+                  class="submitButton buttonDarkPrimary"
+                >
+                  Submit
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </section>
+  </div>
+</div>
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap");
+  @import url("https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap");
+  @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+  :root {
+    --primarycolor: #54543a;
+  }
+  body {
+    /* background-image: linear-gradient(250deg, #22223b, #001219); */
+    background-color: #1c1c16;
+    color: #fff;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  .DarkModeTitle {
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+  }
+
+  .containerDarkInput {
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5px;
+  }
+  label {
+    display: none;
+  }
+
+  .inputDark {
+    height: 70px;
+    border-radius: 2px;
+    background-color: #0000002e;
+    outline: 1px solid var(--primarycolor);
+    border-radius: 5px;
+    border: none;
+    color: white;
+    padding: 0 10px;
+  }
+  .inputDark::placeholder {
+    font-family: inherit;
+    font-size: 15px;
+  }
+
+  .buttonDarkPrimary {
+    height: 100px;
+    width: 480px;
+    border-radius: 50px;
+    background-color: var(--primarycolor);
+    color: #1c1c16;
+    border: none;
+    outline: none;
+    font-size: 35px;
+    cursor: pointer;
+  }
+  .buttonDarkPrimary:hover {
+    background-color: #39392a;
+  }
+  .buttonDarkSecondary {
+    height: 100px;
+    width: 200px;
+    border-radius: 50px;
+    background-color: transparent;
+    color: var(--primarycolor);
+    border: 1px solid var(--primarycolor);
+    outline: none;
+    font-size: 35px;
+    cursor: pointer;
+  }
+</style>
+
+<script>
+  var loadFile = function (event) {
+    var image = document.getElementById("output");
+    image.src = URL.createObjectURL(event.target.files[0]);
+  };
+</script>
+
+<%- include('../partials/footer.ejs') -%>

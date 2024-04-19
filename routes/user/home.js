@@ -21,6 +21,9 @@ router.get("/", async (req, res) => {
   const username = req.session.username;
   const userId = req.session.userId;
 
+  if (!req.session.theme) {
+    req.session.theme = "dark"; // Set default theme to 'light' if not already set
+  }
   const usersNotificationDetails = await usersNotification.find({
     postId: userId,
   });
@@ -107,7 +110,7 @@ router.post("/userSignIn", async (req, res) => {
             req.session.userphone = userEmail.phone;
             req.session.userplace = userEmail.place;
 
-            console.log("Data stored in session");
+            console.log("Data stored in session", req.session);
             // Send appropriate response to the client
             return res.redirect("/");
           } else {
@@ -159,6 +162,21 @@ router.get("/FAQ", async (req, res) => {
     session: req.session,
     usersNotificationDetails: usersNotificationDetails,
   });
+});
+
+// Server-side route to handle theme switching
+router.post("/set-theme", (req, res) => {
+  // Assuming the theme toggle data is sent in the request body under the key 'toggle'
+  const themeToggle = req.body.currentTheme;
+
+  // Toggle between 'light' and 'dark' themes based on the current session theme
+  if (themeToggle) {
+    req.session.theme = req.session.theme === "dark" ? "light" : "dark";
+  } else {
+    req.session.theme = req.session.theme === "light" ? "dark" : "light";
+  }
+
+  res.sendStatus(200); // Respond with success status
 });
 
 module.exports = router;
