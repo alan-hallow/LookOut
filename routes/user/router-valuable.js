@@ -68,13 +68,23 @@ router.get("/missingvaluablenewpost/:id", async (req, res) => {
     if (!missingValuableDetails) {
       res.redirect("/");
     } else {
-      res.render("user/valuable/missingvaluabledisplay", {
-        missingvaluablefulldetails: missingValuableDetails,
-        missingValuableUpdates: missingValuableUpdates, // Pass the comments to the view
-        missingvaluablecomments: missingValuableComments, // Pass the comments to the view
-        usersNotificationDetails: usersNotificationDetails,
-        session: req.session,
-      });
+      if (req.session.theme === "light") {
+        res.render("user/valuable/missingvaluabledisplay", {
+          missingvaluablefulldetails: missingValuableDetails,
+          missingValuableUpdates: missingValuableUpdates, // Pass the comments to the view
+          missingvaluablecomments: missingValuableComments, // Pass the comments to the view
+          usersNotificationDetails: usersNotificationDetails,
+          session: req.session,
+        });
+      } else {
+        res.render("user/valuable/valuable_display_dark", {
+          missingvaluablefulldetails: missingValuableDetails,
+          missingValuableUpdates: missingValuableUpdates, // Pass the comments to the view
+          missingvaluablecomments: missingValuableComments, // Pass the comments to the view
+          usersNotificationDetails: usersNotificationDetails,
+          session: req.session,
+        });
+      }
     }
   } catch (error) {
     console.error("Error:", error);
