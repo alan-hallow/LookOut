@@ -1,6 +1,111 @@
 <%- include('../layout/layout.ejs') -%>
 
-<div class="containerWholeMissingPersonFullLeftRight">
+<div
+  class="container_whole_kids_dark"
+  style="
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 10px;
+    flex-direction: column;
+  "
+>
+  <div
+    class="kids_dark_nameImage"
+    style="
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    "
+  >
+    <div
+      class="kids_dark_details"
+      style="
+        aspect-ratio: 1;
+        width: 500px;
+        border-radius: 30px;
+        background-color: #2f2525;
+        display: flex;
+        align-items: start;
+        padding: 50px;
+        justify-content: center;
+        flex-direction: column;
+      "
+    >
+      <h1 style="font-size: 70px"><%- missingkidsfulldetails.name %></h1>
+      <h3 style="font-weight: 400; font-size: 25px">
+        Lives in <%- missingkidsfulldetails.place %>
+      </h3>
+    </div>
+    <div
+      class="kids_dark_image"
+      style="
+        height: 500px;
+        aspect-ratio: 1;
+        border-radius: 30px;
+        background-color: #2f2525;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      "
+    >
+      <img
+        src="/images/missingkids/<%= missingkidsfulldetails.id %>.jpg"
+        alt=""
+        class="missingPersonImage"
+        style="height: 500px"
+      />
+    </div>
+  </div>
+
+  <div
+    class="kids_dark_selector"
+    style="
+      height: 80px;
+      width: 999px;
+      border-radius: 50px;
+      background-color: #2f2525;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    "
+  >
+    <div class="selector_item">Details</div>
+    <div class="selector_item">Comments</div>
+    <div class="selector_item">Updates</div>
+  </div>
+  <div class="kids_dark_comment"></div>
+  <div class="kids_dark_updates"></div>
+</div>
+
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+  body {
+    background-color: #211a1a;
+    color: #ede0df;
+    margin-top: 100px;
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+  }
+
+  .selector_item {
+    height: 80px;
+    width: 333px;
+    background-color: #2f2525;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .selector_item:hover {
+    background-color: #3c3131;
+    cursor: pointer;
+  }
+</style>
+<!-- <div class="containerWholeMissingPersonFullLeftRight">
   <div class="containerMissingKidsDisplayLeftSide">
     <div class="containderMissingPersonDetails">
       <div class="containerForMissingPersonTitleImageNameAge">
@@ -238,8 +343,8 @@
 
     <% }); %>
   </div>
-</div>
-<style>
+</div> -->
+<!-- <style>
   @import url("https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap");
   body {
     font-family: "Titillium Web", sans-serif;
@@ -554,9 +659,9 @@
   .commentTitle {
     font-size: 18px;
   }
-</style>
+</style> -->
 
-<script>
+<!-- <script>
   const hiddenSection = document.getElementById(
     "containerAllDetailsHiddenSection"
   );
@@ -576,6 +681,6 @@
   containerCloseButtonOverlay.addEventListener("click", () => {
     hiddenSection.style.display = "none";
   });
-</script>
+</script> -->
 
 <%- include('../partials/footer.ejs') -%>
