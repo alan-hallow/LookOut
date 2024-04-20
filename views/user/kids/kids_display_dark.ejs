@@ -72,13 +72,222 @@
       justify-content: center;
     "
   >
-    <div class="selector_item">Details</div>
-    <div class="selector_item">Comments</div>
-    <div class="selector_item">Updates</div>
+    <div class="selector_item" id="_selector_item_1">Details</div>
+    <div class="selector_item" id="_selector_item_2">Comments</div>
+    <div class="selector_item" id="_selector_item_3">Updates</div>
   </div>
-  <div class="kids_dark_comment"></div>
-  <div class="kids_dark_updates"></div>
+  <div
+    class="kids_dark_details"
+    id="_kids_dark_details"
+    style="
+      width: 850px;
+      margin-top: 100px;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    "
+  >
+    <div
+      class="dark_details details_name"
+      style="font-size: 40px; border-radius: 30px 30px 5px 5px"
+    >
+      <p class="dark_details_title">Name</p>
+      <p class="dark_details_content"><%- missingkidsfulldetails.name %></p>
+    </div>
+    <div class="dark_details details_gender">
+      <p class="dark_details_title">Gender</p>
+      <p class="dark_details_content"><%- missingkidsfulldetails.gender %></p>
+    </div>
+    <div class="dark_details details_age">
+      <p class="dark_details_title">Age</p>
+      <p class="dark_details_content"><%- missingkidsfulldetails.age %></p>
+    </div>
+    <div class="dark_details details_date">
+      <p class="dark_details_title">Date</p>
+      <p class="dark_details_content">
+        <%- missingkidsfulldetails.date.toLocaleDateString() %>
+      </p>
+    </div>
+    <div class="dark_details details_time">
+      <p class="dark_details_title">Time</p>
+      <p class="dark_details_content"><%- missingkidsfulldetails.time %></p>
+    </div>
+    <div class="dark_details details_place">
+      <p class="dark_details_title">Location</p>
+      <p class="dark_details_content"><%- missingkidsfulldetails.place %></p>
+    </div>
+    <div class="dark_details details_height">
+      <p class="dark_details_title">Height</p>
+      <p class="dark_details_content">
+        <%- missingkidsfulldetails.height %> cm
+      </p>
+    </div>
+    <div class="dark_details details_color">
+      <p class="dark_details_title">Color</p>
+      <p class="dark_details_content"><%- missingkidsfulldetails.color %></p>
+    </div>
+    <div class="dark_details details_marks">
+      <p class="dark_details_title">Body marks</p>
+      <p class="dark_details_content"><%- missingkidsfulldetails.marks %></p>
+    </div>
+    <div class="dark_details details_residence">
+      <p class="dark_details_title">Residence</p>
+      <p class="dark_details_content">
+        <%- missingkidsfulldetails.residence %>
+      </p>
+    </div>
+    <div class="dark_details details_dress">
+      <p class="dark_details_title">Dress</p>
+      <p class="dark_details_content"><%- missingkidsfulldetails.dress %></p>
+    </div>
+    <div class="dark_details details_additional">
+      <p class="dark_details_title">Additional information</p>
+      <p class="dark_details_content">
+        <%- missingkidsfulldetails.additional %>
+      </p>
+    </div>
+    <div
+      class="dark_details details_reward"
+      style="border-radius: 5px 5px 30px 30px"
+    >
+      <p class="dark_details_title">Reward</p>
+      <p class="dark_details_content">
+        Rs. <%- missingkidsfulldetails.reward%>
+      </p>
+    </div>
+  </div>
+  <div
+    class="kids_dark_comment"
+    id="_kids_dark_comment"
+    style="
+      align-items: center;
+      display: none;
+      justify-content: center;
+      flex-direction: column;
+    "
+  >
+    <h2>Comments</h2>
+    <form
+      action="/missingkids/commentForMissingKids"
+      method="post"
+      class="commentsForm"
+      style="
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+      "
+    >
+      <input
+        type="text"
+        value="<%- missingkidsfulldetails.id %>"
+        name="postId"
+        required
+        style="display: none"
+      />
+      <input
+        type="text"
+        value="<%= session.username %>"
+        name="name"
+        required
+        style="display: none"
+      />
+      <textarea
+        name="comment"
+        class="commentBox"
+        placeholder="Add a comment..."
+        style="
+          height: 150px;
+          width: 700px;
+          border-radius: 30px;
+          font-size: 20px;
+          outline: none;
+          border: none;
+          padding: 20px;
+          background-color: #2f2525;
+          color: #ede0df;
+        "
+        required
+      ></textarea>
+
+      <button
+        type="submit"
+        class="submitButtonForm"
+        style="
+          height: 70px;
+          width: 200px;
+          border-radius: 30px;
+          outline: none;
+          border: none;
+          background-color: #5c3f3f;
+          color: #ede0df;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 20px;
+          gap: 10px;
+          cursor: pointer;
+        "
+      >
+        <i class="fa-solid fa-paper-plane"></i>
+        <p>Submit</p>
+      </button>
+    </form>
+
+    <div class="containerAllComments">
+      <% missingkidcomments.forEach(comment=> { %>
+      <div class="containerAddedComments">
+        <div class="containerCommentTitleDate">
+          <h2 class="commentTitle"><%- comment.name %></h2>
+          <p class="commentDate">
+            <%- comment.createddate.toLocaleDateString() %>
+          </p>
+        </div>
+        <p class="commentSubject"><%- comment.comment %></p>
+      </div>
+      <% }); %>
+    </div>
+  </div>
+  <div class="kids_dark_updates" id="_kids_dark_updates"></div>
 </div>
+
+<script>
+  const details = document.getElementById("_selector_item_1");
+  const comments = document.getElementById("_selector_item_2");
+  const updates = document.getElementById("_selector_item_3");
+
+  const detailsContent = document.getElementById("_kids_dark_details");
+  const commentContent = document.getElementById("_kids_dark_comment");
+  const updatesContent = document.getElementById("_kids_dark_updates");
+
+  details.addEventListener("click", () => {
+    details.style.backgroundColor = "#5c3f3f";
+    comments.style.backgroundColor = "#2f2525";
+    updates.style.backgroundColor = "#2f2525";
+
+    detailsContent.style.display = "flex";
+    commentContent.style.display = "none";
+    updatesContent.style.display = "none";
+  });
+  comments.addEventListener("click", () => {
+    details.style.backgroundColor = "#2f2525";
+    comments.style.backgroundColor = "#5c3f3f";
+    updates.style.backgroundColor = "#2f2525";
+
+    detailsContent.style.display = "none";
+    commentContent.style.display = "flex";
+    updatesContent.style.display = "none";
+  });
+  updates.addEventListener("click", () => {
+    details.style.backgroundColor = "#2f2525";
+    comments.style.backgroundColor = "#2f2525";
+    updates.style.backgroundColor = "#5c3f3f";
+
+    detailsContent.style.display = "none";
+    commentContent.style.display = "none";
+    updatesContent.style.display = "flex";
+  });
+</script>
 
 <style>
   @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
@@ -99,10 +308,36 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    user-select: none;
   }
   .selector_item:hover {
     background-color: #3c3131;
     cursor: pointer;
+  }
+
+  .dark_details {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 20px;
+    margin-top: 5px;
+    text-transform: capitalize;
+    background-color: #2f2525;
+    border-radius: 5px;
+    padding: 20px;
+  }
+
+  .dark_details_title {
+    width: 400px;
+    text-align: left;
+  }
+  .dark_details_content {
+    width: 400px;
+    text-align: right;
+  }
+
+  #_selector_item_1 {
+    background-color: #5c3f3f;
   }
 </style>
 <!-- <div class="containerWholeMissingPersonFullLeftRight">
