@@ -62,13 +62,23 @@ router.get("/missingpetsnewpost/:id", async (req, res) => {
     if (!missingPetsDetails) {
       res.redirect("/");
     } else {
-      res.render("user/pets/missingpetsdisplay", {
-        missingpetsfulldetails: missingPetsDetails,
-        missingPetsUpdates: missingPetsUpdates, // Pass the comments to the view
-        missingpetscomments: missingPetsComments, // Pass the comments to the view
-        usersNotificationDetails: usersNotificationDetails,
-        session: req.session,
-      });
+      if (req.session.theme === "light") {
+        res.render("user/pets/missingpetsdisplay", {
+          missingpetsfulldetails: missingPetsDetails,
+          missingPetsUpdates: missingPetsUpdates, // Pass the comments to the view
+          missingpetscomments: missingPetsComments, // Pass the comments to the view
+          usersNotificationDetails: usersNotificationDetails,
+          session: req.session,
+        });
+      } else {
+        res.render("user/pets/pets_display_dark", {
+          missingpetsfulldetails: missingPetsDetails,
+          missingPetsUpdates: missingPetsUpdates, // Pass the comments to the view
+          missingpetscomments: missingPetsComments, // Pass the comments to the view
+          usersNotificationDetails: usersNotificationDetails,
+          session: req.session,
+        });
+      }
     }
   } catch (error) {
     console.error("Error:", error);

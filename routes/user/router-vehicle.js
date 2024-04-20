@@ -64,13 +64,23 @@ router.get("/missingvehiclenewpost/:id", async (req, res) => {
     if (!missingVehicleDetails) {
       res.redirect("/");
     } else {
-      res.render("user/vehicle/missingvehicledisplay", {
-        missingvehiclefulldetails: missingVehicleDetails,
-        missingvehiclecomments: missingVehicleComments, // Pass the comments to the view
-        missingVehicleUpdates: missingVehicleUpdates, // Pass the comments to the view
-        usersNotificationDetails: usersNotificationDetails,
-        session: req.session,
-      });
+      if (req.session.theme === "light") {
+        res.render("user/vehicle/missingvehicledisplay", {
+          missingvehiclefulldetails: missingVehicleDetails,
+          missingvehiclecomments: missingVehicleComments, // Pass the comments to the view
+          missingVehicleUpdates: missingVehicleUpdates, // Pass the comments to the view
+          usersNotificationDetails: usersNotificationDetails,
+          session: req.session,
+        });
+      } else {
+        res.render("user/vehicle/vehicle_display_dark", {
+          missingvehiclefulldetails: missingVehicleDetails,
+          missingvehiclecomments: missingVehicleComments, // Pass the comments to the view
+          missingVehicleUpdates: missingVehicleUpdates, // Pass the comments to the view
+          usersNotificationDetails: usersNotificationDetails,
+          session: req.session,
+        });
+      }
     }
   } catch (error) {
     console.error("Error:", error);

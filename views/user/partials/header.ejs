@@ -1,4 +1,4 @@
-<div class="containerWholeHeaderComplete">
+<div class="containerWholeHeaderComplete" style="font-weight: 400;">
   <header>
     <div class="containerWholeHeader">
       <a href="/" class="websiteMainTitle">Look Out</a>
@@ -30,70 +30,7 @@
         class="containerHeaderProfileExpand"
         style="display: flex; align-items: center; justify-content: center"
       >
-        <!-- <i
-          class="fa-solid fa-user"
-          id="profileButton"
-          style="
-            margin-right: 20px;
-            margin-left: 20px;
-            top: 5px;
-            cursor: pointer;
-            font-size: 20px;
-            height: 40px;
-            right: 200px;
-            aspect-ratio: 1;
-            border-radius: 50%;
-            color: black;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: 0.3s;
-          "
-        ></i> -->
-        <!-- <form action="">
-          <select
-            name=""
-            id=""
-            style="
-              height: 30px;
-              width: 150px;
-              background-color: transparent;
-              border-radius: 20px;
-              outline: 1px solid white;
-              border: none;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              text-align: center;
-              appearance: textarea;
-              color: white;
-              padding: 0 10px;
-            "
-          >
-            <option value="light" class="selectOption">Light</option>
-            <option value="dark" class="selectOption">Dark</option>
-          </select>
-        </form>
-        <i
-          class="fa-regular fa-bell"
-          id="notificationButton"
-          style="
-            margin-right: 20px;
-            margin-left: 20px;
-            top: 5px;
-            cursor: pointer;
-            font-size: 20px;
-            height: 40px;
-            right: 200px;
-            aspect-ratio: 1;
-            border-radius: 50%;
-            color: black;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: 0.3s;
-          "
-        <!-- ></i> -->
+        
         <p class="containerHeaderProfileName" id="headerProfileName">
           <% if (session && session.username) { %> <%= session.username %> <% }
           else { %> No user Found <% } %>
@@ -185,19 +122,25 @@
           class="containerProfileHiddenAccountEmail containerProfileHiddenAccountDetailsItem"
           style="border-radius: 30px 30px 5px 5px"
         >
-          <i class="fa-solid fa-envelope"></i>
+        <span class="material-symbols-outlined">
+          mail
+          </span>
           <p><%= session.useremail %></p>
         </div>
         <div
           class="containerProfileHiddenAccountPhone containerProfileHiddenAccountDetailsItem"
         >
-          <i class="fa-solid fa-phone"></i>
+        <span class="material-symbols-outlined">
+          call
+          </span>
           <p><%= session.userphone %></p>
         </div>
         <div
           class="containerProfileHiddenAccountPlace containerProfileHiddenAccountDetailsItem"
         >
-          <i class="fa-solid fa-location-dot"></i>
+        <span class="material-symbols-outlined">
+          location_on
+          </span>
           <p><%= session.userplace %></p>
         </div>
         <% } %>
@@ -230,7 +173,9 @@
               gap: 30px;
               padding: 0 20px;
             "
-            ><i class="fa-solid fa-right-from-bracket"></i>Sign Out</a
+            ><span class="material-symbols-outlined">
+              logout
+              </span>Sign Out</a
           >
         </div>
         <% } else { %>
@@ -265,7 +210,9 @@
                 gap: 30px;
                 padding: 0 20px;
               "
-              ><i class="fa-solid fa-right-to-bracket"></i>Sign In</a
+              ><span class="material-symbols-outlined">
+                login
+                </span>Sign In</a
             >
           </div>
           <div
@@ -290,7 +237,9 @@
                 gap: 30px;
                 padding: 0 20px;
               "
-              ><i class="fa-solid fa-user-plus"></i>Sign Up</a
+              ><span class="material-symbols-outlined">
+                person_add
+                </span>Sign Up</a
             >
           </div>
         </div>
@@ -325,39 +274,28 @@
           "
         >
         <div class="containerHiddenThemeSelector" style="display: flex; align-items: center; justify-content: start;gap: 20px;">
-          <i class="fa-solid fa-sun"></i>
 
           <% if (session.theme) { %>
           <!-- Use <%= %> to output the session theme value -->
           <% if (session.theme === "light") { %>
+            <span class="material-symbols-outlined">
+              dark_mode
+              </span>
           <p>Dark Theme</i></p>
           <% } else { %>
+            <span class="material-symbols-outlined">
+              light_mode
+              </span>
           <p>Light Theme</p>
           <% } %> <% } else { %>
           <!-- Default message if session theme is not set -->
           <p>Light Theme</p>
           <% } %>
-</div>
+        </div>
           <i class="fa-solid fa-caret-right" style="justify-self: end;"></i>
         </div>
 
-        <!-- <div
-          class="containerHiddenTheme2 containerProfileHiddenButtonsBackground"
-          style="
-            height: 60px;
-            width: 350px;
-            display: flex;
-            align-items: center;
-            justify-content: start;
-            border-radius: 5px 5px 30px 30px;
-            gap: 30px;
-            padding: 0 20px;
-          "
-        >
-          <i class="fa-solid fa-moon"></i>
-          <p>Dark Theme</p>
-        </div>
-      </div> -->
+        
 
         <h6 style="margin: 10px 40px 10px 40px; opacity: 0.5">Notifications</h6>
 
@@ -412,126 +350,13 @@
           <% } %>
         </div>
 
-        <!-- <div class="containerProfileHiddenAccountActions">
-        <% if (session && session.username) { %>
-        <p class="containerProfileItemsHiddenp headerProfileItemHiddenSignOu">
-          <a href="/logout" class="containerProfileItemsHiddena">Sign Out</a>
-        </p>
-        <% } else { %>
-        <p class="containerProfileItemsHiddenp headerProfileItemHiddenSignIn">
-          <a href="/signin" class="containerProfileItemsHiddena">Sign In</a>
-        </p>
-        <p class="containerProfileItemsHiddenp headerProfileItemHiddenSignUp">
-          <a href="/signup" class="containerProfileItemsHiddena">Sign Up</a>
-        </p>
-        <% } %>
-      </div> -->
+        
       </div>
     </div>
-    <!-- 
-  <div class="containerProfileItemsHidden" id="containerProfileItemsHidden">
-    <% if (session && session.username) { %>
-    <p class="containerProfileItemsHiddenp headerProfileItemHiddenSignOu">
-      <a href="/logout" class="containerProfileItemsHiddena">Sign Out</a>
-    </p>
-    <% } else { %>
-    <p class="containerProfileItemsHiddenp headerProfileItemHiddenSignIn">
-      <a href="/signin" class="containerProfileItemsHiddena">Sign In</a>
-    </p>
-    <p class="containerProfileItemsHiddenp headerProfileItemHiddenSignUp">
-      <a href="/signup" class="containerProfileItemsHiddena">Sign Up</a>
-    </p>
-    <% } %>
-  </div>
-  <div
-    class="containerWholeNotificationCard"
-    id="containerWholeNotificationCard"
-    style="
-      position: absolute;
-      height: 100vh;
-      width: 100vw;
-      z-index: 100;
-      backdrop-filter: blur(20px) brightness(50%);
-      display: none;
-      transition: 0.2s;
-    "
-  ></div>
-  <div class="containerNotificationHeader" id="containerNotificationHeader">
-    <% if (usersNotificationDetails && usersNotificationDetails.length > 0) { %>
-    <% // Sort the notifications based on the createddate in descending order
-    usersNotificationDetails.sort((a, b) => new Date(b.createddate) - new
-    Date(a.createddate)); // Loop through the sorted notifications
-    usersNotificationDetails.forEach(notification => { %>
-    <div
-      class="containerEachNotification"
-      style="
-        width: 500px;
-        padding: 10px 20px;
-        display: flex;
-        align-items: start;
-        justify-content: center;
-        flex-direction: column;
-        margin-top: 10px;
-        font-size: 20px;
-      "
-    >
-      <p class="notificationContent" style="margin: 0; padding: 0">
-        <%- notification.notification %>
-      </p>
-      <p
-        class="notificationDate"
-        style="margin: 0; padding: 0; font-size: 15px"
-      >
-        <%- notification.createddate.toLocaleDateString() %>
-      </p>
-    </div>
-    <% }) %> <% } else { %>
-    <!-- Handle case where usersNotificationDetails is null or empty -->
-    <!-- <div
-      class="containerNoNotification"
-      style="
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        gap: 30px;
-        height: 500px;
-        width: 500px;
-        font-size: 30px;
-      "
-    >
-      <p>No notifications available.</p>
-      <% if (session && session.username) { %>
-      <p></p>
-      <% } else { %>
-
-      <a
-        href="/signin"
-        class="notificationSignInButton"
-        style="
-          height: 50px;
-          width: 300px;
-          background-color: #007aff;
-          border-radius: 10px;
-          color: #fff;
-          font-size: 20px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          text-decoration: none;
-        "
-        >Sign In</a
-      >
-      <% } %>
-    </div>
-    <% } %>
-  </div>
-</div> -->
+    
 
     <style>
-      /* #notificationButton:hover {
-      background-color: #012c4142;
-    } */
+      
       @import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap");
       #profileButton:hover {
         background-color: #c3c3c342;
@@ -785,74 +610,6 @@
             });
         });
       });
-      // const name = document.getElementById("headerProfileName");
-      // const arrow = document.getElementById("headerProfileNameArrow");
-      // const hiddenPartSignUp = document.getElementById(
-      //   "containerProfileItemsHidden"
-      // );
-
-      // // Ensure the initial state is hidden
-      // hiddenPartSignUp.style.display = "none";
-
-      // // Attach click event listener
-      // name.addEventListener("click", () => {
-      //   // Toggle display property between 'flex' and 'none'
-      //   hiddenPartSignUp.style.display =
-      //     hiddenPartSignUp.style.display === "none" ? "flex" : "none";
-      //   // Rotate arrow icon accordingly
-      //   arrow.style.transform =
-      //     hiddenPartSignUp.style.display === "none"
-      //       ? "rotate(0deg)"
-      //       : "rotate(180deg)";
-      // });
-
-      // // Add click event listener to the document
-      // document.addEventListener("click", (event) => {
-      //   // Check if the click event target is outside of the notification button and its content
-      //   if (
-      //     !name.contains(event.target) &&
-      //     !hiddenPartSignUp.contains(event.target)
-      //   ) {
-      //     hiddenPartSignUp.style.display = "none";
-      //   }
-      // });
-
-      // const notificationButton = document.getElementById("notificationButton");
-      // const notificationContent = document.getElementById(
-      //   "containerNotificationHeader"
-      // );
-      // const notificationBackground = document.getElementById(
-      //   "containerWholeNotificationCard"
-      // );
-
-      // notificationContent.style.display = "none";
-      // notificationBackground.style.display = "none";
-
-      // notificationButton.addEventListener("click", () => {
-      //   // Changed 'onclick' to 'addEventListener'
-
-      //   if (notificationContent.style.display === "none") {
-      //     notificationContent.style.display = "flex";
-      //     notificationBackground.style.display = "flex";
-      //     document.body.style.overflow = "hidden";
-      //   } else {
-      //     notificationContent.style.display = "none";
-      //     notificationBackground.style.display = "none";
-      //     document.body.style.overflow = "scroll";
-      //   }
-      // });
-      // // Add click event listener to the document
-      // document.addEventListener("click", (event) => {
-      //   // Check if the click event target is outside of the notification button and its content
-      //   if (
-      //     !notificationButton.contains(event.target) &&
-      //     !notificationContent.contains(event.target)
-      //   ) {
-      //     notificationContent.style.display = "none";
-      //     notificationBackground.style.display = "none";
-      //     document.body.style.overflow = "scroll";
-      //   }
-      // });
     </script>
   </div>
 </div>

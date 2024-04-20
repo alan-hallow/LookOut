@@ -64,13 +64,23 @@ router.get("/missingelderlynewpost/:id", async (req, res) => {
     if (!missingElderlyDetails) {
       res.redirect("/");
     } else {
-      res.render("user/elderly/missingelderlydisplay", {
-        missingelderlyfulldetails: missingElderlyDetails,
-        missingElderlyUpdates: missingElderlyUpdates, // Pass the comments to the view
-        missingelderlycomments: missingElderlyComments, // Pass the comments to the view
-        usersNotificationDetails: usersNotificationDetails,
-        session: req.session,
-      });
+      if (req.session.theme === "light") {
+        res.render("user/elderly/missingelderlydisplay", {
+          missingelderlyfulldetails: missingElderlyDetails,
+          missingElderlyUpdates: missingElderlyUpdates, // Pass the comments to the view
+          missingelderlycomments: missingElderlyComments, // Pass the comments to the view
+          usersNotificationDetails: usersNotificationDetails,
+          session: req.session,
+        });
+      } else {
+        res.render("user/elderly/elderly_display_dark", {
+          missingelderlyfulldetails: missingElderlyDetails,
+          missingElderlyUpdates: missingElderlyUpdates, // Pass the comments to the view
+          missingelderlycomments: missingElderlyComments, // Pass the comments to the view
+          usersNotificationDetails: usersNotificationDetails,
+          session: req.session,
+        });
+      }
     }
   } catch (error) {
     console.error("Error:", error);
