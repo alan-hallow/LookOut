@@ -33,9 +33,12 @@
         flex-direction: column;
       "
     >
-      <h1 style="font-size: 70px"><%- missingvehiclefulldetails.name %></h1>
+      <h1 style="font-size: 70px">
+        <%- missingvehiclefulldetails.brand %> <%-
+        missingvehiclefulldetails.model %>
+      </h1>
       <h3 style="font-weight: 400; font-size: 25px">
-        Lives in <%- missingvehiclefulldetails.place %>
+        <%- missingvehiclefulldetails.number %>
       </h3>
     </div>
     <div
@@ -95,28 +98,28 @@
   >
     <div
       class="dark_details details_name"
-      style="font-size: 40px; border-radius: 30px 30px 5px 5px"
+      style="border-radius: 30px 30px 5px 5px"
     >
-      <p class="dark_details_title">Name</p>
-      <p class="dark_details_content"><%- missingvehiclefulldetails.name %></p>
+      <p class="dark_details_title">Brand</p>
+      <p class="dark_details_content"><%- missingvehiclefulldetails.brand %></p>
     </div>
     <div class="dark_details details_gender">
-      <p class="dark_details_title">Gender</p>
-      <p class="dark_details_content">
-        <%- missingvehiclefulldetails.gender %>
-      </p>
+      <p class="dark_details_title">Model</p>
+      <p class="dark_details_content"><%- missingvehiclefulldetails.model %></p>
     </div>
     <div class="dark_details details_age">
-      <p class="dark_details_title">Age</p>
-      <p class="dark_details_content"><%- missingvehiclefulldetails.age %></p>
+      <p class="dark_details_title">Year</p>
+      <p class="dark_details_content"><%- missingvehiclefulldetails.year %></p>
     </div>
     <div class="dark_details details_breed">
-      <p class="dark_details_title">Breed</p>
-      <p class="dark_details_content"><%- missingvehiclefulldetails.breed %></p>
+      <p class="dark_details_title">Fuel type</p>
+      <p class="dark_details_content"><%- missingvehiclefulldetails.fuel %></p>
     </div>
     <div class="dark_details details_color">
-      <p class="dark_details_title">Color</p>
-      <p class="dark_details_content"><%- missingvehiclefulldetails.color %></p>
+      <p class="dark_details_title">Number</p>
+      <p class="dark_details_content">
+        <%- missingvehiclefulldetails.number %>
+      </p>
     </div>
     <div class="dark_details details_date">
       <p class="dark_details_title">Date</p>
@@ -132,16 +135,10 @@
       <p class="dark_details_title">Location</p>
       <p class="dark_details_content"><%- missingvehiclefulldetails.place %></p>
     </div>
-    <div class="dark_details details_height">
-      <p class="dark_details_title">Height</p>
-      <p class="dark_details_content">
-        <%- missingvehiclefulldetails.height %> cm
-      </p>
-    </div>
     <div class="dark_details details_residence">
       <p class="dark_details_title">Residence</p>
       <p class="dark_details_content">
-        <%- missingvehiclefulldetails.residence %>
+        <%- missingvehiclefulldetails.residency %>
       </p>
     </div>
     <div class="dark_details details_additional">
