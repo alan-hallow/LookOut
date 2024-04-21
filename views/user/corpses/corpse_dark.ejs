@@ -1,40 +1,19 @@
 <%- include('../layout/layout.ejs') -%>
 
-<img
-  src="/images/LookOut/pets.jpg"
-  alt=""
-  class="missingKidsMainImage"
-  style="width: 100vw"
-/>
-
 <div
-  class="containerFirstSectionTitleParagraphMissingKids"
+  class="containerCorpsesWholePage"
   style="
-    position: absolute;
-    top: 250px;
-    left: 100px;
-    color: white;
-    width: 500px;
-    text-align: center;
+    margin-top: 100px;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    gap: 20px;
   "
 >
-  <h1 style="font-size: 50px">Missing pets</h1>
-
-  <p style="font-size: 18px">
-    The disappearance of pets is a distressing situation, causing great concern
-    for their owners and communities alike. It is crucial to act promptly,
-    mobilizing all possible resources to locate and reunite them with their
-    families. Time is of the essence in ensuring the safe return of missing
-    pets.
-  </p>
+  <h2 class="corpsesPageTitle">Not recognised corpses</h2>
 
   <a
-    href="/missingpets/createMissingPetsPost"
+    href="/corpses/createCorpsePost"
     style="
       width: 250px;
       height: 50px;
@@ -49,11 +28,8 @@
     "
     >Create a new post</a
   >
-</div>
-
-<section>
   <div
-    class="container"
+    class="containerAllCorpsesCards"
     style="
       display: grid;
       grid-template-columns: repeat(3, 300px);
@@ -68,10 +44,10 @@
       align-items: center;
     "
   >
-    <% petsMissing.sort((a, b) => new Date(b.date) - new Date(a.date));
-    petsMissing.forEach(pets => { %>
+    <% corpses.sort((a, b) => new Date(b.date) - new Date(a.date));
+    corpses.forEach(corpse => { %>
 
-    <a href="missingpets/missingpetsnewpost/<%= pets.id %>">
+    <a href="corpses/corpsesnewpost/<%= corpse.id %>">
       <div
         class="containerMissingKidsCards"
         style="
@@ -86,7 +62,7 @@
         "
       >
         <img
-          src="images/missingpets/<%= pets.id %>.jpg"
+          src="images/corpses/<%= corpse.id %>.jpg"
           alt=""
           style="height: 400px"
         />
@@ -112,24 +88,22 @@
           "
         >
           <h4 style="font-size: 20px; text-transform: uppercase">
-            <%= pets.name %>&nbsp;
+            <%= corpse.place %>&nbsp;
           </h4>
-          <h4 style="font-size: 20px">| <%= pets.age %></h4>
+          <h4 style="font-size: 20px">| <%= corpse.age %></h4>
         </div>
       </div>
     </a>
 
     <% }) %>
   </div>
-</section>
+</div>
 
 <style>
   body {
-    background-color: #ffffff;
-  }
-  .containerMissingKidsDisplayEachCard:hover {
-    text-decoration: none;
-    color: #007acc;
+    background-color: #091a14;
+    color: white;
   }
 </style>
-<%- include('../partials/footer.ejs') -%>
+
+<%- include('../partials/footer_dark.ejs')-%>

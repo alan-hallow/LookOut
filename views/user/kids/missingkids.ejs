@@ -1,18 +1,27 @@
 <%- include('../layout/layout.ejs') -%>
 
-<img
-  src="/images/LookOut/missing kid.png"
-  alt=""
-  class="missingKidsMainImage"
-  style="width: 100vw"
-/>
-
+<div
+  class="kids_white_image_container"
+  style="
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 100px;
+  "
+>
+  <img
+    src="/images/LookOut/missing kid.png"
+    alt=""
+    class="missingKidsMainImage"
+    style="width: 80vw; border-radius: 50px"
+  />
+</div>
 <div
   class="containerFirstSectionTitleParagraphMissingKids"
   style="
     position: absolute;
-    top: 250px;
-    left: 100px;
+    top: 350px;
+    left: 200px;
     color: white;
     width: 500px;
     text-align: center;
@@ -25,7 +34,7 @@
 >
   <h1 style="font-size: 50px">Missing Kids</h1>
 
-  <p style="font-size: 18px">
+  <p style="font-size: 15px">
     The disappearance of children is a heart-wrenching reality, leaving families
     in anguish and communities on high alert. Urgent action is essential,
     utilizing every available resource to swiftly locate and reunite them with
@@ -60,9 +69,7 @@
       grid-template-rows: auto;
       gap: 20px;
       width: 100vw;
-      margin-left: auto;
-      margin-right: auto;
-      margin-top: 100px;
+      margin: 150px auto;
       place-content: center;
       align-items: center;
     "
@@ -124,7 +131,7 @@
 
 <style>
   body {
-    background-color: #1d1d1d;
+    background-color: #f8edeb;
   }
   .containerMissingKidsDisplayEachCard:hover {
     text-decoration: none;

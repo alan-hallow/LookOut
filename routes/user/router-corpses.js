@@ -19,11 +19,19 @@ router.get("/", async (req, res) => {
     const usersNotificationDetails = await usersNotification.find({
       postId: userId,
     });
-    res.render("user/corpses/corpses-display", {
-      corpses: corpsinfo,
-      usersNotificationDetails: usersNotificationDetails,
-      session: req.session,
-    });
+    if (req.session.theme === "light") {
+      res.render("user/corpses/corpses-display", {
+        corpses: corpsinfo,
+        usersNotificationDetails: usersNotificationDetails,
+        session: req.session,
+      });
+    } else {
+      res.render("user/corpses/corpse_dark", {
+        corpses: corpsinfo,
+        usersNotificationDetails: usersNotificationDetails,
+        session: req.session,
+      });
+    }
   }
 });
 
@@ -61,7 +69,7 @@ router.get("/corpsesnewpost/:id", async (req, res) => {
           session: req.session,
         });
       } else {
-        res.render("user/corpses/corpses_display_dark", {
+        res.render("user/corpses/corpses_details_dark", {
           corpsesfulldetails: corpsesDetails,
           usersNotificationDetails: usersNotificationDetails,
           corpsescomments: corpsesComments, // Pass the comments to the view

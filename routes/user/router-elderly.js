@@ -23,11 +23,20 @@ router.get("/", async (req, res) => {
       const missingelderlyinfo = await missingElderly
         .find()
         .sort({ createddate: "desc" });
-      res.render("user/elderly/missingelderly", {
-        elderlyMissing: missingelderlyinfo,
-        usersNotificationDetails: usersNotificationDetails,
-        session: req.session,
-      });
+
+      if (req.session.theme === "light") {
+        res.render("user/elderly/missingelderly", {
+          elderlyMissing: missingelderlyinfo,
+          usersNotificationDetails: usersNotificationDetails,
+          session: req.session,
+        });
+      } else {
+        res.render("user/elderly/elderly_dark", {
+          elderlyMissing: missingelderlyinfo,
+          usersNotificationDetails: usersNotificationDetails,
+          session: req.session,
+        });
+      }
     }
   } catch (error) {
     console.error("Error:", error);

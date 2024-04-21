@@ -23,11 +23,19 @@ router.get("/", async (req, res) => {
       const missingpetsinfo = await missingPets
         .find()
         .sort({ createddate: "desc" });
-      res.render("user/pets/missingpets", {
-        petsMissing: missingpetsinfo,
-        usersNotificationDetails: usersNotificationDetails,
-        session: req.session,
-      });
+      if (req.session.theme === "light") {
+        res.render("user/pets/missingpets", {
+          petsMissing: missingpetsinfo,
+          usersNotificationDetails: usersNotificationDetails,
+          session: req.session,
+        });
+      } else {
+        res.render("user/pets/pets_dark", {
+          petsMissing: missingpetsinfo,
+          usersNotificationDetails: usersNotificationDetails,
+          session: req.session,
+        });
+      }
     }
   } catch (error) {
     console.error("Error:", error);

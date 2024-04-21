@@ -1,7 +1,7 @@
 <%- include('../layout/layout.ejs') -%>
 
 <img
-  src="/images/LookOut/pets.jpg"
+  src="/images/LookOut/laptop.jpg"
   alt=""
   class="missingKidsMainImage"
   style="width: 100vw"
@@ -11,8 +11,8 @@
   class="containerFirstSectionTitleParagraphMissingKids"
   style="
     position: absolute;
-    top: 250px;
-    left: 100px;
+    top: 150px;
+    right: 100px;
     color: white;
     width: 500px;
     text-align: center;
@@ -23,18 +23,19 @@
     gap: 20px;
   "
 >
-  <h1 style="font-size: 50px">Missing pets</h1>
+  <h1 style="font-size: 50px">Lost/Stolen valuables</h1>
 
   <p style="font-size: 18px">
-    The disappearance of pets is a distressing situation, causing great concern
-    for their owners and communities alike. It is crucial to act promptly,
-    mobilizing all possible resources to locate and reunite them with their
-    families. Time is of the essence in ensuring the safe return of missing
-    pets.
+    The loss or theft of valuables is a distressing ordeal, leaving individuals
+    and families in a state of turmoil and causing communities to remain
+    vigilant. It is crucial to take immediate action, deploying all possible
+    resources to quickly locate and recover the missing valuables. Every passing
+    moment is critical in the endeavor to reunite the owners with their
+    cherished possessions safely.
   </p>
 
   <a
-    href="/missingpets/createMissingPetsPost"
+    href="/missingvaluable/createMissingValuablePost"
     style="
       width: 250px;
       height: 50px;
@@ -68,16 +69,16 @@
       align-items: center;
     "
   >
-    <% petsMissing.sort((a, b) => new Date(b.date) - new Date(a.date));
-    petsMissing.forEach(pets => { %>
+    <% valuableMissing.sort((a, b) => new Date(b.date) - new Date(a.date));
+    valuableMissing.forEach(valuable => { %>
 
-    <a href="missingpets/missingpetsnewpost/<%= pets.id %>">
+    <a href="missingvaluable/missingvaluablenewpost/<%= valuable.id %>">
       <div
         class="containerMissingKidsCards"
         style="
           height: 400px;
           width: 300px;
-          background-color: wheat;
+          background-color: rgb(45, 45, 45);
           border-radius: 30px;
           overflow: hidden;
           display: flex;
@@ -86,9 +87,9 @@
         "
       >
         <img
-          src="images/missingpets/<%= pets.id %>.jpg"
+          src="images/missingvaluable/<%= valuable.id %>.jpg"
           alt=""
-          style="height: 400px"
+          style="height: 400px; min-height: 300px"
         />
         <div
           class="containerCardOverlayTitle"
@@ -112,9 +113,8 @@
           "
         >
           <h4 style="font-size: 20px; text-transform: uppercase">
-            <%= pets.name %>&nbsp;
+            <%= valuable.name %>&nbsp;
           </h4>
-          <h4 style="font-size: 20px">| <%= pets.age %></h4>
         </div>
       </div>
     </a>
@@ -125,11 +125,11 @@
 
 <style>
   body {
-    background-color: #ffffff;
+    background-color: #251e14;
   }
   .containerMissingKidsDisplayEachCard:hover {
     text-decoration: none;
     color: #007acc;
   }
 </style>
-<%- include('../partials/footer.ejs') -%>
+<%- include('../partials/footer_dark.ejs') -%>

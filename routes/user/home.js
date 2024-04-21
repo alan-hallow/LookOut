@@ -28,11 +28,19 @@ router.get("/", async (req, res) => {
     postId: userId,
   });
   try {
-    res.render("user/home", {
-      username: username,
-      usersNotificationDetails: usersNotificationDetails,
-      session: req.session,
-    }); // Render the home template with the username retrieved from the session
+    if (req.session.theme === "light") {
+      res.render("user/home", {
+        username: username,
+        usersNotificationDetails: usersNotificationDetails,
+        session: req.session,
+      }); // Render the home template with the username retrieved from the session
+    } else {
+      res.render("user/home_dark", {
+        username: username,
+        usersNotificationDetails: usersNotificationDetails,
+        session: req.session,
+      }); // Render the home template with the username retrieved from the session
+    }
   } catch (error) {
     console.error("Error fetching users' notification details:", error);
     // Handle the error appropriately, e.g., sending an error response or rendering an error page

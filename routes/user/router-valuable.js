@@ -23,11 +23,19 @@ router.get("/", async (req, res) => {
       const missingvaluableinfo = await missingValuable
         .find()
         .sort({ createddate: "desc" });
-      res.render("user/valuable/missingvaluable", {
-        valuableMissing: missingvaluableinfo,
-        usersNotificationDetails: usersNotificationDetails,
-        session: req.session,
-      });
+      if (req.session.theme === "light") {
+        res.render("user/valuable/missingvaluable", {
+          valuableMissing: missingvaluableinfo,
+          usersNotificationDetails: usersNotificationDetails,
+          session: req.session,
+        });
+      } else {
+        res.render("user/valuable/valuable_dark", {
+          valuableMissing: missingvaluableinfo,
+          usersNotificationDetails: usersNotificationDetails,
+          session: req.session,
+        });
+      }
     }
   } catch (error) {
     console.error("Error:", error);

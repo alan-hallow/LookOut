@@ -1,7 +1,7 @@
 <%- include('../layout/layout.ejs') -%>
 
 <img
-  src="/images/LookOut/pets.jpg"
+  src="/images/LookOut/vehicle.jpeg"
   alt=""
   class="missingKidsMainImage"
   style="width: 100vw"
@@ -11,8 +11,8 @@
   class="containerFirstSectionTitleParagraphMissingKids"
   style="
     position: absolute;
-    top: 250px;
-    left: 100px;
+    top: 70px;
+    right: 20px;
     color: white;
     width: 500px;
     text-align: center;
@@ -21,20 +21,24 @@
     justify-content: center;
     flex-direction: column;
     gap: 20px;
+    backdrop-filter: blur(30px);
+    border-radius: 20px;
+    background-color: #1d1d1d3c;
+    padding: 20px;
   "
 >
-  <h1 style="font-size: 50px">Missing pets</h1>
+  <h1 style="font-size: 50px">Lost Vehicle</h1>
 
   <p style="font-size: 18px">
-    The disappearance of pets is a distressing situation, causing great concern
-    for their owners and communities alike. It is crucial to act promptly,
-    mobilizing all possible resources to locate and reunite them with their
-    families. Time is of the essence in ensuring the safe return of missing
-    pets.
+    The loss or theft of a vehicle is a troubling occurrence, causing
+    significant distress for its owner and raising alarms within the community.
+    It is imperative to respond swiftly, leveraging all available means to
+    locate and recover the vehicle. Every moment is critical in ensuring the
+    safe return of the lost or stolen vehicle to its rightful owner.
   </p>
 
   <a
-    href="/missingpets/createMissingPetsPost"
+    href="/missingvehicle/createMissingVehiclePost"
     style="
       width: 250px;
       height: 50px;
@@ -68,10 +72,10 @@
       align-items: center;
     "
   >
-    <% petsMissing.sort((a, b) => new Date(b.date) - new Date(a.date));
-    petsMissing.forEach(pets => { %>
+    <% vehicleMissing.sort((a, b) => new Date(b.date) - new Date(a.date));
+    vehicleMissing.forEach(vehicle => { %>
 
-    <a href="missingpets/missingpetsnewpost/<%= pets.id %>">
+    <a href="missingvehicle/missingvehiclenewpost/<%= vehicle.id %>">
       <div
         class="containerMissingKidsCards"
         style="
@@ -86,7 +90,7 @@
         "
       >
         <img
-          src="images/missingpets/<%= pets.id %>.jpg"
+          src="images/missingvehicle/<%= vehicle.id %>.jpg"
           alt=""
           style="height: 400px"
         />
@@ -112,9 +116,12 @@
           "
         >
           <h4 style="font-size: 20px; text-transform: uppercase">
-            <%= pets.name %>&nbsp;
+            <%= vehicle.brand %>&nbsp;
           </h4>
-          <h4 style="font-size: 20px">| <%= pets.age %></h4>
+          <h4 style="font-size: 20px; text-transform: uppercase">
+            <%= vehicle.model %>
+          </h4>
+          <h4 style="font-size: 20px">, <%= vehicle.year %></h4>
         </div>
       </div>
     </a>
@@ -125,11 +132,11 @@
 
 <style>
   body {
-    background-color: #ffffff;
+    background-color: #151425;
   }
   .containerMissingKidsDisplayEachCard:hover {
     text-decoration: none;
     color: #007acc;
   }
 </style>
-<%- include('../partials/footer.ejs') -%>
+<%- include('../partials/footer_dark.ejs') -%>

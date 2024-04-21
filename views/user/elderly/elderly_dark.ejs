@@ -1,7 +1,7 @@
 <%- include('../layout/layout.ejs') -%>
 
 <img
-  src="/images/LookOut/pets.jpg"
+  src="/images/LookOut/missing old man.png"
   alt=""
   class="missingKidsMainImage"
   style="width: 100vw"
@@ -12,7 +12,7 @@
   style="
     position: absolute;
     top: 250px;
-    left: 100px;
+    right: 100px;
     color: white;
     width: 500px;
     text-align: center;
@@ -23,18 +23,18 @@
     gap: 20px;
   "
 >
-  <h1 style="font-size: 50px">Missing pets</h1>
+  <h1 style="font-size: 50px">Missing Elderly</h1>
 
   <p style="font-size: 18px">
-    The disappearance of pets is a distressing situation, causing great concern
-    for their owners and communities alike. It is crucial to act promptly,
-    mobilizing all possible resources to locate and reunite them with their
-    families. Time is of the essence in ensuring the safe return of missing
-    pets.
+    Are you worried about a missing elderly loved one? Our private detective
+    agency specializes in locating and reuniting missing individuals with their
+    families. With our dedicated team and advanced resources, we work tirelessly
+    to bring peace of mind to families during these challenging times. Trust us
+    to bring your loved one home safely.
   </p>
 
   <a
-    href="/missingpets/createMissingPetsPost"
+    href="/missingelderly/createMissingElderlyPost"
     style="
       width: 250px;
       height: 50px;
@@ -68,10 +68,10 @@
       align-items: center;
     "
   >
-    <% petsMissing.sort((a, b) => new Date(b.date) - new Date(a.date));
-    petsMissing.forEach(pets => { %>
+    <% elderlyMissing.sort((a, b) => new Date(b.date) - new Date(a.date));
+    elderlyMissing.forEach(elderly => { %>
 
-    <a href="missingpets/missingpetsnewpost/<%= pets.id %>">
+    <a href="missingelderly/missingelderlynewpost/<%= elderly.id %>">
       <div
         class="containerMissingKidsCards"
         style="
@@ -86,7 +86,7 @@
         "
       >
         <img
-          src="images/missingpets/<%= pets.id %>.jpg"
+          src="images/missingelderly/<%= elderly.id %>.jpg"
           alt=""
           style="height: 400px"
         />
@@ -112,9 +112,9 @@
           "
         >
           <h4 style="font-size: 20px; text-transform: uppercase">
-            <%= pets.name %>&nbsp;
+            <%= elderly.name %>&nbsp;
           </h4>
-          <h4 style="font-size: 20px">| <%= pets.age %></h4>
+          <h4 style="font-size: 20px">| <%= elderly.age %></h4>
         </div>
       </div>
     </a>
@@ -125,11 +125,11 @@
 
 <style>
   body {
-    background-color: #ffffff;
+    background-color: #0e1c26;
   }
   .containerMissingKidsDisplayEachCard:hover {
     text-decoration: none;
     color: #007acc;
   }
 </style>
-<%- include('../partials/footer.ejs') -%>
+<%- include('../partials/footer_dark.ejs') -%>

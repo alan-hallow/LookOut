@@ -1,63 +1,12 @@
 <%- include('layout/layout.ejs') -%>
 <div class="containerWholeHomePage">
-  <div
-    class="home_first_section_whole"
-    style="height: 100vh; background-color: #1d1d1d"
-  >
-    <img
-      src="/images/LookOut/LookOut HeaderImage NoBG.png"
-      alt=""
-      class="first_image"
-      style="height: 100vh; position: absolute; right: 0; z-index: 2"
-    />
-    <div class="first_title_whole">
-      <h1
-        class="first_title"
-        style="
-          font-size: 90px;
-          text-align: center;
-          position: absolute;
-          top: 350px;
-          left: 100px;
-          box-shadow: -15px 15px 30px #0c0c0c, 15px -15px 30px #2e2e2e;
-          border-radius: 30px;
-          padding: 20px;
-
-          font-family: 'Press Start 2P', system-ui;
-          font-weight: 400;
-          font-style: normal;
-          color: white;
-          transition: 0.5s;
-          user-select: none;
-        "
-      >
-        Look Out
-      </h1>
-      <p
-        class="first_paragraph"
-        style="
-          width: 500px;
-          position: absolute;
-          top: 550px;
-          color: white;
-          left: 100px;
-        "
-      >
-        Look Out connects users with affordable private detectives skilled in
-        finding missing people, pets, vehicles, and valuables. With advanced
-        technology and a network of experienced investigators, Look Out offers
-        discreet solutions for locating assets or loved ones quickly and
-        efficiently.
-      </p>
-    </div>
-  </div>
-  <!-- <img
+  <img
     src="/images/LookOut/LookOut HeaderImage NoBG.png"
     alt=""
     class="homePageFirstSectionImage"
   />
   <div class="containerFirstSectionTitle">
-    <h1 class="firstSecitonTitleH1" style="">Look Out</h1>
+    <h1 class="firstSecitonTitleH1">Look Out</h1>
     <p class="firstSectionParagraphP">
       Look Out connects users with affordable private detectives skilled in
       finding missing people, pets, vehicles, and valuables. With advanced
@@ -65,7 +14,7 @@
       discreet solutions for locating assets or loved ones quickly and
       efficiently.
     </p>
-  </div> -->
+  </div>
 
   <div class="containerSecondSectionKids">
     <img
@@ -175,8 +124,7 @@
 
   @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
   body {
-    background-color: #ffffff;
-    color: black;
+    background-color: #1d1d1d;
     margin: 0;
     font-family: "Roboto", sans-serif;
     font-weight: 400;
@@ -210,7 +158,6 @@
     height: 100vh;
     background-image: linear-gradient(to top, black, transparent, transparent);
     user-select: none;
-    background-color: #1d1d1d;
   }
   .containerFirstSectionTitle {
     position: absolute;
@@ -438,7 +385,7 @@
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff;
+    box-shadow: 20px 20px 60px #191919, -20px -20px 60px #212121;
   }
 </style>
 
@@ -453,4 +400,4 @@
     null;
   };
 </script>
-<%- include('partials/footer.ejs') -%>
+<%- include('partials/footer_dark.ejs') -%>

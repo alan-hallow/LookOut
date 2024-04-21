@@ -1,7 +1,7 @@
 <%- include('../layout/layout.ejs') -%>
 
 <img
-  src="/images/LookOut/pets.jpg"
+  src="/images/LookOut/missing kid.png"
   alt=""
   class="missingKidsMainImage"
   style="width: 100vw"
@@ -23,18 +23,18 @@
     gap: 20px;
   "
 >
-  <h1 style="font-size: 50px">Missing pets</h1>
+  <h1 style="font-size: 50px">Missing Kids</h1>
 
   <p style="font-size: 18px">
-    The disappearance of pets is a distressing situation, causing great concern
-    for their owners and communities alike. It is crucial to act promptly,
-    mobilizing all possible resources to locate and reunite them with their
-    families. Time is of the essence in ensuring the safe return of missing
-    pets.
+    The disappearance of children is a heart-wrenching reality, leaving families
+    in anguish and communities on high alert. Urgent action is essential,
+    utilizing every available resource to swiftly locate and reunite them with
+    their loved ones. Every moment counts in the effort to bring missing
+    children home safely.
   </p>
 
   <a
-    href="/missingpets/createMissingPetsPost"
+    href="/missingkids/createMissingKidPost"
     style="
       width: 250px;
       height: 50px;
@@ -63,22 +63,21 @@
       margin-left: auto;
       margin-right: auto;
       margin-top: 100px;
-      margin-bottom: 100px;
       place-content: center;
       align-items: center;
     "
   >
-    <% petsMissing.sort((a, b) => new Date(b.date) - new Date(a.date));
-    petsMissing.forEach(pets => { %>
+    <% childMissing.sort((a, b) => new Date(b.date) - new Date(a.date));
+    childMissing.forEach(child => { %>
 
-    <a href="missingpets/missingpetsnewpost/<%= pets.id %>">
+    <a href="missingkids/missingkidnewpost/<%= child.id %>">
       <div
         class="containerMissingKidsCards"
         style="
           height: 400px;
           width: 300px;
           background-color: wheat;
-          border-radius: 30px;
+          border-radius: 10px;
           overflow: hidden;
           display: flex;
           align-items: center;
@@ -86,7 +85,7 @@
         "
       >
         <img
-          src="images/missingpets/<%= pets.id %>.jpg"
+          src="images/missingkids/<%= child.id %>.jpg"
           alt=""
           style="height: 400px"
         />
@@ -96,7 +95,7 @@
             position: absolute;
             height: 400px;
             width: 300px;
-            border-radius: 29px;
+            border-radius: 9px;
             background-image: linear-gradient(
               to top,
               #000000d0,
@@ -112,9 +111,9 @@
           "
         >
           <h4 style="font-size: 20px; text-transform: uppercase">
-            <%= pets.name %>&nbsp;
+            <%= child.name %>&nbsp;
           </h4>
-          <h4 style="font-size: 20px">| <%= pets.age %></h4>
+          <h4 style="font-size: 20px">| <%= child.age %></h4>
         </div>
       </div>
     </a>
@@ -125,7 +124,7 @@
 
 <style>
   body {
-    background-color: #ffffff;
+    background-color: #1d1d1d;
   }
   .containerMissingKidsDisplayEachCard:hover {
     text-decoration: none;
