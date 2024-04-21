@@ -46,10 +46,17 @@ router.get("/signup", async (req, res) => {
   const usersNotificationDetails = await usersNotification.find({
     postId: userId,
   });
-  res.render("user/signup", {
-    session: req.session,
-    usersNotificationDetails: usersNotificationDetails,
-  });
+  if (req.session.theme === "light") {
+    res.render("user/signup", {
+      session: req.session,
+      usersNotificationDetails: usersNotificationDetails,
+    });
+  } else {
+    res.render("user/signup_dark", {
+      session: req.session,
+      usersNotificationDetails: usersNotificationDetails,
+    });
+  }
 });
 
 router.get("/signin", async (req, res) => {
@@ -60,11 +67,20 @@ router.get("/signin", async (req, res) => {
   });
   const passwordError = req.query.data === "passwordError"; // Check if the query parameter 'data' is 'passwordError'
   const emailError = req.query.data === "emailNotFound"; // Check if the query parameter 'data' is 'emailNotFound'
-  res.render("user/signin", {
-    errorMessage: { passwordError, emailError },
-    session: req.session,
-    usersNotificationDetails: usersNotificationDetails,
-  }); // Render the signin template initially
+
+  if (req.session.theme === "light") {
+    res.render("user/signin", {
+      errorMessage: { passwordError, emailError },
+      session: req.session,
+      usersNotificationDetails: usersNotificationDetails,
+    }); // Render the signin template initially
+  } else {
+    res.render("user/signin_dark", {
+      errorMessage: { passwordError, emailError },
+      session: req.session,
+      usersNotificationDetails: usersNotificationDetails,
+    }); // Render the signin template initially
+  }
 });
 
 router.post("/userSignup", async (req, res) => {

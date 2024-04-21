@@ -1,0 +1,380 @@
+<%- include('../layout/layout.ejs') -%>
+
+<div
+  class="container_whole_corpses_dark"
+  style="
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 10px;
+    flex-direction: column;
+  "
+>
+  <div
+    class="corpses_dark_nameImage"
+    style="
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    "
+  >
+    <div
+      class="corpses_dark_details"
+      style="
+        aspect-ratio: 1;
+        width: 500px;
+        border-radius: 30px;
+        background-color: var(--items_primary);
+        display: flex;
+        align-items: start;
+        padding: 50px;
+        justify-content: center;
+        flex-direction: column;
+      "
+    >
+      <h1 style="font-size: 70px"><%- corpsesfulldetails.name %></h1>
+      <h3 style="font-weight: 400; font-size: 25px">
+        Lost in <%- corpsesfulldetails.place %>
+      </h3>
+    </div>
+    <div
+      class="corpses_dark_image"
+      style="
+        height: 500px;
+        aspect-ratio: 1;
+        border-radius: 30px;
+        background-color: var(--items_primary);
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      "
+    >
+      <img
+        src="/images/corpses/<%= corpsesfulldetails.id %>.jpg"
+        alt=""
+        class="missingPersonImage"
+        style="height: 500px"
+      />
+    </div>
+  </div>
+
+  <div
+    class="corpses_dark_selector"
+    style="
+      height: 80px;
+      width: 1000px;
+      border-radius: 50px;
+      background-color: var(--button_background);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    "
+  >
+    <div class="selector_item" id="_selector_item_1">
+      <span class="material-symbols-outlined"> info </span>Details
+    </div>
+    <div class="selector_item" id="_selector_item_2">
+      <span class="material-symbols-outlined"> comment </span>Comments
+    </div>
+  </div>
+  <div
+    class="corpses_dark_details"
+    id="_corpses_dark_details"
+    style="
+      width: 850px;
+      margin-top: 100px;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    "
+  >
+    <div
+      class="dark_details details_name"
+      style="font-size: 40px; border-radius: 30px 30px 5px 5px"
+    >
+      <p class="dark_details_title">Item</p>
+      <p class="dark_details_content"><%- corpsesfulldetails.name %></p>
+    </div>
+    <div class="dark_details details_date">
+      <p class="dark_details_title">Date</p>
+      <p class="dark_details_content">
+        <%- corpsesfulldetails.date.toLocaleDateString() %>
+      </p>
+    </div>
+    <div class="dark_details details_time">
+      <p class="dark_details_title">Time</p>
+      <p class="dark_details_content"><%- corpsesfulldetails.time %></p>
+    </div>
+    <div class="dark_details details_place">
+      <p class="dark_details_title">Location</p>
+      <p class="dark_details_content"><%- corpsesfulldetails.place %></p>
+    </div>
+    <div class="dark_details details_additional">
+      <p class="dark_details_title">Description</p>
+      <p class="dark_details_content"><%- corpsesfulldetails.description %></p>
+    </div>
+    <div class="dark_details details_additional">
+      <p class="dark_details_title">Additional information</p>
+      <p class="dark_details_content"><%- corpsesfulldetails.additional %></p>
+    </div>
+    <div
+      class="dark_details details_reward"
+      style="border-radius: 5px 5px 30px 30px"
+    >
+      <p class="dark_details_title">Reward</p>
+      <p class="dark_details_content">Rs. <%- corpsesfulldetails.reward%></p>
+    </div>
+  </div>
+  <div
+    class="corpses_dark_comment"
+    id="_corpses_dark_comment"
+    style="
+      display: none;
+      align-items: start;
+      justify-content: start;
+      flex-direction: column;
+      margin-top: 100px;
+    "
+  >
+    <h2 style="font-size: 40px; margin-bottom: 50px; font-weight: 500">
+      <span
+        class="material-symbols-outlined"
+        style="
+          font-size: 40px;
+          padding: 0;
+          margin: 0;
+          transform: translateY(10px);
+        "
+      >
+        forum
+      </span>
+      Comments
+    </h2>
+    <form
+      action="/missingcorpses/commentForMissingcorpses"
+      method="post"
+      class="commentsForm"
+      style="
+        display: flex;
+        align-items: end;
+        justify-content: center;
+        flex-direction: column;
+        gap: 10px;
+      "
+    >
+      <input
+        type="text"
+        value="<%- corpsesfulldetails.id %>"
+        name="postId"
+        required
+        style="display: none"
+      />
+      <input
+        type="text"
+        value="<%= session.username %>"
+        name="name"
+        required
+        style="display: none"
+      />
+      <textarea
+        name="comment"
+        class="commentBox"
+        placeholder="Add a comment..."
+        required
+      ></textarea>
+
+      <button
+        type="submit"
+        class="submitButtonForm"
+        style="
+          height: 70px;
+          width: 100px;
+          border-radius: 30px;
+          outline: none;
+          border: none;
+          color: #ede0df;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 20px;
+          gap: 10px;
+          cursor: pointer;
+        "
+      >
+        <span class="material-symbols-outlined"> send </span>
+      </button>
+    </form>
+
+    <div class="corpses_dark_comments" style="margin-top: 30px">
+      <% corpsescomments.forEach(comment=> { %>
+      <div
+        class="comments_added"
+        style="
+          width: 700px;
+          padding: 20px;
+          background-color: var(--items_primary);
+          margin-top: 5px;
+        "
+      >
+        <div
+          class="comments_titleDate"
+          style="
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            opacity: 0.3;
+          "
+        >
+          <p><%- comment.name %></p>
+          <p><%- comment.createddate.toLocaleDateString() %></p>
+        </div>
+        <div class="comments_content"><%- comment.comment %></div>
+      </div>
+
+      <% }); %>
+    </div>
+  </div>
+</div>
+
+<script>
+  const details = document.getElementById("_selector_item_1");
+  const comments = document.getElementById("_selector_item_2");
+
+  const detailsContent = document.getElementById("_corpses_dark_details");
+  const commentContent = document.getElementById("_corpses_dark_comment");
+
+  details.addEventListener("click", () => {
+    details.style.backgroundColor = "var(--button_primary)";
+    comments.style.backgroundColor = "var(--button_background)";
+
+    detailsContent.style.display = "flex";
+    commentContent.style.display = "none";
+  });
+  comments.addEventListener("click", () => {
+    details.style.backgroundColor = "var(--button_background)";
+    comments.style.backgroundColor = "var(--button_primary)";
+
+    detailsContent.style.display = "none";
+    commentContent.style.display = "flex";
+  });
+  updates.addEventListener("click", () => {
+    details.style.backgroundColor = "var(--button_background)";
+    comments.style.backgroundColor = "var(--button_background)";
+
+    detailsContent.style.display = "none";
+    commentContent.style.display = "none";
+  });
+</script>
+
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+  :root {
+    --background_color: #1a1c18;
+    --button_primary: #3e4a36;
+    --button_secondary: #232820;
+    --button_background: #232820;
+    --button_hover: #2f352c;
+    --items_primary: #232820;
+    --comment_box: #4b5643;
+    --comment_box_hover: #2f352c;
+    --comment_button: #232820;
+    --comment_button_hover: #3e4a36;
+  }
+  body {
+    background-color: var(--background_color);
+    color: #ede0df;
+    margin-top: 100px;
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+  }
+
+  .comments_added:first-of-type {
+    border-radius: 30px 30px 5px 5px;
+  }
+  .comments_added {
+    border-radius: 5px;
+  }
+
+  .comments_added:last-of-type {
+    border-radius: 5px 5px 30px 30px;
+  }
+  .selector_item {
+    height: 80px;
+    width: 500px;
+    background-color: var(--button_background);
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    user-select: none;
+  }
+  .selector_item:hover {
+    background-color: var(--button_hover);
+    cursor: pointer;
+  }
+
+  .dark_details {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 18px;
+    font-weight: 400;
+    margin-top: 5px;
+    text-transform: capitalize;
+    background-color: var(--items_primary);
+    border-radius: 5px;
+    padding: 20px;
+  }
+
+  .dark_details_title {
+    width: 400px;
+    text-align: left;
+  }
+  .dark_details_content {
+    width: 400px;
+    text-align: right;
+  }
+  .submitButtonForm {
+    background-color: var(--comment_button);
+    transition: 0.2s;
+  }
+  .submitButtonForm:hover {
+    background-color: var(--comment_box_hover);
+  }
+
+  .commentBox {
+    height: 150px;
+    width: 700px;
+    border-radius: 30px;
+    font-size: 20px;
+    outline: none;
+    padding: 20px;
+    resize: none;
+    border: 2px solid var(--comment_box);
+    background-color: transparent;
+    color: #ede0df;
+  }
+  .commentBox:hover {
+    border: 2px solid var(--comment_box_hover);
+  }
+
+  .corpses_dark_update_item:first-of-type {
+    border-radius: 30px 30px 5px 5px;
+  }
+  .corpses_dark_update_item {
+    border-radius: 5px;
+  }
+  .corpses_dark_update_item:last-of-type {
+    border-radius: 5px 5px 30px 30px;
+  }
+  #_selector_item_1 {
+    background-color: var(--button_primary);
+  }
+</style>
+
+<%- include('../partials/footer_dark.ejs') -%>

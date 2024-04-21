@@ -1,0 +1,217 @@
+<%- include('layout/layout.ejs') -%>
+
+<div class="containerLoginWhole">
+  <h2 class="loginPageTitle">Welcome back to Look Out</h2>
+  <p class="loginPageSubTitle">
+    Log in to your account with your email and password
+  </p>
+  <% if (errorMessage.passwordError || errorMessage.emailError) { %>
+  <div class="signInError">
+    <% if (errorMessage.passwordError) { %> Incorrect Password 😞 <% } %> <% if
+    (errorMessage.emailError) { %> Email Not Found 😞 <% } %>
+  </div>
+  <% } %>
+
+  <form action="/userSignIn" method="post">
+    <div class="containerLoginForm">
+      <div class="containerEmail">
+        <label for="email" class="labelForm">Email</label>
+        <input
+          class="loginEmail"
+          type="text"
+          id="email"
+          name="email"
+          placeholder="Email"
+          required
+        />
+      </div>
+      <div class="containerPassword">
+        <label for="password" class="labelForm">Password</label>
+        <input
+          class="loginPassword"
+          type="password"
+          id="password"
+          name="password"
+          placeholder="Password"
+          required
+        />
+
+        <div class="passwordShowHideButtonShow" id="passwordShowButton">
+          Show
+        </div>
+      </div>
+      <button type="submit" class="loginFormSubmit">Log in</button>
+    </div>
+  </form>
+
+  <p class="noAccountText">Don't have an account?</p>
+  <a href="/signup" class="noAccountButtonRedirect">Sign up for Look Out</a>
+</div>
+
+<style>
+  body {
+    background-color: #211a1a;
+    color: white;
+  }
+  .signInError {
+    color: red;
+    background-color: #1c1c1c;
+    height: 50px;
+    width: 500px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+  }
+  .containerLoginWhole {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .containerEmail,
+  .containerPassword {
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    flex-direction: column;
+    width: 500px;
+  }
+  .containerPassword {
+    width: 500px;
+  }
+
+  .passwordShowHideButtonShow {
+    height: 50px;
+    position: absolute;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: flex-end;
+    margin-top: 60px;
+    margin-right: 10px;
+    background-color: transparent;
+    cursor: pointer;
+  }
+  .passwordShowHideButtonShow:hover {
+    text-decoration: underline;
+    color: #007aff;
+  }
+  .loginPageTitle {
+    font-size: 30px;
+    margin: 0;
+    margin-top: 100px;
+  }
+  .loginPageSubTitle {
+    font-size: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    opacity: 0.5;
+  }
+  .containerLoginForm {
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    flex-direction: column;
+    margin: 10px 0;
+  }
+  .labelForm {
+    margin-bottom: 10px;
+    margin-top: 20px;
+    font-size: 20px;
+    margin-left: 5px;
+    font-weight: 600;
+  }
+  .loginEmail {
+    height: 70px;
+    width: 500px;
+    border: 2px solid #5c3f3f;
+    background-color: #2f2525;
+
+    color: white;
+    border-radius: 5px;
+    font-size: 18px;
+    padding: 0 20px;
+  }
+  .loginEmail:focus {
+    outline: none;
+    border: 3px solid #3c3131;
+  }
+  .loginPassword {
+    height: 70px;
+    width: 500px;
+    border: 2px solid #5c3f3f;
+    background-color: #2f2525;
+    color: white;
+    border-radius: 5px;
+    font-size: 18px;
+    padding: 0 60px 0 20px;
+  }
+  .loginPassword:focus {
+    outline: none;
+    border: 3px solid #3c3131;
+  }
+  .loginFormSubmit {
+    height: 70px;
+    width: 500px;
+    border-radius: 50px;
+    background-color: #5c3f3f;
+    border: none;
+    color: white;
+    font-size: 18px;
+    margin-top: 50px;
+    cursor: pointer;
+  }
+  .loginFormSubmit:hover {
+    background-color: #4e3838;
+  }
+  .noAccountText {
+    margin: 30px 0 0 0;
+  }
+  .noAccountButtonRedirect {
+    height: 50px;
+    width: 500px;
+    border-radius: 30px;
+    background-color: #2f2525;
+    border: none;
+    color: #ffffff;
+    font-size: 18px;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+  }
+  .noAccountButtonRedirect:hover {
+    background-color: #3d3131;
+    text-decoration: none;
+  }
+</style>
+
+<script>
+  let password = document.getElementById("password");
+  let showButton = document.getElementById("passwordShowButton");
+
+  showButton.onclick = function () {
+    if (password.type == "password") {
+      password.type = "text";
+      showButton.innerHTML = "Hide";
+    } else {
+      password.type = "password";
+      showButton.innerHTML = "Show";
+    }
+  };
+
+  function preventBack() {
+    window.history.forward();
+  }
+
+  setTimeout("preventBack()", 0);
+
+  window.onunload = function () {
+    null;
+  };
+</script>
+<%- include('partials/footer_dark.ejs') -%>

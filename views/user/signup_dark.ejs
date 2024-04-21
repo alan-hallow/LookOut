@@ -1,0 +1,332 @@
+<%- include('layout/layout.ejs') -%>
+
+<div class="containerSignup">
+  <h2 class="signUpTitle">Create an account</h2>
+
+  <div class="containerSignUpForm">
+    <form action="/userSignup" method="post">
+      <div class="containerSignUpFormContents">
+        <label for="name">Your name</label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          placeholder="Enter name"
+          class="inputText inputName"
+          required
+        />
+
+        <label for="email">Email address</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="you@example.com"
+          class="inputText inputEmail"
+          required
+        />
+        <span class="error spanEmail" id="spanEmail"></span>
+
+        <label for="phone">Phone number</label>
+        <input
+          type="number"
+          id="phone"
+          name="phone"
+          placeholder="555-555-5555"
+          class="inputText inputPhone"
+          required
+        />
+        <span class="error spanPhoneNo" id="spanPhoneNo"></span>
+
+        <label for="place">Location</label>
+        <input
+          type="text"
+          id="place"
+          name="place"
+          placeholder="City, District"
+          class="inputText inputPlace"
+          required
+        />
+
+        <div class="containerPasswordOne">
+          <label for="passwordOne">Password</label>
+          <input
+            type="password"
+            id="passwordOne"
+            name="password"
+            placeholder="Password@123"
+            class="inputText inputPasswordOne"
+            required
+          />
+          <div class="passwordShowHideButtonShowOne" id="passwordShowButtonOne">
+            Show
+          </div>
+          <span class="error passwordErrorCode" id="passwordTextOne"></span>
+        </div>
+
+        <div class="containerPasswordTwo">
+          <label for="passwordTwo">Confirm password</label>
+          <input
+            type="password"
+            id="passwordTwo"
+            name="password2"
+            placeholder="Password@123"
+            class="inputText inputPasswordTwo"
+            required
+          />
+          <div class="passwordShowHideButtonShowTwo" id="passwordShowButtonTwo">
+            Show
+          </div>
+          <span class="error passwordErrorCode" id="passwordTextTwo"></span>
+        </div>
+
+        <div class="containerResetSubmitButton">
+          <button type="reset" class="resetButton">Clear</button>
+          <button type="submit" class="submitButton">Create account</button>
+        </div>
+      </div>
+    </form>
+
+    <p class="noAccountText">Already have an account?</p>
+    <a href="/signin" class="noAccountButtonRedirect">Sign in for Look Out</a>
+  </div>
+</div>
+
+<style>
+  body {
+    background-color: #1a1c18;
+    color: white;
+  }
+  label {
+    font-size: 19px;
+    margin-left: 5px;
+    margin-top: 10px;
+    font-weight: 600;
+    opacity: 0.3;
+  }
+  .error {
+    color: red;
+  }
+  .containerPasswordOne {
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    flex-direction: column;
+  }
+  .containerPasswordTwo {
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    flex-direction: column;
+  }
+  .signUpTitle {
+    font-size: 40px;
+    margin-bottom: 40px;
+    margin-top: 100px;
+  }
+  .containerSignup {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .containerSignUpFormContents {
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .inputText {
+    height: 70px;
+    width: 500px;
+    border-radius: 5px;
+    border: 1px solid #c2c2c267;
+    background-color: #232820;
+    color: white;
+    padding: 0 10px;
+    font-size: 18px;
+  }
+  .inputText:focus {
+    outline: none;
+    border: 3px solid #3e4a36;
+  }
+  .containerResetSubmitButton {
+    align-self: flex-end;
+    margin-top: 50px;
+  }
+  .resetButton {
+    height: 70px;
+    width: 100px;
+    border-radius: 30px;
+    border: none;
+    background-color: #232820;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+  }
+  .inputPasswordOne,
+  .inputPasswordTwo {
+    padding: 0 60px 0 10px;
+  }
+  .submitButton {
+    height: 70px;
+    width: 400px;
+    border-radius: 50px;
+    border: none;
+    background-color: #3e4a36;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+  }
+  .passwordShowHideButtonShowOne {
+    position: absolute;
+    align-self: flex-end;
+    border-radius: 50%;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin-top: 47px;
+    margin-right: 10px;
+    user-select: none;
+  }
+  .passwordShowHideButtonShowTwo {
+    position: absolute;
+    align-self: flex-end;
+    height: 70px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin-top: 47px;
+    margin-right: 10px;
+    user-select: none;
+  }
+  .passwordShowHideButtonShowOne:hover,
+  .passwordShowHideButtonShowTwo:hover {
+    text-decoration: underline;
+    color: #4873a1;
+  }
+  .noAccountText {
+    margin: 50px 0 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .noAccountButtonRedirect {
+    height: 50px;
+    width: 500px;
+    border-radius: 30px;
+    background-color: #2f352c;
+    border: none;
+    color: #ffffff;
+    font-size: 18px;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 100px;
+    text-decoration: none;
+  }
+  .noAccountButtonRedirect:hover {
+    background-color: #3e463a;
+    text-decoration: none;
+  }
+</style>
+
+<script>
+  // Functionality to toggle password visibility
+  document
+    .getElementById("passwordShowButtonOne")
+    .addEventListener("click", function () {
+      const passwordOne = document.getElementById("passwordOne");
+      const showButtonOne = document.getElementById("passwordShowButtonOne");
+
+      passwordOne.type = passwordOne.type === "password" ? "text" : "password";
+      showButtonOne.innerHTML =
+        passwordOne.type === "password" ? "Show" : "Hide";
+    });
+
+  document
+    .getElementById("passwordShowButtonTwo")
+    .addEventListener("click", function () {
+      const passwordTwo = document.getElementById("passwordTwo");
+      const showButtonTwo = document.getElementById("passwordShowButtonTwo");
+
+      passwordTwo.type = passwordTwo.type === "password" ? "text" : "password";
+      showButtonTwo.innerHTML =
+        passwordTwo.type === "password" ? "Show" : "Hide";
+    });
+
+  const passwordOne = document.getElementById("passwordOne");
+  const passwordTwo = document.getElementById("passwordTwo");
+  const passwordErrorTextOne = document.getElementById("passwordTextOne");
+  const passwordErrorTextTwo = document.getElementById("passwordTextTwo");
+
+  // Listen for input events on both password fields
+  passwordTwo.addEventListener("input", checkPasswordsMatch);
+
+  function checkPasswordsMatch() {
+    const passwordOneValue = passwordOne.value;
+    const passwordTwoValue = passwordTwo.value;
+
+    // Check if the passwords match
+    if (passwordOneValue === passwordTwoValue) {
+      // Update success message
+      passwordErrorTextTwo.innerHTML = "";
+    } else {
+      // Update failure message
+      passwordErrorTextTwo.innerHTML = "Passwords do not match";
+    }
+  }
+
+  let phoneNo = document.getElementById("phone"); // assuming 'phoneNo' is the ID of your input field
+  let spanPhoneNo = document.getElementById("spanPhoneNo");
+
+  phoneNo.addEventListener("input", phoneNoCount);
+
+  function phoneNoCount() {
+    const phoneNoValue = phoneNo.value;
+
+    if (phoneNoValue.length != 10) {
+      spanPhoneNo.innerHTML = "Phone number must be 10 digits long";
+    } else {
+      spanPhoneNo.innerHTML = ""; // Clear the error message if the phone number length is correct
+    }
+  }
+
+  const email = document.getElementById("email");
+  let spanEmail = document.getElementById("spanEmail");
+
+  email.addEventListener("input", validateEmail); // Changed 'emailValidate' to 'email'
+
+  function validateEmail() {
+    const emailValue = email.value; // Changed 'emailValidate' to 'email.value'
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Regular expression for email validation
+
+    if (!emailRegex.test(emailValue)) {
+      // Use 'test' method to check if the email is valid
+      spanEmail.innerHTML = "Email must be valid";
+    } else {
+      spanEmail.innerHTML = ""; // Clear the error message if the email is valid
+    }
+  }
+
+  passwordOne.addEventListener("input", checkPasswordStrength);
+
+  function checkPasswordStrength() {
+    const passwordOneValue = passwordOne.value;
+
+    if (passwordOneValue.length < 8) {
+      // Changed the comparison to < 10 to check if it has at least 10 characters
+      passwordErrorTextOne.innerHTML =
+        "Passwords must have at least 8 characters";
+    } else {
+      passwordErrorTextOne.innerHTML = ""; // Clear the error message if the password is valid
+    }
+  }
+</script>
+<%- include('partials/footer_dark.ejs') -%>

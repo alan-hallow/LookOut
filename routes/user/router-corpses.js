@@ -53,12 +53,21 @@ router.get("/corpsesnewpost/:id", async (req, res) => {
     if (!corpsesDetails) {
       res.redirect("/");
     } else {
-      res.render("user/corpses/corpses-details", {
-        corpsesfulldetails: corpsesDetails,
-        usersNotificationDetails: usersNotificationDetails,
-        corpsescomments: corpsesComments, // Pass the comments to the view
-        session: req.session,
-      });
+      if (req.session.theme === "light") {
+        res.render("user/corpses/corpses-details", {
+          corpsesfulldetails: corpsesDetails,
+          usersNotificationDetails: usersNotificationDetails,
+          corpsescomments: corpsesComments, // Pass the comments to the view
+          session: req.session,
+        });
+      } else {
+        res.render("user/corpses/corpses_display_dark", {
+          corpsesfulldetails: corpsesDetails,
+          usersNotificationDetails: usersNotificationDetails,
+          corpsescomments: corpsesComments, // Pass the comments to the view
+          session: req.session,
+        });
+      }
     }
   } catch (error) {
     console.error("Error:", error);
