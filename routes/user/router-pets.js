@@ -12,30 +12,26 @@ const path = require("path");
 
 router.get("/", async (req, res) => {
   try {
-    if (!req.session.username) {
-      res.redirect("/signin");
-    } else {
-      const userId = req.session.userId;
+    const userId = req.session.userId;
 
-      const usersNotificationDetails = await usersNotification.find({
-        postId: userId,
+    const usersNotificationDetails = await usersNotification.find({
+      postId: userId,
+    });
+    const missingpetsinfo = await missingPets
+      .find()
+      .sort({ createddate: "desc" });
+    if (req.session.theme === "light") {
+      res.render("user/pets/missingpets", {
+        petsMissing: missingpetsinfo,
+        usersNotificationDetails: usersNotificationDetails,
+        session: req.session,
       });
-      const missingpetsinfo = await missingPets
-        .find()
-        .sort({ createddate: "desc" });
-      if (req.session.theme === "light") {
-        res.render("user/pets/missingpets", {
-          petsMissing: missingpetsinfo,
-          usersNotificationDetails: usersNotificationDetails,
-          session: req.session,
-        });
-      } else {
-        res.render("user/pets/pets_dark", {
-          petsMissing: missingpetsinfo,
-          usersNotificationDetails: usersNotificationDetails,
-          session: req.session,
-        });
-      }
+    } else {
+      res.render("user/pets/pets_dark", {
+        petsMissing: missingpetsinfo,
+        usersNotificationDetails: usersNotificationDetails,
+        session: req.session,
+      });
     }
   } catch (error) {
     console.error("Error:", error);
@@ -49,16 +45,20 @@ router.get("/createMissingPetsPost", async (req, res) => {
   const usersNotificationDetails = await usersNotification.find({
     postId: userId,
   });
-  if (req.session.theme === "light") {
-    res.render("user/pets/newmissingpetspost", {
-      session: req.session,
-      usersNotificationDetails: usersNotificationDetails,
-    });
+  if (!req.session.username) {
+    res.redirect("/signin");
   } else {
-    res.render("user/pets/pets_post_dark", {
-      session: req.session,
-      usersNotificationDetails: usersNotificationDetails,
-    });
+    if (req.session.theme === "light") {
+      res.render("user/pets/newmissingpetspost", {
+        session: req.session,
+        usersNotificationDetails: usersNotificationDetails,
+      });
+    } else {
+      res.render("user/pets/pets_post_dark", {
+        session: req.session,
+        usersNotificationDetails: usersNotificationDetails,
+      });
+    }
   }
 });
 
@@ -77,22 +77,26 @@ router.get("/missingpetsnewpost/:id", async (req, res) => {
     if (!missingPetsDetails) {
       res.redirect("/");
     } else {
-      if (req.session.theme === "light") {
-        res.render("user/pets/missingpetsdisplay", {
-          missingpetsfulldetails: missingPetsDetails,
-          missingPetsUpdates: missingPetsUpdates, // Pass the comments to the view
-          missingpetscomments: missingPetsComments, // Pass the comments to the view
-          usersNotificationDetails: usersNotificationDetails,
-          session: req.session,
-        });
+      if (!req.session.username) {
+        res.redirect("/signin");
       } else {
-        res.render("user/pets/pets_display_dark", {
-          missingpetsfulldetails: missingPetsDetails,
-          missingPetsUpdates: missingPetsUpdates, // Pass the comments to the view
-          missingpetscomments: missingPetsComments, // Pass the comments to the view
-          usersNotificationDetails: usersNotificationDetails,
-          session: req.session,
-        });
+        if (req.session.theme === "light") {
+          res.render("user/pets/missingpetsdisplay", {
+            missingpetsfulldetails: missingPetsDetails,
+            missingPetsUpdates: missingPetsUpdates, // Pass the comments to the view
+            missingpetscomments: missingPetsComments, // Pass the comments to the view
+            usersNotificationDetails: usersNotificationDetails,
+            session: req.session,
+          });
+        } else {
+          res.render("user/pets/pets_display_dark", {
+            missingpetsfulldetails: missingPetsDetails,
+            missingPetsUpdates: missingPetsUpdates, // Pass the comments to the view
+            missingpetscomments: missingPetsComments, // Pass the comments to the view
+            usersNotificationDetails: usersNotificationDetails,
+            session: req.session,
+          });
+        }
       }
     }
   } catch (error) {

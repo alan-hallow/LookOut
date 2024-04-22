@@ -12,30 +12,26 @@ const path = require("path");
 
 router.get("/", async (req, res) => {
   try {
-    if (!req.session.username) {
-      res.redirect("/signin");
-    } else {
-      const userId = req.session.userId;
+    const userId = req.session.userId;
 
-      const usersNotificationDetails = await usersNotification.find({
-        postId: userId,
+    const usersNotificationDetails = await usersNotification.find({
+      postId: userId,
+    });
+    const missingvaluableinfo = await missingValuable
+      .find()
+      .sort({ createddate: "desc" });
+    if (req.session.theme === "light") {
+      res.render("user/valuable/missingvaluable", {
+        valuableMissing: missingvaluableinfo,
+        usersNotificationDetails: usersNotificationDetails,
+        session: req.session,
       });
-      const missingvaluableinfo = await missingValuable
-        .find()
-        .sort({ createddate: "desc" });
-      if (req.session.theme === "light") {
-        res.render("user/valuable/missingvaluable", {
-          valuableMissing: missingvaluableinfo,
-          usersNotificationDetails: usersNotificationDetails,
-          session: req.session,
-        });
-      } else {
-        res.render("user/valuable/valuable_dark", {
-          valuableMissing: missingvaluableinfo,
-          usersNotificationDetails: usersNotificationDetails,
-          session: req.session,
-        });
-      }
+    } else {
+      res.render("user/valuable/valuable_dark", {
+        valuableMissing: missingvaluableinfo,
+        usersNotificationDetails: usersNotificationDetails,
+        session: req.session,
+      });
     }
   } catch (error) {
     console.error("Error:", error);
@@ -51,16 +47,20 @@ router.get("/createMissingValuablePost", async (req, res) => {
   const usersNotificationDetails = await usersNotification.find({
     postId: userId,
   });
-  if (req.session.theme === "light") {
-    res.render("user/valuable/newmissingvaluablepost", {
-      session: req.session,
-      usersNotificationDetails: usersNotificationDetails,
-    });
+  if (!req.session.username) {
+    res.redirect("/signin");
   } else {
-    res.render("user/valuable/valuable_post_dark", {
-      session: req.session,
-      usersNotificationDetails: usersNotificationDetails,
-    });
+    if (req.session.theme === "light") {
+      res.render("user/valuable/newmissingvaluablepost", {
+        session: req.session,
+        usersNotificationDetails: usersNotificationDetails,
+      });
+    } else {
+      res.render("user/valuable/valuable_post_dark", {
+        session: req.session,
+        usersNotificationDetails: usersNotificationDetails,
+      });
+    }
   }
 });
 
@@ -83,22 +83,26 @@ router.get("/missingvaluablenewpost/:id", async (req, res) => {
     if (!missingValuableDetails) {
       res.redirect("/");
     } else {
-      if (req.session.theme === "light") {
-        res.render("user/valuable/missingvaluabledisplay", {
-          missingvaluablefulldetails: missingValuableDetails,
-          missingValuableUpdates: missingValuableUpdates, // Pass the comments to the view
-          missingvaluablecomments: missingValuableComments, // Pass the comments to the view
-          usersNotificationDetails: usersNotificationDetails,
-          session: req.session,
-        });
+      if (!req.session.username) {
+        res.redirect("/signin");
       } else {
-        res.render("user/valuable/valuable_display_dark", {
-          missingvaluablefulldetails: missingValuableDetails,
-          missingValuableUpdates: missingValuableUpdates, // Pass the comments to the view
-          missingvaluablecomments: missingValuableComments, // Pass the comments to the view
-          usersNotificationDetails: usersNotificationDetails,
-          session: req.session,
-        });
+        if (req.session.theme === "light") {
+          res.render("user/valuable/missingvaluabledisplay", {
+            missingvaluablefulldetails: missingValuableDetails,
+            missingValuableUpdates: missingValuableUpdates, // Pass the comments to the view
+            missingvaluablecomments: missingValuableComments, // Pass the comments to the view
+            usersNotificationDetails: usersNotificationDetails,
+            session: req.session,
+          });
+        } else {
+          res.render("user/valuable/valuable_display_dark", {
+            missingvaluablefulldetails: missingValuableDetails,
+            missingValuableUpdates: missingValuableUpdates, // Pass the comments to the view
+            missingvaluablecomments: missingValuableComments, // Pass the comments to the view
+            usersNotificationDetails: usersNotificationDetails,
+            session: req.session,
+          });
+        }
       }
     }
   } catch (error) {

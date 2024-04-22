@@ -12,30 +12,26 @@ const path = require("path");
 
 router.get("/", async (req, res) => {
   try {
-    if (!req.session.username) {
-      res.redirect("/signin");
-    } else {
-      const userId = req.session.userId;
+    const userId = req.session.userId;
 
-      const usersNotificationDetails = await usersNotification.find({
-        postId: userId,
+    const usersNotificationDetails = await usersNotification.find({
+      postId: userId,
+    });
+    const missingvehicleinfo = await missingVehicle
+      .find()
+      .sort({ createddate: "desc" });
+    if (req.session.theme === "light") {
+      res.render("user/vehicle/missingvehicle", {
+        vehicleMissing: missingvehicleinfo,
+        usersNotificationDetails: usersNotificationDetails,
+        session: req.session,
       });
-      const missingvehicleinfo = await missingVehicle
-        .find()
-        .sort({ createddate: "desc" });
-      if (req.session.theme === "light") {
-        res.render("user/vehicle/missingvehicle", {
-          vehicleMissing: missingvehicleinfo,
-          usersNotificationDetails: usersNotificationDetails,
-          session: req.session,
-        });
-      } else {
-        res.render("user/vehicle/vehicle_dark", {
-          vehicleMissing: missingvehicleinfo,
-          usersNotificationDetails: usersNotificationDetails,
-          session: req.session,
-        });
-      }
+    } else {
+      res.render("user/vehicle/vehicle_dark", {
+        vehicleMissing: missingvehicleinfo,
+        usersNotificationDetails: usersNotificationDetails,
+        session: req.session,
+      });
     }
   } catch (error) {
     console.error("Error:", error);
@@ -51,16 +47,20 @@ router.get("/createMissingVehiclePost", async (req, res) => {
   const usersNotificationDetails = await usersNotification.find({
     postId: userId,
   });
-  if (req.session.theme === "light") {
-    res.render("user/vehicle/newmissingvehiclepost", {
-      session: req.session,
-      usersNotificationDetails: usersNotificationDetails,
-    });
+  if (!req.session.username) {
+    res.redirect("/signin");
   } else {
-    res.render("user/vehicle/vehicle_post_dark", {
-      session: req.session,
-      usersNotificationDetails: usersNotificationDetails,
-    });
+    if (req.session.theme === "light") {
+      res.render("user/vehicle/newmissingvehiclepost", {
+        session: req.session,
+        usersNotificationDetails: usersNotificationDetails,
+      });
+    } else {
+      res.render("user/vehicle/vehicle_post_dark", {
+        session: req.session,
+        usersNotificationDetails: usersNotificationDetails,
+      });
+    }
   }
 });
 
@@ -79,22 +79,26 @@ router.get("/missingvehiclenewpost/:id", async (req, res) => {
     if (!missingVehicleDetails) {
       res.redirect("/");
     } else {
-      if (req.session.theme === "light") {
-        res.render("user/vehicle/missingvehicledisplay", {
-          missingvehiclefulldetails: missingVehicleDetails,
-          missingvehiclecomments: missingVehicleComments, // Pass the comments to the view
-          missingVehicleUpdates: missingVehicleUpdates, // Pass the comments to the view
-          usersNotificationDetails: usersNotificationDetails,
-          session: req.session,
-        });
+      if (!req.session.username) {
+        res.redirect("/signin");
       } else {
-        res.render("user/vehicle/vehicle_display_dark", {
-          missingvehiclefulldetails: missingVehicleDetails,
-          missingvehiclecomments: missingVehicleComments, // Pass the comments to the view
-          missingVehicleUpdates: missingVehicleUpdates, // Pass the comments to the view
-          usersNotificationDetails: usersNotificationDetails,
-          session: req.session,
-        });
+        if (req.session.theme === "light") {
+          res.render("user/vehicle/missingvehicledisplay", {
+            missingvehiclefulldetails: missingVehicleDetails,
+            missingvehiclecomments: missingVehicleComments, // Pass the comments to the view
+            missingVehicleUpdates: missingVehicleUpdates, // Pass the comments to the view
+            usersNotificationDetails: usersNotificationDetails,
+            session: req.session,
+          });
+        } else {
+          res.render("user/vehicle/vehicle_display_dark", {
+            missingvehiclefulldetails: missingVehicleDetails,
+            missingvehiclecomments: missingVehicleComments, // Pass the comments to the view
+            missingVehicleUpdates: missingVehicleUpdates, // Pass the comments to the view
+            usersNotificationDetails: usersNotificationDetails,
+            session: req.session,
+          });
+        }
       }
     }
   } catch (error) {

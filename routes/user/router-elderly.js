@@ -12,31 +12,27 @@ const path = require("path");
 
 router.get("/", async (req, res) => {
   try {
-    if (!req.session.username) {
-      res.redirect("/signin");
-    } else {
-      const userId = req.session.userId;
+    const userId = req.session.userId;
 
-      const usersNotificationDetails = await usersNotification.find({
-        postId: userId,
+    const usersNotificationDetails = await usersNotification.find({
+      postId: userId,
+    });
+    const missingelderlyinfo = await missingElderly
+      .find()
+      .sort({ createddate: "desc" });
+
+    if (req.session.theme === "light") {
+      res.render("user/elderly/missingelderly", {
+        elderlyMissing: missingelderlyinfo,
+        usersNotificationDetails: usersNotificationDetails,
+        session: req.session,
       });
-      const missingelderlyinfo = await missingElderly
-        .find()
-        .sort({ createddate: "desc" });
-
-      if (req.session.theme === "light") {
-        res.render("user/elderly/missingelderly", {
-          elderlyMissing: missingelderlyinfo,
-          usersNotificationDetails: usersNotificationDetails,
-          session: req.session,
-        });
-      } else {
-        res.render("user/elderly/elderly_dark", {
-          elderlyMissing: missingelderlyinfo,
-          usersNotificationDetails: usersNotificationDetails,
-          session: req.session,
-        });
-      }
+    } else {
+      res.render("user/elderly/elderly_dark", {
+        elderlyMissing: missingelderlyinfo,
+        usersNotificationDetails: usersNotificationDetails,
+        session: req.session,
+      });
     }
   } catch (error) {
     console.error("Error:", error);
@@ -52,16 +48,20 @@ router.get("/createMissingElderlyPost", async (req, res) => {
   const usersNotificationDetails = await usersNotification.find({
     postId: userId,
   });
-  if (req.session.theme === "light") {
-    res.render("user/elderly/newmissingelderlypost", {
-      session: req.session,
-      usersNotificationDetails: usersNotificationDetails,
-    });
+  if (!req.session.username) {
+    res.redirect("/signin");
   } else {
-    res.render("user/elderly/elderly_post_dark", {
-      session: req.session,
-      usersNotificationDetails: usersNotificationDetails,
-    });
+    if (req.session.theme === "light") {
+      res.render("user/elderly/newmissingelderlypost", {
+        session: req.session,
+        usersNotificationDetails: usersNotificationDetails,
+      });
+    } else {
+      res.render("user/elderly/elderly_post_dark", {
+        session: req.session,
+        usersNotificationDetails: usersNotificationDetails,
+      });
+    }
   }
 });
 
@@ -80,22 +80,26 @@ router.get("/missingelderlynewpost/:id", async (req, res) => {
     if (!missingElderlyDetails) {
       res.redirect("/");
     } else {
-      if (req.session.theme === "light") {
-        res.render("user/elderly/missingelderlydisplay", {
-          missingelderlyfulldetails: missingElderlyDetails,
-          missingElderlyUpdates: missingElderlyUpdates, // Pass the comments to the view
-          missingelderlycomments: missingElderlyComments, // Pass the comments to the view
-          usersNotificationDetails: usersNotificationDetails,
-          session: req.session,
-        });
+      if (!req.session.username) {
+        res.redirect("/signin");
       } else {
-        res.render("user/elderly/elderly_display_dark", {
-          missingelderlyfulldetails: missingElderlyDetails,
-          missingElderlyUpdates: missingElderlyUpdates, // Pass the comments to the view
-          missingelderlycomments: missingElderlyComments, // Pass the comments to the view
-          usersNotificationDetails: usersNotificationDetails,
-          session: req.session,
-        });
+        if (req.session.theme === "light") {
+          res.render("user/elderly/missingelderlydisplay", {
+            missingelderlyfulldetails: missingElderlyDetails,
+            missingElderlyUpdates: missingElderlyUpdates, // Pass the comments to the view
+            missingelderlycomments: missingElderlyComments, // Pass the comments to the view
+            usersNotificationDetails: usersNotificationDetails,
+            session: req.session,
+          });
+        } else {
+          res.render("user/elderly/elderly_display_dark", {
+            missingelderlyfulldetails: missingElderlyDetails,
+            missingElderlyUpdates: missingElderlyUpdates, // Pass the comments to the view
+            missingelderlycomments: missingElderlyComments, // Pass the comments to the view
+            usersNotificationDetails: usersNotificationDetails,
+            session: req.session,
+          });
+        }
       }
     }
   } catch (error) {

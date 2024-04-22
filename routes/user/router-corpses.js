@@ -10,28 +10,24 @@ const fs = require("fs");
 const path = require("path");
 
 router.get("/", async (req, res) => {
-  if (!req.session.username) {
-    res.redirect("/signin");
-  } else {
-    const corpsinfo = await corpses.find().sort({ createddate: "desc" });
-    const userId = req.session.userId;
+  const corpsinfo = await corpses.find().sort({ createddate: "desc" });
+  const userId = req.session.userId;
 
-    const usersNotificationDetails = await usersNotification.find({
-      postId: userId,
+  const usersNotificationDetails = await usersNotification.find({
+    postId: userId,
+  });
+  if (req.session.theme === "light") {
+    res.render("user/corpses/corpses-display", {
+      corpses: corpsinfo,
+      usersNotificationDetails: usersNotificationDetails,
+      session: req.session,
     });
-    if (req.session.theme === "light") {
-      res.render("user/corpses/corpses-display", {
-        corpses: corpsinfo,
-        usersNotificationDetails: usersNotificationDetails,
-        session: req.session,
-      });
-    } else {
-      res.render("user/corpses/corpse_dark", {
-        corpses: corpsinfo,
-        usersNotificationDetails: usersNotificationDetails,
-        session: req.session,
-      });
-    }
+  } else {
+    res.render("user/corpses/corpse_dark", {
+      corpses: corpsinfo,
+      usersNotificationDetails: usersNotificationDetails,
+      session: req.session,
+    });
   }
 });
 
@@ -41,16 +37,20 @@ router.get("/createCorpsePost", async (req, res) => {
   const usersNotificationDetails = await usersNotification.find({
     postId: userId,
   });
-  if (req.session.theme === "light") {
-    res.render("user/corpses/corpses-add", {
-      usersNotificationDetails: usersNotificationDetails,
-      session: req.session,
-    });
+  if (!req.session.username) {
+    res.redirect("/signin");
   } else {
-    res.render("user/corpses/corpse_add_dark", {
-      usersNotificationDetails: usersNotificationDetails,
-      session: req.session,
-    });
+    if (req.session.theme === "light") {
+      res.render("user/corpses/corpses-add", {
+        usersNotificationDetails: usersNotificationDetails,
+        session: req.session,
+      });
+    } else {
+      res.render("user/corpses/corpse_add_dark", {
+        usersNotificationDetails: usersNotificationDetails,
+        session: req.session,
+      });
+    }
   }
 });
 
@@ -68,20 +68,24 @@ router.get("/corpsesnewpost/:id", async (req, res) => {
     if (!corpsesDetails) {
       res.redirect("/");
     } else {
-      if (req.session.theme === "light") {
-        res.render("user/corpses/corpses-details", {
-          corpsesfulldetails: corpsesDetails,
-          usersNotificationDetails: usersNotificationDetails,
-          corpsescomments: corpsesComments, // Pass the comments to the view
-          session: req.session,
-        });
+      if (!req.session.username) {
+        res.redirect("/signin");
       } else {
-        res.render("user/corpses/corpses_details_dark", {
-          corpsesfulldetails: corpsesDetails,
-          usersNotificationDetails: usersNotificationDetails,
-          corpsescomments: corpsesComments, // Pass the comments to the view
-          session: req.session,
-        });
+        if (req.session.theme === "light") {
+          res.render("user/corpses/corpses-details", {
+            corpsesfulldetails: corpsesDetails,
+            usersNotificationDetails: usersNotificationDetails,
+            corpsescomments: corpsesComments, // Pass the comments to the view
+            session: req.session,
+          });
+        } else {
+          res.render("user/corpses/corpses_details_dark", {
+            corpsesfulldetails: corpsesDetails,
+            usersNotificationDetails: usersNotificationDetails,
+            corpsescomments: corpsesComments, // Pass the comments to the view
+            session: req.session,
+          });
+        }
       }
     }
   } catch (error) {
