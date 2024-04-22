@@ -22,8 +22,9 @@
     <title>LookOut</title>
   </head>
   <body>
-    <!-- Include the header partial -->
-    <%- include('../partials/header.ejs') -%>
+    <!-- Include the header partial --><% if (session.theme === 'light') { %>
+    <%- include('../partials/header.ejs') %> <% } else { %> <%-
+    include('../partials/header_dark.ejs') %> <% } %>
 
     <!-- Include the footer partial -->
     <style>
