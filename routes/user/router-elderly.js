@@ -52,10 +52,17 @@ router.get("/createMissingElderlyPost", async (req, res) => {
   const usersNotificationDetails = await usersNotification.find({
     postId: userId,
   });
-  res.render("user/elderly/newmissingelderlypost", {
-    session: req.session,
-    usersNotificationDetails: usersNotificationDetails,
-  });
+  if (req.session.theme === "light") {
+    res.render("user/elderly/newmissingelderlypost", {
+      session: req.session,
+      usersNotificationDetails: usersNotificationDetails,
+    });
+  } else {
+    res.render("user/elderly/elderly_post_dark", {
+      session: req.session,
+      usersNotificationDetails: usersNotificationDetails,
+    });
+  }
 });
 
 router.get("/missingelderlynewpost/:id", async (req, res) => {

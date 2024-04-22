@@ -170,10 +170,17 @@ router.get("/aboutme", async (req, res) => {
   const usersNotificationDetails = await usersNotification.find({
     postId: userId,
   });
-  res.render("user/about", {
-    session: req.session,
-    usersNotificationDetails: usersNotificationDetails,
-  });
+  if (req.session.theme === "light") {
+    res.render("user/about", {
+      session: req.session,
+      usersNotificationDetails: usersNotificationDetails,
+    });
+  } else {
+    res.render("user/about_dark", {
+      session: req.session,
+      usersNotificationDetails: usersNotificationDetails,
+    });
+  }
 });
 
 router.get("/FAQ", async (req, res) => {
@@ -182,10 +189,17 @@ router.get("/FAQ", async (req, res) => {
   const usersNotificationDetails = await usersNotification.find({
     postId: userId,
   });
-  res.render("user/FAQ", {
-    session: req.session,
-    usersNotificationDetails: usersNotificationDetails,
-  });
+  if (req.session.theme === "light") {
+    res.render("user/FAQ", {
+      session: req.session,
+      usersNotificationDetails: usersNotificationDetails,
+    });
+  } else {
+    res.render("user/faq_dark", {
+      session: req.session,
+      usersNotificationDetails: usersNotificationDetails,
+    });
+  }
 });
 
 // Server-side route to handle theme switching

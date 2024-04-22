@@ -49,10 +49,17 @@ router.get("/createMissingPetsPost", async (req, res) => {
   const usersNotificationDetails = await usersNotification.find({
     postId: userId,
   });
-  res.render("user/pets/newmissingpetspost", {
-    session: req.session,
-    usersNotificationDetails: usersNotificationDetails,
-  });
+  if (req.session.theme === "light") {
+    res.render("user/pets/newmissingpetspost", {
+      session: req.session,
+      usersNotificationDetails: usersNotificationDetails,
+    });
+  } else {
+    res.render("user/pets/pets_post_dark", {
+      session: req.session,
+      usersNotificationDetails: usersNotificationDetails,
+    });
+  }
 });
 
 router.get("/missingpetsnewpost/:id", async (req, res) => {

@@ -51,10 +51,17 @@ router.get("/createMissingValuablePost", async (req, res) => {
   const usersNotificationDetails = await usersNotification.find({
     postId: userId,
   });
-  res.render("user/valuable/newmissingvaluablepost", {
-    session: req.session,
-    usersNotificationDetails: usersNotificationDetails,
-  });
+  if (req.session.theme === "light") {
+    res.render("user/valuable/newmissingvaluablepost", {
+      session: req.session,
+      usersNotificationDetails: usersNotificationDetails,
+    });
+  } else {
+    res.render("user/valuable/valuable_post_dark", {
+      session: req.session,
+      usersNotificationDetails: usersNotificationDetails,
+    });
+  }
 });
 
 router.get("/missingvaluablenewpost/:id", async (req, res) => {

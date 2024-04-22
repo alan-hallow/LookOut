@@ -1,0 +1,103 @@
+<%- include('layout/layout.ejs') -%>
+
+
+<h1 style="text-align: center;margin-top: 100px;font-size: 70px;">About Me</h1>
+    <div
+      class="containerWholeAboutMePage"
+      style="
+        display: flex;
+        align-items: start;
+        justify-content: center;
+        gap: 50px;
+        margin-top: 50px;
+        margin-bottom: 50px;
+      "
+    >
+      <div class="containerAboutMePageImage">
+        <img
+          src="/images/LookOut/Alan Johnson.png"
+          alt=""
+          style="width: 300px; border-radius: 20px"
+        />
+      </div>
+      <div class="containerAboutMeRightSide">
+        <h1 class="aboutMeName" style="font-size: 40px">Alan Johnson</h1>
+        <p class="aboutMeDescription" style="width: 600px; font-size: 20px">
+          Alan Johnson is a skilled full-stack web developer with a passion for
+          crafting seamless digital experiences. Armed with a diverse skill set
+          encompassing both front-end and back-end technologies, Alan possesses
+          a keen eye for design and a strong understanding of complex
+          programming languages. With a knack for problem-solving and a
+          commitment to staying abreast of the latest industry trends, Alan
+          consistently delivers high-quality solutions tailored to meet the
+          unique needs of each project. His dedication to his craft, coupled
+          with his collaborative spirit, makes him a valuable asset to any
+          development team. Whether he's building responsive user interfaces or
+          optimizing database performance, Alan approaches every task with
+          precision and creativity, ensuring the delivery of innovative and
+          efficient web solutions.
+        </p>
+        <div class="containerAboutMeConnectToMe">
+          <h2>follow me</h4>
+          <div class="social-links">
+            <a
+              href="https://www.facebook.com/profile.php?id=100016908308776"
+              class="socialIcons"
+              ><i class="fab fa-facebook-f"></i
+            ></a>
+            <a href="https://twitter.com/alan_hallow/" class="socialIcons"
+              ><i class="fab fa-twitter"></i
+            ></a>
+            <a href="https://www.instagram.com/alan.hallow/" class="socialIcons"
+              ><i class="fab fa-instagram"></i
+            ></a>
+            <a
+              href="https://www.linkedin.com/in/alanjohnson141?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+              class="socialIcons"
+              ><i class="fab fa-linkedin-in"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <style>
+      body{
+        background-color: #1c1b22;
+        color: white;
+      }
+      .containerAboutMeConnectToMe {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+      }
+      .socialIcons {
+        color: black;
+        text-decoration: none;
+      }
+      .socialIcons:hover {
+        color: black;
+        text-decoration: none;
+      }
+      .social-links {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 30px;
+        color: black;
+      }
+      .fab {
+        height: 50px;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        background-color: #bde0fe;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: black;
+        text-decoration: none;
+      }
+    </style>
+
+    
+<%- include('partials/footer_dark.ejs') -%>

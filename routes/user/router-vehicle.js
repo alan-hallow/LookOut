@@ -51,10 +51,17 @@ router.get("/createMissingVehiclePost", async (req, res) => {
   const usersNotificationDetails = await usersNotification.find({
     postId: userId,
   });
-  res.render("user/vehicle/newmissingvehiclepost", {
-    session: req.session,
-    usersNotificationDetails: usersNotificationDetails,
-  });
+  if (req.session.theme === "light") {
+    res.render("user/vehicle/newmissingvehiclepost", {
+      session: req.session,
+      usersNotificationDetails: usersNotificationDetails,
+    });
+  } else {
+    res.render("user/vehicle/vehicle_post_dark", {
+      session: req.session,
+      usersNotificationDetails: usersNotificationDetails,
+    });
+  }
 });
 
 router.get("/missingvehiclenewpost/:id", async (req, res) => {

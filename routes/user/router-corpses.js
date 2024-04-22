@@ -41,10 +41,17 @@ router.get("/createCorpsePost", async (req, res) => {
   const usersNotificationDetails = await usersNotification.find({
     postId: userId,
   });
-  res.render("user/corpses/corpses-add", {
-    usersNotificationDetails: usersNotificationDetails,
-    session: req.session,
-  });
+  if (req.session.theme === "light") {
+    res.render("user/corpses/corpses-add", {
+      usersNotificationDetails: usersNotificationDetails,
+      session: req.session,
+    });
+  } else {
+    res.render("user/corpses/corpse_add_dark", {
+      usersNotificationDetails: usersNotificationDetails,
+      session: req.session,
+    });
+  }
 });
 
 router.get("/corpsesnewpost/:id", async (req, res) => {
