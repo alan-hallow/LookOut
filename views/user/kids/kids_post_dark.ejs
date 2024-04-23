@@ -1,382 +1,516 @@
 <%- include('../layout/layout.ejs') -%>
 
-<div
-  class="containerWholeMissingPersonAddPageDarkMode"
-  style="
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    gap: 30px;
-  "
->
+<div class="kids_post_dark_whole" style="margin: 100px 50px">
   <div
-    class="addMissingPersonDarkTitle"
+    class="kids_post_title"
     style="
       display: flex;
       align-items: center;
       justify-content: center;
       flex-direction: column;
-      margin-top: 100px;
-      background-color: #28281c;
-      width: 700px;
-      padding: 50px 0;
-      border-radius: 30px;
+      margin-bottom: 100px;
     "
   >
-    <h1 class="DarkModeTitle" style="font-size: 60px">Missing kid</h1>
-    <p
-      style="
-        padding: 0;
-        margin: 0;
-        width: 500px;
-        text-align: center;
-        opacity: 0.3;
-      "
-    >
-      BEFORE YOU START: This form is for reporting missing kids, so please use
-      it for the intended purpose only.
+    <h2>Report a Missing Kid</h2>
+    <p>Before you start</p>
+    <p>
+      This form in for reporting missing kids. Please use it for the intended
+      purpose only
     </p>
   </div>
-  <div class="containerMissingPersonDarkFormComplete">
-    <section>
-      <div class="formContainer">
-        <form
-          action="/missingkids/missingkidspostrequest"
-          method="POST"
-          enctype="multipart/form-data"
-          style="
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-          "
-        >
-          <div class="containerForFormData">
-            <div
-              class="containerNewMissingKidFirstSection"
-              style="margin-bottom: 100px"
-            >
-              <div
-                class="containerMissingPersonDarkImageFull"
-                style="
-                  height: 400px;
-                  width: 700px;
-                  background-color: #28281c;
-                  border-radius: 30px;
-                  border: 2px dashed #575732;
-                  margin-top: 0px;
-                  margin-bottom: 50px;
-                  display: flex;
-                  align-items: center;
-                  justify-content: center;
-                  flex-direction: column;
-                  gap: 30px;
-                "
-              >
-                <img
-                  class="displayImageContainer"
-                  id="output"
-                  src="https://static-00.iconduck.com/assets.00/no-image-icon-512x512-lfoanl0w.png"
-                  style="height: 250px"
-                />
-                <label
-                  for="image"
-                  class="labelOfImage DarkLabel buttonDarkPrimary"
-                  style="
-                    height: 50px;
-                    width: 300px;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    border-radius: 30px;
-                    font-size: 20px;
-                  "
-                  >Add image</label
-                >
-                <input
-                  type="file"
-                  id="image"
-                  name="image"
-                  class="inputFile"
-                  onchange="loadFile(event)"
-                  style="display: none"
-                  required
-                />
-              </div>
 
-              <div
-                class="containerFormDarkInputAndLabel"
-                style="
-                  display: flex;
-                  flex-wrap: wrap;
-                  width: 700px;
-                  row-gap: 10px;
-                  align-items: center;
-                  justify-content: space-between;
-                  margin-bottom: 50px;
-                "
-              >
-                <div class="containerDarkInput">
-                  <label for="name" class="DarkLabel">Full name</label>
-                  <input
-                    class="inputText inputDark"
-                    type="text"
-                    name="name"
-                    placeholder="Enter full name"
-                    required
-                    style="width: 522px; border-radius: 30px 5px 5px 5px"
-                  />
-                </div>
-                <div class="containerDarkInput">
-                  <label for="gender" class="DarkLabel">Gender</label>
-                  <select
-                    class="selector inputDark"
-                    name="gender"
-                    required
-                    style="width: 168px; border-radius: 5px 30px 5px 5px"
-                  >
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
-                    <option value="transgender">Transgender</option>
-                    <option value="others">Others</option>
-                  </select>
-                </div>
-                <div class="containerDarkInput">
-                  <label for="age" class="DarkLabel">Age</label>
-                  <input
-                    class="inputNumber inputDark"
-                    min="0"
-                    max="18"
-                    type="number"
-                    name="age"
-                    placeholder="Enter age"
-                    style="width: 168px; appearance: textfield"
-                    required
-                  />
-                </div>
-                <div class="containerDarkInput">
-                  <label for="date" class="DarkLabel">Date last seen</label>
-                  <input
-                    class="inputDate inputDark"
-                    name="date"
-                    type="date"
-                    style="width: 168px"
-                    required
-                  />
-                </div>
-                <div class="containerDarkInput">
-                  <label for="time" class="DarkLabel">Time last seen</label>
-                  <input
-                    class="inputTime inputDark"
-                    name="time"
-                    type="time"
-                    style="width: 168px"
-                    required
-                  />
-                </div>
-                <div class="containerDarkInput">
-                  <label for="height" class="DarkLabel">Height</label>
-                  <input
-                    class="inputText inputDark"
-                    name="height"
-                    type="text"
-                    placeholder="Enter height"
-                    style="width: 168px"
-                    required
-                  />
-                </div>
-                <div class="containerDarkInput">
-                  <label for="place" class="DarkLabel">Place last seen</label>
-                  <input
-                    class="inputText inputDark"
-                    name="place"
-                    type="text"
-                    placeholder="Enter place"
-                    style="width: 346px"
-                    required
-                  />
-                </div>
-                <div class="containerDarkInput">
-                  <label for="color" class="DarkLabel">Color</label>
-                  <input
-                    class="inputText inputDark"
-                    name="color"
-                    type="text"
-                    placeholder="Enter color"
-                    style="width: 346px"
-                    required
-                  />
-                </div>
-                <div class="containerDarkInput">
-                  <label for="marks" class="DarkLabel">Birth marks</label>
-                  <input
-                    class="inputText inputDark"
-                    name="marks"
-                    type="text"
-                    placeholder="Enter birth marks"
-                    style="width: 700px"
-                    required
-                  />
-                </div>
-                <div class="containerDarkInput">
-                  <label for="dress" class="DarkLabel">Last outfit</label>
-                  <input
-                    class="inputText inputDark"
-                    name="dress"
-                    type="text"
-                    placeholder="Enter outfit with color"
-                    style="width: 700px"
-                    required
-                  />
-                </div>
-                <div class="containerDarkInput">
-                  <label for="residence" class="DarkLabel">Residence</label>
-                  <input
-                    class="inputText inputDark"
-                    name="residence"
-                    type="text"
-                    placeholder="Enter residence"
-                    style="width: 522px"
-                    required
-                  />
-                </div>
-                <div class="containerDarkInput">
-                  <label for="reward" class="DarkLabel">Reward</label>
-                  <input
-                    class="inputNumber inputDark"
-                    name="reward"
-                    type="number"
-                    placeholder="Enter reward amout"
-                    min="5000"
-                    style="width: 168px; appearance: textfield"
-                    required
-                  />
-                </div>
-                <div class="containerDarkInput">
-                  <label for="additional" class="DarkLabel"
-                    >Additional information</label
-                  >
-                  <textarea
-                    class="textArea inputDark"
-                    name="additional"
-                    id="additional"
-                    cols="30"
-                    rows="10"
-                    placeholder="Enter additional information"
-                    required
-                    style="
-                      width: 700px;
-                      height: 100px;
-                      font-family: inherit;
-                      font-size: inherit;
-                      padding: 10px;
-                      resize: none;
-                      border-radius: 5px 5px 30px 30px;
-                    "
-                  ></textarea>
-                </div>
-              </div>
-              <div
-                class="containerFormDarkButton"
-                style="
-                  display: flex;
-                  align-items: end;
-                  justify-content: end;
-                  gap: 20px;
-                "
-              >
-                <button type="reset" class="clearButton buttonDarkSecondary">
-                  Clear
-                </button>
-                <button
-                  type="submit"
-                  name="submit"
-                  class="submitButton buttonDarkPrimary"
-                >
-                  Submit
-                </button>
-              </div>
-            </div>
-          </div>
-        </form>
-      </div>
-    </section>
+  <div class="kids_post_form">
+    <form
+      action="/missingkids/missingkidspostrequest"
+      method="POST"
+      enctype="multipart/form-data"
+      style="
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+      "
+    >
+      <img id="output" />
+      <label for="image">Add an image</label>
+      <input type="file" id="image" name="image" onchange="loadFile(event)" />
+
+      <label for="name" class="post_form_label">Full name</label>
+      <input
+        class="post_form_input"
+        type="text"
+        name="name"
+        placeholder="Enter full name"
+        required
+      />
+
+      <label for="gender" class="post_form_label">Gender</label>
+      <select class="post_form_input" name="gender">
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="transgender">Transgender</option>
+        <option value="others">Others</option>
+      </select>
+
+      <label for="age" class="post_form_label">Age</label>
+      <input
+        class="post_form_input"
+        min="0"
+        max="18"
+        type="number"
+        name="age"
+        placeholder="Enter age"
+        required
+      />
+      <label for="date" class="post_form_label">Date last seen</label>
+      <input class="post_form_input" name="date" type="date" required />
+
+      <label for="time" class="post_form_label">Time last seen</label>
+      <input class="post_form_input" name="time" type="time" required />
+
+      <label for="place" class="post_form_label">Place last seen</label>
+      <input
+        class="post_form_input"
+        name="place"
+        type="text"
+        placeholder="Enter place"
+        required
+      />
+
+      <label for="height" class="post_form_label">Height</label>
+      <input
+        class="post_form_input"
+        name="height"
+        type="text"
+        placeholder="Enter height"
+        required
+      />
+
+      <label for="color" class="post_form_label">Color</label>
+      <input
+        class="post_form_input"
+        name="color"
+        type="text"
+        placeholder="Enter color"
+        required
+      />
+
+      <label for="marks" class="post_form_label">Birth marks</label>
+      <input
+        class="post_form_input"
+        name="marks"
+        type="text"
+        placeholder="Enter birth marks"
+        required
+      />
+
+      <label for="residence" class="post_form_label">Residence</label>
+      <input
+        class="post_form_input"
+        name="residence"
+        type="text"
+        placeholder="Enter residence"
+        required
+      />
+
+      <label for="dress" class="post_form_label">Last outfit</label>
+      <input
+        class="post_form_input"
+        name="dress"
+        type="text"
+        placeholder="Enter outfit with color"
+        required
+      />
+
+      <label for="reward" class="post_form_label">Reward</label>
+      <input
+        class="post_form_input"
+        name="reward"
+        type="number"
+        placeholder="Enter reward amout"
+        min="5000"
+        required
+      />
+
+      <label for="additional" class="post_form_label"
+        >Additional information</label
+      >
+      <textarea
+        class="post_form_input"
+        name="additional"
+        id="additional"
+        cols="30"
+        rows="10"
+        placeholder="Enter additional information"
+        required
+      ></textarea>
+
+      <a class="cancelButton" href="#">Cancel</a>
+      <button type="submit" name="submit" class="submitButton">Submit</button>
+    </form>
   </div>
 </div>
+
 <style>
-  @import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap");
-  @import url("https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap");
-  @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
-
-  :root {
-    --primarycolor: #54543a;
-  }
   body {
-    /* background-image: linear-gradient(250deg, #22223b, #001219); */
-    background-color: #1c1c16;
+    background-color: #1d1d1d;
     color: #fff;
-    font-family: "Roboto", sans-serif;
-    font-weight: 400;
-    font-style: normal;
   }
 
-  .DarkModeTitle {
-    font-family: "Roboto", sans-serif;
-    font-weight: 500;
-    font-style: normal;
+  .post_form_label {
+    font-size: 20px;
   }
 
-  .containerDarkInput {
+  .post_form_input {
+    height: 60px;
+    width: 700px;
+    border-radius: 5px;
+    font-size: 20px;
+    border: 2px solid white;
+    outline: none;
     display: flex;
-    align-items: start;
+    align-items: center;
+    justify-content: center;
+  }
+</style>
+
+<!-- <div class="containerForAllContentsFromTheFormPage">
+  <div class="containerForMissingPersonFormHeading">
+    <h2 class="missingPersonHeading">Report a Missing Person</h2>
+    <h5 class="missingPersonHeadingTwo">Before you start</h5>
+    <p class="missingPersonParagraph">
+      This form is for reporting missing kids. Please use it for the intended
+      purpose only
+    </p>
+  </div>
+
+  <section>
+    <div class="formContainer">
+      <form
+        action="/missingkids/missingkidspostrequest"
+        method="POST"
+        enctype="multipart/form-data"
+      >
+        <div
+          class="containerForFormData"
+          style="
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            place-content: start;
+            place-items: end;
+            gap: 50px;
+          "
+        >
+          <div
+            class="containerNewMissingKidFirstSection"
+            style="display: flex; flex-direction: column"
+          >
+            <div class="containerForImageandLabel">
+              <img
+                class="displayImageContainer"
+                id="output"
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqpH5CFWOqOAXzCxS8VH-hQWbypepc6afzP0D_pwAOEw&s"
+              />
+              <label for="image" class="labelOfImage">Add an image</label>
+              <input
+                type="file"
+                id="image"
+                name="image"
+                class="inputFile"
+                onchange="loadFile(event)"
+              />
+            </div>
+
+            <label for="name">Full name</label>
+            <input
+              class="inputText"
+              type="text"
+              name="name"
+              placeholder="Enter full name"
+            />
+
+            <label for="gender">Gender</label>
+            <select class="selector" name="gender">
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="transgender">Transgender</option>
+              <option value="others">Others</option>
+            </select>
+
+            <label for="age">Age</label>
+            <input
+              class="inputNumber"
+              min="0"
+              max="18"
+              type="number"
+              name="age"
+              placeholder="Enter age"
+              required
+            />
+          </div>
+          <div
+            class="containerNewMissingKidSecondSection"
+            style="display: flex; flex-direction: column"
+          >
+            <label for="date">Date last seen</label>
+            <input class="inputDate" name="date" type="date" />
+
+            <label for="time">Time last seen</label>
+            <input class="inputTime" name="time" type="time" />
+
+            <label for="place">Place last seen</label>
+            <input
+              class="inputText"
+              name="place"
+              type="text"
+              placeholder="Enter place"
+            />
+
+            <label for="height">Height</label>
+            <input
+              class="inputText"
+              name="height"
+              type="text"
+              placeholder="Enter height"
+            />
+
+            <label for="color">Color</label>
+            <input
+              class="inputText"
+              name="color"
+              type="text"
+              placeholder="Enter color"
+            />
+            <label for="marks">Birth marks</label>
+            <input
+              class="inputText"
+              name="marks"
+              type="text"
+              placeholder="Enter birth marks"
+            />
+          </div>
+          <div
+            class="containerNewMissingKidThirdSection"
+            style="display: flex; flex-direction: column"
+          >
+            <label for="residence">Residence</label>
+            <input
+              class="inputText"
+              name="residence"
+              type="text"
+              placeholder="Enter residence"
+            />
+
+            <label for="dress">Last outfit</label>
+            <input
+              class="inputText"
+              name="dress"
+              type="text"
+              placeholder="Enter outfit with color"
+            />
+
+            <label for="reward">Reward</label>
+            <input
+              class="inputNumber"
+              name="reward"
+              type="number"
+              placeholder="Enter reward amout"
+              min="5000"
+            />
+
+            <label for="additional">Additional information</label>
+            <textarea
+              class="textArea"
+              name="additional"
+              id="additional"
+              cols="30"
+              rows="10"
+              placeholder="Enter additional information"
+            ></textarea>
+
+            <a class="cancelButton" href="#">Cancel</a>
+            <button type="submit" name="submit" class="submitButton">
+              Submit
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
+</div>
+
+<style>
+  body {
+    background-color: #1d1d1d;
+    color: #fff;
+  }
+  .containerForAllContentsFromTheFormPage {
+    width: 100vw;
+    display: flex;
+    align-items: center;
     justify-content: center;
     flex-direction: column;
-    gap: 5px;
+  }
+  .containerForMissingPersonFormHeading {
+    margin-top: 100px;
+    width: 440px;
+  }
+  .missingPersonHeading {
+    display: flex;
+    align-self: flex-start;
+  }
+  .missingPersonHeadingTwo {
+    display: flex;
+    align-self: flex-start;
+    font-size: 15px;
+    margin: 0;
+    padding: 0;
+    color: #343434;
+  }
+  .missingPersonParagraph {
+    font-size: 14px;
+    font-weight: 600;
+    color: #5e5e5e;
+    padding: 0;
+    margin: 5px 0;
+  }
+  .formContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .containerForImageandLabel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .displayImageContainer {
+    width: 200px;
+    border-radius: 50%;
+    aspect-ratio: 1;
+    border: solid 2px rgb(164, 164, 164);
+    margin-top: 50px;
   }
   label {
+    margin-top: 30px;
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+  .inputFile {
     display: none;
   }
+  .labelOfImage {
+    cursor: pointer;
+    color: #007aff;
+  }
+  .labelOfImage:hover {
+    color: #005bbb;
+    text-decoration: underline;
+  }
 
-  .inputDark {
-    height: 70px;
-    border-radius: 2px;
-    background-color: #0000002e;
-    outline: 1px solid var(--primarycolor);
-    border-radius: 5px;
-    border: none;
-    color: white;
+  input[type="text"]:focus,
+  input[type="number"]:focus,
+  textarea:focus,
+  input[type="date"]:focus,
+  input[type="time"]:focus {
+    border: 3px solid #4cd964;
+    outline: none;
+  }
+  .inputText {
+    height: 60px;
+    width: 400px;
+    border-radius: 8px;
+    border: solid 2px rgb(150, 150, 150);
     padding: 0 10px;
-  }
-  .inputDark::placeholder {
-    font-family: inherit;
     font-size: 15px;
+    font-family: ".SFNSDisplay-Regular", sans-serif;
+    font-weight: 600;
   }
-
-  .buttonDarkPrimary {
-    height: 100px;
-    width: 480px;
-    border-radius: 50px;
-    background-color: var(--primarycolor);
-    color: #1c1c16;
+  .inputDate {
+    height: 50px;
+    width: 400px;
+    border-radius: 8px;
+    border: solid 2px rgb(150, 150, 150);
+    padding: 0 10px;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: ".SFNSDisplay-Regular", sans-serif;
+  }
+  .inputTime {
+    height: 50px;
+    width: 400px;
+    border-radius: 8px;
+    border: solid 2px rgb(150, 150, 150);
+    font-size: 15px;
+    padding: 0 10px;
+    font-weight: 600;
+    font-family: ".SFNSDisplay-Regular", sans-serif;
+  }
+  .selector {
+    height: 55px;
+    width: 400px;
+    border-radius: 8px;
+    border: solid 2px rgb(150, 150, 150);
+    padding: 0 10px;
+    font-weight: 600;
+    background-color: #ffffff;
+    font-size: 15px;
+    font-family: ".SFNSDisplay-Regular", sans-serif;
+    color: rgb(0, 0, 0);
+  }
+  .selector:focus {
+    border: 3px solid #4cd964;
+  }
+  .inputNumber {
+    height: 50px;
+    width: 400px;
+    border-radius: 8px;
+    border: solid 2px rgb(150, 150, 150);
+    padding: 0 10px;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: ".SFNSDisplay-Regular", sans-serif;
+  }
+  .textArea {
+    height: 150px;
+    width: 400px;
+    font-size: 15px;
+    border-radius: 8px;
+    border: solid 2px rgb(150, 150, 150);
+    padding: 10px 10px;
+    font-weight: 600;
+    font-family: ".SFNSDisplay-Regular", sans-serif;
+    resize: vertical;
+  }
+  .cancelButton {
+    height: 40px;
+    width: 400px;
+    border-radius: 10px;
     border: none;
-    outline: none;
-    font-size: 35px;
-    cursor: pointer;
+    font-size: 20px;
+    color: white;
+    background-color: #9f9f9f;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    margin-bottom: 0;
   }
-  .buttonDarkPrimary:hover {
-    background-color: #39392a;
+  .submitButton {
+    height: 40px;
+    width: 400px;
+    border-radius: 10px;
+    border: none;
+    font-size: 20px;
+    color: white;
+    background-color: #007aff;
+    margin-top: 20px;
   }
-  .buttonDarkSecondary {
-    height: 100px;
-    width: 200px;
-    border-radius: 50px;
-    background-color: transparent;
-    color: var(--primarycolor);
-    border: 1px solid var(--primarycolor);
-    outline: none;
-    font-size: 35px;
-    cursor: pointer;
+  .submitButton:hover {
+    background-color: #005fc5;
   }
 </style>
 
@@ -387,4 +521,5 @@
   };
 </script>
 
+<div class="darkModeAddPage"></div> -->
 <%- include('../partials/footer_dark.ejs') -%>
