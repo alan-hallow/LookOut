@@ -29,131 +29,232 @@
         align-items: center;
         justify-content: center;
         flex-direction: column;
+        gap: 5px;
       "
     >
-      <img id="output" />
-      <label for="image">Add an image</label>
-      <input type="file" id="image" name="image" onchange="loadFile(event)" />
-
-      <label for="name" class="post_form_label">Full name</label>
-      <input
-        class="post_form_input"
-        type="text"
-        name="name"
-        placeholder="Enter full name"
-        required
+      <img
+        id="output"
+        style="
+          height: 200px;
+          border: 2px solid white;
+          aspect-ratio: 1;
+          border-radius: 50%;
+        "
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqpH5CFWOqOAXzCxS8VH-hQWbypepc6afzP0D_pwAOEw&s"
       />
-
-      <label for="gender" class="post_form_label">Gender</label>
-      <select class="post_form_input" name="gender">
-        <option value="male">Male</option>
-        <option value="female">Female</option>
-        <option value="transgender">Transgender</option>
-        <option value="others">Others</option>
-      </select>
-
-      <label for="age" class="post_form_label">Age</label>
-      <input
-        class="post_form_input"
-        min="0"
-        max="18"
-        type="number"
-        name="age"
-        placeholder="Enter age"
-        required
-      />
-      <label for="date" class="post_form_label">Date last seen</label>
-      <input class="post_form_input" name="date" type="date" required />
-
-      <label for="time" class="post_form_label">Time last seen</label>
-      <input class="post_form_input" name="time" type="time" required />
-
-      <label for="place" class="post_form_label">Place last seen</label>
-      <input
-        class="post_form_input"
-        name="place"
-        type="text"
-        placeholder="Enter place"
-        required
-      />
-
-      <label for="height" class="post_form_label">Height</label>
-      <input
-        class="post_form_input"
-        name="height"
-        type="text"
-        placeholder="Enter height"
-        required
-      />
-
-      <label for="color" class="post_form_label">Color</label>
-      <input
-        class="post_form_input"
-        name="color"
-        type="text"
-        placeholder="Enter color"
-        required
-      />
-
-      <label for="marks" class="post_form_label">Birth marks</label>
-      <input
-        class="post_form_input"
-        name="marks"
-        type="text"
-        placeholder="Enter birth marks"
-        required
-      />
-
-      <label for="residence" class="post_form_label">Residence</label>
-      <input
-        class="post_form_input"
-        name="residence"
-        type="text"
-        placeholder="Enter residence"
-        required
-      />
-
-      <label for="dress" class="post_form_label">Last outfit</label>
-      <input
-        class="post_form_input"
-        name="dress"
-        type="text"
-        placeholder="Enter outfit with color"
-        required
-      />
-
-      <label for="reward" class="post_form_label">Reward</label>
-      <input
-        class="post_form_input"
-        name="reward"
-        type="number"
-        placeholder="Enter reward amout"
-        min="5000"
-        required
-      />
-
-      <label for="additional" class="post_form_label"
-        >Additional information</label
+      <label
+        for="image"
+        style="
+          font-size: 20px;
+          text-decoration: underline;
+          cursor: pointer;
+          margin-bottom: 50px;
+        "
+        >Add an image</label
       >
-      <textarea
-        class="post_form_input"
-        name="additional"
-        id="additional"
-        cols="30"
-        rows="10"
-        placeholder="Enter additional information"
-        required
-      ></textarea>
+      <input
+        type="file"
+        id="image"
+        name="image"
+        onchange="loadFile(event)"
+        style="display: none"
+      />
 
-      <a class="cancelButton" href="#">Cancel</a>
-      <button type="submit" name="submit" class="submitButton">Submit</button>
+      <div class="post_dark_form_elements">
+        <label for="name" class="post_form_label">Full name</label>
+        <input
+          class="post_form_input"
+          type="text"
+          name="name"
+          placeholder="Enter full name"
+          required
+        />
+      </div>
+
+      <div class="post_dark_form_elements">
+        <label for="gender" class="post_form_label">Gender</label>
+        <select class="post_form_input" name="gender">
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+          <option value="transgender">Transgender</option>
+          <option value="others">Others</option>
+        </select>
+      </div>
+
+      <div class="post_dark_form_elements">
+        <label for="age" class="post_form_label">Age</label>
+        <input
+          class="post_form_input"
+          min="0"
+          max="18"
+          type="number"
+          name="age"
+          placeholder="Enter age"
+          required
+        />
+      </div>
+
+      <div class="post_dark_form_elements">
+        <label for="date" class="post_form_label">Date last seen</label>
+        <input class="post_form_input" name="date" type="date" required />
+      </div>
+
+      <div class="post_dark_form_elements">
+        <label for="time" class="post_form_label">Time last seen</label>
+        <input class="post_form_input" name="time" type="time" required />
+      </div>
+
+      <div class="post_dark_form_elements">
+        <label for="place" class="post_form_label">Place last seen</label>
+        <input
+          class="post_form_input"
+          name="place"
+          type="text"
+          placeholder="Enter place"
+          required
+        />
+      </div>
+
+      <div class="post_dark_form_elements">
+        <label for="height" class="post_form_label">Height</label>
+        <input
+          class="post_form_input"
+          name="height"
+          type="text"
+          placeholder="Enter height"
+          required
+        />
+      </div>
+
+      <div class="post_dark_form_elements">
+        <label for="color" class="post_form_label">Color</label>
+        <input
+          class="post_form_input"
+          name="color"
+          type="text"
+          placeholder="Enter color"
+          required
+        />
+      </div>
+
+      <div class="post_dark_form_elements">
+        <label for="marks" class="post_form_label">Birth marks</label>
+        <input
+          class="post_form_input"
+          name="marks"
+          type="text"
+          placeholder="Enter birth marks"
+          required
+        />
+      </div>
+
+      <div class="post_dark_form_elements">
+        <label for="residence" class="post_form_label">Residence</label>
+        <input
+          class="post_form_input"
+          name="residence"
+          type="text"
+          placeholder="Enter residence"
+          required
+        />
+      </div>
+
+      <div class="post_dark_form_elements">
+        <label for="dress" class="post_form_label">Last outfit</label>
+        <input
+          class="post_form_input"
+          name="dress"
+          type="text"
+          placeholder="Enter outfit with color"
+          required
+        />
+      </div>
+
+      <div class="post_dark_form_elements">
+        <label for="reward" class="post_form_label">Reward</label>
+        <input
+          class="post_form_input"
+          name="reward"
+          type="number"
+          placeholder="Enter reward amout"
+          min="5000"
+          required
+        />
+      </div>
+
+      <div
+        class="post_dark_form_elements"
+        style="border-radius: 5px 5px 30px 30px"
+      >
+        <label for="additional" class="post_form_label"
+          >Additional information</label
+        >
+        <textarea
+          class="post_form_input"
+          name="additional"
+          id="additional"
+          cols="30"
+          rows="10"
+          placeholder="Enter additional information"
+          required
+          style="resize: none"
+        ></textarea>
+      </div>
+
+      <div
+        class="form_dark_button"
+        style="
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 10px;
+          margin-top: 50px;
+        "
+      >
+        <a
+          class="cancelButton"
+          href="/missingkids/"
+          style="
+            height: 70px;
+            width: 200px;
+            border-radius: 50px;
+            background-color: transparent;
+            border: 2px solid white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            font-size: 20px;
+          "
+          >Cancel</a
+        >
+        <button
+          type="submit"
+          name="submit"
+          class="submitButton"
+          style="
+            height: 70px;
+            width: 500px;
+            border-radius: 50px;
+            background-color: #007aff;
+            font-size: 20px;
+            text-decoration: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+          "
+        >
+          Submit
+        </button>
+      </div>
     </form>
   </div>
 </div>
 
 <style>
   body {
-    background-color: #1d1d1d;
+    background-color: #101820;
     color: #fff;
   }
 
@@ -162,17 +263,44 @@
   }
 
   .post_form_input {
-    height: 60px;
+    height: 65px;
     width: 700px;
     border-radius: 5px;
     font-size: 20px;
-    border: 2px solid white;
+    background-color: transparent;
+    border: none;
+    color: white;
     outline: none;
     display: flex;
     align-items: center;
     justify-content: center;
+    appearance: textfield;
+  }
+
+  .post_dark_form_elements:first-of-type {
+    border-radius: 30px 30px 5px 5px;
+  }
+  .post_dark_form_elements {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 70px;
+    width: 1000px;
+    border-radius: 5px;
+    background-color: #080808;
+    color: white;
+    border: none;
+    padding: 0 20px;
+    overflow: hidden;
   }
 </style>
+
+<script>
+  var loadFile = function (event) {
+    var image = document.getElementById("output");
+    image.src = URL.createObjectURL(event.target.files[0]);
+  };
+</script>
 
 <!-- <div class="containerForAllContentsFromTheFormPage">
   <div class="containerForMissingPersonFormHeading">
