@@ -16,27 +16,7 @@ app.use(
 );
 
 app.use(express.json()); // Middleware to parse JSON requests
-// //  noCache Begins
 
-// app.set("etag", false);
-
-// app.use((req, res, next) => {
-//   res.set("Cache-Control", "no-store");
-//   next();
-// });
-
-// app.disable("view cache");
-
-// app.use(function (req, res, next) {
-//   if (!req.user) {
-//     res.header("Cache-Control", "private, no-cache, no-store, must-revalidate");
-//     res.header("Expires", "-1");
-//     res.header("Pragma", "no-cache");
-//   }
-//   next();
-// });
-
-// // noCache ends
 
 app.use(fileUpload());
 
