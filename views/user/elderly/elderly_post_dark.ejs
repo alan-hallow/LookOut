@@ -53,10 +53,11 @@
               type="text"
               name="name"
               placeholder="Enter full name"
+              required
             />
 
             <label for="gender">Gender</label>
-            <select class="selector" name="gender">
+            <select class="selector" name="gender" required>
               <option value="male">Male</option>
               <option value="female">Female</option>
               <option value="transgender">Transgender</option>
@@ -89,6 +90,7 @@
               name="place"
               type="text"
               placeholder="Enter place"
+              required
             />
             <label for="height">Height</label>
             <input
@@ -96,6 +98,7 @@
               name="height"
               type="text"
               placeholder="Enter height"
+              required
             />
             <label for="color">Color</label>
             <input
@@ -103,6 +106,7 @@
               name="color"
               type="text"
               placeholder="Enter color"
+              required
             />
             <label for="marks">Body marks</label>
             <input
@@ -110,6 +114,7 @@
               name="marks"
               type="text"
               placeholder="Enter body marks"
+              required
             />
             <label for="religion">Religion</label>
             <input
@@ -117,6 +122,7 @@
               name="religion"
               type="text"
               placeholder="Enter religion"
+              required
             />
           </div>
           <div
@@ -129,6 +135,7 @@
               name="residence"
               type="text"
               placeholder="Enter residence"
+              required
             />
             <label for="dress">Last outfit</label>
             <input
@@ -136,6 +143,7 @@
               name="dress"
               type="text"
               placeholder="Enter outfit with color"
+              required
             />
             <label for="reward">Reward</label>
             <input
@@ -143,6 +151,7 @@
               name="reward"
               type="number"
               placeholder="Enter reward amout"
+              required
               min="5000"
             />
 
@@ -154,6 +163,7 @@
               cols="30"
               rows="10"
               placeholder="Enter additional information"
+              required
             ></textarea>
 
             <a class="cancelButton" href="#">Cancel</a>
@@ -193,12 +203,12 @@
     font-size: 15px;
     margin: 0;
     padding: 0;
-    color: #343434;
+    color: #bdbdbd;
   }
   .missingPersonParagraph {
     font-size: 14px;
     font-weight: 600;
-    color: #5e5e5e;
+    color: #bdbdbd;
     padding: 0;
     margin: 5px 0;
   }
@@ -245,6 +255,15 @@
     border: 3px solid #4cd964;
     outline: none;
   }
+
+  input[type="text"],
+  input[type="number"],
+  textarea,
+  input[type="date"],
+  input[type="time"] {
+    background-color: black;
+    color: white;
+  }
   .inputText {
     height: 50px;
     width: 400px;
@@ -282,10 +301,10 @@
     border: solid 2px rgb(150, 150, 150);
     padding: 0 10px;
     font-weight: 600;
-    background-color: #ffffff;
     font-size: 15px;
     font-family: ".SFNSDisplay-Regular", sans-serif;
-    color: rgb(0, 0, 0);
+    background-color: black;
+    color: white;
   }
   .selector:focus {
     border: 3px solid #4cd964;
