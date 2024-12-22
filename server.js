@@ -17,7 +17,6 @@ app.use(
 
 app.use(express.json()); // Middleware to parse JSON requests
 
-
 app.use(fileUpload());
 
 //static files
